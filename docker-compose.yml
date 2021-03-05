@@ -1,0 +1,71 @@
+version: '3.2'
+
+services:
+  web:
+    container_name: podcasts_nginx
+    image: nginx
+    volumes:
+      - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./src/:/var/www/html
+    ports:
+      - '80:80'
+    depends_on:
+      - php
+      - database
+  #      - redis
+
+  php: &app-podcasts-service
+    container_name: podcasts_php
+    build: .docker/php
+    user: '${UID}:${GID}'
+    volumes:
+      - ./.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./src/:/var/www/html
+
+#  queue:
+#    <<: *app-podcasts-service
+#    container_name: podcasts_queue
+#    restart: always
+#    command: php /var/www/html/artisan queue:work
+
+  scheduler:
+    <<: *app-podcasts-service
+    container_name: podcasts_scheduler
+    restart: always
+    command: /scheduler/scheduler.sh
+
+  composer:
+    container_name: podcasts_composer
+    image: composer:latest
+    user: '${UID}:${GID}'
+    volumes:
+      - ./src/:/app
+    command: install
+
+  database:
+    container_name: podcasts_database
+    image: postgres:13.1
+    environment:
+      - 'POSTGRES_DB=${DB_NAME}'
+      - 'POSTGRES_USER=${DB_USER}'
+      - 'POSTGRES_PASSWORD=${DB_PASSWORD}'
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-database-podcasts:/var/lib/postgresql/data
+
+#  redis:
+#    container_name: podcasts_redis
+#    build: .docker/redis
+#    restart: always
+#    ports:
+#      - 6379:6379
+#    volumes:
+#      - redis-podcasts:/data:rw
+
+volumes:
+  postgres-database-podcasts:
+    driver: local
+#  redis-podcasts:
+#    driver: local
