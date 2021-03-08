@@ -14,14 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('v1')->group(function () {
-    Route::post('/register', [AuthController::class, 'register'])->name('api.register');
-    Route::post('/login', [AuthController::class, 'login'])->name('api.login');
-    Route::post('/reset-password', [AuthController::class, 'reset'])->name('api.reset.password');
-    Route::post('/update-password', [AuthController::class, 'update'])->name('api.password.update');
+Route::middleware(['logger'])->group(function () {
+    Route::prefix('v1')->group(function () {
+        Route::post('/register', [AuthController::class, 'register'])->name('api.register');
+        Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+        Route::post('/reset-password', [AuthController::class, 'reset'])->name('api.reset.password');
+        Route::post('/update-password', [AuthController::class, 'update'])->name('api.password.update');
 
-    Route::middleware(['bearer'])->group(function () {
-        Route::get('/logout', [AuthController::class, 'logout'])->name('api.logout');
-        Route::get('/profile', [AuthController::class, 'profile'])->name('api.profile');
+        Route::middleware(['bearer'])->group(function () {
+            Route::get('/logout', [AuthController::class, 'logout'])->name('api.logout');
+            Route::get('/profile', [AuthController::class, 'profile'])->name('api.profile');
+        });
     });
 });

@@ -11,6 +11,7 @@ use App\Http\Resources\UserResource;
 use App\Mail\ResetPasswordMail;
 use App\Mail\UpdatePasswordMail;
 use App\Services\AuthService;
+use App\Services\LogService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +21,12 @@ class AuthController extends Controller
 {
     public AuthService $authService;
 
-    public function __construct(AuthService $authService)
+    public LogService $logService;
+
+    public function __construct(AuthService $authService, LogService $logService)
     {
         $this->authService = $authService;
+        $this->logService = $logService;
     }
 
     public function login(LoginRequest $request): JsonResponse
@@ -39,7 +43,6 @@ class AuthController extends Controller
             'user' => new UserResource($request->user()),
             'access_token' => $this->authService->generate(Auth::id()),
             'token_type' => 'bearer',
-            'is_admin' => $request->user()->isAdmin(),
         ]);
     }
 
