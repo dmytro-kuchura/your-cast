@@ -43,11 +43,11 @@ class AuthController extends Controller
         ]);
     }
 
-    public function register(RegisterRequest $registerRequest): JsonResponse
+    public function register(RegisterRequest $request): JsonResponse
     {
-        $this->authService->registration($registerRequest->all());
+        $this->authService->registration($request->all());
 
-        $token = Auth::attempt($registerRequest->only(['email', 'password']));
+        $token = Auth::attempt($request->only(['email', 'password']));
 
         if (!$token) {
             return $this->returnResponse([

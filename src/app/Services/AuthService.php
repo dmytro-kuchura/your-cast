@@ -12,10 +12,13 @@ use Illuminate\Support\Str;
 
 class AuthService
 {
+    /** @var UsersTokenRepository  */
     private UsersTokenRepository $usersTokenRepository;
 
+    /** @var UsersRepository  */
     private UsersRepository $usersRepository;
 
+    /** @var PasswordResetsRepository  */
     private PasswordResetsRepository $passwordResetsRepository;
 
     public function __construct(
@@ -111,6 +114,13 @@ class AuthService
         $this->usersTokenRepository->expired($user_id);
     }
 
+    public function findTokenByUser(int $user_id): string
+    {
+        $usersToken = $this->usersTokenRepository->get($user_id);
+
+        return $usersToken->token;
+    }
+
     public function findUserByToken(string $token): ?User
     {
         $usersToken = $this->usersTokenRepository->find($token);
@@ -121,12 +131,5 @@ class AuthService
     public function findUserByEmail(string $email): ?User
     {
         return $this->usersRepository->findByEmail($email);
-    }
-
-    public function findTokenByUser(int $user_id): string
-    {
-        $usersToken = $this->usersTokenRepository->get($user_id);
-
-        return $usersToken->token;
     }
 }
