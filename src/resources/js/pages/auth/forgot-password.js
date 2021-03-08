@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {resetPassword} from "../../services/auth-service";
+import {resetPassword} from '../../services/auth-service';
 
 class ForgotPassword extends React.Component {
     constructor(props) {
@@ -11,7 +11,8 @@ class ForgotPassword extends React.Component {
             data: {
                 email: null,
             },
-            error: null
+            error: null,
+            isLoading: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -54,51 +55,32 @@ class ForgotPassword extends React.Component {
         }
 
         return (
-            <div id="layoutAuthentication">
-                <div id="layoutAuthentication_content">
-                    <main>
-                        <div className="container">
-                            <div className="row justify-content-center">
-                                <div className="col-lg-5">
-                                    <div className="card shadow-lg border-0 rounded-lg mt-5">
-                                        <div className="card-header">
-                                            <h3 className="text-center font-weight-light my-4">МедСервіс | Відновлення
-                                                паролю</h3>
-                                        </div>
-                                        <div className="card-body">
-                                            <form onSubmit={this.handleSubmit} method="POST">
-                                                <div className="form-group">
-                                                    <label className="small mb-1"
-                                                           htmlFor="inputEmailAddress">Email</label>
-                                                    <input
-                                                        className="form-control py-4"
-                                                        id="email"
-                                                        type="email"
-                                                        name="email"
-                                                        onChange={this.handleChange}
-                                                        placeholder="Введіть Email адресу"/>
-
-                                                    {this.state.error &&
-                                                    <p style={{color: 'red'}}>{this.state.error}</p>}
-                                                </div>
-                                                <div
-                                                    className="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                    <button type="submit" className="btn btn-primary">Відновити пароль
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div className="card-footer text-center">
-                                            <div className="small">
-                                                <Link to="/login">Авторизація</Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </main>
-                </div>
+            <div className="login-form login-forgot">
+                <form className="form" noValidate="novalidate" id="kt_login_forgot_form" onSubmit={this.handleSubmit}
+                      method="POST">
+                    <div className="pb-13 pt-lg-0 pt-5">
+                        <h3 className="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Forgotten Password ?</h3>
+                        <p className="text-muted font-weight-bold font-size-h4">Enter your email to reset your
+                            password</p>
+                    </div>
+                    <div className="form-group">
+                        <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                               id="email"
+                               type="email"
+                               name="email"
+                               onChange={this.handleChange}
+                               placeholder="Email"
+                               autoComplete="off"/>
+                    </div>
+                    <div className="form-group d-flex flex-wrap pb-lg-0">
+                        <button type="submit" id="kt_login_forgot_submit"
+                                className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Submit
+                        </button>
+                        <Link to="/account/login"
+                              className="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3"
+                              id="kt_login_forgot">Cancel</Link>
+                    </div>
+                </form>
             </div>
         );
     }

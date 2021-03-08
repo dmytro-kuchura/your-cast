@@ -74,6 +74,11 @@ class Register extends React.Component {
                         <h3 className="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Sign Up</h3>
                         <p className="text-muted font-weight-bold font-size-h4">Enter your details to create your
                             account</p>
+                        <span className="text-muted font-weight-bold font-size-h4">Already have an account?
+                            <Link to="/account/login"
+                                  className="text-primary font-weight-bolder"
+                                  id="kt_login_signup"> Sign in</Link>
+                        </span>
                     </div>
                     <div className="form-group">
                         <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"

@@ -2995,7 +2995,8 @@ var ForgotPassword = /*#__PURE__*/function (_React$Component) {
       data: {
         email: null
       },
-      error: null
+      error: null,
+      isLoading: false
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -3054,72 +3055,47 @@ var ForgotPassword = /*#__PURE__*/function (_React$Component) {
       }
 
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        id: "layoutAuthentication",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          id: "layoutAuthentication_content",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("main", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: "container",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                className: "row justify-content-center",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                  className: "col-lg-5",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                    className: "card shadow-lg border-0 rounded-lg mt-5",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                      className: "card-header",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
-                        className: "text-center font-weight-light my-4",
-                        children: "\u041C\u0435\u0434\u0421\u0435\u0440\u0432\u0456\u0441 | \u0412\u0456\u0434\u043D\u043E\u0432\u043B\u0435\u043D\u043D\u044F \u043F\u0430\u0440\u043E\u043B\u044E"
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                      className: "card-body",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
-                        onSubmit: this.handleSubmit,
-                        method: "POST",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                          className: "form-group",
-                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                            className: "small mb-1",
-                            htmlFor: "inputEmailAddress",
-                            children: "Email"
-                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-                            className: "form-control py-4",
-                            id: "email",
-                            type: "email",
-                            name: "email",
-                            onChange: this.handleChange,
-                            placeholder: "\u0412\u0432\u0435\u0434\u0456\u0442\u044C Email \u0430\u0434\u0440\u0435\u0441\u0443"
-                          }), this.state.error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-                            style: {
-                              color: 'red'
-                            },
-                            children: this.state.error
-                          })]
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                          className: "form-group d-flex align-items-center justify-content-between mt-4 mb-0",
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                            type: "submit",
-                            className: "btn btn-primary",
-                            children: "\u0412\u0456\u0434\u043D\u043E\u0432\u0438\u0442\u0438 \u043F\u0430\u0440\u043E\u043B\u044C"
-                          })
-                        })]
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                      className: "card-footer text-center",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                        className: "small",
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
-                          to: "/login",
-                          children: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0456\u044F"
-                        })
-                      })
-                    })]
-                  })
-                })
-              })
+        className: "login-form login-forgot",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+          className: "form",
+          noValidate: "novalidate",
+          id: "kt_login_forgot_form",
+          onSubmit: this.handleSubmit,
+          method: "POST",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "pb-13 pt-lg-0 pt-5",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+              className: "font-weight-bolder text-dark font-size-h4 font-size-h1-lg",
+              children: "Forgotten Password ?"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              className: "text-muted font-weight-bold font-size-h4",
+              children: "Enter your email to reset your password"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "form-group",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              className: "form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6",
+              id: "email",
+              type: "email",
+              name: "email",
+              onChange: this.handleChange,
+              placeholder: "Email",
+              autoComplete: "off"
             })
-          })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "form-group d-flex flex-wrap pb-lg-0",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+              type: "submit",
+              id: "kt_login_forgot_submit",
+              className: "btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4",
+              children: "Submit"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+              to: "/account/login",
+              className: "btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3",
+              id: "kt_login_forgot",
+              children: "Cancel"
+            })]
+          })]
         })
       });
     }
@@ -3298,7 +3274,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
                 className: "font-size-h6 font-weight-bolder text-dark pt-5",
                 children: "Password"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
-                to: "/account/login",
+                to: "/account/forgot-password",
                 className: "text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5",
                 id: "kt_login_forgot",
                 children: "Forgot Password ?"
@@ -3375,6 +3351,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/auth-service */ "./resources/js/services/auth-service.js");
 /* harmony import */ var _helpers_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/validation */ "./resources/js/helpers/validation.js");
@@ -3508,6 +3485,14 @@ var Register = /*#__PURE__*/function (_React$Component) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
               className: "text-muted font-weight-bold font-size-h4",
               children: "Enter your details to create your account"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+              className: "text-muted font-weight-bold font-size-h4",
+              children: ["Already have an account?", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+                to: "/account/login",
+                className: "text-primary font-weight-bolder",
+                id: "kt_login_signup",
+                children: " Sign in"
+              })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "form-group",

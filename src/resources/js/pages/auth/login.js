@@ -77,7 +77,7 @@ class Login extends React.Component {
                     <div className="form-group">
                         <div className="d-flex justify-content-between mt-n5">
                             <label className="font-size-h6 font-weight-bolder text-dark pt-5">Password</label>
-                            <Link to="/account/login"
+                            <Link to="/account/forgot-password"
                                   className="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5"
                                   id="kt_login_forgot">Forgot Password ?</Link>
                         </div>
