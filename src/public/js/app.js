@@ -2077,31 +2077,34 @@ __webpack_require__.r(__webpack_exports__);
 
 function Aside() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "login-aside d-flex flex-column flex-row-auto",
+    className: "login-aside d-flex flex-column flex-row-auto p-15",
     style: {
       backgroundColor: '#F2C98A'
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "d-flex flex-column-auto flex-column pt-lg-40 pt-15",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-        href: "#",
+        href: "/account/",
         className: "text-center mb-10",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-          src: "/media/logo-letter.png",
+          src: "/media/img/logo-letter.png",
           className: "max-h-70px",
           alt: ""
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
         className: "font-weight-bolder text-center font-size-h4 font-size-h1-lg",
         style: {
           color: '#986923'
         },
-        children: ["Welcome home of your podcasts.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), "Strong tools podcast management and analytics."]
+        children: "Welcome home of your podcasts."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+        children: "Strong tools podcast management and analytics."
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center",
       style: {
-        backgroundImage: 'url(/media/login-visual.svg'
+        backgroundImage: 'url(/media/svg/podcast.svg)',
+        backgroundSize: 'auto 32vh'
       }
     })]
   });
@@ -2624,6 +2627,81 @@ function getParamFromUrl(props, param) {
   }
 
   return null;
+}
+
+/***/ }),
+
+/***/ "./resources/js/helpers/validation.js":
+/*!********************************************!*\
+  !*** ./resources/js/helpers/validation.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "validate": () => (/* binding */ validate)
+/* harmony export */ });
+var REQUIRE = 'required';
+var STRING = 'string';
+var CONTENT = 'content';
+var URL = 'url';
+var EMAIL = 'email';
+var INTEGER = 'integer';
+var NULLABLE = 'nullable';
+function validate(name, value, params) {
+  var pattern;
+  var error = '';
+  var errors = [];
+
+  if (params.includes(NULLABLE)) {
+    return null;
+  }
+
+  params.forEach(function (param) {
+    switch (param) {
+      case REQUIRE:
+        pattern = /^.{2,}$/;
+        error = 'Помилка зі значенням %value%, мінімально 6 символів.';
+        break;
+
+      case STRING:
+        pattern = /^[a-zA-Zа-яА-Я]+$/;
+        error = 'Помилка зі значенням %value%, повинно бути строкою.';
+        break;
+
+      case CONTENT:
+        pattern = /.*/;
+        error = 'Помилка зі значенням %value%, повинно бути контентом.';
+        break;
+
+      case URL:
+        pattern = /^[a-zA-Z0-9_-]+$/;
+        error = 'Помилка зі значенням %value%, повинно бути url\'ом.';
+        break;
+
+      case INTEGER:
+        pattern = /^\d+$/;
+        error = 'Помилка зі значенням %value%, повинно бути номером.';
+        break;
+
+      case EMAIL:
+        pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        error = 'Помилка зі значенням %value%, повинно бути номером email\'oм.';
+        break;
+
+      default:
+        pattern = /^.{6,}$/;
+        break;
+    }
+
+    if (!pattern.test(value)) {
+      error = error.replace('%name%', name);
+      error = error.replace('%value%', value);
+      errors.push(error);
+    }
+  });
+  return errors.length > 1 ? errors[errors.length - 1] : errors[0];
 }
 
 /***/ }),
@@ -3296,10 +3374,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/auth-service */ "./resources/js/services/auth-service.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _helpers_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/validation */ "./resources/js/helpers/validation.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3328,6 +3407,14 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+var rules = {
+  'name': ['required'],
+  'email': ['email', 'nullable'],
+  'password': ['required'],
+  'password_confirmation': ['required'],
+  'agree': ['required']
+};
 
 var Register = /*#__PURE__*/function (_React$Component) {
   _inherits(Register, _React$Component);
@@ -3400,31 +3487,31 @@ var Register = /*#__PURE__*/function (_React$Component) {
       var isAuthenticated = this.props.isAuthenticated;
 
       if (isAuthenticated) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Redirect, {
           to: from
         });
       }
 
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "login-form login-signup",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
           className: "form",
           noValidate: "novalidate",
           id: "kt_login_signup_form",
           onSubmit: this.handleSubmit,
           method: "POST",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "pb-13 pt-lg-0 pt-5",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
               className: "font-weight-bolder text-dark font-size-h4 font-size-h1-lg",
               children: "Sign Up"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
               className: "text-muted font-weight-bold font-size-h4",
               children: "Enter your details to create your account"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
               className: "form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6",
               type: "text",
               id: "name",
@@ -3433,9 +3520,9 @@ var Register = /*#__PURE__*/function (_React$Component) {
               placeholder: "Fullname",
               autoComplete: "off"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
               className: "form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6",
               id: "email",
               type: "email",
@@ -3444,9 +3531,9 @@ var Register = /*#__PURE__*/function (_React$Component) {
               placeholder: "Email",
               autoComplete: "off"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
               className: "form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6",
               id: "password",
               type: "password",
@@ -3455,10 +3542,11 @@ var Register = /*#__PURE__*/function (_React$Component) {
               placeholder: "Password",
               autoComplete: "off"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-              className: "form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              className: "form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" // className={validate("phone", patient.phone, rules['phone']) ? "form-control is-invalid" : "form-control"}
+              ,
               id: "password_confirmation",
               type: "password",
               name: "password_confirmation",
@@ -3466,24 +3554,25 @@ var Register = /*#__PURE__*/function (_React$Component) {
               placeholder: "Confirm password",
               autoComplete: "off"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
               className: "checkbox mb-0",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
                 type: "checkbox",
+                className: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_3__.validate)("agree", null, rules['agree']) ? "form-control is-invalid" : "form-control",
                 name: "agree"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "ml-2",
-                children: ["I Agree the", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+                children: ["I Agree the", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
                   href: "#",
                   children: " terms and conditions"
                 }), "."]
               })]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "form-group d-flex flex-wrap pb-lg-0 pb-3",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
               type: "submit",
               id: "kt_login_signup_submit",
               className: "btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4",

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {login, updatePassword} from '../../services/auth-service';
-import {getParamFromUrl} from "../../helpers/url-params";
+import {updatePassword} from '../../services/auth-service';
+import {getParamFromUrl} from '../../helpers/url-params';
 
 class ResetPassword extends React.Component {
     constructor(props) {

@@ -2,6 +2,15 @@ import React from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {register} from '../../services/auth-service';
+import {validate} from '../../helpers/validation';
+
+const rules = {
+    'name': ['required'],
+    'email': ['email', 'nullable'],
+    'password': ['required'],
+    'password_confirmation': ['required'],
+    'agree': ['required'],
+};
 
 class Register extends React.Component {
     constructor(props) {
@@ -33,9 +42,7 @@ class Register extends React.Component {
         const {credentials} = this.state;
 
         this.props.dispatch(register(credentials))
-            .then({
-
-            })
+            .then({})
             .catch(({error, statusCode}) => {
                 const responseError = {
                     isError: true,
@@ -61,7 +68,8 @@ class Register extends React.Component {
 
         return (
             <div className="login-form login-signup">
-                <form className="form" noValidate="novalidate" id="kt_login_signup_form" onSubmit={this.handleSubmit} method="POST">
+                <form className="form" noValidate="novalidate" id="kt_login_signup_form" onSubmit={this.handleSubmit}
+                      method="POST">
                     <div className="pb-13 pt-lg-0 pt-5">
                         <h3 className="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Sign Up</h3>
                         <p className="text-muted font-weight-bold font-size-h4">Enter your details to create your
@@ -96,6 +104,7 @@ class Register extends React.Component {
                     </div>
                     <div className="form-group">
                         <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                            // className={validate("phone", patient.phone, rules['phone']) ? "form-control is-invalid" : "form-control"}
                                id="password_confirmation"
                                type="password"
                                name="password_confirmation"
@@ -105,7 +114,9 @@ class Register extends React.Component {
                     </div>
                     <div className="form-group">
                         <label className="checkbox mb-0">
-                            <input type="checkbox" name="agree"/>
+                            <input type="checkbox"
+                                   className={validate("agree", null, rules['agree']) ? "form-control is-invalid" : "form-control"}
+                                   name="agree"/>
                             <span></span>
                             <div className="ml-2">I Agree the
                                 <a href="#"> terms and conditions</a>.
