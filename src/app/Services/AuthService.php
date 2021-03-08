@@ -34,6 +34,15 @@ class AuthService
         Auth::login($this->findUserByToken($token));
     }
 
+    public function registration(array $data): void
+    {
+        $this->usersRepository->store([
+            'email' => $data['email'],
+            'name' => $data['name'],
+            'password' => bcrypt($data['password'])
+        ]);
+    }
+
     public function generate(int $user_id): string
     {
         $token = Str::random(235);
