@@ -8,6 +8,7 @@ import ResetPassword from '../pages/auth/reset-password'
 import Dashboard from '../pages/dashboard'
 import Settings from '../pages/settings';
 import NotFound from '../pages/not-found';
+import ShowCreate from '../pages/shows/show-create';
 
 const routes = [
     {
@@ -40,6 +41,11 @@ const routes = [
         exact: true,
         auth: false,
         component: ResetPassword
+    }, {
+        path: '/account/show/create',
+        exact: true,
+        auth: true,
+        component: ShowCreate
     }, {
         path: '/account/settings',
         exact: true,

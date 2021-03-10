@@ -12,8 +12,11 @@
     @import "themes/layout/brand/dark.scss";
 }
 
-.brand-light {
-    @import "themes/layout/brand/light.scss";
+// Aside themes
+@import "themes/layout/aside/dark.scss";
+
+.example-highlight {
+    padding: 0rem 1.5rem 1.75rem !important;
 }
 
 .example-highlight > pre {
@@ -79,3 +82,6 @@
 .cursor-default {
     cursor: default !important;
 }
+
+// Aside themes
+@import "pages/wizard/wizard-3";

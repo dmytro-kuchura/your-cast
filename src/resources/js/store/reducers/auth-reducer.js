@@ -11,7 +11,7 @@ const user = {
 
 const initialState = {
     isAuthenticated: false,
-    is_verified: false,
+    isVerified: false,
     user
 };
 
