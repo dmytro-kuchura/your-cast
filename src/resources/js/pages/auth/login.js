@@ -46,7 +46,7 @@ class Login extends React.Component {
     }
 
     render() {
-        const {from} = this.props.location.state || {from: {pathname: '/'}};
+        const {from} = this.props.location.state || {from: {pathname: '/account'}};
         const {isAuthenticated} = this.props;
 
         if (isAuthenticated) {
@@ -57,7 +57,8 @@ class Login extends React.Component {
 
         return (
             <div className="login-form login-signin">
-                <form className="form" noValidate="novalidate" id="kt_login_signin_form">
+                <form className="form" noValidate="novalidate" id="kt_login_signin_form" onSubmit={this.handleSubmit}
+                      method="POST">
                     <div className="pb-13 pt-lg-0 pt-5">
                         <h3 className="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome to
                             YouCast</h3>
@@ -70,8 +71,11 @@ class Login extends React.Component {
                     <div className="form-group">
                         <label className="font-size-h6 font-weight-bolder text-dark">Email</label>
                         <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg"
-                               type="text"
-                               name="username"
+                               id="email"
+                               type="email"
+                               name="email"
+                               onChange={this.handleChange}
+                               placeholder="Email"
                                autoComplete="off"/>
                     </div>
                     <div className="form-group">
@@ -82,12 +86,15 @@ class Login extends React.Component {
                                   id="kt_login_forgot">Forgot Password ?</Link>
                         </div>
                         <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg"
+                               id="password"
                                type="password"
                                name="password"
+                               onChange={this.handleChange}
+                               placeholder="Password"
                                autoComplete="off"/>
                     </div>
                     <div className="pb-lg-0 pb-5">
-                        <button type="button" id="kt_login_signin_submit"
+                        <button type="submit" id="kt_login_signin_submit"
                                 className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In
                         </button>
                         <button type="button"

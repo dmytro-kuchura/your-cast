@@ -6,11 +6,12 @@ const user = {
     id: null,
     name: null,
     email: null,
+    email_confirmed: false,
 };
 
 const initialState = {
     isAuthenticated: false,
-    isAdmin: false,
+    is_verified: false,
     user
 };
 
@@ -30,16 +31,16 @@ const Auth = (state = initialState, {type, payload = null}) => {
 const authLogin = (state, payload) => {
     const jwtToken = payload.access_token;
     const user = payload.user;
-    const isAdmin = payload.is_admin;
+    const isVerified = payload.user.email_confirmed;
 
-    setCookie('is_admin', isAdmin);
+    setCookie('is_verified', isVerified);
     setCookie('jwt_token', jwtToken)
 
     Http.defaults.headers.common['Authorization'] = `Bearer ${jwtToken}`;
 
     state = Object.assign({}, state, {
         isAuthenticated: true,
-        isAdmin: getCookie('is_admin') === 'true',
+        isVerified: getCookie('is_verified') === 'true',
         user
     });
 
@@ -49,7 +50,7 @@ const authLogin = (state, payload) => {
 const checkAuth = (state) => {
     state = Object.assign({}, state, {
         isAuthenticated: getCookie('jwt_token'),
-        isAdmin: getCookie('is_admin')
+        isVerified: getCookie('is_verified')
     });
 
     if (state.isAuthenticated) {
@@ -64,7 +65,7 @@ const logout = (state) => {
 
     state = Object.assign({}, state, {
         isAuthenticated: false,
-        isAdmin: false,
+        isVerified: false,
         user
     });
 

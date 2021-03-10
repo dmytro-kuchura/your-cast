@@ -7,7 +7,7 @@ import ResetPassword from '../pages/auth/reset-password'
 
 import Dashboard from '../pages/dashboard'
 import Settings from '../pages/settings';
-import NoMatch from '../pages/404'
+import NotFound from '../pages/not-found';
 
 const routes = [
     {
@@ -46,10 +46,10 @@ const routes = [
         auth: true,
         component: Settings
     }, {
-        path: '',
+        path: '*',
         exact: true,
         auth: false,
-        component: NoMatch
+        component: NotFound
     }
 ];
 
