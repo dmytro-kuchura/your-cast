@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Breadcrumbs from './breadcrumbs';
 
 class SubHeader extends React.Component {
     constructor(props) {
@@ -26,17 +27,7 @@ class SubHeader extends React.Component {
                             <div className="d-flex align-items-baseline mr-5">
                                 <h5 className="text-dark font-weight-bold my-2 mr-5">Modal</h5>
                             </div>
-                            <ul className="breadcrumb breadcrumb-transparent font-weight-bold p-0 my-2">
-                                <li className="breadcrumb-item">
-                                    <a className="text-muted" href="/metronic/react/demo1/react-bootstrap">Home</a>
-                                </li>
-                                <li className="breadcrumb-item">
-                                    <a className="text-muted" href="/metronic/react/demo1/react-bootstrap">Bootstrap</a>
-                                </li>
-                                <li className="breadcrumb-item">
-                                    <a className="text-muted" href="/metronic/react/demo1/react-bootstrap/modal">Modal</a>
-                                </li>
-                            </ul>
+                            <Breadcrumbs state={this.state.breadcrumbs}/>
                         </div>
                     </div>
                 </div>

@@ -19,7 +19,7 @@ export function validate(name, value, params) {
         switch (param) {
             case REQUIRE:
                 pattern = /^.{2,}$/;
-                error = 'Помилка зі значенням %value%, мінімально 6 символів.';
+                error = 'Помилка зі значенням %value%, мінімально 2 символів.';
                 break;
             case STRING:
                 pattern = /^[a-zA-Zа-яА-Я]+$/;
