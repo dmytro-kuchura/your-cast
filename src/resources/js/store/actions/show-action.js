@@ -7,7 +7,7 @@ export function getShows(payload) {
     }
 }
 
-export function getOneShow(payload) {
+export function getShow(payload) {
     return {
         type: ActionTypes.SHOW_INNER,
         payload

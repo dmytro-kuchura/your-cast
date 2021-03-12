@@ -43,7 +43,7 @@ class Header extends React.Component {
                                 <div className="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
                                     <div className="btn btn-icon btn-clean btn-lg btn-dropdown mr-1">
 											<span className="svg-icon svg-icon-xl svg-icon-primary">
-
+                                                <img src="/media/svg/search.svg" alt=""/>
 											</span>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@ class Header extends React.Component {
                                                 <div className="input-group-prepend">
 														<span className="input-group-text">
 															<span className="svg-icon svg-icon-lg">
-
+                                                                <img src="/media/svg/search.svg" alt=""/>
 															</span>
 														</span>
                                                 </div>
@@ -76,7 +76,7 @@ class Header extends React.Component {
                                 <div className="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
                                     <div className="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
 											<span className="svg-icon svg-icon-xl svg-icon-primary">
-
+                                                <img src="/media/svg/notification.svg" alt=""/>
 											</span>
                                     </div>
                                 </div>

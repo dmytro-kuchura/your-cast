@@ -2071,6 +2071,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -2093,6 +2094,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -2164,8 +2166,8 @@ var Aside = /*#__PURE__*/function (_React$Component) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "brand flex-column-auto",
             id: "kt_brand",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-              href: "/account",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+              to: '/account/dashboard',
               className: "brand-logo",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
                 alt: "Logo",
@@ -2822,7 +2824,11 @@ var Header = /*#__PURE__*/function (_React$Component) {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                     className: "btn btn-icon btn-clean btn-lg btn-dropdown mr-1",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                      className: "svg-icon svg-icon-xl svg-icon-primary"
+                      className: "svg-icon svg-icon-xl svg-icon-primary",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                        src: "/media/svg/search.svg",
+                        alt: ""
+                      })
                     })
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -2840,7 +2846,11 @@ var Header = /*#__PURE__*/function (_React$Component) {
                           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                             className: "input-group-text",
                             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                              className: "svg-icon svg-icon-lg"
+                              className: "svg-icon svg-icon-lg",
+                              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                                src: "/media/svg/search.svg",
+                                alt: ""
+                              })
                             })
                           })
                         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -2874,7 +2884,11 @@ var Header = /*#__PURE__*/function (_React$Component) {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                     className: "btn btn-icon btn-clean btn-dropdown btn-lg mr-1",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                      className: "svg-icon svg-icon-xl svg-icon-primary"
+                      className: "svg-icon svg-icon-xl svg-icon-primary",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                        src: "/media/svg/notification.svg",
+                        alt: ""
+                      })
                     })
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -4349,7 +4363,7 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
   _createClass(Dashboard, [{
     key: "render",
     value: function render() {
-      if (this.props.auth.isVerified) {
+      if (!this.props.auth.isVerified) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
           to: '/account/show/create'
         });
@@ -5307,7 +5321,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [{
-  path: '/account',
+  path: '/account/dashboard',
   exact: true,
   auth: true,
   component: _pages_dashboard__WEBPACK_IMPORTED_MODULE_5__.default
@@ -5539,7 +5553,7 @@ function getRecordById(param) {
   return function (dispatch) {
     return new Promise(function (resolve, reject) {
       _http__WEBPACK_IMPORTED_MODULE_1__.default.get(link).then(function (response) {
-        dispatch(_store_actions_show_action__WEBPACK_IMPORTED_MODULE_0__.getOneRecord(response.data.result));
+        dispatch(_store_actions_show_action__WEBPACK_IMPORTED_MODULE_0__.getShow(response.data.result));
         return resolve();
       })["catch"](function (err) {
         var statusCode = err.response.status;
@@ -5626,7 +5640,7 @@ function authCheck() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getShows": () => (/* binding */ getShows),
-/* harmony export */   "getOneShow": () => (/* binding */ getOneShow),
+/* harmony export */   "getShow": () => (/* binding */ getShow),
 /* harmony export */   "createShowStepFirst": () => (/* binding */ createShowStepFirst)
 /* harmony export */ });
 /* harmony import */ var _action_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-types */ "./resources/js/store/action-types/index.js");
@@ -5637,7 +5651,7 @@ function getShows(payload) {
     payload: payload
   };
 }
-function getOneShow(payload) {
+function getShow(payload) {
   return {
     type: _action_types__WEBPACK_IMPORTED_MODULE_0__.SHOW_INNER,
     payload: payload

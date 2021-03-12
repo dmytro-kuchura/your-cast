@@ -51,7 +51,7 @@ export function getRecordById(param) {
         new Promise((resolve, reject) => {
             Http.get(link)
                 .then(response => {
-                    dispatch(action.getOneRecord(response.data.result));
+                    dispatch(action.getShow(response.data.result));
                     return resolve();
                 })
                 .catch(err => {

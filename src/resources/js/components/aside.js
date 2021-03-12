@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 const opened = {display: 'none'};
 const closed = {display: 'block'};
@@ -41,9 +42,9 @@ class Aside extends React.Component {
             <>
                 <div className="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
                     <div className="brand flex-column-auto" id="kt_brand">
-                        <a href="/account" className="brand-logo">
+                        <Link to={'/account/dashboard'} className="brand-logo">
                             <img alt="Logo" src="/media/img/logo-light.png" />
-                        </a>
+                        </Link>
                         <button className="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
 							<span className="svg-icon svg-icon svg-icon-xl">
                                 <img src="/media/svg/angle-double-left.svg" alt="Angle double left" />

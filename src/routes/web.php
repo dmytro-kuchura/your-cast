@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//
-//Route::prefix('panel')->group(function () {
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::prefix('account')->group(function () {
     Route::get('/{uri}', function () {
         return view('react');
     })->where('uri', '^((?!api).)*$'); // except 'api' word
-//});
+});

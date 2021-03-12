@@ -12,7 +12,7 @@ import ShowCreate from '../pages/shows/show-create';
 
 const routes = [
     {
-        path: '/account',
+        path: '/account/dashboard',
         exact: true,
         auth: true,
         component: Dashboard
