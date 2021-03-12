@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ShowController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,12 @@ Route::middleware(['logger'])->group(function () {
         Route::middleware(['bearer'])->group(function () {
             Route::get('/logout', [AuthController::class, 'logout'])->name('api.logout');
             Route::get('/profile', [AuthController::class, 'profile'])->name('api.profile');
+            Route::prefix('show')->group(function () {
+                Route::post('/create', [ShowController::class, 'create'])->name('api.show.create');
+                Route::put('/update', [ShowController::class, 'update'])->name('api.show.update');
+                Route::get('/{id}', [ShowController::class, 'info'])->name('api.show.info');
+                Route::delete('/{id}', [ShowController::class, 'delete'])->name('api.show.delete');
+            });
         });
     });
 });

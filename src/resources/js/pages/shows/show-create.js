@@ -1,14 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Navigation from './common/navigation';
-import {validate} from '../../helpers/validation';
 import Buttons from './common/buttons';
+import FirstStep from './create/step-first';
 import {createShow} from '../../services/show-service';
-
-const rules = {
-    'title': ['required'],
-    'description': ['string', 'nullable'],
-};
+import SecondStep from './create/step-second';
 
 class ShowCreate extends React.Component {
     constructor(props) {
@@ -16,15 +12,21 @@ class ShowCreate extends React.Component {
 
         this.state = {
             step: 1,
-            show: {
-                title: '',
-                description: ''
-            }
+            show: {}
         };
 
         this.handleChangeInput = this.handleChangeInput.bind(this);
-        this.handleNextStep = this.handleNextStep.bind(this);
         this.formValid = this.formValid.bind(this);
+        this.handleNextStep = this.handleNextStep.bind(this);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps !== this.props) {
+            this.setState({
+                step: this.props.show.step,
+                show: this.props.show
+            })
+        }
     }
 
     handleChangeInput(event) {
@@ -42,7 +44,7 @@ class ShowCreate extends React.Component {
     handleNextStep(event) {
         event.preventDefault();
 
-        if (!this.formValid(this.state.show)) {
+        if (!this.formValid(this.state.show, this.state.step)) {
             return;
         }
 
@@ -52,21 +54,19 @@ class ShowCreate extends React.Component {
             })
     }
 
-    formValid(data) {
-        for (const [key, value] of Object.entries(data)) {
-            if (rules.hasOwnProperty(key)) {
-                let valid = validate(key, value, rules[key]);
-
-                return valid === undefined || valid === null;
-            }
-        }
+    formValid(data, step) {
+        // for (const [key, value] of Object.entries(data)) {
+        //     if (rules.hasOwnProperty(key)) {
+        //         let valid = validate(key, value, rules[key]);
+        //
+        //         return valid === undefined || valid === null;
+        //     }
+        // }
 
         return true;
     }
 
     render() {
-        let show = this.state.show;
-
         return (
             <>
                 <div className="container">
@@ -74,39 +74,18 @@ class ShowCreate extends React.Component {
                         <div className="card-body p-0">
                             <div className="wizard wizard-3" id="kt_wizard_v3" data-wizard-state="step-first"
                                  data-wizard-clickable="true">
-                                <Navigation/>
+                                <Navigation step={this.state.step}/>
                                 <div className="row justify-content-center py-10 px-8 py-lg-12 px-lg-10">
                                     <div className="col-xl-12 col-xxl-7">
                                         <form className="form" id="kt_form">
-                                            <div className="pb-5" data-wizard-type="step-content"
-                                                 data-wizard-state="current">
-                                                <h4 className="mb-10 font-weight-bold text-dark">Setup Your Show
-                                                    Info</h4>
-                                                <div className="form-group">
-                                                    <label>Title</label>
-                                                    <input type="text"
-                                                           className={validate('title', show.title, rules['title']) ? 'form-control is-invalid' : 'form-control'}
-                                                           name="title"
-                                                           placeholder="Title"
-                                                           onChange={this.handleChangeInput}
-                                                           defaultValue={show.title}/>
-                                                    <span className="form-text text-danger">
-                                                        {validate('title', show.title, rules['title'])}
-                                                    </span>
-                                                </div>
-                                                <div className="form-group">
-                                                    <label>Description</label>
-                                                    <textarea rows="3"
-                                                              className={validate('description', show.description, rules['description']) ? 'form-control is-invalid' : 'form-control'}
-                                                              placeholder="Description"
-                                                              name="description"
-                                                              onChange={this.handleChangeInput}
-                                                              value={show.description}/>
-                                                    <span className="form-text text-danger">
-                                                        {validate('description', show.description, rules['description'])}
-                                                    </span>
-                                                </div>
-                                            </div>
+                                            {this.state.step === 1 ?
+                                                <FirstStep handleChangeInput={this.handleChangeInput}
+                                                           show={this.state.show}/> : null}
+
+                                            {this.state.step === 2 ?
+                                                <SecondStep handleChangeInput={this.handleChangeInput}
+                                                            show={this.state.show}/> : null}
+
                                             <Buttons step={this.state.step}
                                                      handlePreviousStep={this.handlePreviousStep}
                                                      handleSubmit={this.handleSubmit}
@@ -127,6 +106,7 @@ class ShowCreate extends React.Component {
 const mapStateToProps = (state) => {
     return {
         auth: state.Auth,
+        show: state.Show,
     }
 };
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\Show;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
 
-class LoginRequest extends FormRequest
+class CreateShowRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,16 +27,16 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'string|email|required',
-            'password' => 'string|required',
+            'title' => 'string|min:2|required',
+            'description' => 'string|required',
         ];
     }
 
     public function messages()
     {
         return [
-            'email' => 'Введите email',
-            'password' => 'Введите пароль',
+            'title' => 'Invalid title',
+            'description' => 'Invalid description',
         ];
     }
 

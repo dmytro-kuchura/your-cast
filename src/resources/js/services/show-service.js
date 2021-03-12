@@ -8,7 +8,7 @@ export function createShow(data) {
         new Promise((resolve, reject) => {
             Http.post(link, data)
                 .then(response => {
-                    dispatch(action.createShowStepFirst(response.data.result));
+                    dispatch(action.createShow(response.data.show));
                     return resolve();
                 })
                 .catch(err => {
@@ -23,13 +23,14 @@ export function createShow(data) {
     );
 }
 
-export function updateRecord(id, data) {
-    let link = '/api/v2/blog/' + id;
+export function updateShow(id, data) {
+    let link = '/api/v1/show/update';
 
     return dispatch => (
         new Promise((resolve, reject) => {
             Http.put(link, data)
                 .then(response => {
+                    dispatch(action.updateShow(response.data.show));
                     return resolve();
                 })
                 .catch(err => {
@@ -44,8 +45,8 @@ export function updateRecord(id, data) {
     );
 }
 
-export function getRecordById(param) {
-    let link = '/api/v2/blog/' + param;
+export function getShowById(id) {
+    let link = '/api/v1/show/' + id;
 
     return dispatch => (
         new Promise((resolve, reject) => {

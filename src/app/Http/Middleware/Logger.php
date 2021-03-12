@@ -7,6 +7,7 @@ use Closure;
 
 class Logger
 {
+    /** @var LogService */
     public LogService $logService;
 
     public function __construct(LogService $logService)

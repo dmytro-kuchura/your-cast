@@ -28,19 +28,21 @@ class CreateShowsTable extends Migration
             $table->enum('format', ['episodic', 'serial'])->default('episodic');
 
             // 04. Details
-            $table->string('timezone');
+            $table->string('timezone')->default('CET');
             $table->string('language')->default('en');
-            $table->enum('explicit', ['true', 'false'])->default('false');
+            $table->boolean('explicit')->default(false);
 
             // 05. Categorization
-            $table->text('category');
+            $table->text('category')->nullable();
             $table->string('tags')->nullable();
 
             // 06. Owner details
-            $table->string('author');
-            $table->string('podcast_owner');
-            $table->string('email_owner');
-            $table->string('copyright');
+            $table->string('author')->nullable();
+            $table->string('podcast_owner')->nullable();
+            $table->string('email_owner')->nullable();
+            $table->string('copyright')->default('Your Cast (C) 2021');
+
+            $table->tinyInteger('step')->default(2);
 
             $table->foreign('user_id')->references('id')->on('users');
 

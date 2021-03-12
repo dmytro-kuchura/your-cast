@@ -2,9 +2,9 @@
 
 namespace App\Exceptions;
 
-use App\Services\LogService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
 use Throwable;
 

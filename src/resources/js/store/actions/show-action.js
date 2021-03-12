@@ -14,9 +14,16 @@ export function getShow(payload) {
     }
 }
 
-export function createShowStepFirst(payload) {
+export function createShow(payload) {
     return {
-        type: ActionTypes.SHOW_CREATE_STEP_FIRST,
+        type: ActionTypes.SHOW_CREATE,
+        payload
+    }
+}
+
+export function updateShow(payload) {
+    return {
+        type: ActionTypes.SHOW_UPDATE,
         payload
     }
 }
