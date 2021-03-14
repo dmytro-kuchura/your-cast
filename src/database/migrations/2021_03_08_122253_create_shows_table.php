@@ -37,12 +37,10 @@ class CreateShowsTable extends Migration
             $table->string('tags')->nullable();
 
             // 06. Owner details
-            $table->string('author')->nullable();
-            $table->string('podcast_owner')->nullable();
-            $table->string('email_owner')->nullable();
-            $table->string('copyright')->default('Your Cast (C) 2021');
-
-            $table->tinyInteger('step')->default(2);
+            $table->string('author');
+            $table->string('podcast_owner');
+            $table->string('email_owner');
+            $table->string('copyright');
 
             $table->foreign('user_id')->references('id')->on('users');
 

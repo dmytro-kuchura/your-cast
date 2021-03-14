@@ -5,7 +5,7 @@ class Buttons extends React.Component {
         super(props);
 
         this.state = {
-            step: 2
+            step: 1
         };
     }
 
@@ -23,25 +23,22 @@ class Buttons extends React.Component {
                         {this.state.step !== 1 ?
                             <button type="button"
                                     className="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4"
-                                    onClick={this.props.handlePreviousStep}
-                                    data-wizard-type="action-prev">Previous
+                                    onClick={this.props.handlePreviousStep}>Previous
                             </button>
                             : null}
                     </div>
                     <div>
-                        {this.state.step === 5 ?
+                        {this.state.step === 6 ?
                             <button type="submit"
                                     className="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
-                                    onClick={this.props.handleSubmit}
-                                    data-wizard-type="action-submit">Submit
+                                    onClick={this.props.handleSubmitForm}>Submit
                             </button>
                             : null}
 
-                        {this.state.step !== 5 ?
+                        {this.state.step !== 6 ?
                             <button type="submit"
                                     className="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
-                                    onClick={this.props.handleNextStep}
-                                    data-wizard-type="action-next">Next
+                                    onClick={this.props.handleNextStep}>Next
                             </button>
                             : null}
                     </div>

@@ -1,18 +1,14 @@
 import React from 'react';
-import {validate} from '../../../helpers/validation';
 
-const rules = {
-    'title': ['required'],
-    'description': ['string', 'nullable'],
-};
-
-class SecondStep extends React.Component {
+class StepSecond extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             show: {}
         };
+
+        this.state.show = props.show;
     }
 
     componentDidUpdate(prevProps) {
@@ -22,7 +18,7 @@ class SecondStep extends React.Component {
     }
 
     render() {
-        let show = this.state.show;
+        let image = this.state.show.artwork && this.state.show.artwork.length ? this.state.show.artwork : '/media/img/placeholder-image.png';
 
         return (
             <>
@@ -33,21 +29,22 @@ class SecondStep extends React.Component {
                         <div className="col-lg-9 col-xl-6">
                             <div className="image-input" id="kt_image_2">
                                 <div className="image-input-wrapper"
-                                     style={{backgroundImage: 'url(/media/img/placeholder-image.png)'}}></div>
+                                     style={{backgroundImage: 'url(' + image + ')'}}></div>
                                 <label
                                     className="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                    data-action="change" data-toggle="tooltip" title=""
-                                    data-original-title="Change avatar">
+                                    data-action="change" data-toggle="tooltip" title="Change artwork"
+                                    data-original-title="Change artwork">
                                     <i className="fa fa-pen icon-sm text-muted"></i>
-                                    <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg"/>
-                                    <input type="hidden" name="profile_avatar_remove"/>
+                                    <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg"
+                                           onChange={this.props.addArtwork}/>
+                                    <input type="hidden" name="artwork_remove"/>
                                 </label>
                                 <span
                                     className="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                     data-action="cancel" data-toggle="tooltip" title=""
-                                    data-original-title="Cancel avatar">
-															<i className="ki ki-bold-close icon-xs text-muted"></i>
-														</span>
+                                    data-original-title="Cancel artwork">
+                                    <i className="fa fa-close icon-xs text-muted"></i>
+                                </span>
                             </div>
                             <p className="form-text text-muted">We recommend using an image that is 3000px wide
                                 <br/>and we will automatically crop it to a square.</p>
@@ -62,4 +59,4 @@ class SecondStep extends React.Component {
     }
 }
 
-export default SecondStep;
+export default StepSecond;

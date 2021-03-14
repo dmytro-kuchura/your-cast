@@ -4682,7 +4682,7 @@ var Buttons = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      step: 2
+      step: 1
     };
     return _this;
   }
@@ -4708,21 +4708,18 @@ var Buttons = /*#__PURE__*/function (_React$Component) {
               type: "button",
               className: "btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4",
               onClick: this.props.handlePreviousStep,
-              "data-wizard-type": "action-prev",
               children: "Previous"
             }) : null
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            children: [this.state.step === 5 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            children: [this.state.step === 6 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
               type: "submit",
               className: "btn btn-success font-weight-bolder text-uppercase px-9 py-4",
-              onClick: this.props.handleSubmit,
-              "data-wizard-type": "action-submit",
+              onClick: this.props.handleSubmitForm,
               children: "Submit"
-            }) : null, this.state.step !== 5 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            }) : null, this.state.step !== 6 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
               type: "submit",
               className: "btn btn-primary font-weight-bolder text-uppercase px-9 py-4",
               onClick: this.props.handleNextStep,
-              "data-wizard-type": "action-next",
               children: "Next"
             }) : null]
           })]
@@ -4916,6 +4913,96 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/pages/shows/create/step-fifth.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/pages/shows/create/step-fifth.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var StepFifth = /*#__PURE__*/function (_React$Component) {
+  _inherits(StepFifth, _React$Component);
+
+  var _super = _createSuper(StepFifth);
+
+  function StepFifth(props) {
+    var _this;
+
+    _classCallCheck(this, StepFifth);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      show: {}
+    };
+    _this.state.show = props.show;
+    return _this;
+  }
+
+  _createClass(StepFifth, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.show !== this.props.show) {
+        this.setState({
+          show: this.props.show
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "pb-5",
+          "data-wizard-type": "step-content",
+          "data-wizard-state": "current",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+            className: "mb-10 font-weight-bold text-dark",
+            children: "Categorization"
+          })
+        })
+      });
+    }
+  }]);
+
+  return StepFifth;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepFifth);
+
+/***/ }),
+
 /***/ "./resources/js/pages/shows/create/step-first.js":
 /*!*******************************************************!*\
   !*** ./resources/js/pages/shows/create/step-first.js ***!
@@ -4962,24 +5049,25 @@ var rules = {
   'description': ['string', 'nullable']
 };
 
-var FirstStep = /*#__PURE__*/function (_React$Component) {
-  _inherits(FirstStep, _React$Component);
+var StepFirst = /*#__PURE__*/function (_React$Component) {
+  _inherits(StepFirst, _React$Component);
 
-  var _super = _createSuper(FirstStep);
+  var _super = _createSuper(StepFirst);
 
-  function FirstStep(props) {
+  function StepFirst(props) {
     var _this;
 
-    _classCallCheck(this, FirstStep);
+    _classCallCheck(this, StepFirst);
 
     _this = _super.call(this, props);
     _this.state = {
       show: {}
     };
+    _this.state.show = props.show;
     return _this;
   }
 
-  _createClass(FirstStep, [{
+  _createClass(StepFirst, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.show !== this.props.show) {
@@ -5010,7 +5098,7 @@ var FirstStep = /*#__PURE__*/function (_React$Component) {
               name: "title",
               placeholder: "Title",
               onChange: this.props.handleChangeInput,
-              defaultValue: show.title
+              defaultValue: show.title ? show.title : ''
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               className: "form-text text-danger",
               children: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_1__.validate)('title', show.title, rules['title'])
@@ -5025,7 +5113,7 @@ var FirstStep = /*#__PURE__*/function (_React$Component) {
               placeholder: "Description",
               name: "description",
               onChange: this.props.handleChangeInput,
-              value: show.description
+              value: show.description ? show.description : ''
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               className: "form-text text-danger",
               children: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_1__.validate)('description', show.description, rules['description'])
@@ -5036,16 +5124,16 @@ var FirstStep = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return FirstStep;
+  return StepFirst;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FirstStep);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepFirst);
 
 /***/ }),
 
-/***/ "./resources/js/pages/shows/create/step-second.js":
+/***/ "./resources/js/pages/shows/create/step-fourth.js":
 /*!********************************************************!*\
-  !*** ./resources/js/pages/shows/create/step-second.js ***!
+  !*** ./resources/js/pages/shows/create/step-fourth.js ***!
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -5055,7 +5143,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _helpers_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../helpers/validation */ "./resources/js/helpers/validation.js");
+/* harmony import */ var _helpers_timezones_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../helpers/timezones.json */ "./resources/js/helpers/timezones.json");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -5084,29 +5172,26 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var rules = {
-  'title': ['required'],
-  'description': ['string', 'nullable']
-};
 
-var SecondStep = /*#__PURE__*/function (_React$Component) {
-  _inherits(SecondStep, _React$Component);
+var StepFourth = /*#__PURE__*/function (_React$Component) {
+  _inherits(StepFourth, _React$Component);
 
-  var _super = _createSuper(SecondStep);
+  var _super = _createSuper(StepFourth);
 
-  function SecondStep(props) {
+  function StepFourth(props) {
     var _this;
 
-    _classCallCheck(this, SecondStep);
+    _classCallCheck(this, StepFourth);
 
     _this = _super.call(this, props);
     _this.state = {
       show: {}
     };
+    _this.state.show = props.show;
     return _this;
   }
 
-  _createClass(SecondStep, [{
+  _createClass(StepFourth, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.show !== this.props.show) {
@@ -5118,7 +5203,6 @@ var SecondStep = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var show = this.state.show;
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "pb-5",
@@ -5126,52 +5210,202 @@ var SecondStep = /*#__PURE__*/function (_React$Component) {
           "data-wizard-state": "current",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
             className: "mb-10 font-weight-bold text-dark",
-            children: "Setup Your Show Artwork"
+            children: "Publishing time zone"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "form-group row",
+            className: "form-group",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+              htmlFor: "timezones",
+              children: "Timezones"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("select", {
+              className: "form-control",
+              id: "timezone",
+              name: "timezone",
+              onChange: this.props.handleChangeInput,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(List, {
+                timezones: _helpers_timezones_json__WEBPACK_IMPORTED_MODULE_1__
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "form-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+              htmlFor: "language",
+              children: "Language"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("select", {
+              className: "form-control",
+              id: "language",
+              name: "language",
+              onChange: this.props.handleChangeInput,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(List, {
+                timezones: _helpers_timezones_json__WEBPACK_IMPORTED_MODULE_1__
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "form-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+              children: "Explicit"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "checkbox-list",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
+                className: "checkbox",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  name: "Checkboxes1"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {})]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "form-text text-muted",
+              children: "Check this box to let your listeners know if they should expect to hear explicit language on your show."
+            })]
+          })]
+        })
+      });
+    }
+  }]);
+
+  return StepFourth;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+var List = function List(props) {
+  var list = props.timezones;
+  var html;
+  html = Object.keys(list).map(function (key) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+      value: list[key],
+      children: list[key]
+    }, key);
+  });
+  return html;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepFourth);
+
+/***/ }),
+
+/***/ "./resources/js/pages/shows/create/step-second.js":
+/*!********************************************************!*\
+  !*** ./resources/js/pages/shows/create/step-second.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var StepSecond = /*#__PURE__*/function (_React$Component) {
+  _inherits(StepSecond, _React$Component);
+
+  var _super = _createSuper(StepSecond);
+
+  function StepSecond(props) {
+    var _this;
+
+    _classCallCheck(this, StepSecond);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      show: {}
+    };
+    _this.state.show = props.show;
+    return _this;
+  }
+
+  _createClass(StepSecond, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.show !== this.props.show) {
+        this.setState({
+          show: this.props.show
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var image = this.state.show.artwork && this.state.show.artwork.length ? this.state.show.artwork : '/media/img/placeholder-image.png';
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "pb-5",
+          "data-wizard-type": "step-content",
+          "data-wizard-state": "current",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+            className: "mb-10 font-weight-bold text-dark",
+            children: "Setup Your Show Artwork"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "form-group row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
               className: "col-xl-3 col-lg-3 col-form-label text-right",
               children: "Artwork"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
               className: "col-lg-9 col-xl-6",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                 className: "image-input",
                 id: "kt_image_2",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                   className: "image-input-wrapper",
                   style: {
-                    backgroundImage: 'url(/media/img/placeholder-image.png)'
+                    backgroundImage: 'url(' + image + ')'
                   }
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("label", {
                   className: "btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow",
                   "data-action": "change",
                   "data-toggle": "tooltip",
-                  title: "",
-                  "data-original-title": "Change avatar",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+                  title: "Change artwork",
+                  "data-original-title": "Change artwork",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
                     className: "fa fa-pen icon-sm text-muted"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                     type: "file",
                     name: "profile_avatar",
-                    accept: ".png, .jpg, .jpeg"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                    accept: ".png, .jpg, .jpeg",
+                    onChange: this.props.addArtwork
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                     type: "hidden",
-                    name: "profile_avatar_remove"
+                    name: "artwork_remove"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
                   className: "btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow",
                   "data-action": "cancel",
                   "data-toggle": "tooltip",
                   title: "",
-                  "data-original-title": "Cancel avatar",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-                    className: "ki ki-bold-close icon-xs text-muted"
+                  "data-original-title": "Cancel artwork",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                    className: "fa fa-close icon-xs text-muted"
                   })
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
                 className: "form-text text-muted",
-                children: ["We recommend using an image that is 3000px wide", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), "and we will automatically crop it to a square."]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+                children: ["We recommend using an image that is 3000px wide", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), "and we will automatically crop it to a square."]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
                 className: "form-text text-muted",
                 children: "You can skip this for now if you want but it will be required to publish."
               })]
@@ -5182,10 +5416,258 @@ var SecondStep = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return SecondStep;
+  return StepSecond;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SecondStep);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepSecond);
+
+/***/ }),
+
+/***/ "./resources/js/pages/shows/create/step-sixth.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/pages/shows/create/step-sixth.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var StepSixth = /*#__PURE__*/function (_React$Component) {
+  _inherits(StepSixth, _React$Component);
+
+  var _super = _createSuper(StepSixth);
+
+  function StepSixth(props) {
+    var _this;
+
+    _classCallCheck(this, StepSixth);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      show: {}
+    };
+    _this.state.show = props.show;
+    return _this;
+  }
+
+  _createClass(StepSixth, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.show !== this.props.show) {
+        this.setState({
+          show: this.props.show
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "pb-5",
+          "data-wizard-type": "step-content",
+          "data-wizard-state": "current",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+            className: "mb-10 font-weight-bold text-dark",
+            children: "Owner Details"
+          })
+        })
+      });
+    }
+  }]);
+
+  return StepSixth;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepSixth);
+
+/***/ }),
+
+/***/ "./resources/js/pages/shows/create/step-third.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/pages/shows/create/step-third.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var StepThird = /*#__PURE__*/function (_React$Component) {
+  _inherits(StepThird, _React$Component);
+
+  var _super = _createSuper(StepThird);
+
+  function StepThird(props) {
+    var _this;
+
+    _classCallCheck(this, StepThird);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      show: {}
+    };
+    _this.state.show = props.show;
+    return _this;
+  }
+
+  _createClass(StepThird, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.show !== this.props.show) {
+        this.setState({
+          show: this.props.show
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "pb-5",
+          "data-wizard-type": "step-content",
+          "data-wizard-state": "current",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+            className: "mb-10 font-weight-bold text-dark",
+            children: "Format"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "form-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: "Choose format:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "col-lg-6",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("label", {
+                  className: "option",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                    className: "option-control",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+                      className: "radio",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                        type: "radio",
+                        value: "episodic",
+                        name: "type",
+                        defaultChecked: true,
+                        onChange: this.props.handleChangeInput
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {})]
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+                    className: "option-label",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                      className: "option-head",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                        className: "option-title",
+                        children: "Episodic"
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                      className: "option-body",
+                      children: "This is the default format with episodes presented and recommended from newest-to-oldest. This option is recommended for stand-alone episodes."
+                    })]
+                  })]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "col-lg-6",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("label", {
+                  className: "option",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                    className: "option-control",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+                      className: "radio",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                        type: "radio",
+                        value: "serial",
+                        name: "type",
+                        onChange: this.props.handleChangeInput
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {})]
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+                    className: "option-label",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                      className: "option-head",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                        className: "option-title",
+                        children: "Serial"
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                      className: "option-body",
+                      children: "For Shows with episodes presented and recommended oldest-to-newest and grouped by seasons. This option is recommended for narrative and storytelling formats."
+                    })]
+                  })]
+                })
+              })]
+            })]
+          })]
+        })
+      });
+    }
+  }]);
+
+  return StepThird;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepThird);
 
 /***/ }),
 
@@ -5205,9 +5687,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_navigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/navigation */ "./resources/js/pages/shows/common/navigation.js");
 /* harmony import */ var _common_buttons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/buttons */ "./resources/js/pages/shows/common/buttons.js");
 /* harmony import */ var _create_step_first__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./create/step-first */ "./resources/js/pages/shows/create/step-first.js");
-/* harmony import */ var _services_show_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/show-service */ "./resources/js/services/show-service.js");
-/* harmony import */ var _create_step_second__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./create/step-second */ "./resources/js/pages/shows/create/step-second.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _create_step_second__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./create/step-second */ "./resources/js/pages/shows/create/step-second.js");
+/* harmony import */ var _create_step_third__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./create/step-third */ "./resources/js/pages/shows/create/step-third.js");
+/* harmony import */ var _create_step_fourth__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./create/step-fourth */ "./resources/js/pages/shows/create/step-fourth.js");
+/* harmony import */ var _create_step_fifth__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./create/step-fifth */ "./resources/js/pages/shows/create/step-fifth.js");
+/* harmony import */ var _create_step_sixth__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./create/step-sixth */ "./resources/js/pages/shows/create/step-sixth.js");
+/* harmony import */ var _services_show_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../services/show-service */ "./resources/js/services/show-service.js");
+/* harmony import */ var _services_upload_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../services/upload-service */ "./resources/js/services/upload-service.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5241,6 +5728,11 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
+
+
+
 var ShowCreate = /*#__PURE__*/function (_React$Component) {
   _inherits(ShowCreate, _React$Component);
 
@@ -5253,12 +5745,32 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      step: 1,
-      show: {}
+      step: 4,
+      show: {
+        id: null,
+        title: '',
+        description: '',
+        artwork: null,
+        format: 'episodic',
+        timezone: null,
+        language: null,
+        explicit: null,
+        category: null,
+        tags: null,
+        author: null,
+        podcast_owner: null,
+        email_owner: null,
+        copyright: null
+      }
     };
     _this.handleChangeInput = _this.handleChangeInput.bind(_assertThisInitialized(_this));
-    _this.formValid = _this.formValid.bind(_assertThisInitialized(_this));
+    _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
+    _this.validForm = _this.validForm.bind(_assertThisInitialized(_this));
+    _this.validStep = _this.validStep.bind(_assertThisInitialized(_this));
+    _this.addArtwork = _this.addArtwork.bind(_assertThisInitialized(_this));
     _this.handleNextStep = _this.handleNextStep.bind(_assertThisInitialized(_this));
+    _this.handlePreviousStep = _this.handlePreviousStep.bind(_assertThisInitialized(_this));
+    _this.handlePreviousStep = _this.handlePreviousStep.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -5267,7 +5779,6 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
     value: function componentDidUpdate(prevProps) {
       if (prevProps !== this.props) {
         this.setState({
-          step: this.props.show.step,
           show: this.props.show
         });
       }
@@ -5283,21 +5794,53 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
       this.setState(state);
     }
   }, {
-    key: "handleNextStep",
-    value: function handleNextStep(event) {
+    key: "handleSubmitForm",
+    value: function handleSubmitForm(event) {
       event.preventDefault();
 
       if (!this.formValid(this.state.show, this.state.step)) {
         return;
       }
 
-      this.props.dispatch((0,_services_show_service__WEBPACK_IMPORTED_MODULE_5__.createShow)(this.state.show))["catch"](function (error) {
+      this.props.dispatch((0,_services_show_service__WEBPACK_IMPORTED_MODULE_10__.createShow)(this.state.show))["catch"](function (error) {
         console.log(error);
       });
     }
   }, {
-    key: "formValid",
-    value: function formValid(data, step) {
+    key: "addArtwork",
+    value: function addArtwork(event) {
+      var state = Object.assign({}, this.state);
+      var self = this;
+      this.props.dispatch((0,_services_upload_service__WEBPACK_IMPORTED_MODULE_11__.uploadImage)({
+        file: event.target.files[0],
+        param: 'show'
+      })).then(function (response) {
+        state.show['artwork'] = response.path;
+        self.setState(state);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "handleNextStep",
+    value: function handleNextStep(event) {
+      event.preventDefault();
+      this.setState({
+        step: this.state.step + 1
+      });
+    }
+  }, {
+    key: "handlePreviousStep",
+    value: function handlePreviousStep(event) {
+      event.preventDefault();
+      this.setState({
+        step: this.state.step - 1
+      });
+    } // TODO need code
+
+  }, {
+    key: "validForm",
+    value: function validForm(data) {
       // for (const [key, value] of Object.entries(data)) {
       //     if (rules.hasOwnProperty(key)) {
       //         let valid = validate(key, value, rules[key]);
@@ -5306,41 +5849,67 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
       //     }
       // }
       return true;
+    } // TODO need code
+
+  }, {
+    key: "validStep",
+    value: function validStep(data) {
+      var step = this.state.step; // for (const [key, value] of Object.entries(data)) {
+      //     if (rules.hasOwnProperty(key)) {
+      //         let valid = validate(key, value, rules[key]);
+      //
+      //         return valid === undefined || valid === null;
+      //     }
+      // }
+
+      return true;
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           className: "container",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "card card-custom",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               className: "card-body p-0",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "wizard wizard-3",
                 id: "kt_wizard_v3",
                 "data-wizard-state": "step-first",
                 "data-wizard-clickable": "true",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_navigation__WEBPACK_IMPORTED_MODULE_2__.default, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_navigation__WEBPACK_IMPORTED_MODULE_2__.default, {
                   step: this.state.step
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "row justify-content-center py-10 px-8 py-lg-12 px-lg-10",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                     className: "col-xl-12 col-xxl-7",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("form", {
                       className: "form",
                       id: "kt_form",
-                      children: [this.state.step === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_create_step_first__WEBPACK_IMPORTED_MODULE_4__.default, {
-                        handleChangeInput: this.handleChangeInput,
-                        show: this.state.show
-                      }) : null, this.state.step === 2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_create_step_second__WEBPACK_IMPORTED_MODULE_6__.default, {
-                        handleChangeInput: this.handleChangeInput,
-                        show: this.state.show
-                      }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_buttons__WEBPACK_IMPORTED_MODULE_3__.default, {
+                      children: [this.state.step === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_create_step_first__WEBPACK_IMPORTED_MODULE_4__.default, {
+                        show: this.state.show,
+                        handleChangeInput: this.handleChangeInput
+                      }) : null, this.state.step === 2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_create_step_second__WEBPACK_IMPORTED_MODULE_5__.default, {
+                        show: this.state.show,
+                        addArtwork: this.addArtwork
+                      }) : null, this.state.step === 3 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_create_step_third__WEBPACK_IMPORTED_MODULE_6__.default, {
+                        show: this.state.show,
+                        handleChangeInput: this.handleChangeInput
+                      }) : null, this.state.step === 4 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_create_step_fourth__WEBPACK_IMPORTED_MODULE_7__.default, {
+                        show: this.state.show,
+                        handleChangeInput: this.handleChangeInput
+                      }) : null, this.state.step === 5 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_create_step_fifth__WEBPACK_IMPORTED_MODULE_8__.default, {
+                        show: this.state.show,
+                        handleChangeInput: this.handleChangeInput
+                      }) : null, this.state.step === 6 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_create_step_sixth__WEBPACK_IMPORTED_MODULE_9__.default, {
+                        show: this.state.show,
+                        handleChangeInput: this.handleChangeInput
+                      }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_buttons__WEBPACK_IMPORTED_MODULE_3__.default, {
                         step: this.state.step,
                         handlePreviousStep: this.handlePreviousStep,
-                        handleSubmit: this.handleSubmit,
+                        handleSubmitForm: this.handleSubmitForm,
                         handleNextStep: this.handleNextStep
                       })]
                     })
@@ -5769,7 +6338,7 @@ function createShow(data) {
   };
 }
 function updateShow(id, data) {
-  var link = '/api/v1/show/update';
+  var link = '/api/v1/show/update/' + id;
   return function (dispatch) {
     return new Promise(function (resolve, reject) {
       _http__WEBPACK_IMPORTED_MODULE_1__.default.put(link, data).then(function (response) {
@@ -5793,6 +6362,63 @@ function getShowById(id) {
       _http__WEBPACK_IMPORTED_MODULE_1__.default.get(link).then(function (response) {
         dispatch(_store_actions_show_action__WEBPACK_IMPORTED_MODULE_0__.getShow(response.data.result));
         return resolve();
+      })["catch"](function (err) {
+        var statusCode = err.response.status;
+        var data = {
+          error: null,
+          statusCode: statusCode
+        };
+        return reject(data);
+      });
+    });
+  };
+}
+
+/***/ }),
+
+/***/ "./resources/js/services/upload-service.js":
+/*!*************************************************!*\
+  !*** ./resources/js/services/upload-service.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "uploadImage": () => (/* binding */ uploadImage)
+/* harmony export */ });
+/* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../http */ "./resources/js/http.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+function uploadImage(data) {
+  var link = '/api/v1/upload-image';
+  var formData = new FormData();
+
+  for (var _i = 0, _Object$entries = Object.entries(data); _i < _Object$entries.length; _i++) {
+    var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+        key = _Object$entries$_i[0],
+        value = _Object$entries$_i[1];
+
+    if (value !== null) {
+      formData.append(key, value);
+    }
+  }
+
+  return function (dispatch) {
+    return new Promise(function (resolve, reject) {
+      _http__WEBPACK_IMPORTED_MODULE_0__.default.post(link, formData).then(function (response) {
+        return resolve(response.data);
       })["catch"](function (err) {
         var statusCode = err.response.status;
         var data = {
@@ -43222,6 +43848,17 @@ function valueEqual(a, b) {
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (valueEqual);
 
+
+/***/ }),
+
+/***/ "./resources/js/helpers/timezones.json":
+/*!*********************************************!*\
+  !*** ./resources/js/helpers/timezones.json ***!
+  \*********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"Europe/Amsterdam":"Europe/Amsterdam","Europe/Andorra":"Europe/Andorra","Europe/Astrakhan":"Europe/Astrakhan","Europe/Athens":"Europe/Athens","Europe/Belgrade":"Europe/Belgrade","Europe/Berlin":"Europe/Berlin","Europe/Bratislava":"Europe/Bratislava","Europe/Brussels":"Europe/Brussels","Europe/Bucharest":"Europe/Bucharest","Europe/Budapest":"Europe/Budapest","Europe/Busingen":"Europe/Busingen","Europe/Chisinau":"Europe/Chisinau","Europe/Copenhagen":"Europe/Copenhagen","Europe/Dublin":"Europe/Dublin","Europe/Gibraltar":"Europe/Gibraltar","Europe/Guernsey":"Europe/Guernsey","Europe/Helsinki":"Europe/Helsinki","Europe/Isle_of_Man":"Europe/Isle_of_Man","Europe/Istanbul":"Europe/Istanbul","Europe/Jersey":"Europe/Jersey","Europe/Kaliningrad":"Europe/Kaliningrad","Europe/Kiev":"Europe/Kiev","Europe/Kirov":"Europe/Kirov","Europe/Lisbon":"Europe/Lisbon","Europe/Ljubljana":"Europe/Ljubljana","Europe/London":"Europe/London","Europe/Luxembourg":"Europe/Luxembourg","Europe/Madrid":"Europe/Madrid","Europe/Malta":"Europe/Malta","Europe/Mariehamn":"Europe/Mariehamn","Europe/Minsk":"Europe/Minsk","Europe/Monaco":"Europe/Monaco","Europe/Moscow":"Europe/Moscow","Europe/Oslo":"Europe/Oslo","Europe/Paris":"Europe/Paris","Europe/Podgorica":"Europe/Podgorica","Europe/Prague":"Europe/Prague","Europe/Riga":"Europe/Riga","Europe/Rome":"Europe/Rome","Europe/Samara":"Europe/Samara","Europe/San_Marino":"Europe/San_Marino","Europe/Sarajevo":"Europe/Sarajevo","Europe/Saratov":"Europe/Saratov","Europe/Simferopol":"Europe/Simferopol","Europe/Skopje":"Europe/Skopje","Europe/Sofia":"Europe/Sofia","Europe/Stockholm":"Europe/Stockholm","Europe/Tallinn":"Europe/Tallinn","Europe/Tirane":"Europe/Tirane","Europe/Ulyanovsk":"Europe/Ulyanovsk","Europe/Uzhgorod":"Europe/Uzhgorod","Europe/Vaduz":"Europe/Vaduz","Europe/Vatican":"Europe/Vatican","Europe/Vienna":"Europe/Vienna","Europe/Vilnius":"Europe/Vilnius","Europe/Volgograd":"Europe/Volgograd","Europe/Warsaw":"Europe/Warsaw","Europe/Zagreb":"Europe/Zagreb","Europe/Zaporozhye":"Europe/Zaporozhye","Europe/Zurich":"Europe/Zurich"}');
 
 /***/ })
 

@@ -24,7 +24,7 @@ export function createShow(data) {
 }
 
 export function updateShow(id, data) {
-    let link = '/api/v1/show/update';
+    let link = '/api/v1/show/update/' + id;
 
     return dispatch => (
         new Promise((resolve, reject) => {

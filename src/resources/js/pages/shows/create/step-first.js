@@ -6,13 +6,15 @@ const rules = {
     'description': ['string', 'nullable'],
 };
 
-class FirstStep extends React.Component {
+class StepFirst extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             show: {}
         };
+
+        this.state.show = props.show;
     }
 
     componentDidUpdate(prevProps) {
@@ -27,8 +29,7 @@ class FirstStep extends React.Component {
         return (
             <>
                 <div className="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-                    <h4 className="mb-10 font-weight-bold text-dark">Setup Your Show
-                        Info</h4>
+                    <h4 className="mb-10 font-weight-bold text-dark">Setup Your Show Info</h4>
                     <div className="form-group">
                         <label>Title</label>
                         <input type="text"
@@ -36,7 +37,7 @@ class FirstStep extends React.Component {
                                name="title"
                                placeholder="Title"
                                onChange={this.props.handleChangeInput}
-                               defaultValue={show.title}/>
+                               defaultValue={show.title ? show.title : ''}/>
                         <span className="form-text text-danger">
                             {validate('title', show.title, rules['title'])}
                         </span>
@@ -48,7 +49,7 @@ class FirstStep extends React.Component {
                                   placeholder="Description"
                                   name="description"
                                   onChange={this.props.handleChangeInput}
-                                  value={show.description}/>
+                                  value={show.description ? show.description : ''}/>
                         <span className="form-text text-danger">
                             {validate('description', show.description, rules['description'])}
                         </span>
@@ -59,4 +60,4 @@ class FirstStep extends React.Component {
     }
 }
 
-export default FirstStep;
+export default StepFirst;
