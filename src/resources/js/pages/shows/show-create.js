@@ -35,6 +35,7 @@ class ShowCreate extends React.Component {
             }
         };
 
+        this.updateCategory = this.updateCategory.bind(this);
         this.handleChangeInput = this.handleChangeInput.bind(this);
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
         this.validForm = this.validForm.bind(this);
@@ -63,6 +64,14 @@ class ShowCreate extends React.Component {
         }
 
         state.show[input] = value;
+
+        this.setState(state);
+    }
+
+    updateCategory(category) {
+        let state = Object.assign({}, this.state);
+
+        state.show['category'] = category;
 
         this.setState(state);
     }
@@ -146,7 +155,7 @@ class ShowCreate extends React.Component {
     }
 
     render() {
-        console.log(this.state.show);
+        console.log(this.state.show)
         return (
             <>
                 <div className="container">
@@ -156,7 +165,7 @@ class ShowCreate extends React.Component {
                                 <Navigation step={this.state.step}/>
 
                                 <div className="row justify-content-center">
-                                    <div className="alert alert-warning">
+                                    <div className="alert alert-primary">
                                         Add information about your show.
                                         Don't worry! You can always edit your show settings later.
                                     </div>
@@ -183,7 +192,7 @@ class ShowCreate extends React.Component {
 
                                             {this.state.step === 5 ?
                                                 <StepFifth show={this.state.show}
-                                                           handleChangeInput={this.handleChangeInput}/> : null}
+                                                           updateCategory={this.updateCategory}/> : null}
 
                                             {this.state.step === 6 ?
                                                 <StepSixth show={this.state.show}

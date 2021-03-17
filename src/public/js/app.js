@@ -4973,9 +4973,22 @@ var StepFifth = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      show: {}
+      show: {},
+      first_category: '',
+      first_sub_category: '',
+      first_sub_category_disabled: true,
+      second_category: '',
+      second_sub_category: '',
+      second_sub_category_disabled: true,
+      third_category: '',
+      third_sub_category: '',
+      third_sub_category_disabled: true
     };
     _this.state.show = props.show;
+    _this.hasChildCategory = _this.hasChildCategory.bind(_assertThisInitialized(_this));
+    _this.prepareCategory = _this.prepareCategory.bind(_assertThisInitialized(_this));
+    _this.handleChangeCategory = _this.handleChangeCategory.bind(_assertThisInitialized(_this));
+    _this.handleChangeSubCategory = _this.handleChangeSubCategory.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -4987,6 +5000,123 @@ var StepFifth = /*#__PURE__*/function (_React$Component) {
           show: this.props.show
         });
       }
+    }
+  }, {
+    key: "handleChangeCategory",
+    value: function handleChangeCategory(event) {
+      var _this2 = this;
+
+      var input = event.target.name;
+      var value = event.target.value;
+
+      switch (input) {
+        case 'first-category':
+          this.setState({
+            first_category: value,
+            first_sub_category_disabled: !this.hasChildCategory(value)
+          }, function () {
+            _this2.prepareCategory();
+          });
+          break;
+
+        case 'second-category':
+          this.setState({
+            second_category: value,
+            second_sub_category_disabled: !this.hasChildCategory(value)
+          }, function () {
+            _this2.prepareCategory();
+          });
+          break;
+
+        case 'third-category':
+          this.setState({
+            third_category: value,
+            third_sub_category_disabled: !this.hasChildCategory(value)
+          }, function () {
+            _this2.prepareCategory();
+          });
+          break;
+      }
+
+      this.prepareCategory(this.state);
+    }
+  }, {
+    key: "handleChangeSubCategory",
+    value: function handleChangeSubCategory(event) {
+      var _this3 = this;
+
+      var input = event.target.name;
+      var value = event.target.value;
+
+      switch (input) {
+        case 'first-sub-category':
+          this.setState({
+            first_sub_category: value
+          }, function () {
+            _this3.prepareCategory();
+          });
+          break;
+
+        case 'second-sub-category':
+          this.setState({
+            second_sub_category: value
+          }, function () {
+            _this3.prepareCategory();
+          });
+          break;
+
+        case 'third-sub-category':
+          this.setState({
+            third_sub_category: value
+          }, function () {
+            _this3.prepareCategory();
+          });
+          break;
+      }
+    }
+  }, {
+    key: "hasChildCategory",
+    value: function hasChildCategory(code) {
+      var hasChild = false;
+      _helpers_categories_json__WEBPACK_IMPORTED_MODULE_1__.forEach(function (category) {
+        if (category.code === code) {
+          if (category.hasOwnProperty('children')) {
+            hasChild = true;
+          }
+        }
+      });
+      return hasChild;
+    }
+  }, {
+    key: "prepareCategory",
+    value: function prepareCategory() {
+      var category = [];
+
+      if (this.state.first_category) {
+        category.push(this.state.first_category);
+      }
+
+      if (this.state.first_sub_category) {
+        category.push(this.state.first_sub_category);
+      }
+
+      if (this.state.second_category) {
+        category.push(this.state.second_category);
+      }
+
+      if (this.state.second_sub_category) {
+        category.push(this.state.second_sub_category);
+      }
+
+      if (this.state.third_category) {
+        category.push(this.state.third_category);
+      }
+
+      if (this.state.third_sub_category) {
+        category.push(this.state.third_sub_category);
+      }
+
+      this.props.updateCategory(category.join(';'));
     }
   }, {
     key: "render",
@@ -5009,12 +5139,17 @@ var StepFifth = /*#__PURE__*/function (_React$Component) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                 className: "form-group",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "exampleSelect1",
+                  htmlFor: "first-category",
                   children: "1st category"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
                   className: "form-control",
                   id: "first-category",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Categories, {
+                  name: "first-category",
+                  value: this.state.first_category,
+                  onChange: this.handleChangeCategory,
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "Select One"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Categories, {
                     categories: _helpers_categories_json__WEBPACK_IMPORTED_MODULE_1__
                   })]
                 })]
@@ -5024,22 +5159,19 @@ var StepFifth = /*#__PURE__*/function (_React$Component) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                 className: "form-group",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "exampleSelect1",
+                  htmlFor: "first-sub-category",
                   children: "Sub category"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
                   className: "form-control",
-                  id: "exampleSelect1",
-                  disabled: true,
+                  id: "first-sub-category",
+                  name: "first-sub-category",
+                  onChange: this.handleChangeSubCategory,
+                  disabled: this.state.first_sub_category_disabled,
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "1"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "2"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "3"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "4"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "5"
+                    children: "Select One"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SubCategory, {
+                    selected: this.state.first_category,
+                    categories: _helpers_categories_json__WEBPACK_IMPORTED_MODULE_1__
                   })]
                 })]
               })
@@ -5051,21 +5183,18 @@ var StepFifth = /*#__PURE__*/function (_React$Component) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                 className: "form-group",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "exampleSelect1",
+                  htmlFor: "second-category",
                   children: "2nd category"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
                   className: "form-control",
-                  id: "exampleSelect1",
+                  id: "second-category",
+                  name: "second-category",
+                  value: this.state.second_category,
+                  onChange: this.handleChangeCategory,
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "1"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "2"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "3"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "4"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "5"
+                    children: "Select One"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Categories, {
+                    categories: _helpers_categories_json__WEBPACK_IMPORTED_MODULE_1__
                   })]
                 })]
               })
@@ -5074,22 +5203,19 @@ var StepFifth = /*#__PURE__*/function (_React$Component) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                 className: "form-group",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "exampleSelect1",
+                  htmlFor: "second-sub-category",
                   children: "Sub category"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
                   className: "form-control",
-                  id: "exampleSelect1",
-                  disabled: true,
+                  id: "second-sub-category",
+                  name: "second-sub-category",
+                  onChange: this.handleChangeSubCategory,
+                  disabled: this.state.second_sub_category_disabled,
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "1"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "2"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "3"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "4"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "5"
+                    children: "Select One"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SubCategory, {
+                    selected: this.state.second_category,
+                    categories: _helpers_categories_json__WEBPACK_IMPORTED_MODULE_1__
                   })]
                 })]
               })
@@ -5101,21 +5227,18 @@ var StepFifth = /*#__PURE__*/function (_React$Component) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                 className: "form-group",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "exampleSelect1",
+                  htmlFor: "third-category",
                   children: "3rd category"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
                   className: "form-control",
-                  id: "exampleSelect1",
+                  id: "third-category",
+                  name: "third-category",
+                  value: this.state.third_category,
+                  onChange: this.handleChangeCategory,
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "1"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "2"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "3"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "4"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "5"
+                    children: "Select One"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Categories, {
+                    categories: _helpers_categories_json__WEBPACK_IMPORTED_MODULE_1__
                   })]
                 })]
               })
@@ -5124,22 +5247,19 @@ var StepFifth = /*#__PURE__*/function (_React$Component) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                 className: "form-group",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "exampleSelect1",
+                  htmlFor: "third-sub-category",
                   children: "Sub category"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
                   className: "form-control",
-                  id: "exampleSelect1",
-                  disabled: true,
+                  id: "third-sub-category",
+                  name: "third-sub-category",
+                  onChange: this.handleChangeSubCategory,
+                  disabled: this.state.third_sub_category_disabled,
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "1"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "2"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "3"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "4"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    children: "5"
+                    children: "Select One"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SubCategory, {
+                    selected: this.state.third_category,
+                    categories: _helpers_categories_json__WEBPACK_IMPORTED_MODULE_1__
                   })]
                 })]
               })
@@ -5166,8 +5286,31 @@ var Categories = function Categories(props) {
 };
 
 var SubCategory = function SubCategory(props) {
-  var list = props.categories;
+  var selected = props.selected;
+  var list = [];
   var html;
+
+  if (!selected) {
+    return null;
+  }
+
+  props.categories.map(function (category) {
+    if (category.code === selected) {
+      if (category.hasOwnProperty('children')) {
+        category.children.map(function (children) {
+          list.push({
+            'code': children.code,
+            'name': children.name
+          });
+        });
+      }
+    }
+  });
+
+  if (!list.length) {
+    return null;
+  }
+
   html = list.map(function (category) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
       value: category.code,
@@ -6044,6 +6187,7 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
         copyright: null
       }
     };
+    _this.updateCategory = _this.updateCategory.bind(_assertThisInitialized(_this));
     _this.handleChangeInput = _this.handleChangeInput.bind(_assertThisInitialized(_this));
     _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
     _this.validForm = _this.validForm.bind(_assertThisInitialized(_this));
@@ -6076,6 +6220,13 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
       }
 
       state.show[input] = value;
+      this.setState(state);
+    }
+  }, {
+    key: "updateCategory",
+    value: function updateCategory(category) {
+      var state = Object.assign({}, this.state);
+      state.show['category'] = category;
       this.setState(state);
     }
   }, {
@@ -6175,7 +6326,7 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "row justify-content-center",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
-                    className: "alert alert-warning",
+                    className: "alert alert-primary",
                     children: "Add information about your show. Don't worry! You can always edit your show settings later."
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
@@ -6199,7 +6350,7 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
                         handleChangeInput: this.handleChangeInput
                       }) : null, this.state.step === 5 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_create_step_fifth__WEBPACK_IMPORTED_MODULE_8__.default, {
                         show: this.state.show,
-                        handleChangeInput: this.handleChangeInput
+                        updateCategory: this.updateCategory
                       }) : null, this.state.step === 6 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_create_step_sixth__WEBPACK_IMPORTED_MODULE_9__.default, {
                         show: this.state.show,
                         handleChangeInput: this.handleChangeInput
