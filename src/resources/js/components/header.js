@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {profile} from '../services/auth-service';
 
 const opened = {display: 'none'};
 const closed = {display: 'block'};
@@ -10,16 +11,18 @@ class Header extends React.Component {
         super(props);
 
         this.state = {
-            authUser: null,
+            user: null,
             dropdownMenu: false
         };
 
         this.handleDropdown = this.handleDropdown.bind(this);
+
+        props.dispatch(profile());
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.authUser !== this.props.authUser) {
-            this.setState({authUser: this.props.authUser})
+        if (prevProps.user !== this.props.user) {
+            this.setState({user: this.props.user})
         }
     }
 
@@ -31,6 +34,10 @@ class Header extends React.Component {
     }
 
     render() {
+        if (!this.state.user) {
+            return null;
+        }
+
         return (
             <>
                 <div id="kt_header" className="header header-fixed">
@@ -47,7 +54,8 @@ class Header extends React.Component {
 											</span>
                                     </div>
                                 </div>
-                                <div className="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
+                                <div
+                                    className="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
                                     <div className="quick-search quick-search-dropdown" id="kt_quick_search_dropdown">
                                         <form method="get" className="quick-search-form">
                                             <div className="input-group">
@@ -84,7 +92,7 @@ class Header extends React.Component {
                                     className="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
                                     <div
                                         className="d-flex flex-column flex-center py-10 bgi-size-cover bgi-no-repeat rounded-top"
-                                        >
+                                    >
                                         <h4 className="text-white font-weight-bold">Quick Actions</h4>
                                         <span className="btn btn-success btn-sm font-weight-bold font-size-sm mt-2">23 tasks pending</span>
                                     </div>
@@ -168,11 +176,17 @@ class Header extends React.Component {
                                 <div
                                     className="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2"
                                     id="kt_quick_user_toggle">
-                                    <span className="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-                                    <span className="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Sean</span>
+                                    <span
+                                        className="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hello,</span>
+                                    <span
+                                        className="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">
+                                        {this.state.user.name}
+                                    </span>
                                     <span className="symbol symbol-lg-35 symbol-25 symbol-light-success">
-											<span className="symbol-label font-size-h5 font-weight-bold">S</span>
-										</span>
+                                        <span className="symbol-label font-size-h5 font-weight-bold">
+                                            {this.state.user.name.substring(0, 1)}
+                                        </span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +199,7 @@ class Header extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        authUser: state.Auth.user
+        user: state.Auth.user
     }
 };
 

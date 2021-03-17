@@ -1,5 +1,6 @@
 import React from 'react';
 import timezones from '../../../helpers/timezones.json';
+import languages from '../../../helpers/languages.json';
 
 class StepFourth extends React.Component {
     constructor(props) {
@@ -29,8 +30,9 @@ class StepFourth extends React.Component {
                         <select className="form-control"
                                 id="timezone"
                                 name="timezone"
+                                value={this.state.show.timezone}
                                 onChange={this.props.handleChangeInput}>
-                            <List timezones={timezones}/>
+                            <Timezones timezones={timezones}/>
                         </select>
                     </div>
 
@@ -39,8 +41,9 @@ class StepFourth extends React.Component {
                         <select className="form-control"
                                 id="language"
                                 name="language"
+                                value={this.state.show.language}
                                 onChange={this.props.handleChangeInput}>
-                            <List timezones={timezones}/>
+                            <Languages languages={languages}/>
                         </select>
                     </div>
 
@@ -48,8 +51,12 @@ class StepFourth extends React.Component {
                         <label>Explicit</label>
                         <div className="checkbox-list">
                             <label className="checkbox">
-                                <input type="checkbox" name="Checkboxes1"/>
-                                    <span></span>
+                                <input type="checkbox"
+                                       name="explicit"
+                                       id="explicit"
+                                       checked={this.state.show.explicit}
+                                       onChange={this.props.handleChangeInput}/>
+                                <span></span>
                             </label>
 
                         </div>
@@ -64,13 +71,26 @@ class StepFourth extends React.Component {
     }
 }
 
-const List = (props) => {
+const Timezones = (props) => {
     let list = props.timezones;
     let html;
 
-    html = Object.keys(list).map((key) => {
+    html = list.map((timezone) => {
         return (
-            <option key={key} value={list[key]}>{list[key]}</option>
+            <option key={timezone.code} value={timezone.code}>{timezone.name}</option>
+        )
+    })
+
+    return html;
+};
+
+const Languages = (props) => {
+    let list = props.languages;
+    let html;
+
+    html = list.map((language) => {
+        return (
+            <option key={language.code} value={language.code}>{language.name}</option>
         )
     })
 

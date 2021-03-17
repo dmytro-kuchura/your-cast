@@ -7,6 +7,8 @@ class Buttons extends React.Component {
         this.state = {
             step: 1
         };
+
+        this.state.step = props.step;
     }
 
     componentDidUpdate(prevProps) {

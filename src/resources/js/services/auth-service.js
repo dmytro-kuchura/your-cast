@@ -26,6 +26,29 @@ export function login(credentials) {
     );
 }
 
+export function profile() {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+            Http.get('/api/v1/profile')
+                .then(res => {
+                    dispatch(action.authCheck(res.data));
+                    return resolve();
+                })
+                .catch(err => {
+                    const statusCode = err.response.status;
+                    const data = {
+                        error: null,
+                        statusCode,
+                    };
+                    if (statusCode === 401 || statusCode === 422) {
+                        data.error = err.response.data.message;
+                    }
+                    return reject(data);
+                })
+        })
+    );
+}
+
 export function resetPassword(data) {
     return dispatch => (
         new Promise((resolve, reject) => {

@@ -1,9 +1,9 @@
 import * as ActionTypes from "../action-types";
 
-export function authLogin(payload) {
+export function authLogin(response) {
     return {
         type: ActionTypes.AUTH_LOGIN,
-        payload
+        response
     }
 }
 
@@ -13,8 +13,9 @@ export function authLogout() {
     }
 }
 
-export function authCheck() {
+export function authCheck(response) {
     return {
-        type: ActionTypes.AUTH_CHECK
+        type: ActionTypes.AUTH_CHECK,
+        response
     }
 }

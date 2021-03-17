@@ -3,21 +3,18 @@ import Http from '../../http'
 import {deleteCookie, getCookie, setCookie} from '../../utils/cookie';
 
 const initialState = {
-    id: null,
-    user_id: null,
-    title: null,
-    description: null,
+    title: '',
+    description: '',
     artwork: null,
-    format: null,
-    timezone: null,
-    language: null,
-    explicit: null,
+    format: 'episodic',
+    timezone: 'Etc/GMT',
+    language: 'en',
+    explicit: false,
     category: null,
     tags: null,
     author: null,
     podcast_owner: null,
     email_owner: null,
-    step: null,
     copyright: null,
 };
 

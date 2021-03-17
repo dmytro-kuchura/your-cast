@@ -1958,7 +1958,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-_store__WEBPACK_IMPORTED_MODULE_5__.default.dispatch(_store_actions_auth_action__WEBPACK_IMPORTED_MODULE_4__.authCheck());
 
 if (document.getElementById('app')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_3__.Provider, {
@@ -2724,7 +2723,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth-service */ "./resources/js/services/auth-service.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2753,6 +2753,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var opened = {
   display: 'none'
 };
@@ -2772,19 +2773,20 @@ var Header = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      authUser: null,
+      user: null,
       dropdownMenu: false
     };
     _this.handleDropdown = _this.handleDropdown.bind(_assertThisInitialized(_this));
+    props.dispatch((0,_services_auth_service__WEBPACK_IMPORTED_MODULE_2__.profile)());
     return _this;
   }
 
   _createClass(Header, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (prevProps.authUser !== this.props.authUser) {
+      if (prevProps.user !== this.props.user) {
         this.setState({
-          authUser: this.props.authUser
+          user: this.props.user
         });
       }
     }
@@ -2799,75 +2801,79 @@ var Header = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      if (!this.state.user) {
+        return null;
+      }
+
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           id: "kt_header",
           className: "header header-fixed",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "container-fluid d-flex align-items-stretch justify-content-between",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
               className: "header-menu-wrapper header-menu-wrapper-left",
               id: "kt_header_menu_wrapper",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                 id: "kt_header_menu",
                 className: "header-menu header-menu-mobile header-menu-layout-default"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "topbar",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                 className: "dropdown",
                 id: "kt_quick_search_toggle",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                   className: "topbar-item",
                   "data-toggle": "dropdown",
                   "data-offset": "10px,0px",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                     className: "btn btn-icon btn-clean btn-lg btn-dropdown mr-1",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                       className: "svg-icon svg-icon-xl svg-icon-primary",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                         src: "/media/svg/search.svg",
                         alt: ""
                       })
                     })
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                   className: "dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                     className: "quick-search quick-search-dropdown",
                     id: "kt_quick_search_dropdown",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
                       method: "get",
                       className: "quick-search-form",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                         className: "input-group",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                           className: "input-group-prepend",
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                             className: "input-group-text",
-                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                               className: "svg-icon svg-icon-lg",
-                              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                                 src: "/media/svg/search.svg",
                                 alt: ""
                               })
                             })
                           })
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                           type: "text",
                           className: "form-control",
                           placeholder: "Search..."
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                           className: "input-group-append",
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                             className: "input-group-text",
-                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
                               className: "quick-search-close ki ki-close icon-sm text-muted"
                             })
                           })
                         })]
                       })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                       className: "quick-search-wrapper scroll",
                       "data-scroll": "true",
                       "data-height": "325",
@@ -2875,91 +2881,91 @@ var Header = /*#__PURE__*/function (_React$Component) {
                     })]
                   })
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                 className: "dropdown",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                   className: "topbar-item",
                   "data-toggle": "dropdown",
                   "data-offset": "10px,0px",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                     className: "btn btn-icon btn-clean btn-dropdown btn-lg mr-1",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                       className: "svg-icon svg-icon-xl svg-icon-primary",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                         src: "/media/svg/notification.svg",
                         alt: ""
                       })
                     })
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                   className: "dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                     className: "d-flex flex-column flex-center py-10 bgi-size-cover bgi-no-repeat rounded-top",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
                       className: "text-white font-weight-bold",
                       children: "Quick Actions"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                       className: "btn btn-success btn-sm font-weight-bold font-size-sm mt-2",
                       children: "23 tasks pending"
                     })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                     className: "row row-paddingless",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                       className: "col-6",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
                         href: "#",
                         className: "d-block py-10 px-5 text-center bg-hover-light border-right border-bottom",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "svg-icon svg-icon-3x svg-icon-success"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1",
                           children: "Accounting"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "d-block text-dark-50 font-size-lg",
                           children: "eCommerce"
                         })]
                       })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                       className: "col-6",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
                         href: "#",
                         className: "d-block py-10 px-5 text-center bg-hover-light border-bottom",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "svg-icon svg-icon-3x svg-icon-success"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1",
                           children: "Administration"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "d-block text-dark-50 font-size-lg",
                           children: "Console"
                         })]
                       })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                       className: "col-6",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
                         href: "#",
                         className: "d-block py-10 px-5 text-center bg-hover-light border-right",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "svg-icon svg-icon-3x svg-icon-success"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1",
                           children: "Projects"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "d-block text-dark-50 font-size-lg",
                           children: "Pending Tasks"
                         })]
                       })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                       className: "col-6",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
                         href: "#",
                         className: "d-block py-10 px-5 text-center bg-hover-light",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "svg-icon svg-icon-3x svg-icon-success"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "d-block text-dark-75 font-weight-bold font-size-h6 mt-2 mb-1",
                           children: "Customers"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "d-block text-dark-50 font-size-lg",
                           children: "Latest cases"
                         })]
@@ -2967,52 +2973,52 @@ var Header = /*#__PURE__*/function (_React$Component) {
                     })]
                   })]
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                 className: "dropdown",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                   className: "topbar-item",
                   "data-toggle": "dropdown",
                   "data-offset": "10px,0px",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                     className: "btn btn-icon btn-clean btn-dropdown btn-lg mr-1",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                       className: "h-20px w-20px rounded-sm",
                       src: "/media/svg/flags/english.svg",
                       alt: ""
                     })
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                   className: "dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
                     className: "navi navi-hover py-4",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
                       className: "navi-item",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
                         href: "#",
                         className: "navi-link",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "symbol symbol-20 mr-3",
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                             src: "/media/svg/flags/english.svg",
                             alt: ""
                           })
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "navi-text",
                           children: "English"
                         })]
                       })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
                       className: "navi-item",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
                         href: "#",
                         className: "navi-link",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "symbol symbol-20 mr-3",
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                             src: "/media/svg/flags/russian.svg",
                             alt: ""
                           })
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                           className: "navi-text",
                           children: "Russian"
                         })]
@@ -3020,22 +3026,22 @@ var Header = /*#__PURE__*/function (_React$Component) {
                     })]
                   })
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                 className: "topbar-item",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                   className: "btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2",
                   id: "kt_quick_user_toggle",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                     className: "text-muted font-weight-bold font-size-base d-none d-md-inline mr-1",
-                    children: "Hi,"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                    children: "Hello,"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                     className: "text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3",
-                    children: "Sean"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                    children: this.state.user.name
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                     className: "symbol symbol-lg-35 symbol-25 symbol-light-success",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                       className: "symbol-label font-size-h5 font-weight-bold",
-                      children: "S"
+                      children: this.state.user.name.substring(0, 1)
                     })
                   })]
                 })
@@ -3052,7 +3058,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    authUser: state.Auth.user
+    user: state.Auth.user
   };
 };
 
@@ -3226,32 +3232,32 @@ function validate(name, value, params) {
     switch (param) {
       case REQUIRE:
         pattern = /^.{2,}$/;
-        error = 'Помилка зі значенням %value%, мінімально 2 символів.';
+        error = 'Помилка, мінімально 2 символів.';
         break;
 
       case STRING:
         pattern = /^[a-zA-Zа-яА-Я]+$/;
-        error = 'Помилка зі значенням %value%, повинно бути строкою.';
+        error = 'Помилка, повинно бути строкою.';
         break;
 
       case CONTENT:
         pattern = /.*/;
-        error = 'Помилка зі значенням %value%, повинно бути контентом.';
+        error = 'Помилка, повинно бути контентом.';
         break;
 
       case URL:
         pattern = /^[a-zA-Z0-9_-]+$/;
-        error = 'Помилка зі значенням %value%, повинно бути url\'ом.';
+        error = 'Помилка, повинно бути url\'ом.';
         break;
 
       case INTEGER:
         pattern = /^\d+$/;
-        error = 'Помилка зі значенням %value%, повинно бути номером.';
+        error = 'Помилка, повинно бути номером.';
         break;
 
       case EMAIL:
         pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        error = 'Помилка зі значенням %value%, повинно бути номером email\'oм.';
+        error = 'Помилка, повинно бути номером email\'oм.';
         break;
 
       default:
@@ -3260,8 +3266,6 @@ function validate(name, value, params) {
     }
 
     if (!pattern.test(value)) {
-      error = error.replace('%name%', name);
-      error = error.replace('%value%', value);
       errors.push(error);
     }
   });
@@ -4684,6 +4688,7 @@ var Buttons = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       step: 1
     };
+    _this.state.step = props.step;
     return _this;
   }
 
@@ -4789,6 +4794,7 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       step: 1
     };
+    _this.state.step = props.step;
     return _this;
   }
 
@@ -4925,7 +4931,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _helpers_categories_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../helpers/categories.json */ "./resources/js/helpers/categories.json");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4947,6 +4954,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
 
 
 
@@ -4982,15 +4991,160 @@ var StepFifth = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "pb-5",
           "data-wizard-type": "step-content",
           "data-wizard-state": "current",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
             className: "mb-10 font-weight-bold text-dark",
             children: "Categorization"
-          })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "text-muted",
+            children: "At least one category is required to create your show. These are used by podcast apps for example Google Podcasts to categorize shows."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "col-md-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "form-group",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+                  htmlFor: "exampleSelect1",
+                  children: "1st category"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+                  className: "form-control",
+                  id: "first-category",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Categories, {
+                    categories: _helpers_categories_json__WEBPACK_IMPORTED_MODULE_1__
+                  })]
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "col-md-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "form-group",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+                  htmlFor: "exampleSelect1",
+                  children: "Sub category"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+                  className: "form-control",
+                  id: "exampleSelect1",
+                  disabled: true,
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "1"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "2"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "3"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "4"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "5"
+                  })]
+                })]
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "col-md-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "form-group",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+                  htmlFor: "exampleSelect1",
+                  children: "2nd category"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+                  className: "form-control",
+                  id: "exampleSelect1",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "1"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "2"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "3"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "4"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "5"
+                  })]
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "col-md-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "form-group",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+                  htmlFor: "exampleSelect1",
+                  children: "Sub category"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+                  className: "form-control",
+                  id: "exampleSelect1",
+                  disabled: true,
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "1"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "2"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "3"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "4"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "5"
+                  })]
+                })]
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "col-md-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "form-group",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+                  htmlFor: "exampleSelect1",
+                  children: "3rd category"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+                  className: "form-control",
+                  id: "exampleSelect1",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "1"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "2"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "3"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "4"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "5"
+                  })]
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "col-md-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "form-group",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+                  htmlFor: "exampleSelect1",
+                  children: "Sub category"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+                  className: "form-control",
+                  id: "exampleSelect1",
+                  disabled: true,
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "1"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "2"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "3"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "4"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    children: "5"
+                  })]
+                })]
+              })
+            })]
+          })]
         })
       });
     }
@@ -4998,6 +5152,30 @@ var StepFifth = /*#__PURE__*/function (_React$Component) {
 
   return StepFifth;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+var Categories = function Categories(props) {
+  var list = props.categories;
+  var html;
+  html = list.map(function (category) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+      value: category.code,
+      children: category.name
+    }, category.code);
+  });
+  return html;
+};
+
+var SubCategory = function SubCategory(props) {
+  var list = props.categories;
+  var html;
+  html = list.map(function (category) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+      value: category.code,
+      children: category.name
+    }, category.code);
+  });
+  return html;
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepFifth);
 
@@ -5144,7 +5322,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _helpers_timezones_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../helpers/timezones.json */ "./resources/js/helpers/timezones.json");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _helpers_languages_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../helpers/languages.json */ "./resources/js/helpers/languages.json");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5166,6 +5345,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -5203,56 +5383,61 @@ var StepFourth = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "pb-5",
           "data-wizard-type": "step-content",
           "data-wizard-state": "current",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
             className: "mb-10 font-weight-bold text-dark",
             children: "Publishing time zone"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "form-group",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
               htmlFor: "timezones",
               children: "Timezones"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("select", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("select", {
               className: "form-control",
               id: "timezone",
               name: "timezone",
+              value: this.state.show.timezone,
               onChange: this.props.handleChangeInput,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(List, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Timezones, {
                 timezones: _helpers_timezones_json__WEBPACK_IMPORTED_MODULE_1__
               })
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "form-group",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
               htmlFor: "language",
               children: "Language"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("select", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("select", {
               className: "form-control",
               id: "language",
               name: "language",
+              value: this.state.show.language,
               onChange: this.props.handleChangeInput,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(List, {
-                timezones: _helpers_timezones_json__WEBPACK_IMPORTED_MODULE_1__
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Languages, {
+                languages: _helpers_languages_json__WEBPACK_IMPORTED_MODULE_2__
               })
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "form-group",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
               children: "Explicit"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
               className: "checkbox-list",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
                 className: "checkbox",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "checkbox",
-                  name: "Checkboxes1"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {})]
+                  name: "explicit",
+                  id: "explicit",
+                  checked: this.state.show.explicit,
+                  onChange: this.props.handleChangeInput
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {})]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               className: "form-text text-muted",
               children: "Check this box to let your listeners know if they should expect to hear explicit language on your show."
             })]
@@ -5265,14 +5450,26 @@ var StepFourth = /*#__PURE__*/function (_React$Component) {
   return StepFourth;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-var List = function List(props) {
+var Timezones = function Timezones(props) {
   var list = props.timezones;
   var html;
-  html = Object.keys(list).map(function (key) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-      value: list[key],
-      children: list[key]
-    }, key);
+  html = list.map(function (timezone) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+      value: timezone.code,
+      children: timezone.name
+    }, timezone.code);
+  });
+  return html;
+};
+
+var Languages = function Languages(props) {
+  var list = props.languages;
+  var html;
+  html = list.map(function (language) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+      value: language.code,
+      children: language.name
+    }, language.code);
   });
   return html;
 };
@@ -5435,7 +5632,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _helpers_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../helpers/validation */ "./resources/js/helpers/validation.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5461,6 +5659,14 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
+var rules = {
+  'author': ['string', 'required'],
+  'podcast_owner': ['string', 'required'],
+  'email_owner': ['email', 'required'],
+  'copyright': ['string', 'required']
+};
 
 var StepSixth = /*#__PURE__*/function (_React$Component) {
   _inherits(StepSixth, _React$Component);
@@ -5492,15 +5698,89 @@ var StepSixth = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "pb-5",
           "data-wizard-type": "step-content",
           "data-wizard-state": "current",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
             className: "mb-10 font-weight-bold text-dark",
             children: "Owner Details"
-          })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "form-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+              children: "Author"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              className: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_1__.validate)('author', this.state.show.owner, rules['author']) ? 'form-control is-invalid' : 'form-control',
+              name: "author",
+              placeholder: "Author",
+              onChange: this.props.handleChangeInput,
+              defaultValue: this.state.show.author ? this.state.show.author : ''
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "form-text text-danger",
+              children: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_1__.validate)('owner', this.state.show.author, rules['author'])
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "form-text text-muted",
+              children: "(When you add new podcast this Author name to be credited with the content. And will be displayed in any listening apps.)"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "form-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+              children: "Owner"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              className: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_1__.validate)('owner', this.state.show.podcast_owner, rules['podcast_owner']) ? 'form-control is-invalid' : 'form-control',
+              id: "podcast_owner",
+              name: "podcast_owner",
+              placeholder: "Owner",
+              onChange: this.props.handleChangeInput,
+              value: this.state.show.podcast_owner ? this.state.show.podcast_owner : ''
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "form-text text-danger",
+              children: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_1__.validate)('owner', this.state.show.podcast_owner, rules['podcast_owner'])
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "form-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+              children: "Owner email"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              className: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_1__.validate)('email_owner', this.state.show.email_owner, rules['email_owner']) ? 'form-control is-invalid' : 'form-control',
+              id: "email_owner",
+              name: "email_owner",
+              placeholder: "example@domain.com",
+              onChange: this.props.handleChangeInput,
+              value: this.state.show.email_owner ? this.state.show.email_owner : ''
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "form-text text-danger",
+              children: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_1__.validate)('owner', this.state.show.email_owner, rules['email_owner'])
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "form-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+              children: "Copyright"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "input-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "input-group-prepend",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                  className: "input-group-text",
+                  children: "\xA9"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "text",
+                className: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_1__.validate)('copyright', this.state.show.copyright, rules['copyright']) ? 'form-control is-invalid' : 'form-control',
+                name: "copyright",
+                placeholder: "Copyright",
+                onChange: this.props.handleChangeInput,
+                defaultValue: this.state.show.copyright ? this.state.show.copyright : ''
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "form-text text-danger",
+              children: (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_1__.validate)('owner', this.state.show.copyright, rules['copyright'])
+            })]
+          })]
         })
       });
     }
@@ -5608,8 +5888,8 @@ var StepThird = /*#__PURE__*/function (_React$Component) {
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                         type: "radio",
                         value: "episodic",
-                        name: "type",
-                        defaultChecked: true,
+                        name: "format",
+                        checked: this.state.show.format === 'episodic',
                         onChange: this.props.handleChangeInput
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {})]
                     })
@@ -5638,7 +5918,8 @@ var StepThird = /*#__PURE__*/function (_React$Component) {
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                         type: "radio",
                         value: "serial",
-                        name: "type",
+                        name: "format",
+                        checked: this.state.show.format === 'serial',
                         onChange: this.props.handleChangeInput
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {})]
                     })
@@ -5745,16 +6026,16 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      step: 4,
+      step: 5,
       show: {
         id: null,
         title: '',
         description: '',
         artwork: null,
         format: 'episodic',
-        timezone: null,
-        language: null,
-        explicit: null,
+        timezone: 'Etc/GMT',
+        language: 'en',
+        explicit: false,
         category: null,
         tags: null,
         author: null,
@@ -5786,10 +6067,14 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleChangeInput",
     value: function handleChangeInput(event) {
-      event.preventDefault();
       var input = event.target.name;
       var value = event.target.value;
       var state = Object.assign({}, this.state);
+
+      if (input === 'explicit') {
+        value = !this.state.show.explicit;
+      }
+
       state.show[input] = value;
       this.setState(state);
     }
@@ -5798,7 +6083,7 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmitForm(event) {
       event.preventDefault();
 
-      if (!this.formValid(this.state.show, this.state.step)) {
+      if (!this.validForm()) {
         return;
       }
 
@@ -5825,6 +6110,11 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
     key: "handleNextStep",
     value: function handleNextStep(event) {
       event.preventDefault();
+
+      if (!this.validStep()) {
+        return;
+      }
+
       this.setState({
         step: this.state.step + 1
       });
@@ -5840,7 +6130,7 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
 
   }, {
     key: "validForm",
-    value: function validForm(data) {
+    value: function validForm() {
       // for (const [key, value] of Object.entries(data)) {
       //     if (rules.hasOwnProperty(key)) {
       //         let valid = validate(key, value, rules[key]);
@@ -5853,7 +6143,7 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
 
   }, {
     key: "validStep",
-    value: function validStep(data) {
+    value: function validStep() {
       var step = this.state.step; // for (const [key, value] of Object.entries(data)) {
       //     if (rules.hasOwnProperty(key)) {
       //         let valid = validate(key, value, rules[key]);
@@ -5867,6 +6157,7 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log(this.state.show);
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           className: "container",
@@ -5881,6 +6172,12 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
                 "data-wizard-clickable": "true",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_navigation__WEBPACK_IMPORTED_MODULE_2__.default, {
                   step: this.state.step
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  className: "row justify-content-center",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                    className: "alert alert-warning",
+                    children: "Add information about your show. Don't worry! You can always edit your show settings later."
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "row justify-content-center py-10 px-8 py-lg-12 px-lg-10",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
@@ -6186,6 +6483,7 @@ var routes = [{
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "login": () => (/* binding */ login),
+/* harmony export */   "profile": () => (/* binding */ profile),
 /* harmony export */   "resetPassword": () => (/* binding */ resetPassword),
 /* harmony export */   "updatePassword": () => (/* binding */ updatePassword),
 /* harmony export */   "register": () => (/* binding */ register)
@@ -6210,6 +6508,28 @@ function login(credentials) {
         if (statusCode === 401 || statusCode === 422) {
           // status 401 means unauthorized
           // status 422 means unprocessable entity
+          data.error = err.response.data.message;
+        }
+
+        return reject(data);
+      });
+    });
+  };
+}
+function profile() {
+  return function (dispatch) {
+    return new Promise(function (resolve, reject) {
+      _http__WEBPACK_IMPORTED_MODULE_1__.default.get('/api/v1/profile').then(function (res) {
+        dispatch(_store_actions_auth_action__WEBPACK_IMPORTED_MODULE_0__.authCheck(res.data));
+        return resolve();
+      })["catch"](function (err) {
+        var statusCode = err.response.status;
+        var data = {
+          error: null,
+          statusCode: statusCode
+        };
+
+        if (statusCode === 401 || statusCode === 422) {
           data.error = err.response.data.message;
         }
 
@@ -6475,10 +6795,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _action_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-types */ "./resources/js/store/action-types/index.js");
 
-function authLogin(payload) {
+function authLogin(response) {
   return {
     type: _action_types__WEBPACK_IMPORTED_MODULE_0__.AUTH_LOGIN,
-    payload: payload
+    response: response
   };
 }
 function authLogout() {
@@ -6486,9 +6806,10 @@ function authLogout() {
     type: _action_types__WEBPACK_IMPORTED_MODULE_0__.AUTH_LOGOUT
   };
 }
-function authCheck() {
+function authCheck(response) {
   return {
-    type: _action_types__WEBPACK_IMPORTED_MODULE_0__.AUTH_CHECK
+    type: _action_types__WEBPACK_IMPORTED_MODULE_0__.AUTH_CHECK,
+    response: response
   };
 }
 
@@ -6610,15 +6931,15 @@ var Auth = function Auth() {
 
   var _ref = arguments.length > 1 ? arguments[1] : undefined,
       type = _ref.type,
-      _ref$payload = _ref.payload,
-      payload = _ref$payload === void 0 ? null : _ref$payload;
+      _ref$response = _ref.response,
+      response = _ref$response === void 0 ? null : _ref$response;
 
   switch (type) {
     case _action_types__WEBPACK_IMPORTED_MODULE_0__.AUTH_LOGIN:
-      return authLogin(state, payload);
+      return authLogin(state, response);
 
     case _action_types__WEBPACK_IMPORTED_MODULE_0__.AUTH_CHECK:
-      return checkAuth(state);
+      return checkAuth(state, response);
 
     case _action_types__WEBPACK_IMPORTED_MODULE_0__.AUTH_LOGOUT:
       return logout(state);
@@ -6628,10 +6949,10 @@ var Auth = function Auth() {
   }
 };
 
-var authLogin = function authLogin(state, payload) {
-  var jwtToken = payload.access_token;
-  var user = payload.user;
-  var isVerified = payload.user.email_confirmed;
+var authLogin = function authLogin(state, response) {
+  var jwtToken = response.access_token;
+  var user = response.user;
+  var isVerified = response.user.email_confirmed;
   (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.setCookie)('is_verified', isVerified);
   (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.setCookie)('jwt_token', jwtToken);
   _http__WEBPACK_IMPORTED_MODULE_1__.default.defaults.headers.common.Authorization = "Bearer ".concat(jwtToken);
@@ -6643,16 +6964,15 @@ var authLogin = function authLogin(state, payload) {
   return state;
 };
 
-var checkAuth = function checkAuth(state) {
+var checkAuth = function checkAuth(state, response) {
+  var user = response.user;
+  var isVerified = response.user.email_confirmed;
+  (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.setCookie)('is_verified', isVerified);
   state = Object.assign({}, state, {
-    isAuthenticated: (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.getCookie)('jwt_token'),
-    isVerified: (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.getCookie)('is_verified')
+    isAuthenticated: true,
+    isVerified: (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.getCookie)('is_verified') === 'true',
+    user: user
   });
-
-  if (state.isAuthenticated) {
-    _http__WEBPACK_IMPORTED_MODULE_1__.default.defaults.headers.common.Authorization = "Bearer ".concat((0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.getCookie)('jwt_token'));
-  }
-
   return state;
 };
 
@@ -6753,21 +7073,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var initialState = {
-  id: null,
-  user_id: null,
-  title: null,
-  description: null,
+  title: '',
+  description: '',
   artwork: null,
-  format: null,
-  timezone: null,
-  language: null,
-  explicit: null,
+  format: 'episodic',
+  timezone: 'Etc/GMT',
+  language: 'en',
+  explicit: false,
   category: null,
   tags: null,
   author: null,
   podcast_owner: null,
   email_owner: null,
-  step: null,
   copyright: null
 };
 
@@ -6826,7 +7143,8 @@ function setCookie(name, value) {
   var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   options = _objectSpread({
     path: '/',
-    'max-age': 14400
+    'max-age': 14400,
+    'samesite': 'Lax'
   }, options);
 
   if (options.expires instanceof Date) {
@@ -43851,6 +44169,28 @@ function valueEqual(a, b) {
 
 /***/ }),
 
+/***/ "./resources/js/helpers/categories.json":
+/*!**********************************************!*\
+  !*** ./resources/js/helpers/categories.json ***!
+  \**********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('[{"code":"arts","name":"Arts","children":[{"code":"books","name":"books"},{"code":"design","name":"design"},{"code":"fashion_and_beauty","name":"fashion_and_beauty"},{"code":"food","name":"food"},{"code":"performing_arts","name":"performing_arts"},{"code":"visual_arts","name":"visual_arts"}]},{"code":"business","name":"business","children":[{"code":"careers","name":"careers"},{"code":"entrepreneurship","name":"entrepreneurship"},{"code":"investing","name":"investing"},{"code":"management","name":"management"},{"code":"marketing","name":"marketing"},{"code":"non_profit","name":"non_profit"}]},{"code":"comedy","name":"comedy","children":[{"code":"comedy_interviews","name":"comedy_interviews"},{"code":"improv","name":"improv"},{"code":"stand_up","name":"stand_up"}]},{"code":"education","name":"education","children":[{"code":"courses","name":"courses"},{"code":"how_to","name":"how_to"},{"code":"language_learning","name":"language_learning"},{"code":"self_improvement","name":"self_improvement"}]},{"code":"fiction","name":"fiction","children":[{"code":"courses","name":"courses"},{"code":"how_to","name":"how_to"},{"code":"language_learning","name":"language_learning"},{"code":"self_improvement","name":"self_improvement"}]},{"code":"government","name":"government"},{"code":"health_and_fitness","name":"health_and_fitness","children":[{"code":"alternative_health","name":"alternative_health"},{"code":"fitness","name":"fitness"},{"code":"medicine","name":"medicine"},{"code":"mental_health","name":"mental_health"},{"code":"nutrition","name":"nutrition"},{"code":"sexuality","name":"sexuality"}]},{"code":"history","name":"history"},{"code":"kids_and_family","name":"kids_and_family","children":[{"code":"education_for_kids","name":"education_for_kids"},{"code":"parenting","name":"parenting"},{"code":"pets_and_animals","name":"pets_and_animals"},{"code":"stories_for_kids","name":"stories_for_kids"}]},{"code":"leisure","name":"leisure","children":[{"code":"animation_and_manga","name":"animation_and_manga"},{"code":"automotive","name":"automotive"},{"code":"aviation","name":"aviation"},{"code":"crafts","name":"crafts"},{"code":"games","name":"games"},{"code":"hobbies","name":"hobbies"},{"code":"home_and_garden","name":"home_and_garden"},{"code":"other_games","name":"other_games"},{"code":"video_games","name":"video_games"}]},{"code":"music","name":"music","children":[{"code":"music_commentary","name":"music_commentary"},{"code":"music_history","name":"music_history"},{"code":"music_interviews","name":"music_interviews"}]},{"code":"news","name":"news","children":[{"code":"business_news","name":"business_news"},{"code":"daily_news","name":"daily_news"},{"code":"entertainment_news","name":"entertainment_news"},{"code":"news_commentary","name":"news_commentary"},{"code":"politics","name":"politics"},{"code":"sports_news","name":"sports_news"},{"code":"tech_news","name":"tech_news"}]},{"code":"religion_and_spirituality","name":"religion_and_spirituality","children":[{"code":"buddhism","name":"buddhism"},{"code":"christianity","name":"christianity"},{"code":"hinduism","name":"hinduism"},{"code":"islam","name":"islam"},{"code":"judaism","name":"judaism"},{"code":"religion","name":"religion"},{"code":"spirituality","name":"spirituality"}]},{"code":"science","name":"science","children":[{"code":"astronomy","name":"astronomy"},{"code":"chemistry","name":"chemistry"},{"code":"earth_sciences","name":"earth_sciences"},{"code":"life_sciences","name":"life_sciences"},{"code":"mathematics","name":"mathematics"},{"code":"nature","name":"nature"},{"code":"natural_sciences","name":"natural_sciences"},{"code":"physics","name":"physics"},{"code":"social_sciences","name":"social_sciences"}]},{"code":"society_and_culture","name":"society_and_culture","children":[{"code":"documentary","name":"documentary"},{"code":"personal_journals","name":"personal_journals"},{"code":"philosophy","name":"philosophy"},{"code":"places_and_travel","name":"places_and_travel"},{"code":"relationships","name":"relationships"}]},{"code":"sports","name":"sports","children":[{"code":"baseball","name":"baseball"},{"code":"basketball","name":"basketball"},{"code":"cricket","name":"cricket"},{"code":"fantasy_sports","name":"fantasy_sports"},{"code":"football","name":"football"},{"code":"golf","name":"golf"},{"code":"hockey","name":"hockey"},{"code":"rugby","name":"rugby"},{"code":"running","name":"running"},{"code":"soccer","name":"soccer"},{"code":"swimming","name":"swimming"},{"code":"tennis","name":"tennis"},{"code":"volleyball","name":"volleyball"},{"code":"wrestling","name":"wrestling"}]},{"code":"tv_and_film","name":"tv_and_film","children":[{"code":"after_shows","name":"after_shows"},{"code":"film_history","name":"film_history"},{"code":"film_interviews","name":"film_interviews"},{"code":"film_reviews","name":"film_reviews"},{"code":"tv_reviews","name":"tv_reviews"}]},{"code":"technology","name":"technology"},{"code":"true_crime","name":"true_crime"}]');
+
+/***/ }),
+
+/***/ "./resources/js/helpers/languages.json":
+/*!*********************************************!*\
+  !*** ./resources/js/helpers/languages.json ***!
+  \*********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('[{"name":"Afar","code":"aa"},{"name":"Abkhazian","code":"ab"},{"name":"Afrikaans","code":"af"},{"name":"Akan","code":"ak"},{"name":"Amharic","code":"am"},{"name":"Aragonese","code":"an"},{"name":"Arabic","code":"ar"},{"name":"Assamese","code":"as"},{"name":"Avar","code":"av"},{"name":"Aymara","code":"ay"},{"name":"Azerbaijani","code":"az"},{"name":"Bashkir","code":"ba"},{"name":"Belarusian","code":"be"},{"name":"Bulgarian","code":"bg"},{"name":"Bihari","code":"bh"},{"name":"Bislama","code":"bi"},{"name":"Bambara","code":"bm"},{"name":"Bengali","code":"bn"},{"name":"Tibetan","code":"bo"},{"name":"Breton","code":"br"},{"name":"Bosnian","code":"bs"},{"name":"Catalan","code":"ca"},{"name":"Chechen","code":"ce"},{"name":"Chamorro","code":"ch"},{"name":"Corsican","code":"co"},{"name":"Cree","code":"cr"},{"name":"Czech","code":"cs"},{"name":"Old Church Slavonic / Old Bulgarian","code":"cu"},{"name":"Chuvash","code":"cv"},{"name":"Welsh","code":"cy"},{"name":"Danish","code":"da"},{"name":"German","code":"de"},{"name":"Divehi","code":"dv"},{"name":"Dzongkha","code":"dz"},{"name":"Ewe","code":"ee"},{"name":"Greek","code":"el"},{"name":"English","code":"en"},{"name":"Esperanto","code":"eo"},{"name":"Spanish","code":"es"},{"name":"Estonian","code":"et"},{"name":"Basque","code":"eu"},{"name":"Persian","code":"fa"},{"name":"Peul","code":"ff"},{"name":"Finnish","code":"fi"},{"name":"Fijian","code":"fj"},{"name":"Faroese","code":"fo"},{"name":"French","code":"fr"},{"name":"West Frisian","code":"fy"},{"name":"Irish","code":"ga"},{"name":"Scottish Gaelic","code":"gd"},{"name":"Galician","code":"gl"},{"name":"Guarani","code":"gn"},{"name":"Gujarati","code":"gu"},{"name":"Manx","code":"gv"},{"name":"Hausa","code":"ha"},{"name":"Hebrew","code":"he"},{"name":"Hindi","code":"hi"},{"name":"Hiri Motu","code":"ho"},{"name":"Croatian","code":"hr"},{"name":"Haitian","code":"ht"},{"name":"Hungarian","code":"hu"},{"name":"Armenian","code":"hy"},{"name":"Herero","code":"hz"},{"name":"Interlingua","code":"ia"},{"name":"Indonesian","code":"id"},{"name":"Interlingue","code":"ie"},{"name":"Igbo","code":"ig"},{"name":"Sichuan Yi","code":"ii"},{"name":"Inupiak","code":"ik"},{"name":"Ido","code":"io"},{"name":"Icelandic","code":"is"},{"name":"Italian","code":"it"},{"name":"Inuktitut","code":"iu"},{"name":"Japanese","code":"ja"},{"name":"Javanese","code":"jv"},{"name":"Georgian","code":"ka"},{"name":"Kongo","code":"kg"},{"name":"Kikuyu","code":"ki"},{"name":"Kuanyama","code":"kj"},{"name":"Kazakh","code":"kk"},{"name":"Greenlandic","code":"kl"},{"name":"Cambodian","code":"km"},{"name":"Kannada","code":"kn"},{"name":"Korean","code":"ko"},{"name":"Kanuri","code":"kr"},{"name":"Kashmiri","code":"ks"},{"name":"Kurdish","code":"ku"},{"name":"Komi","code":"kv"},{"name":"Cornish","code":"kw"},{"name":"Kirghiz","code":"ky"},{"name":"Latin","code":"la"},{"name":"Luxembourgish","code":"lb"},{"name":"Ganda","code":"lg"},{"name":"Limburgian","code":"li"},{"name":"Lingala","code":"ln"},{"name":"Laotian","code":"lo"},{"name":"Lithuanian","code":"lt"},{"name":"Latvian","code":"lv"},{"name":"Malagasy","code":"mg"},{"name":"Marshallese","code":"mh"},{"name":"Maori","code":"mi"},{"name":"Macedonian","code":"mk"},{"name":"Malayalam","code":"ml"},{"name":"Mongolian","code":"mn"},{"name":"Moldovan","code":"mo"},{"name":"Marathi","code":"mr"},{"name":"Malay","code":"ms"},{"name":"Maltese","code":"mt"},{"name":"Burmese","code":"my"},{"name":"Nauruan","code":"na"},{"name":"North Ndebele","code":"nd"},{"name":"Nepali","code":"ne"},{"name":"Ndonga","code":"ng"},{"name":"Dutch","code":"nl"},{"name":"Norwegian Nynorsk","code":"nn"},{"name":"Norwegian","code":"no"},{"name":"South Ndebele","code":"nr"},{"name":"Navajo","code":"nv"},{"name":"Chichewa","code":"ny"},{"name":"Occitan","code":"oc"},{"name":"Ojibwa","code":"oj"},{"name":"Oromo","code":"om"},{"name":"Oriya","code":"or"},{"name":"Ossetian","code":"os"},{"name":"Punjabi","code":"pa"},{"name":"Pali","code":"pi"},{"name":"Polish","code":"pl"},{"name":"Pashto","code":"ps"},{"name":"Portuguese","code":"pt"},{"name":"Quechua","code":"qu"},{"name":"Raeto Romance","code":"rm"},{"name":"Kirundi","code":"rn"},{"name":"Romanian","code":"ro"},{"name":"Russian","code":"ru"},{"name":"Rwandi","code":"rw"},{"name":"Sanskrit","code":"sa"},{"name":"Sardinian","code":"sc"},{"name":"Sindhi","code":"sd"},{"name":"Sango","code":"sg"},{"name":"Serbo-Croatian","code":"sh"},{"name":"Sinhalese","code":"si"},{"name":"Slovak","code":"sk"},{"name":"Slovenian","code":"sl"},{"name":"Samoan","code":"sm"},{"name":"Shona","code":"sn"},{"name":"Somalia","code":"so"},{"name":"Albanian","code":"sq"},{"name":"Serbian","code":"sr"},{"name":"Swati","code":"ss"},{"name":"Southern Sotho","code":"st"},{"name":"Sundanese","code":"su"},{"name":"Swedish","code":"sv"},{"name":"Swahili","code":"sw"},{"name":"Tamil","code":"ta"},{"name":"Telugu","code":"te"},{"name":"Tajik","code":"tg"},{"name":"Thai","code":"th"},{"name":"Tigrinya","code":"ti"},{"name":"Turkmen","code":"tk"},{"name":"Tagalog","code":"tl"},{"name":"Tswana","code":"tn"},{"name":"Tonga","code":"to"},{"name":"Turkish","code":"tr"},{"name":"Tsonga","code":"ts"},{"name":"Tatar","code":"tt"},{"name":"Twi","code":"tw"},{"name":"Tahitian","code":"ty"},{"name":"Uyghur","code":"ug"},{"name":"Ukrainian","code":"uk"},{"name":"Urdu","code":"ur"},{"name":"Venda","code":"ve"},{"name":"Vietnamese","code":"vi"},{"name":"Volapük","code":"vo"},{"name":"Walloon","code":"wa"},{"name":"Wolof","code":"wo"},{"name":"Xhosa","code":"xh"},{"name":"Yiddish","code":"yi"},{"name":"Yoruba","code":"yo"},{"name":"Zhuang","code":"za"},{"name":"Chinese","code":"zh"},{"name":"Zulu","code":"zu"}]');
+
+/***/ }),
+
 /***/ "./resources/js/helpers/timezones.json":
 /*!*********************************************!*\
   !*** ./resources/js/helpers/timezones.json ***!
@@ -43858,7 +44198,7 @@ function valueEqual(a, b) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"Europe/Amsterdam":"Europe/Amsterdam","Europe/Andorra":"Europe/Andorra","Europe/Astrakhan":"Europe/Astrakhan","Europe/Athens":"Europe/Athens","Europe/Belgrade":"Europe/Belgrade","Europe/Berlin":"Europe/Berlin","Europe/Bratislava":"Europe/Bratislava","Europe/Brussels":"Europe/Brussels","Europe/Bucharest":"Europe/Bucharest","Europe/Budapest":"Europe/Budapest","Europe/Busingen":"Europe/Busingen","Europe/Chisinau":"Europe/Chisinau","Europe/Copenhagen":"Europe/Copenhagen","Europe/Dublin":"Europe/Dublin","Europe/Gibraltar":"Europe/Gibraltar","Europe/Guernsey":"Europe/Guernsey","Europe/Helsinki":"Europe/Helsinki","Europe/Isle_of_Man":"Europe/Isle_of_Man","Europe/Istanbul":"Europe/Istanbul","Europe/Jersey":"Europe/Jersey","Europe/Kaliningrad":"Europe/Kaliningrad","Europe/Kiev":"Europe/Kiev","Europe/Kirov":"Europe/Kirov","Europe/Lisbon":"Europe/Lisbon","Europe/Ljubljana":"Europe/Ljubljana","Europe/London":"Europe/London","Europe/Luxembourg":"Europe/Luxembourg","Europe/Madrid":"Europe/Madrid","Europe/Malta":"Europe/Malta","Europe/Mariehamn":"Europe/Mariehamn","Europe/Minsk":"Europe/Minsk","Europe/Monaco":"Europe/Monaco","Europe/Moscow":"Europe/Moscow","Europe/Oslo":"Europe/Oslo","Europe/Paris":"Europe/Paris","Europe/Podgorica":"Europe/Podgorica","Europe/Prague":"Europe/Prague","Europe/Riga":"Europe/Riga","Europe/Rome":"Europe/Rome","Europe/Samara":"Europe/Samara","Europe/San_Marino":"Europe/San_Marino","Europe/Sarajevo":"Europe/Sarajevo","Europe/Saratov":"Europe/Saratov","Europe/Simferopol":"Europe/Simferopol","Europe/Skopje":"Europe/Skopje","Europe/Sofia":"Europe/Sofia","Europe/Stockholm":"Europe/Stockholm","Europe/Tallinn":"Europe/Tallinn","Europe/Tirane":"Europe/Tirane","Europe/Ulyanovsk":"Europe/Ulyanovsk","Europe/Uzhgorod":"Europe/Uzhgorod","Europe/Vaduz":"Europe/Vaduz","Europe/Vatican":"Europe/Vatican","Europe/Vienna":"Europe/Vienna","Europe/Vilnius":"Europe/Vilnius","Europe/Volgograd":"Europe/Volgograd","Europe/Warsaw":"Europe/Warsaw","Europe/Zagreb":"Europe/Zagreb","Europe/Zaporozhye":"Europe/Zaporozhye","Europe/Zurich":"Europe/Zurich"}');
+module.exports = JSON.parse('[{"code":"Pacific/Niue","name":"(GMT-11:00) Niue"},{"code":"Pacific/Pago_Pago","name":"(GMT-11:00) Pago Pago"},{"code":"Pacific/Honolulu","name":"(GMT-10:00) Hawaii"},{"code":"Pacific/Rarotonga","name":"(GMT-10:00) Rarotonga"},{"code":"Pacific/Tahiti","name":"(GMT-10:00) Tahiti"},{"code":"Pacific/Marquesas","name":"(GMT-09:30) Marquesas"},{"code":"America/Anchorage","name":"(GMT-09:00) Alaska"},{"code":"Pacific/Gambier","name":"(GMT-09:00) Gambier"},{"code":"America/Los_Angeles","name":"(GMT-08:00) Los Angeles"},{"code":"America/Tijuana","name":"(GMT-08:00) Tijuana"},{"code":"America/Vancouver","name":"(GMT-08:00) Vancouver"},{"code":"America/Whitehorse","name":"(GMT-08:00) Whitehorse"},{"code":"Pacific/Pitcairn","name":"(GMT-08:00) Pitcairn"},{"code":"America/Dawson_Creek","name":"(GMT-07:00) Dawson Creek"},{"code":"America/Denver","name":"(GMT-07:00) Denver"},{"code":"America/Edmonton","name":"(GMT-07:00) Edmonton"},{"code":"America/Hermosillo","name":"(GMT-07:00) Hermosillo"},{"code":"America/Mazatlan","name":"(GMT-07:00) Chihuahua, Mazatlan"},{"code":"America/Phoenix","name":"(GMT-07:00) Arizona"},{"code":"America/Yellowknife","name":"(GMT-07:00)Yellowknife"},{"code":"America/Belize","name":"(GMT-06:00) Belize"},{"code":"America/Chicago","name":"(GMT-06:00) Central Time"},{"code":"America/Costa_Rica","name":"(GMT-06:00) Costa Rica"},{"code":"America/El_Salvador","name":"(GMT-06:00) El Salvador"},{"code":"America/Guatemala","name":"(GMT-06:00) Guatemala"},{"code":"America/Managua","name":"(GMT-06:00) Managua"},{"code":"America/Mexico_City","name":"(GMT-06:00) Mexico City"},{"code":"America/Regina","name":"(GMT-06:00) Regina"},{"code":"America/Tegucigalpa","name":"(GMT-06:00) Tegucigalpa"},{"code":"America/Winnipeg","name":"(GMT-06:00) Winnipeg"},{"code":"Pacific/Galapagos","name":"(GMT-06:00) Galapagos"},{"code":"America/Bogota","name":"(GMT-05:00) Bogota"},{"code":"America/Cancun","name":"(GMT-05:00) America Cancun"},{"code":"America/Cayman","name":"(GMT-05:00) Cayman"},{"code":"America/Guayaquil","name":"(GMT-05:00) Guayaquil"},{"code":"America/Havana","name":"(GMT-05:00) Havana"},{"code":"America/Iqaluit","name":"(GMT-05:00) Iqaluit"},{"code":"America/Jamaica","name":"(GMT-05:00) Jamaica"},{"code":"America/Lima","name":"(GMT-05:00) Lima"},{"code":"America/Nassau","name":"(GMT-05:00) Nassau"},{"code":"America/New_York","name":"(GMT-05:00) New York"},{"code":"America/Panama","name":"(GMT-05:00) Panama"},{"code":"America/Port-au-Prince","name":"(GMT-05:00) Port-au-Prince"},{"code":"America/Rio_Branco","name":"(GMT-05:00) Rio Branco"},{"code":"America/Toronto","name":"(GMT-05:00) Toronto"},{"code":"Pacific/Easter","name":"(GMT-05:00) Easter Island"},{"code":"America/Caracas","name":"(GMT-04:30) Caracas"},{"code":"America/Asuncion","name":"(GMT-03:00) Asuncion"},{"code":"America/Barbados","name":"(GMT-04:00) Barbados"},{"code":"America/Boa_Vista","name":"(GMT-04:00) Boa Vista"},{"code":"America/Campo_Grande","name":"(GMT-03:00) Campo Grande"},{"code":"America/Cuiaba","name":"(GMT-03:00) Cuiaba"},{"code":"America/Curacao","name":"(GMT-04:00) Curacao"},{"code":"America/Grand_Turk","name":"(GMT-04:00) Grand Turk"},{"code":"America/Guyana","name":"(GMT-04:00) Guyana"},{"code":"America/Halifax","name":"(GMT-04:00) Halifax"},{"code":"America/La_Paz","name":"(GMT-04:00) La Paz"},{"code":"America/Manaus","name":"(GMT-04:00) Manaus"},{"code":"America/Martinique","name":"(GMT-04:00) Martinique"},{"code":"America/Port_of_Spain","name":"(GMT-04:00) Port of Spain"},{"code":"America/Porto_Velho","name":"(GMT-04:00) Porto Velho"},{"code":"America/Puerto_Rico","name":"(GMT-04:00) Puerto Rico"},{"code":"America/Santo_Domingo","name":"(GMT-04:00) Santo Domingo"},{"code":"America/Thule","name":"(GMT-04:00) Thule"},{"code":"Atlantic/Bermuda","name":"(GMT-04:00) Bermuda"},{"code":"America/Araguaina","name":"(GMT-03:00) Araguaina"},{"code":"America/Argentina/Buenos_Aires","name":"(GMT-03:00) Buenos Aires"},{"code":"America/Bahia","name":"(GMT-03:00) Salvador"},{"code":"America/Belem","name":"(GMT-03:00) Belem"},{"code":"America/Cayenne","name":"(GMT-03:00) Cayenne"},{"code":"America/Fortaleza","name":"(GMT-03:00) Fortaleza"},{"code":"America/Godthab","name":"(GMT-03:00) Godthab"},{"code":"America/Maceio","name":"(GMT-03:00) Maceio"},{"code":"America/Miquelon","name":"(GMT-03:00) Miquelon"},{"code":"America/Montevideo","name":"(GMT-03:00) Montevideo"},{"code":"America/Paramaribo","name":"(GMT-03:00) Paramaribo"},{"code":"America/Recife","name":"(GMT-03:00) Recife"},{"code":"America/Santiago","name":"(GMT-03:00) Santiago"},{"code":"America/Sao_Paulo","name":"(GMT-02:00) Sao Paulo"},{"code":"Antarctica/Palmer","name":"(GMT-03:00) Palmer"},{"code":"Antarctica/Rothera","name":"(GMT-03:00) Rothera"},{"code":"Atlantic/Stanley","name":"(GMT-03:00) Stanley"},{"code":"America/Noronha","name":"(GMT-02:00) Noronha"},{"code":"Atlantic/South_Georgia","name":"(GMT-02:00) South Georgia"},{"code":"America/Scoresbysund","name":"(GMT-01:00) Scoresbysund"},{"code":"Atlantic/Azores","name":"(GMT-01:00) Azores"},{"code":"Atlantic/Cape_Verde","name":"(GMT-01:00) Cape Verde"},{"code":"Africa/Abidjan","name":"(GMT+00:00) Abidjan"},{"code":"Africa/Accra","name":"(GMT+00:00) Accra"},{"code":"Africa/Bissau","name":"(GMT+00:00) Bissau"},{"code":"Africa/Casablanca","name":"(GMT+00:00) Casablanca"},{"code":"Africa/El_Aaiun","name":"(GMT+00:00) El Aaiun"},{"code":"Africa/Monrovia","name":"(GMT+00:00) Monrovia"},{"code":"America/Danmarkshavn","name":"(GMT+00:00) Danmarkshavn"},{"code":"Atlantic/Canary","name":"(GMT+00:00) Canary Islands"},{"code":"Atlantic/Faroe","name":"(GMT+00:00) Faeroe"},{"code":"Atlantic/Reykjavik","name":"(GMT+00:00) Reykjavik"},{"code":"Etc/GMT","name":"(GMT+00:00) GMT"},{"code":"Europe/Dublin","name":"(GMT+00:00) Dublin"},{"code":"Europe/Lisbon","name":"(GMT+00:00) Lisbon"},{"code":"Europe/London","name":"(GMT+00:00) London"},{"code":"Africa/Algiers","name":"(GMT+01:00) Algiers"},{"code":"Africa/Ceuta","name":"(GMT+01:00) Ceuta"},{"code":"Africa/Lagos","name":"(GMT+01:00) Lagos"},{"code":"Africa/Ndjamena","name":"(GMT+01:00) Ndjamena"},{"code":"Africa/Tunis","name":"(GMT+01:00) Tunis"},{"code":"Africa/Windhoek","name":"(GMT+02:00) Windhoek"},{"code":"Europe/Amsterdam","name":"(GMT+01:00) Amsterdam"},{"code":"Europe/Andorra","name":"(GMT+01:00) Andorra"},{"code":"Europe/Belgrade","name":"(GMT+01:00) Belgrade"},{"code":"Europe/Berlin","name":"(GMT+01:00) Berlin"},{"code":"Europe/Brussels","name":"(GMT+01:00) Brussels"},{"code":"Europe/Budapest","name":"(GMT+01:00) Budapest"},{"code":"Europe/Copenhagen","name":"(GMT+01:00) Copenhagen"},{"code":"Europe/Gibraltar","name":"(GMT+01:00) Gibraltar"},{"code":"Europe/Luxembourg","name":"(GMT+01:00) Luxembourg"},{"code":"Europe/Madrid","name":"(GMT+01:00) Madrid"},{"code":"Europe/Malta","name":"(GMT+01:00) Malta"},{"code":"Europe/Monaco","name":"(GMT+01:00) Monaco"},{"code":"Europe/Oslo","name":"(GMT+01:00) Oslo"},{"code":"Europe/Paris","name":"(GMT+01:00) Paris"},{"code":"Europe/Prague","name":"(GMT+01:00) Prague"},{"code":"Europe/Rome","name":"(GMT+01:00) Rome"},{"code":"Europe/Stockholm","name":"(GMT+01:00) Stockholm"},{"code":"Europe/Tirane","name":"(GMT+01:00) Tirane"},{"code":"Europe/Vienna","name":"(GMT+01:00) Vienna"},{"code":"Europe/Warsaw","name":"(GMT+01:00) Warsaw"},{"code":"Europe/Zurich","name":"(GMT+01:00) Zurich"},{"code":"Africa/Cairo","name":"(GMT+02:00) Cairo"},{"code":"Africa/Johannesburg","name":"(GMT+02:00) Johannesburg"},{"code":"Africa/Maputo","name":"(GMT+02:00) Maputo"},{"code":"Africa/Tripoli","name":"(GMT+02:00) Tripoli"},{"code":"Asia/Amman","name":"(GMT+02:00) Amman"},{"code":"Asia/Beirut","name":"(GMT+02:00) Beirut"},{"code":"Asia/Damascus","name":"(GMT+02:00) Damascus"},{"code":"Asia/Gaza","name":"(GMT+02:00) Gaza"},{"code":"Asia/Jerusalem","name":"(GMT+02:00) Jerusalem"},{"code":"Asia/Nicosia","name":"(GMT+02:00) Nicosia"},{"code":"Europe/Athens","name":"(GMT+02:00) Athens"},{"code":"Europe/Bucharest","name":"(GMT+02:00) Bucharest"},{"code":"Europe/Chisinau","name":"(GMT+02:00) Chisinau"},{"code":"Europe/Helsinki","name":"(GMT+02:00) Helsinki"},{"code":"Europe/Istanbul","name":"(GMT+02:00) Istanbul"},{"code":"Europe/Kaliningrad","name":"(GMT+02:00) Kaliningrad"},{"code":"Europe/Kiev","name":"(GMT+02:00) Kyiv"},{"code":"Europe/Riga","name":"(GMT+02:00) Riga"},{"code":"Europe/Sofia","name":"(GMT+02:00) Sofia"},{"code":"Europe/Tallinn","name":"(GMT+02:00) Tallinn"},{"code":"Europe/Vilnius","name":"(GMT+02:00) Vilnius"},{"code":"Africa/Khartoum","name":"(GMT+03:00) Khartoum"},{"code":"Africa/Nairobi","name":"(GMT+03:00) Nairobi"},{"code":"Antarctica/Syowa","name":"(GMT+03:00) Syowa"},{"code":"Asia/Baghdad","name":"(GMT+03:00) Baghdad"},{"code":"Asia/Qatar","name":"(GMT+03:00) Qatar"},{"code":"Asia/Riyadh","name":"(GMT+03:00) Riyadh"},{"code":"Europe/Minsk","name":"(GMT+03:00) Minsk"},{"code":"Europe/Moscow","name":"(GMT+03:00) Moscow"},{"code":"Asia/Tehran","name":"(GMT+03:30) Tehran"},{"code":"Asia/Baku","name":"(GMT+04:00) Baku"},{"code":"Asia/Dubai","name":"(GMT+04:00) Dubai"},{"code":"Asia/Tbilisi","name":"(GMT+04:00) Tbilisi"},{"code":"Asia/Yerevan","name":"(GMT+04:00) Yerevan"},{"code":"Europe/Samara","name":"(GMT+04:00) Samara"},{"code":"Indian/Mahe","name":"(GMT+04:00) Mahe"},{"code":"Indian/Mauritius","name":"(GMT+04:00) Mauritius"},{"code":"Indian/Reunion","name":"(GMT+04:00) Reunion"},{"code":"Asia/Kabul","name":"(GMT+04:30) Kabul"},{"code":"Antarctica/Mawson","name":"(GMT+05:00) Mawson"},{"code":"Asia/Aqtau","name":"(GMT+05:00) Aqtau"},{"code":"Asia/Aqtobe","name":"(GMT+05:00) Aqtobe"},{"code":"Asia/Ashgabat","name":"(GMT+05:00) Ashgabat"},{"code":"Asia/Dushanbe","name":"(GMT+05:00) Dushanbe"},{"code":"Asia/Karachi","name":"(GMT+05:00) Karachi"},{"code":"Asia/Tashkent","name":"(GMT+05:00) Tashkent"},{"code":"Asia/Yekaterinburg","name":"(GMT+05:00) Yekaterinburg"},{"code":"Indian/Kerguelen","name":"(GMT+05:00) Kerguelen"},{"code":"Indian/Maldives","name":"(GMT+05:00) Maldives"},{"code":"Asia/Calcutta","name":"(GMT+05:30) India Standard Time"},{"code":"Asia/Colombo","name":"(GMT+05:30) Colombo"},{"code":"Asia/Katmandu","name":"(GMT+05:45) Katmandu"},{"code":"Antarctica/Vostok","name":"(GMT+06:00) Vostok"},{"code":"Asia/Almaty","name":"(GMT+06:00) Almaty"},{"code":"Asia/Bishkek","name":"(GMT+06:00) Bishkek"},{"code":"Asia/Dhaka","name":"(GMT+06:00) Dhaka"},{"code":"Asia/Omsk","name":"(GMT+06:00) Omsk, Novosibirsk"},{"code":"Asia/Thimphu","name":"(GMT+06:00) Thimphu"},{"code":"Indian/Chagos","name":"(GMT+06:00) Chagos"},{"code":"Asia/Rangoon","name":"(GMT+06:30) Rangoon"},{"code":"Indian/Cocos","name":"(GMT+06:30) Cocos"},{"code":"Antarctica/Davis","name":"(GMT+07:00) Davis"},{"code":"Asia/Bangkok","name":"(GMT+07:00) Bangkok"},{"code":"Asia/Hovd","name":"(GMT+07:00) Hovd"},{"code":"Asia/Jakarta","name":"(GMT+07:00) Jakarta"},{"code":"Asia/Krasnoyarsk","name":"(GMT+07:00) Krasnoyarsk"},{"code":"Asia/Saigon","name":"(GMT+07:00) Hanoi"},{"code":"Asia/Ho_Chi_Minh","name":"(GMT+07:00) Ho Chi Minh"},{"code":"Indian/Christmas","name":"(GMT+07:00) Christmas"},{"code":"Antarctica/Casey","name":"(GMT+08:00) Casey"},{"code":"Asia/Brunei","name":"(GMT+08:00) Brunei"},{"code":"Asia/Choibalsan","name":"(GMT+08:00) Choibalsan"},{"code":"Asia/Hong_Kong","name":"(GMT+08:00) Hong Kong"},{"code":"Asia/Irkutsk","name":"(GMT+08:00) Irkutsk"},{"code":"Asia/Kuala_Lumpur","name":"(GMT+08:00) Kuala Lumpur"},{"code":"Asia/Macau","name":"(GMT+08:00) Macau"},{"code":"Asia/Makassar","name":"(GMT+08:00) Makassar"},{"code":"Asia/Manila","name":"(GMT+08:00) Manila"},{"code":"Asia/Shanghai","name":"(GMT+08:00) Beijing"},{"code":"Asia/Singapore","name":"(GMT+08:00) Singapore"},{"code":"Asia/Taipei","name":"(GMT+08:00) Taipei"},{"code":"Asia/Ulaanbaatar","name":"(GMT+08:00) Ulaanbaatar"},{"code":"Australia/Perth","name":"(GMT+08:00) Western Time - Perth"},{"code":"Asia/Pyongyang","name":"(GMT+08:30) Pyongyang"},{"code":"Asia/Dili","name":"(GMT+09:00) Dili"},{"code":"Asia/Jayapura","name":"(GMT+09:00) Jayapura"},{"code":"Asia/Seoul","name":"(GMT+09:00) Seoul"},{"code":"Asia/Tokyo","name":"(GMT+09:00) Tokyo"},{"code":"Asia/Yakutsk","name":"(GMT+09:00) Yakutsk"},{"code":"Pacific/Palau","name":"(GMT+09:00) Palau"},{"code":"Australia/Adelaide","name":"(GMT+10:30) Central Time - Adelaide"},{"code":"Australia/Darwin","name":"(GMT+09:30) Central Time - Darwin"},{"code":"Antarctica/DumontDUrville","name":"(GMT+10:00) Dumont D\'Urville"},{"code":"Asia/Magadan","name":"(GMT+10:00) Magadan"},{"code":"Asia/Vladivostok","name":"(GMT+10:00) Yuzhno-Sakhalinsk"},{"code":"Australia/Brisbane","name":"(GMT+10:00) Eastern Time - Brisbane"},{"code":"Australia/Hobart","name":"(GMT+11:00) Hobart"},{"code":"Australia/Sydney","name":"(GMT+11:00) Melbourne, Sydney"},{"code":"Pacific/Chuuk","name":"(GMT+10:00) Truk"},{"code":"Pacific/Guam","name":"(GMT+10:00) Guam"},{"code":"Pacific/Port_Moresby","name":"(GMT+10:00) Port Moresby"},{"code":"Pacific/Efate","name":"(GMT+11:00) Efate"},{"code":"Pacific/Guadalcanal","name":"(GMT+11:00) Guadalcanal"},{"code":"Pacific/Kosrae","name":"(GMT+11:00) Kosrae"},{"code":"Pacific/Norfolk","name":"(GMT+11:00) Norfolk"},{"code":"Pacific/Noumea","name":"(GMT+11:00) Noumea"},{"code":"Pacific/Pohnpei","name":"(GMT+11:00) Ponape"},{"code":"Asia/Kamchatka","name":"(GMT+12:00) Petropavlovsk-Kamchatskiy"},{"code":"Pacific/Auckland","name":"(GMT+13:00) Auckland"},{"code":"Pacific/Fiji","name":"(GMT+13:00) Fiji"},{"code":"Pacific/Funafuti","name":"(GMT+12:00) Funafuti"},{"code":"Pacific/Kwajalein","name":"(GMT+12:00) Kwajalein"},{"code":"Pacific/Majuro","name":"(GMT+12:00) Majuro"},{"code":"Pacific/Nauru","name":"(GMT+12:00) Nauru"},{"code":"Pacific/Tarawa","name":"(GMT+12:00) Tarawa"},{"code":"Pacific/Wake","name":"(GMT+12:00) Wake"},{"code":"Pacific/Wallis","name":"(GMT+12:00) Wallis"},{"code":"Pacific/Apia","name":"(GMT+14:00) Apia"},{"code":"Pacific/Enderbury","name":"(GMT+13:00) Enderbury"},{"code":"Pacific/Fakaofo","name":"(GMT+13:00) Fakaofo"},{"code":"Pacific/Tongatapu","name":"(GMT+13:00) Tongatapu"},{"code":"Pacific/Kiritimati","name":"(GMT+14:00) Kiritimati"}]');
 
 /***/ })
 
@@ -44061,3 +44401,4 @@ module.exports = JSON.parse('{"Europe/Amsterdam":"Europe/Amsterdam","Europe/Ando
 /******/ 	
 /******/ })()
 ;
+//# sourceMappingURL=app.js.map

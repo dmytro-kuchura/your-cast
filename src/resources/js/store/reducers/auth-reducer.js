@@ -15,12 +15,12 @@ const initialState = {
     user
 };
 
-const Auth = (state = initialState, {type, payload = null}) => {
+const Auth = (state = initialState, {type, response = null}) => {
     switch (type) {
         case ActionTypes.AUTH_LOGIN:
-            return authLogin(state, payload);
+            return authLogin(state, response);
         case ActionTypes.AUTH_CHECK:
-            return checkAuth(state);
+            return checkAuth(state, response);
         case ActionTypes.AUTH_LOGOUT:
             return logout(state);
         default:
@@ -28,10 +28,10 @@ const Auth = (state = initialState, {type, payload = null}) => {
     }
 };
 
-const authLogin = (state, payload) => {
-    const jwtToken = payload.access_token;
-    const user = payload.user;
-    const isVerified = payload.user.email_confirmed;
+const authLogin = (state, response) => {
+    const jwtToken = response.access_token;
+    const user = response.user;
+    const isVerified = response.user.email_confirmed;
 
     setCookie('is_verified', isVerified);
     setCookie('jwt_token', jwtToken)
@@ -47,15 +47,17 @@ const authLogin = (state, payload) => {
     return state;
 };
 
-const checkAuth = (state) => {
-    state = Object.assign({}, state, {
-        isAuthenticated: getCookie('jwt_token'),
-        isVerified: getCookie('is_verified')
-    });
+const checkAuth = (state, response) => {
+    const user = response.user;
+    const isVerified = response.user.email_confirmed;
 
-    if (state.isAuthenticated) {
-        Http.defaults.headers.common['Authorization'] = `Bearer ${getCookie('jwt_token')}`;
-    }
+    setCookie('is_verified', isVerified);
+
+    state = Object.assign({}, state, {
+        isAuthenticated: true,
+        isVerified: getCookie('is_verified') === 'true',
+        user
+    });
 
     return state;
 };

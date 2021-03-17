@@ -1,62 +1,1002 @@
-{
-    "Europe/Amsterdam": "Europe/Amsterdam",
-    "Europe/Andorra": "Europe/Andorra",
-    "Europe/Astrakhan": "Europe/Astrakhan",
-    "Europe/Athens": "Europe/Athens",
-    "Europe/Belgrade": "Europe/Belgrade",
-    "Europe/Berlin": "Europe/Berlin",
-    "Europe/Bratislava": "Europe/Bratislava",
-    "Europe/Brussels": "Europe/Brussels",
-    "Europe/Bucharest": "Europe/Bucharest",
-    "Europe/Budapest": "Europe/Budapest",
-    "Europe/Busingen": "Europe/Busingen",
-    "Europe/Chisinau": "Europe/Chisinau",
-    "Europe/Copenhagen": "Europe/Copenhagen",
-    "Europe/Dublin": "Europe/Dublin",
-    "Europe/Gibraltar": "Europe/Gibraltar",
-    "Europe/Guernsey": "Europe/Guernsey",
-    "Europe/Helsinki": "Europe/Helsinki",
-    "Europe/Isle_of_Man": "Europe/Isle_of_Man",
-    "Europe/Istanbul": "Europe/Istanbul",
-    "Europe/Jersey": "Europe/Jersey",
-    "Europe/Kaliningrad": "Europe/Kaliningrad",
-    "Europe/Kiev": "Europe/Kiev",
-    "Europe/Kirov": "Europe/Kirov",
-    "Europe/Lisbon": "Europe/Lisbon",
-    "Europe/Ljubljana": "Europe/Ljubljana",
-    "Europe/London": "Europe/London",
-    "Europe/Luxembourg": "Europe/Luxembourg",
-    "Europe/Madrid": "Europe/Madrid",
-    "Europe/Malta": "Europe/Malta",
-    "Europe/Mariehamn": "Europe/Mariehamn",
-    "Europe/Minsk": "Europe/Minsk",
-    "Europe/Monaco": "Europe/Monaco",
-    "Europe/Moscow": "Europe/Moscow",
-    "Europe/Oslo": "Europe/Oslo",
-    "Europe/Paris": "Europe/Paris",
-    "Europe/Podgorica": "Europe/Podgorica",
-    "Europe/Prague": "Europe/Prague",
-    "Europe/Riga": "Europe/Riga",
-    "Europe/Rome": "Europe/Rome",
-    "Europe/Samara": "Europe/Samara",
-    "Europe/San_Marino": "Europe/San_Marino",
-    "Europe/Sarajevo": "Europe/Sarajevo",
-    "Europe/Saratov": "Europe/Saratov",
-    "Europe/Simferopol": "Europe/Simferopol",
-    "Europe/Skopje": "Europe/Skopje",
-    "Europe/Sofia": "Europe/Sofia",
-    "Europe/Stockholm": "Europe/Stockholm",
-    "Europe/Tallinn": "Europe/Tallinn",
-    "Europe/Tirane": "Europe/Tirane",
-    "Europe/Ulyanovsk": "Europe/Ulyanovsk",
-    "Europe/Uzhgorod": "Europe/Uzhgorod",
-    "Europe/Vaduz": "Europe/Vaduz",
-    "Europe/Vatican": "Europe/Vatican",
-    "Europe/Vienna": "Europe/Vienna",
-    "Europe/Vilnius": "Europe/Vilnius",
-    "Europe/Volgograd": "Europe/Volgograd",
-    "Europe/Warsaw": "Europe/Warsaw",
-    "Europe/Zagreb": "Europe/Zagreb",
-    "Europe/Zaporozhye": "Europe/Zaporozhye",
-    "Europe/Zurich": "Europe/Zurich"
-}
+[
+    {
+        "code": "Pacific/Niue",
+        "name": "(GMT-11:00) Niue"
+    },
+    {
+        "code": "Pacific/Pago_Pago",
+        "name": "(GMT-11:00) Pago Pago"
+    },
+    {
+        "code": "Pacific/Honolulu",
+        "name": "(GMT-10:00) Hawaii"
+    },
+    {
+        "code": "Pacific/Rarotonga",
+        "name": "(GMT-10:00) Rarotonga"
+    },
+    {
+        "code": "Pacific/Tahiti",
+        "name": "(GMT-10:00) Tahiti"
+    },
+    {
+        "code": "Pacific/Marquesas",
+        "name": "(GMT-09:30) Marquesas"
+    },
+    {
+        "code": "America/Anchorage",
+        "name": "(GMT-09:00) Alaska"
+    },
+    {
+        "code": "Pacific/Gambier",
+        "name": "(GMT-09:00) Gambier"
+    },
+    {
+        "code": "America/Los_Angeles",
+        "name": "(GMT-08:00) Los Angeles"
+    },
+    {
+        "code": "America/Tijuana",
+        "name": "(GMT-08:00) Tijuana"
+    },
+    {
+        "code": "America/Vancouver",
+        "name": "(GMT-08:00) Vancouver"
+    },
+    {
+        "code": "America/Whitehorse",
+        "name": "(GMT-08:00) Whitehorse"
+    },
+    {
+        "code": "Pacific/Pitcairn",
+        "name": "(GMT-08:00) Pitcairn"
+    },
+    {
+        "code": "America/Dawson_Creek",
+        "name": "(GMT-07:00) Dawson Creek"
+    },
+    {
+        "code": "America/Denver",
+        "name": "(GMT-07:00) Denver"
+    },
+    {
+        "code": "America/Edmonton",
+        "name": "(GMT-07:00) Edmonton"
+    },
+    {
+        "code": "America/Hermosillo",
+        "name": "(GMT-07:00) Hermosillo"
+    },
+    {
+        "code": "America/Mazatlan",
+        "name": "(GMT-07:00) Chihuahua, Mazatlan"
+    },
+    {
+        "code": "America/Phoenix",
+        "name": "(GMT-07:00) Arizona"
+    },
+    {
+        "code": "America/Yellowknife",
+        "name": "(GMT-07:00)Yellowknife"
+    },
+    {
+        "code": "America/Belize",
+        "name": "(GMT-06:00) Belize"
+    },
+    {
+        "code": "America/Chicago",
+        "name": "(GMT-06:00) Central Time"
+    },
+    {
+        "code": "America/Costa_Rica",
+        "name": "(GMT-06:00) Costa Rica"
+    },
+    {
+        "code": "America/El_Salvador",
+        "name": "(GMT-06:00) El Salvador"
+    },
+    {
+        "code": "America/Guatemala",
+        "name": "(GMT-06:00) Guatemala"
+    },
+    {
+        "code": "America/Managua",
+        "name": "(GMT-06:00) Managua"
+    },
+    {
+        "code": "America/Mexico_City",
+        "name": "(GMT-06:00) Mexico City"
+    },
+    {
+        "code": "America/Regina",
+        "name": "(GMT-06:00) Regina"
+    },
+    {
+        "code": "America/Tegucigalpa",
+        "name": "(GMT-06:00) Tegucigalpa"
+    },
+    {
+        "code": "America/Winnipeg",
+        "name": "(GMT-06:00) Winnipeg"
+    },
+    {
+        "code": "Pacific/Galapagos",
+        "name": "(GMT-06:00) Galapagos"
+    },
+    {
+        "code": "America/Bogota",
+        "name": "(GMT-05:00) Bogota"
+    },
+    {
+        "code": "America/Cancun",
+        "name": "(GMT-05:00) America Cancun"
+    },
+    {
+        "code": "America/Cayman",
+        "name": "(GMT-05:00) Cayman"
+    },
+    {
+        "code": "America/Guayaquil",
+        "name": "(GMT-05:00) Guayaquil"
+    },
+    {
+        "code": "America/Havana",
+        "name": "(GMT-05:00) Havana"
+    },
+    {
+        "code": "America/Iqaluit",
+        "name": "(GMT-05:00) Iqaluit"
+    },
+    {
+        "code": "America/Jamaica",
+        "name": "(GMT-05:00) Jamaica"
+    },
+    {
+        "code": "America/Lima",
+        "name": "(GMT-05:00) Lima"
+    },
+    {
+        "code": "America/Nassau",
+        "name": "(GMT-05:00) Nassau"
+    },
+    {
+        "code": "America/New_York",
+        "name": "(GMT-05:00) New York"
+    },
+    {
+        "code": "America/Panama",
+        "name": "(GMT-05:00) Panama"
+    },
+    {
+        "code": "America/Port-au-Prince",
+        "name": "(GMT-05:00) Port-au-Prince"
+    },
+    {
+        "code": "America/Rio_Branco",
+        "name": "(GMT-05:00) Rio Branco"
+    },
+    {
+        "code": "America/Toronto",
+        "name": "(GMT-05:00) Toronto"
+    },
+    {
+        "code": "Pacific/Easter",
+        "name": "(GMT-05:00) Easter Island"
+    },
+    {
+        "code": "America/Caracas",
+        "name": "(GMT-04:30) Caracas"
+    },
+    {
+        "code": "America/Asuncion",
+        "name": "(GMT-03:00) Asuncion"
+    },
+    {
+        "code": "America/Barbados",
+        "name": "(GMT-04:00) Barbados"
+    },
+    {
+        "code": "America/Boa_Vista",
+        "name": "(GMT-04:00) Boa Vista"
+    },
+    {
+        "code": "America/Campo_Grande",
+        "name": "(GMT-03:00) Campo Grande"
+    },
+    {
+        "code": "America/Cuiaba",
+        "name": "(GMT-03:00) Cuiaba"
+    },
+    {
+        "code": "America/Curacao",
+        "name": "(GMT-04:00) Curacao"
+    },
+    {
+        "code": "America/Grand_Turk",
+        "name": "(GMT-04:00) Grand Turk"
+    },
+    {
+        "code": "America/Guyana",
+        "name": "(GMT-04:00) Guyana"
+    },
+    {
+        "code": "America/Halifax",
+        "name": "(GMT-04:00) Halifax"
+    },
+    {
+        "code": "America/La_Paz",
+        "name": "(GMT-04:00) La Paz"
+    },
+    {
+        "code": "America/Manaus",
+        "name": "(GMT-04:00) Manaus"
+    },
+    {
+        "code": "America/Martinique",
+        "name": "(GMT-04:00) Martinique"
+    },
+    {
+        "code": "America/Port_of_Spain",
+        "name": "(GMT-04:00) Port of Spain"
+    },
+    {
+        "code": "America/Porto_Velho",
+        "name": "(GMT-04:00) Porto Velho"
+    },
+    {
+        "code": "America/Puerto_Rico",
+        "name": "(GMT-04:00) Puerto Rico"
+    },
+    {
+        "code": "America/Santo_Domingo",
+        "name": "(GMT-04:00) Santo Domingo"
+    },
+    {
+        "code": "America/Thule",
+        "name": "(GMT-04:00) Thule"
+    },
+    {
+        "code": "Atlantic/Bermuda",
+        "name": "(GMT-04:00) Bermuda"
+    },
+    {
+        "code": "America/Araguaina",
+        "name": "(GMT-03:00) Araguaina"
+    },
+    {
+        "code": "America/Argentina/Buenos_Aires",
+        "name": "(GMT-03:00) Buenos Aires"
+    },
+    {
+        "code": "America/Bahia",
+        "name": "(GMT-03:00) Salvador"
+    },
+    {
+        "code": "America/Belem",
+        "name": "(GMT-03:00) Belem"
+    },
+    {
+        "code": "America/Cayenne",
+        "name": "(GMT-03:00) Cayenne"
+    },
+    {
+        "code": "America/Fortaleza",
+        "name": "(GMT-03:00) Fortaleza"
+    },
+    {
+        "code": "America/Godthab",
+        "name": "(GMT-03:00) Godthab"
+    },
+    {
+        "code": "America/Maceio",
+        "name": "(GMT-03:00) Maceio"
+    },
+    {
+        "code": "America/Miquelon",
+        "name": "(GMT-03:00) Miquelon"
+    },
+    {
+        "code": "America/Montevideo",
+        "name": "(GMT-03:00) Montevideo"
+    },
+    {
+        "code": "America/Paramaribo",
+        "name": "(GMT-03:00) Paramaribo"
+    },
+    {
+        "code": "America/Recife",
+        "name": "(GMT-03:00) Recife"
+    },
+    {
+        "code": "America/Santiago",
+        "name": "(GMT-03:00) Santiago"
+    },
+    {
+        "code": "America/Sao_Paulo",
+        "name": "(GMT-02:00) Sao Paulo"
+    },
+    {
+        "code": "Antarctica/Palmer",
+        "name": "(GMT-03:00) Palmer"
+    },
+    {
+        "code": "Antarctica/Rothera",
+        "name": "(GMT-03:00) Rothera"
+    },
+    {
+        "code": "Atlantic/Stanley",
+        "name": "(GMT-03:00) Stanley"
+    },
+    {
+        "code": "America/Noronha",
+        "name": "(GMT-02:00) Noronha"
+    },
+    {
+        "code": "Atlantic/South_Georgia",
+        "name": "(GMT-02:00) South Georgia"
+    },
+    {
+        "code": "America/Scoresbysund",
+        "name": "(GMT-01:00) Scoresbysund"
+    },
+    {
+        "code": "Atlantic/Azores",
+        "name": "(GMT-01:00) Azores"
+    },
+    {
+        "code": "Atlantic/Cape_Verde",
+        "name": "(GMT-01:00) Cape Verde"
+    },
+    {
+        "code": "Africa/Abidjan",
+        "name": "(GMT+00:00) Abidjan"
+    },
+    {
+        "code": "Africa/Accra",
+        "name": "(GMT+00:00) Accra"
+    },
+    {
+        "code": "Africa/Bissau",
+        "name": "(GMT+00:00) Bissau"
+    },
+    {
+        "code": "Africa/Casablanca",
+        "name": "(GMT+00:00) Casablanca"
+    },
+    {
+        "code": "Africa/El_Aaiun",
+        "name": "(GMT+00:00) El Aaiun"
+    },
+    {
+        "code": "Africa/Monrovia",
+        "name": "(GMT+00:00) Monrovia"
+    },
+    {
+        "code": "America/Danmarkshavn",
+        "name": "(GMT+00:00) Danmarkshavn"
+    },
+    {
+        "code": "Atlantic/Canary",
+        "name": "(GMT+00:00) Canary Islands"
+    },
+    {
+        "code": "Atlantic/Faroe",
+        "name": "(GMT+00:00) Faeroe"
+    },
+    {
+        "code": "Atlantic/Reykjavik",
+        "name": "(GMT+00:00) Reykjavik"
+    },
+    {
+        "code": "Etc/GMT",
+        "name": "(GMT+00:00) GMT"
+    },
+    {
+        "code": "Europe/Dublin",
+        "name": "(GMT+00:00) Dublin"
+    },
+    {
+        "code": "Europe/Lisbon",
+        "name": "(GMT+00:00) Lisbon"
+    },
+    {
+        "code": "Europe/London",
+        "name": "(GMT+00:00) London"
+    },
+    {
+        "code": "Africa/Algiers",
+        "name": "(GMT+01:00) Algiers"
+    },
+    {
+        "code": "Africa/Ceuta",
+        "name": "(GMT+01:00) Ceuta"
+    },
+    {
+        "code": "Africa/Lagos",
+        "name": "(GMT+01:00) Lagos"
+    },
+    {
+        "code": "Africa/Ndjamena",
+        "name": "(GMT+01:00) Ndjamena"
+    },
+    {
+        "code": "Africa/Tunis",
+        "name": "(GMT+01:00) Tunis"
+    },
+    {
+        "code": "Africa/Windhoek",
+        "name": "(GMT+02:00) Windhoek"
+    },
+    {
+        "code": "Europe/Amsterdam",
+        "name": "(GMT+01:00) Amsterdam"
+    },
+    {
+        "code": "Europe/Andorra",
+        "name": "(GMT+01:00) Andorra"
+    },
+    {
+        "code": "Europe/Belgrade",
+        "name": "(GMT+01:00) Belgrade"
+    },
+    {
+        "code": "Europe/Berlin",
+        "name": "(GMT+01:00) Berlin"
+    },
+    {
+        "code": "Europe/Brussels",
+        "name": "(GMT+01:00) Brussels"
+    },
+    {
+        "code": "Europe/Budapest",
+        "name": "(GMT+01:00) Budapest"
+    },
+    {
+        "code": "Europe/Copenhagen",
+        "name": "(GMT+01:00) Copenhagen"
+    },
+    {
+        "code": "Europe/Gibraltar",
+        "name": "(GMT+01:00) Gibraltar"
+    },
+    {
+        "code": "Europe/Luxembourg",
+        "name": "(GMT+01:00) Luxembourg"
+    },
+    {
+        "code": "Europe/Madrid",
+        "name": "(GMT+01:00) Madrid"
+    },
+    {
+        "code": "Europe/Malta",
+        "name": "(GMT+01:00) Malta"
+    },
+    {
+        "code": "Europe/Monaco",
+        "name": "(GMT+01:00) Monaco"
+    },
+    {
+        "code": "Europe/Oslo",
+        "name": "(GMT+01:00) Oslo"
+    },
+    {
+        "code": "Europe/Paris",
+        "name": "(GMT+01:00) Paris"
+    },
+    {
+        "code": "Europe/Prague",
+        "name": "(GMT+01:00) Prague"
+    },
+    {
+        "code": "Europe/Rome",
+        "name": "(GMT+01:00) Rome"
+    },
+    {
+        "code": "Europe/Stockholm",
+        "name": "(GMT+01:00) Stockholm"
+    },
+    {
+        "code": "Europe/Tirane",
+        "name": "(GMT+01:00) Tirane"
+    },
+    {
+        "code": "Europe/Vienna",
+        "name": "(GMT+01:00) Vienna"
+    },
+    {
+        "code": "Europe/Warsaw",
+        "name": "(GMT+01:00) Warsaw"
+    },
+    {
+        "code": "Europe/Zurich",
+        "name": "(GMT+01:00) Zurich"
+    },
+    {
+        "code": "Africa/Cairo",
+        "name": "(GMT+02:00) Cairo"
+    },
+    {
+        "code": "Africa/Johannesburg",
+        "name": "(GMT+02:00) Johannesburg"
+    },
+    {
+        "code": "Africa/Maputo",
+        "name": "(GMT+02:00) Maputo"
+    },
+    {
+        "code": "Africa/Tripoli",
+        "name": "(GMT+02:00) Tripoli"
+    },
+    {
+        "code": "Asia/Amman",
+        "name": "(GMT+02:00) Amman"
+    },
+    {
+        "code": "Asia/Beirut",
+        "name": "(GMT+02:00) Beirut"
+    },
+    {
+        "code": "Asia/Damascus",
+        "name": "(GMT+02:00) Damascus"
+    },
+    {
+        "code": "Asia/Gaza",
+        "name": "(GMT+02:00) Gaza"
+    },
+    {
+        "code": "Asia/Jerusalem",
+        "name": "(GMT+02:00) Jerusalem"
+    },
+    {
+        "code": "Asia/Nicosia",
+        "name": "(GMT+02:00) Nicosia"
+    },
+    {
+        "code": "Europe/Athens",
+        "name": "(GMT+02:00) Athens"
+    },
+    {
+        "code": "Europe/Bucharest",
+        "name": "(GMT+02:00) Bucharest"
+    },
+    {
+        "code": "Europe/Chisinau",
+        "name": "(GMT+02:00) Chisinau"
+    },
+    {
+        "code": "Europe/Helsinki",
+        "name": "(GMT+02:00) Helsinki"
+    },
+    {
+        "code": "Europe/Istanbul",
+        "name": "(GMT+02:00) Istanbul"
+    },
+    {
+        "code": "Europe/Kaliningrad",
+        "name": "(GMT+02:00) Kaliningrad"
+    },
+    {
+        "code": "Europe/Kiev",
+        "name": "(GMT+02:00) Kyiv"
+    },
+    {
+        "code": "Europe/Riga",
+        "name": "(GMT+02:00) Riga"
+    },
+    {
+        "code": "Europe/Sofia",
+        "name": "(GMT+02:00) Sofia"
+    },
+    {
+        "code": "Europe/Tallinn",
+        "name": "(GMT+02:00) Tallinn"
+    },
+    {
+        "code": "Europe/Vilnius",
+        "name": "(GMT+02:00) Vilnius"
+    },
+    {
+        "code": "Africa/Khartoum",
+        "name": "(GMT+03:00) Khartoum"
+    },
+    {
+        "code": "Africa/Nairobi",
+        "name": "(GMT+03:00) Nairobi"
+    },
+    {
+        "code": "Antarctica/Syowa",
+        "name": "(GMT+03:00) Syowa"
+    },
+    {
+        "code": "Asia/Baghdad",
+        "name": "(GMT+03:00) Baghdad"
+    },
+    {
+        "code": "Asia/Qatar",
+        "name": "(GMT+03:00) Qatar"
+    },
+    {
+        "code": "Asia/Riyadh",
+        "name": "(GMT+03:00) Riyadh"
+    },
+    {
+        "code": "Europe/Minsk",
+        "name": "(GMT+03:00) Minsk"
+    },
+    {
+        "code": "Europe/Moscow",
+        "name": "(GMT+03:00) Moscow"
+    },
+    {
+        "code": "Asia/Tehran",
+        "name": "(GMT+03:30) Tehran"
+    },
+    {
+        "code": "Asia/Baku",
+        "name": "(GMT+04:00) Baku"
+    },
+    {
+        "code": "Asia/Dubai",
+        "name": "(GMT+04:00) Dubai"
+    },
+    {
+        "code": "Asia/Tbilisi",
+        "name": "(GMT+04:00) Tbilisi"
+    },
+    {
+        "code": "Asia/Yerevan",
+        "name": "(GMT+04:00) Yerevan"
+    },
+    {
+        "code": "Europe/Samara",
+        "name": "(GMT+04:00) Samara"
+    },
+    {
+        "code": "Indian/Mahe",
+        "name": "(GMT+04:00) Mahe"
+    },
+    {
+        "code": "Indian/Mauritius",
+        "name": "(GMT+04:00) Mauritius"
+    },
+    {
+        "code": "Indian/Reunion",
+        "name": "(GMT+04:00) Reunion"
+    },
+    {
+        "code": "Asia/Kabul",
+        "name": "(GMT+04:30) Kabul"
+    },
+    {
+        "code": "Antarctica/Mawson",
+        "name": "(GMT+05:00) Mawson"
+    },
+    {
+        "code": "Asia/Aqtau",
+        "name": "(GMT+05:00) Aqtau"
+    },
+    {
+        "code": "Asia/Aqtobe",
+        "name": "(GMT+05:00) Aqtobe"
+    },
+    {
+        "code": "Asia/Ashgabat",
+        "name": "(GMT+05:00) Ashgabat"
+    },
+    {
+        "code": "Asia/Dushanbe",
+        "name": "(GMT+05:00) Dushanbe"
+    },
+    {
+        "code": "Asia/Karachi",
+        "name": "(GMT+05:00) Karachi"
+    },
+    {
+        "code": "Asia/Tashkent",
+        "name": "(GMT+05:00) Tashkent"
+    },
+    {
+        "code": "Asia/Yekaterinburg",
+        "name": "(GMT+05:00) Yekaterinburg"
+    },
+    {
+        "code": "Indian/Kerguelen",
+        "name": "(GMT+05:00) Kerguelen"
+    },
+    {
+        "code": "Indian/Maldives",
+        "name": "(GMT+05:00) Maldives"
+    },
+    {
+        "code": "Asia/Calcutta",
+        "name": "(GMT+05:30) India Standard Time"
+    },
+    {
+        "code": "Asia/Colombo",
+        "name": "(GMT+05:30) Colombo"
+    },
+    {
+        "code": "Asia/Katmandu",
+        "name": "(GMT+05:45) Katmandu"
+    },
+    {
+        "code": "Antarctica/Vostok",
+        "name": "(GMT+06:00) Vostok"
+    },
+    {
+        "code": "Asia/Almaty",
+        "name": "(GMT+06:00) Almaty"
+    },
+    {
+        "code": "Asia/Bishkek",
+        "name": "(GMT+06:00) Bishkek"
+    },
+    {
+        "code": "Asia/Dhaka",
+        "name": "(GMT+06:00) Dhaka"
+    },
+    {
+        "code": "Asia/Omsk",
+        "name": "(GMT+06:00) Omsk, Novosibirsk"
+    },
+    {
+        "code": "Asia/Thimphu",
+        "name": "(GMT+06:00) Thimphu"
+    },
+    {
+        "code": "Indian/Chagos",
+        "name": "(GMT+06:00) Chagos"
+    },
+    {
+        "code": "Asia/Rangoon",
+        "name": "(GMT+06:30) Rangoon"
+    },
+    {
+        "code": "Indian/Cocos",
+        "name": "(GMT+06:30) Cocos"
+    },
+    {
+        "code": "Antarctica/Davis",
+        "name": "(GMT+07:00) Davis"
+    },
+    {
+        "code": "Asia/Bangkok",
+        "name": "(GMT+07:00) Bangkok"
+    },
+    {
+        "code": "Asia/Hovd",
+        "name": "(GMT+07:00) Hovd"
+    },
+    {
+        "code": "Asia/Jakarta",
+        "name": "(GMT+07:00) Jakarta"
+    },
+    {
+        "code": "Asia/Krasnoyarsk",
+        "name": "(GMT+07:00) Krasnoyarsk"
+    },
+    {
+        "code": "Asia/Saigon",
+        "name": "(GMT+07:00) Hanoi"
+    },
+    {
+        "code": "Asia/Ho_Chi_Minh",
+        "name": "(GMT+07:00) Ho Chi Minh"
+    },
+    {
+        "code": "Indian/Christmas",
+        "name": "(GMT+07:00) Christmas"
+    },
+    {
+        "code": "Antarctica/Casey",
+        "name": "(GMT+08:00) Casey"
+    },
+    {
+        "code": "Asia/Brunei",
+        "name": "(GMT+08:00) Brunei"
+    },
+    {
+        "code": "Asia/Choibalsan",
+        "name": "(GMT+08:00) Choibalsan"
+    },
+    {
+        "code": "Asia/Hong_Kong",
+        "name": "(GMT+08:00) Hong Kong"
+    },
+    {
+        "code": "Asia/Irkutsk",
+        "name": "(GMT+08:00) Irkutsk"
+    },
+    {
+        "code": "Asia/Kuala_Lumpur",
+        "name": "(GMT+08:00) Kuala Lumpur"
+    },
+    {
+        "code": "Asia/Macau",
+        "name": "(GMT+08:00) Macau"
+    },
+    {
+        "code": "Asia/Makassar",
+        "name": "(GMT+08:00) Makassar"
+    },
+    {
+        "code": "Asia/Manila",
+        "name": "(GMT+08:00) Manila"
+    },
+    {
+        "code": "Asia/Shanghai",
+        "name": "(GMT+08:00) Beijing"
+    },
+    {
+        "code": "Asia/Singapore",
+        "name": "(GMT+08:00) Singapore"
+    },
+    {
+        "code": "Asia/Taipei",
+        "name": "(GMT+08:00) Taipei"
+    },
+    {
+        "code": "Asia/Ulaanbaatar",
+        "name": "(GMT+08:00) Ulaanbaatar"
+    },
+    {
+        "code": "Australia/Perth",
+        "name": "(GMT+08:00) Western Time - Perth"
+    },
+    {
+        "code": "Asia/Pyongyang",
+        "name": "(GMT+08:30) Pyongyang"
+    },
+    {
+        "code": "Asia/Dili",
+        "name": "(GMT+09:00) Dili"
+    },
+    {
+        "code": "Asia/Jayapura",
+        "name": "(GMT+09:00) Jayapura"
+    },
+    {
+        "code": "Asia/Seoul",
+        "name": "(GMT+09:00) Seoul"
+    },
+    {
+        "code": "Asia/Tokyo",
+        "name": "(GMT+09:00) Tokyo"
+    },
+    {
+        "code": "Asia/Yakutsk",
+        "name": "(GMT+09:00) Yakutsk"
+    },
+    {
+        "code": "Pacific/Palau",
+        "name": "(GMT+09:00) Palau"
+    },
+    {
+        "code": "Australia/Adelaide",
+        "name": "(GMT+10:30) Central Time - Adelaide"
+    },
+    {
+        "code": "Australia/Darwin",
+        "name": "(GMT+09:30) Central Time - Darwin"
+    },
+    {
+        "code": "Antarctica/DumontDUrville",
+        "name": "(GMT+10:00) Dumont D'Urville"
+    },
+    {
+        "code": "Asia/Magadan",
+        "name": "(GMT+10:00) Magadan"
+    },
+    {
+        "code": "Asia/Vladivostok",
+        "name": "(GMT+10:00) Yuzhno-Sakhalinsk"
+    },
+    {
+        "code": "Australia/Brisbane",
+        "name": "(GMT+10:00) Eastern Time - Brisbane"
+    },
+    {
+        "code": "Australia/Hobart",
+        "name": "(GMT+11:00) Hobart"
+    },
+    {
+        "code": "Australia/Sydney",
+        "name": "(GMT+11:00) Melbourne, Sydney"
+    },
+    {
+        "code": "Pacific/Chuuk",
+        "name": "(GMT+10:00) Truk"
+    },
+    {
+        "code": "Pacific/Guam",
+        "name": "(GMT+10:00) Guam"
+    },
+    {
+        "code": "Pacific/Port_Moresby",
+        "name": "(GMT+10:00) Port Moresby"
+    },
+    {
+        "code": "Pacific/Efate",
+        "name": "(GMT+11:00) Efate"
+    },
+    {
+        "code": "Pacific/Guadalcanal",
+        "name": "(GMT+11:00) Guadalcanal"
+    },
+    {
+        "code": "Pacific/Kosrae",
+        "name": "(GMT+11:00) Kosrae"
+    },
+    {
+        "code": "Pacific/Norfolk",
+        "name": "(GMT+11:00) Norfolk"
+    },
+    {
+        "code": "Pacific/Noumea",
+        "name": "(GMT+11:00) Noumea"
+    },
+    {
+        "code": "Pacific/Pohnpei",
+        "name": "(GMT+11:00) Ponape"
+    },
+    {
+        "code": "Asia/Kamchatka",
+        "name": "(GMT+12:00) Petropavlovsk-Kamchatskiy"
+    },
+    {
+        "code": "Pacific/Auckland",
+        "name": "(GMT+13:00) Auckland"
+    },
+    {
+        "code": "Pacific/Fiji",
+        "name": "(GMT+13:00) Fiji"
+    },
+    {
+        "code": "Pacific/Funafuti",
+        "name": "(GMT+12:00) Funafuti"
+    },
+    {
+        "code": "Pacific/Kwajalein",
+        "name": "(GMT+12:00) Kwajalein"
+    },
+    {
+        "code": "Pacific/Majuro",
+        "name": "(GMT+12:00) Majuro"
+    },
+    {
+        "code": "Pacific/Nauru",
+        "name": "(GMT+12:00) Nauru"
+    },
+    {
+        "code": "Pacific/Tarawa",
+        "name": "(GMT+12:00) Tarawa"
+    },
+    {
+        "code": "Pacific/Wake",
+        "name": "(GMT+12:00) Wake"
+    },
+    {
+        "code": "Pacific/Wallis",
+        "name": "(GMT+12:00) Wallis"
+    },
+    {
+        "code": "Pacific/Apia",
+        "name": "(GMT+14:00) Apia"
+    },
+    {
+        "code": "Pacific/Enderbury",
+        "name": "(GMT+13:00) Enderbury"
+    },
+    {
+        "code": "Pacific/Fakaofo",
+        "name": "(GMT+13:00) Fakaofo"
+    },
+    {
+        "code": "Pacific/Tongatapu",
+        "name": "(GMT+13:00) Tongatapu"
+    },
+    {
+        "code": "Pacific/Kiritimati",
+        "name": "(GMT+14:00) Kiritimati"
+    }
+]

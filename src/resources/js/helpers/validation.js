@@ -19,27 +19,27 @@ export function validate(name, value, params) {
         switch (param) {
             case REQUIRE:
                 pattern = /^.{2,}$/;
-                error = 'Помилка зі значенням %value%, мінімально 2 символів.';
+                error = 'Помилка, мінімально 2 символів.';
                 break;
             case STRING:
                 pattern = /^[a-zA-Zа-яА-Я]+$/;
-                error = 'Помилка зі значенням %value%, повинно бути строкою.';
+                error = 'Помилка, повинно бути строкою.';
                 break;
             case CONTENT:
                 pattern = /.*/;
-                error = 'Помилка зі значенням %value%, повинно бути контентом.';
+                error = 'Помилка, повинно бути контентом.';
                 break;
             case URL:
                 pattern = /^[a-zA-Z0-9_-]+$/;
-                error = 'Помилка зі значенням %value%, повинно бути url\'ом.';
+                error = 'Помилка, повинно бути url\'ом.';
                 break;
             case INTEGER:
                 pattern = /^\d+$/;
-                error = 'Помилка зі значенням %value%, повинно бути номером.';
+                error = 'Помилка, повинно бути номером.';
                 break;
             case EMAIL:
                 pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                error = 'Помилка зі значенням %value%, повинно бути номером email\'oм.';
+                error = 'Помилка, повинно бути номером email\'oм.';
                 break;
             default:
                 pattern = /^.{6,}$/;
@@ -47,9 +47,6 @@ export function validate(name, value, params) {
         }
 
         if (!pattern.test(value)) {
-            error = error.replace('%name%', name);
-            error = error.replace('%value%', value);
-
             errors.push(error)
         }
     });

@@ -16,16 +16,16 @@ class ShowCreate extends React.Component {
         super(props);
 
         this.state = {
-            step: 4,
+            step: 5,
             show: {
                 id: null,
                 title: '',
                 description: '',
                 artwork: null,
                 format: 'episodic',
-                timezone: null,
-                language: null,
-                explicit: null,
+                timezone: 'Etc/GMT',
+                language: 'en',
+                explicit: false,
                 category: null,
                 tags: null,
                 author: null,
@@ -54,11 +54,13 @@ class ShowCreate extends React.Component {
     }
 
     handleChangeInput(event) {
-        event.preventDefault();
-
         let input = event.target.name;
         let value = event.target.value;
         let state = Object.assign({}, this.state);
+
+        if (input === 'explicit') {
+            value = !this.state.show.explicit;
+        }
 
         state.show[input] = value;
 
@@ -68,7 +70,7 @@ class ShowCreate extends React.Component {
     handleSubmitForm(event) {
         event.preventDefault();
 
-        if (!this.formValid(this.state.show, this.state.step)) {
+        if (!this.validForm()) {
             return;
         }
 
@@ -98,6 +100,10 @@ class ShowCreate extends React.Component {
     handleNextStep(event) {
         event.preventDefault();
 
+        if (!this.validStep()) {
+            return;
+        }
+
         this.setState({
             step: this.state.step + 1
         })
@@ -112,7 +118,7 @@ class ShowCreate extends React.Component {
     }
 
     // TODO need code
-    validForm(data) {
+    validForm() {
         // for (const [key, value] of Object.entries(data)) {
         //     if (rules.hasOwnProperty(key)) {
         //         let valid = validate(key, value, rules[key]);
@@ -125,7 +131,7 @@ class ShowCreate extends React.Component {
     }
 
     // TODO need code
-    validStep(data) {
+    validStep() {
         let step = this.state.step;
 
         // for (const [key, value] of Object.entries(data)) {
@@ -140,14 +146,21 @@ class ShowCreate extends React.Component {
     }
 
     render() {
+        console.log(this.state.show);
         return (
             <>
                 <div className="container">
                     <div className="card card-custom">
                         <div className="card-body p-0">
-                            <div className="wizard wizard-3" id="kt_wizard_v3" data-wizard-state="step-first"
-                                 data-wizard-clickable="true">
+                            <div className="wizard wizard-3" id="kt_wizard_v3" data-wizard-state="step-first" data-wizard-clickable="true">
                                 <Navigation step={this.state.step}/>
+
+                                <div className="row justify-content-center">
+                                    <div className="alert alert-warning">
+                                        Add information about your show.
+                                        Don't worry! You can always edit your show settings later.
+                                    </div>
+                                </div>
 
                                 <div className="row justify-content-center py-10 px-8 py-lg-12 px-lg-10">
                                     <div className="col-xl-12 col-xxl-7">

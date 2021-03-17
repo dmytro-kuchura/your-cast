@@ -32,8 +32,8 @@ class StepThird extends React.Component {
                                         <span className="radio">
                                             <input type="radio"
                                                    value="episodic"
-                                                   name="type"
-                                                   defaultChecked={true}
+                                                   name="format"
+                                                   checked={this.state.show.format === 'episodic'}
                                                    onChange={this.props.handleChangeInput}/>
                                             <span></span>
                                         </span>
@@ -56,7 +56,8 @@ class StepThird extends React.Component {
                                         <span className="radio">
                                             <input type="radio"
                                                    value="serial"
-                                                   name="type"
+                                                   name="format"
+                                                   checked={this.state.show.format === 'serial'}
                                                    onChange={this.props.handleChangeInput}/>
                                             <span></span>
                                         </span>

@@ -1,0 +1,476 @@
+[
+    {
+        "code": "arts",
+        "name": "Arts",
+        "children": [
+            {
+                "code": "books",
+                "name": "books"
+            },
+            {
+                "code": "design",
+                "name": "design"
+            },
+            {
+                "code": "fashion_and_beauty",
+                "name": "fashion_and_beauty"
+            },
+            {
+                "code": "food",
+                "name": "food"
+            },
+            {
+                "code": "performing_arts",
+                "name": "performing_arts"
+            },
+            {
+                "code": "visual_arts",
+                "name": "visual_arts"
+            }
+        ]
+    },
+    {
+        "code": "business",
+        "name": "business",
+        "children": [
+            {
+                "code": "careers",
+                "name": "careers"
+            },
+            {
+                "code": "entrepreneurship",
+                "name": "entrepreneurship"
+            },
+            {
+                "code": "investing",
+                "name": "investing"
+            },
+            {
+                "code": "management",
+                "name": "management"
+            },
+            {
+                "code": "marketing",
+                "name": "marketing"
+            },
+            {
+                "code": "non_profit",
+                "name": "non_profit"
+            }
+        ]
+    },
+    {
+        "code": "comedy",
+        "name": "comedy",
+        "children": [
+            {
+                "code": "comedy_interviews",
+                "name": "comedy_interviews"
+            },
+            {
+                "code": "improv",
+                "name": "improv"
+            },
+            {
+                "code": "stand_up",
+                "name": "stand_up"
+            }
+        ]
+    },
+    {
+        "code": "education",
+        "name": "education",
+        "children": [
+            {
+                "code": "courses",
+                "name": "courses"
+            },
+            {
+                "code": "how_to",
+                "name": "how_to"
+            },
+            {
+                "code": "language_learning",
+                "name": "language_learning"
+            },
+            {
+                "code": "self_improvement",
+                "name": "self_improvement"
+            }
+        ]
+    },
+    {
+        "code": "fiction",
+        "name": "fiction",
+        "children": [
+            {
+                "code": "courses",
+                "name": "courses"
+            },
+            {
+                "code": "how_to",
+                "name": "how_to"
+            },
+            {
+                "code": "language_learning",
+                "name": "language_learning"
+            },
+            {
+                "code": "self_improvement",
+                "name": "self_improvement"
+            }
+        ]
+    },
+    {
+        "code": "government",
+        "name": "government"
+    },
+    {
+        "code": "health_and_fitness",
+        "name": "health_and_fitness",
+        "children": [
+            {
+                "code": "alternative_health",
+                "name": "alternative_health"
+            },
+            {
+                "code": "fitness",
+                "name": "fitness"
+            },
+            {
+                "code": "medicine",
+                "name": "medicine"
+            },
+            {
+                "code": "mental_health",
+                "name": "mental_health"
+            },
+            {
+                "code": "nutrition",
+                "name": "nutrition"
+            },
+            {
+                "code": "sexuality",
+                "name": "sexuality"
+            }
+        ]
+    },
+    {
+        "code": "history",
+        "name": "history"
+    },
+    {
+        "code": "kids_and_family",
+        "name": "kids_and_family",
+        "children": [
+            {
+                "code": "education_for_kids",
+                "name": "education_for_kids"
+            },
+            {
+                "code": "parenting",
+                "name": "parenting"
+            },
+            {
+                "code": "pets_and_animals",
+                "name": "pets_and_animals"
+            },
+            {
+                "code": "stories_for_kids",
+                "name": "stories_for_kids"
+            }
+        ]
+    },
+    {
+        "code": "leisure",
+        "name": "leisure",
+        "children": [
+            {
+                "code": "animation_and_manga",
+                "name": "animation_and_manga"
+            },
+            {
+                "code": "automotive",
+                "name": "automotive"
+            },
+            {
+                "code": "aviation",
+                "name": "aviation"
+            },
+            {
+                "code": "crafts",
+                "name": "crafts"
+            },
+            {
+                "code": "games",
+                "name": "games"
+            },
+            {
+                "code": "hobbies",
+                "name": "hobbies"
+            },
+            {
+                "code": "home_and_garden",
+                "name": "home_and_garden"
+            },
+            {
+                "code": "other_games",
+                "name": "other_games"
+            },
+            {
+                "code": "video_games",
+                "name": "video_games"
+            }
+        ]
+    },
+    {
+        "code": "music",
+        "name": "music",
+        "children": [
+            {
+                "code": "music_commentary",
+                "name": "music_commentary"
+            },
+            {
+                "code": "music_history",
+                "name": "music_history"
+            },
+            {
+                "code": "music_interviews",
+                "name": "music_interviews"
+            }
+        ]
+    },
+    {
+        "code": "news",
+        "name": "news",
+        "children": [
+            {
+                "code": "business_news",
+                "name": "business_news"
+            },
+            {
+                "code": "daily_news",
+                "name": "daily_news"
+            },
+            {
+                "code": "entertainment_news",
+                "name": "entertainment_news"
+            },
+            {
+                "code": "news_commentary",
+                "name": "news_commentary"
+            },
+            {
+                "code": "politics",
+                "name": "politics"
+            },
+            {
+                "code": "sports_news",
+                "name": "sports_news"
+            },
+            {
+                "code": "tech_news",
+                "name": "tech_news"
+            }
+        ]
+    },
+    {
+        "code": "religion_and_spirituality",
+        "name": "religion_and_spirituality",
+        "children": [
+            {
+                "code": "buddhism",
+                "name": "buddhism"
+            },
+            {
+                "code": "christianity",
+                "name": "christianity"
+            },
+            {
+                "code": "hinduism",
+                "name": "hinduism"
+            },
+            {
+                "code": "islam",
+                "name": "islam"
+            },
+            {
+                "code": "judaism",
+                "name": "judaism"
+            },
+            {
+                "code": "religion",
+                "name": "religion"
+            },
+            {
+                "code": "spirituality",
+                "name": "spirituality"
+            }
+        ]
+    },
+    {
+        "code": "science",
+        "name": "science",
+        "children": [
+            {
+                "code": "astronomy",
+                "name": "astronomy"
+            },
+            {
+                "code": "chemistry",
+                "name": "chemistry"
+            },
+            {
+                "code": "earth_sciences",
+                "name": "earth_sciences"
+            },
+            {
+                "code": "life_sciences",
+                "name": "life_sciences"
+            },
+            {
+                "code": "mathematics",
+                "name": "mathematics"
+            },
+            {
+                "code": "nature",
+                "name": "nature"
+            },
+            {
+                "code": "natural_sciences",
+                "name": "natural_sciences"
+            },
+            {
+                "code": "physics",
+                "name": "physics"
+            },
+            {
+                "code": "social_sciences",
+                "name": "social_sciences"
+            }
+        ]
+    },
+    {
+        "code": "society_and_culture",
+        "name": "society_and_culture",
+        "children": [
+            {
+                "code": "documentary",
+                "name": "documentary"
+            },
+            {
+                "code": "personal_journals",
+                "name": "personal_journals"
+            },
+            {
+                "code": "philosophy",
+                "name": "philosophy"
+            },
+            {
+                "code": "places_and_travel",
+                "name": "places_and_travel"
+            },
+            {
+                "code": "relationships",
+                "name": "relationships"
+            }
+        ]
+    },
+    {
+        "code": "sports",
+        "name": "sports",
+        "children": [
+            {
+                "code": "baseball",
+                "name": "baseball"
+            },
+            {
+                "code": "basketball",
+                "name": "basketball"
+            },
+            {
+                "code": "cricket",
+                "name": "cricket"
+            },
+            {
+                "code": "fantasy_sports",
+                "name": "fantasy_sports"
+            },
+            {
+                "code": "football",
+                "name": "football"
+            },
+            {
+                "code": "golf",
+                "name": "golf"
+            },
+            {
+                "code": "hockey",
+                "name": "hockey"
+            },
+            {
+                "code": "rugby",
+                "name": "rugby"
+            },
+            {
+                "code": "running",
+                "name": "running"
+            },
+            {
+                "code": "soccer",
+                "name": "soccer"
+            },
+            {
+                "code": "swimming",
+                "name": "swimming"
+            },
+            {
+                "code": "tennis",
+                "name": "tennis"
+            },
+            {
+                "code": "volleyball",
+                "name": "volleyball"
+            },
+            {
+                "code": "wrestling",
+                "name": "wrestling"
+            }
+        ]
+    },
+    {
+        "code": "tv_and_film",
+        "name": "tv_and_film",
+        "children": [
+            {
+                "code": "after_shows",
+                "name": "after_shows"
+            },
+            {
+                "code": "film_history",
+                "name": "film_history"
+            },
+            {
+                "code": "film_interviews",
+                "name": "film_interviews"
+            },
+            {
+                "code": "film_reviews",
+                "name": "film_reviews"
+            },
+            {
+                "code": "tv_reviews",
+                "name": "tv_reviews"
+            }
+        ]
+    },
+    {
+        "code": "technology",
+        "name": "technology"
+    },
+    {
+        "code": "true_crime",
+        "name": "true_crime"
+    }
+]

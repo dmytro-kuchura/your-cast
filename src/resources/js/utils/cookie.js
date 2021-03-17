@@ -9,6 +9,7 @@ export function setCookie(name, value, options = {}) {
     options = {
         path: '/',
         'max-age': 14400,
+        'samesite': 'Lax',
         ...options
     };
 
