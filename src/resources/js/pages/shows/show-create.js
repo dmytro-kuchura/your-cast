@@ -10,13 +10,15 @@ import StepFifth from './create/step-fifth';
 import StepSixth from './create/step-sixth';
 import {createShow} from '../../services/show-service';
 import {uploadImage} from '../../services/upload-service';
+import {validate} from '../../helpers/validation';
+import {notification} from '../../utils/noty';
 
 class ShowCreate extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            step: 5,
+            step: 1,
             show: {
                 id: null,
                 title: '',
@@ -110,6 +112,7 @@ class ShowCreate extends React.Component {
         event.preventDefault();
 
         if (!this.validStep()) {
+            notification('Some fields is not valid!', 'error')
             return;
         }
 
@@ -139,29 +142,59 @@ class ShowCreate extends React.Component {
         return true;
     }
 
-    // TODO need code
     validStep() {
+        let show = this.state.show;
         let step = this.state.step;
+        let rules = {};
 
-        // for (const [key, value] of Object.entries(data)) {
-        //     if (rules.hasOwnProperty(key)) {
-        //         let valid = validate(key, value, rules[key]);
-        //
-        //         return valid === undefined || valid === null;
-        //     }
-        // }
+        switch (step) {
+            case 1:
+                rules = {
+                    'title': ['required'],
+                    'description': ['string', 'nullable'],
+                };
+                break;
+            case 5:
+                rules = {
+                    'category': ['required'],
+                };
+                break;
+            case 6:
+                rules = {
+                    'author': ['string', 'required'],
+                    'podcast_owner': ['string', 'required'],
+                    'email_owner': ['email', 'required'],
+                    'copyright': ['string', 'required'],
+                };
+                break;
+            default:
+                rules = {};
+                break;
+        }
+
+        if (Object.keys(rules).length === 0) {
+            return true;
+        }
+
+        for (const [key, value] of Object.entries(show)) {
+            if (rules.hasOwnProperty(key)) {
+                let valid = validate(key, value, rules[key]);
+
+                return valid === undefined || valid === null;
+            }
+        }
 
         return true;
     }
 
     render() {
-        console.log(this.state.show)
         return (
             <>
                 <div className="container">
                     <div className="card card-custom">
                         <div className="card-body p-0">
-                            <div className="wizard wizard-3" id="kt_wizard_v3" data-wizard-state="step-first" data-wizard-clickable="true">
+                            <div className="wizard wizard-3" id="kt_wizard_v3" data-wizard-state="step-first"
+                                 data-wizard-clickable="true">
                                 <Navigation step={this.state.step}/>
 
                                 <div className="row justify-content-center">

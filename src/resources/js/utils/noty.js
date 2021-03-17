@@ -1,5 +1,9 @@
 import Noty from 'noty';
 
-new Noty({
-    text: 'Some notification text',
-}).show();
+export function notification(text, type = 'info') {
+    return new Noty({
+        text: text,
+        type: type,
+    }).show();
+}
+
