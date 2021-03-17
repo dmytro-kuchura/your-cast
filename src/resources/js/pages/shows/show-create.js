@@ -82,11 +82,13 @@ class ShowCreate extends React.Component {
         event.preventDefault();
 
         if (!this.validForm()) {
+            notification('This form is not valid!', 'error');
             return;
         }
 
         this.props.dispatch(createShow(this.state.show))
             .catch(error => {
+                notification('Something went wrong!', 'error');
                 console.log(error);
             })
     }
@@ -112,7 +114,7 @@ class ShowCreate extends React.Component {
         event.preventDefault();
 
         if (!this.validStep()) {
-            notification('Some fields is not valid!', 'error')
+            notification('Some fields is not valid!', 'error');
             return;
         }
 
@@ -129,15 +131,25 @@ class ShowCreate extends React.Component {
         })
     }
 
-    // TODO need code
     validForm() {
-        // for (const [key, value] of Object.entries(data)) {
-        //     if (rules.hasOwnProperty(key)) {
-        //         let valid = validate(key, value, rules[key]);
-        //
-        //         return valid === undefined || valid === null;
-        //     }
-        // }
+        let show = this.state.show;
+        let rules = {
+            'title': ['required'],
+            'description': ['string', 'nullable'],
+            'category': ['required'],
+            'author': ['string', 'required'],
+            'podcast_owner': ['string', 'required'],
+            'email_owner': ['email', 'required'],
+            'copyright': ['string', 'required'],
+        };
+
+        for (const [key, value] of Object.entries(show)) {
+            if (rules.hasOwnProperty(key)) {
+                let valid = validate(key, value, rules[key]);
+
+                return valid === undefined || valid === null;
+            }
+        }
 
         return true;
     }
