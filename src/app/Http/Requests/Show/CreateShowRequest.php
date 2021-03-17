@@ -29,6 +29,11 @@ class CreateShowRequest extends FormRequest
         return [
             'title' => 'string|min:2|required',
             'description' => 'string|required',
+            'category' => 'string|required',
+            'author' => 'string|required',
+            'podcast_owner' => 'string|required',
+            'email_owner' => 'email|required',
+            'copyright' => 'string|required',
         ];
     }
 

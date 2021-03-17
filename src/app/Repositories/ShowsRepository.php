@@ -23,6 +23,17 @@ class ShowsRepository implements Repository
         $model->user_id = $data['user_id'];
         $model->title = $data['title'];
         $model->description = $data['description'];
+        $model->artwork = $data['artwork'];
+        $model->format = $data['format'];
+        $model->timezone = $data['timezone'];
+        $model->language = $data['language'];
+        $model->explicit = $data['explicit'];
+        $model->category = $data['category'];
+        $model->tags = $data['tags'];
+        $model->author = $data['author'];
+        $model->podcast_owner = $data['podcast_owner'];
+        $model->email_owner = $data['email_owner'];
+        $model->copyright = $data['copyright'];
 
         $model->save();
 

@@ -6251,10 +6251,12 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
       event.preventDefault();
 
       if (!this.validForm()) {
+        (0,_utils_noty__WEBPACK_IMPORTED_MODULE_13__.notification)('This form is not valid!', 'error');
         return;
       }
 
       this.props.dispatch((0,_services_show_service__WEBPACK_IMPORTED_MODULE_10__.createShow)(this.state.show))["catch"](function (error) {
+        (0,_utils_noty__WEBPACK_IMPORTED_MODULE_13__.notification)('Something went wrong!', 'error');
         console.log(error);
       });
     }
@@ -6294,18 +6296,32 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
       this.setState({
         step: this.state.step - 1
       });
-    } // TODO need code
-
+    }
   }, {
     key: "validForm",
     value: function validForm() {
-      // for (const [key, value] of Object.entries(data)) {
-      //     if (rules.hasOwnProperty(key)) {
-      //         let valid = validate(key, value, rules[key]);
-      //
-      //         return valid === undefined || valid === null;
-      //     }
-      // }
+      var show = this.state.show;
+      var rules = {
+        'title': ['required'],
+        'description': ['string', 'nullable'],
+        'category': ['required'],
+        'author': ['string', 'required'],
+        'podcast_owner': ['string', 'required'],
+        'email_owner': ['email', 'required'],
+        'copyright': ['string', 'required']
+      };
+
+      for (var _i = 0, _Object$entries = Object.entries(show); _i < _Object$entries.length; _i++) {
+        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+            key = _Object$entries$_i[0],
+            value = _Object$entries$_i[1];
+
+        if (rules.hasOwnProperty(key)) {
+          var valid = (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_12__.validate)(key, value, rules[key]);
+          return valid === undefined || valid === null;
+        }
+      }
+
       return true;
     }
   }, {
@@ -6347,10 +6363,10 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
         return true;
       }
 
-      for (var _i = 0, _Object$entries = Object.entries(show); _i < _Object$entries.length; _i++) {
-        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-            key = _Object$entries$_i[0],
-            value = _Object$entries$_i[1];
+      for (var _i2 = 0, _Object$entries2 = Object.entries(show); _i2 < _Object$entries2.length; _i2++) {
+        var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+            key = _Object$entries2$_i[0],
+            value = _Object$entries2$_i[1];
 
         if (rules.hasOwnProperty(key)) {
           var valid = (0,_helpers_validation__WEBPACK_IMPORTED_MODULE_12__.validate)(key, value, rules[key]);
