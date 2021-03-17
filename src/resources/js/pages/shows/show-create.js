@@ -56,6 +56,13 @@ class ShowCreate extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.setState({
+            step: 1,
+            show: {}
+        })
+    }
+
     handleChangeInput(event) {
         let input = event.target.name;
         let value = event.target.value;
@@ -81,12 +88,18 @@ class ShowCreate extends React.Component {
     handleSubmitForm(event) {
         event.preventDefault();
 
+        const self = this;
+
         if (!this.validForm()) {
             notification('This form is not valid!', 'error');
             return;
         }
 
         this.props.dispatch(createShow(this.state.show))
+            .then(success => {
+                notification('Good you show created!', 'success');
+                self.props.history.push('/show/' + success.id);
+            })
             .catch(error => {
                 notification('Something went wrong!', 'error');
                 console.log(error);

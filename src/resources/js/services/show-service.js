@@ -9,7 +9,7 @@ export function createShow(data) {
             Http.post(link, data)
                 .then(response => {
                     dispatch(action.createShow(response.data.show));
-                    return resolve();
+                    return resolve(response.data.show);
                 })
                 .catch(err => {
                     const statusCode = err.response.status;

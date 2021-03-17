@@ -6225,6 +6225,14 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.setState({
+        step: 1,
+        show: {}
+      });
+    }
+  }, {
     key: "handleChangeInput",
     value: function handleChangeInput(event) {
       var input = event.target.name;
@@ -6249,13 +6257,17 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmitForm",
     value: function handleSubmitForm(event) {
       event.preventDefault();
+      var self = this;
 
       if (!this.validForm()) {
         (0,_utils_noty__WEBPACK_IMPORTED_MODULE_13__.notification)('This form is not valid!', 'error');
         return;
       }
 
-      this.props.dispatch((0,_services_show_service__WEBPACK_IMPORTED_MODULE_10__.createShow)(this.state.show))["catch"](function (error) {
+      this.props.dispatch((0,_services_show_service__WEBPACK_IMPORTED_MODULE_10__.createShow)(this.state.show)).then(function (success) {
+        (0,_utils_noty__WEBPACK_IMPORTED_MODULE_13__.notification)('Good you show created!', 'success');
+        self.props.history.push('/show/' + success.id);
+      })["catch"](function (error) {
         (0,_utils_noty__WEBPACK_IMPORTED_MODULE_13__.notification)('Something went wrong!', 'error');
         console.log(error);
       });
@@ -6866,7 +6878,7 @@ function createShow(data) {
     return new Promise(function (resolve, reject) {
       _http__WEBPACK_IMPORTED_MODULE_1__.default.post(link, data).then(function (response) {
         dispatch(_store_actions_show_action__WEBPACK_IMPORTED_MODULE_0__.createShow(response.data.show));
-        return resolve();
+        return resolve(response.data.show);
       })["catch"](function (err) {
         var statusCode = err.response.status;
         var data = {
