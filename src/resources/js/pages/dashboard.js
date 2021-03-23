@@ -12,12 +12,13 @@ class Dashboard extends React.Component {
     render() {
         if (!this.props.auth.isVerified) {
             return (
-                <Redirect to={'/account/show/create'}/>
+                <Redirect to={'/account/confirm-email'}/>
             )
         }
 
         return (
             <>
+                here
             </>
         );
     }

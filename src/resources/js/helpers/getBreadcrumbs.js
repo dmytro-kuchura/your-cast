@@ -1,7 +1,21 @@
-import {useLocation} from 'react-router';
+export function getBreadcrumbs(props) {
+    if (props.pathname === '/account/confirm-email') {
+        return [
+            {
+                name: 'Confirm email',
+                link: '/account/confirm-email'
+            }
+        ];
+    }
 
-function GetBreadcrumbs() {
-    const location = useLocation();
+    if (props.pathname === '/account/dashboard') {
+        return [
+            {
+                name: 'Dashboard',
+                link: '/account/dashboard'
+            }
+        ];
+    }
 
-    console.log(location)
+    return [];
 }

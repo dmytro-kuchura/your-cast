@@ -12,11 +12,8 @@ function Footer() {
                            className="text-dark-75 text-hover-primary">Dmytro Kuchura</a>
                     </div>
                     <div className="nav nav-dark">
-                        <a href="http://keenthemes.com/metronic" target="_blank"
-                           className="nav-link pl-0 pr-5">About</a>
-                        <a href="http://keenthemes.com/metronic" target="_blank" className="nav-link pl-0 pr-5">Team</a>
-                        <a href="http://keenthemes.com/metronic" target="_blank"
-                           className="nav-link pl-0 pr-0">Contact</a>
+                        <a href="http://keenthemes.com/metronic" className="nav-link pl-0 pr-5">About</a>
+                        <a href="http://keenthemes.com/metronic" className="nav-link pl-0 pr-0">Contact</a>
                     </div>
                 </div>
             </div>

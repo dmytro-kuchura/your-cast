@@ -6,15 +6,7 @@ class Breadcrumbs extends React.Component {
         super(props);
 
         this.state = {
-            breadcrumbs: [
-                {
-                    name: 'Shows',
-                    link: '/cabinet/shows'
-                }, {
-                    name: 'Shows create',
-                    link: '/cabinet/shows/create'
-                }
-            ],
+            breadcrumbs: [],
         };
     }
 
@@ -25,6 +17,10 @@ class Breadcrumbs extends React.Component {
     }
 
     render() {
+        if (!this.state.breadcrumbs.length) {
+            return null;
+        }
+
         return (
             <>
                 <ul className="breadcrumb breadcrumb-transparent font-weight-bold p-0 my-2">

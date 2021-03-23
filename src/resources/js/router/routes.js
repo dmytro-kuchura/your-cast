@@ -4,11 +4,13 @@ import Login from '../pages/auth/login'
 import Register from '../pages/auth/register'
 import ForgotPassword from '../pages/auth/forgot-password'
 import ResetPassword from '../pages/auth/reset-password'
+import ConfirmEmail from '../pages/auth/confirm-email';
 
 import Dashboard from '../pages/dashboard'
 import Settings from '../pages/settings';
 import NotFound from '../pages/not-found';
 import ShowCreate from '../pages/shows/show-create';
+import ShowDashboard from '../pages/shows/show-dashboard';
 
 const routes = [
     {
@@ -42,6 +44,16 @@ const routes = [
         auth: false,
         component: ResetPassword
     }, {
+        path: '/account/confirm-email',
+        exact: true,
+        auth: true,
+        component: ConfirmEmail
+    }, {
+        path: '/account/show/:id',
+        exact: true,
+        auth: true,
+        component: ShowDashboard
+    },  {
         path: '/account/show/create',
         exact: true,
         auth: true,
