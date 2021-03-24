@@ -41,7 +41,6 @@ class SubHeader extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         if (!this.state.title && this.state.breadcrumbs.length) {
             return null;
         }
