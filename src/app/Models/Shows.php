@@ -4,6 +4,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
@@ -34,6 +35,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $created_at
  * @property string $updated_at
  *
+ * @property Podcasts $podcasts
  * @property User $user
  */
 class Shows extends Model
@@ -66,5 +68,10 @@ class Shows extends Model
     public function user(): HasOne
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function podcasts(): HasMany
+    {
+        return $this->hasMany('App\Models\Podcasts', 'show_id', 'id');
     }
 }

@@ -16,6 +16,8 @@ class CreatePodcastsTable extends Migration
         Schema::create('podcasts', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('show_id');
+
             $table->string('title');
             $table->longText('description');
 
@@ -27,6 +29,11 @@ class CreatePodcastsTable extends Migration
             $table->integer('episode');
             $table->integer('season');
             $table->string('episode_type');
+
+            $table->enum('status', ['enabled', 'disabled', 'drafted'])->default('drafted');
+
+
+            $table->foreign('show_id')->references('id')->on('shows');
 
             $table->timestamps();
         });

@@ -16,8 +16,11 @@ services:
 
   php: &app-podcasts-service
     container_name: podcasts_php
-    build: .docker/php
-    user: '${UID}:${GID}'
+    build:
+      args:
+        user: podcast
+        uid: 1000
+      context: .docker/php
     volumes:
       - ./.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
       - ./.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
@@ -35,17 +38,9 @@ services:
     restart: always
     command: /scheduler/scheduler.sh
 
-  composer:
-    container_name: podcasts_composer
-    image: composer:latest
-    user: '${UID}:${GID}'
-    volumes:
-      - ./src/:/app
-    command: install
-
   database:
     container_name: podcasts_database
-    image: postgres:13.1
+    image: postgres:13.2
     environment:
       - 'POSTGRES_DB=${DB_NAME}'
       - 'POSTGRES_USER=${DB_USER}'
