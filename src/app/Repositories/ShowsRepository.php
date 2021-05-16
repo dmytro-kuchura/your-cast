@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Shows;
+use Illuminate\Database\Eloquent\Collection;
 
 class ShowsRepository implements Repository
 {
@@ -14,6 +15,11 @@ class ShowsRepository implements Repository
     public function all()
     {
         // TODO: Implement all() method.
+    }
+
+    public function getAllUserShow(int $userId): ?Collection
+    {
+        return Shows::where('user_id', $userId)->get();
     }
 
     public function store(array $data): Shows

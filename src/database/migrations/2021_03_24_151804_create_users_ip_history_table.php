@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersBillingsTable extends Migration
+class CreateUsersIpHistoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateUsersBillingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_billings', function (Blueprint $table) {
+        Schema::create('users_ip_history', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('user_id');
-
-            $table->dateTime('billing_from');
-            $table->dateTime('billing_to');
-            $table->decimal('amount');
-            $table->enum('status', ['success', 'fail', 'in-work'])->default('in-work');
+            $table->ipAddress('ip_address')->nullable();
+            $table->string('country')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
 
@@ -36,6 +33,6 @@ class CreateUsersBillingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_billings');
+        Schema::dropIfExists('users_ip_history');
     }
 }

@@ -9,8 +9,10 @@ import ConfirmEmail from '../pages/auth/confirm-email';
 import Dashboard from '../pages/dashboard'
 import Settings from '../pages/settings';
 import NotFound from '../pages/not-found';
+
 import ShowCreate from '../pages/shows/show-create';
 import ShowDashboard from '../pages/shows/show-dashboard';
+import ShowList from '../pages/shows/show-list';
 
 const routes = [
     {
@@ -58,6 +60,11 @@ const routes = [
         exact: true,
         auth: true,
         component: ShowCreate
+    },  {
+        path: '/account/shows',
+        exact: true,
+        auth: true,
+        component: ShowList
     }, {
         path: '/account/settings',
         exact: true,

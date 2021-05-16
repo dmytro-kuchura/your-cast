@@ -1,6 +1,4 @@
 import * as ActionTypes from '../action-types';
-import Http from '../../http'
-import {deleteCookie, getCookie, setCookie} from '../../utils/cookie';
 
 const initialState = {
     title: '',

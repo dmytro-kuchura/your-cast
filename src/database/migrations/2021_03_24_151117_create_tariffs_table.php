@@ -19,6 +19,8 @@ class CreateTariffsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->decimal('cost')->default(0.0);
+            $table->decimal('discount')->default(0.0);
+            $table->boolean('is_discount')->default(0.0);
             $table->enum('status', ['enabled', 'disabled'])->default('disabled');
 
             $table->timestamps();

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Actions;
+namespace App\Services;
 
 use App\Exceptions\NotCreateShowException;
 use App\Models\Shows;
 use App\Repositories\ShowsRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 
-class ShowAction
+class ShowService
 {
     /** @var ShowsRepository */
     private ShowsRepository $repository;
@@ -44,5 +45,10 @@ class ShowAction
     public function getShow(int $id): ?Shows
     {
         return $this->repository->get($id);
+    }
+
+    public function getAllUserShow(int $userId): ?Collection
+    {
+        return $this->repository->getAllUserShow($userId);
     }
 }

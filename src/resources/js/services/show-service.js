@@ -1,5 +1,6 @@
 import * as action from '../store/actions/show-action'
 import Http from '../http'
+import {getShows} from '../store/actions/show-action';
 
 export function createShow(data) {
     let link = '/api/v1/show/create';
@@ -53,6 +54,28 @@ export function getShowById(id) {
             Http.get(link)
                 .then(response => {
                     dispatch(action.getShow(response.data.result));
+                    return resolve();
+                })
+                .catch(err => {
+                    const statusCode = err.response.status;
+                    const data = {
+                        error: null,
+                        statusCode,
+                    };
+                    return reject(data);
+                })
+        })
+    );
+}
+
+export function getAllUserShows(userId) {
+    let link = '/api/v1/show/list/' + userId;
+
+    return dispatch => (
+        new Promise((resolve, reject) => {
+            Http.get(link)
+                .then(response => {
+                    dispatch(action.getShows(response.data.result));
                     return resolve();
                 })
                 .catch(err => {

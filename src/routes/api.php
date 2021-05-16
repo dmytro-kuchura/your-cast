@@ -28,7 +28,9 @@ Route::middleware(['logger'])->group(function () {
         Route::middleware(['bearer'])->group(function () {
             Route::get('/logout', [AuthController::class, 'logout'])->name('api.logout');
             Route::get('/profile', [AuthController::class, 'profile'])->name('api.profile');
+
             Route::prefix('show')->group(function () {
+                Route::get('/list/{id}', [ShowController::class, 'list'])->name('api.show.list');
                 Route::post('/create', [ShowController::class, 'create'])->name('api.show.create');
                 Route::put('/update/{id}', [ShowController::class, 'update'])->name('api.show.update');
                 Route::get('/{id}', [ShowController::class, 'info'])->name('api.show.info');

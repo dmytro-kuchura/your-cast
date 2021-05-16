@@ -26,7 +26,7 @@ class Aside extends React.Component {
     handleDropdown(event) {
         event.preventDefault();
 
-        console.log(event.target)
+        console.log(event.target.id)
 
         switch (event.target.id) {
             case 'shows':
@@ -76,20 +76,20 @@ class Aside extends React.Component {
                                         <i className="menu-arrow"></i>
                                         <ul className="menu-subnav">
                                             <li className="menu-item" aria-haspopup="true">
-                                                <a href="layout/themes/aside-light.html" className="menu-link">
+                                                <Link to="/account/show/list" className="menu-link">
                                                     <i className="menu-bullet menu-bullet-dot">
                                                         <span></span>
                                                     </i>
-                                                    <span className="menu-text">Show all shows</span>
-                                                </a>
+                                                    <span className="menu-text" id="all-shows">Show all shows</span>
+                                                </Link>
                                             </li>
                                             <li className="menu-item" aria-haspopup="true">
-                                                <a href="layout/themes/header-dark.html" className="menu-link">
+                                                <Link to="/account/show/create" className="menu-link">
                                                     <i className="menu-bullet menu-bullet-dot">
                                                         <span></span>
                                                     </i>
                                                     <span className="menu-text">Create new show</span>
-                                                </a>
+                                                </Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -109,7 +109,7 @@ class Aside extends React.Component {
                                                     <i className="menu-bullet menu-bullet-dot">
                                                         <span></span>
                                                     </i>
-                                                    <span className="menu-text">Show all episodes</span>
+                                                    <span className="menu-text" id="all-episodes">Show all episodes</span>
                                                 </a>
                                             </li>
                                             <li className="menu-item" aria-haspopup="true">
