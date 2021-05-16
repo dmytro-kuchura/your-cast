@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  */
-class Logs extends Model
+class Log extends Model
 {
     protected $table = 'logs';
 

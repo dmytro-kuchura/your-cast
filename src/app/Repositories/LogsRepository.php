@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Logs;
+use App\Models\Log;
 
 class LogsRepository implements Repository
 {
@@ -18,7 +18,7 @@ class LogsRepository implements Repository
 
     public function store(array $data)
     {
-        $model = new Logs();
+        $model = new Log();
 
         $model->message = $data['message'];
         $model->context = $data['context'] ?? null;
@@ -38,6 +38,6 @@ class LogsRepository implements Repository
 
     public function destroy(int $id)
     {
-        Logs::where('id', $id)->delete();
+        Log::where('id', $id)->delete();
     }
 }

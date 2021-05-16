@@ -16,6 +16,7 @@ class CreateChangelogsTable extends Migration
         Schema::create('changelogs', function (Blueprint $table) {
             $table->id();
 
+            $table->string('version');
             $table->string('name');
             $table->text('short')->nullable();
             $table->text('description')->nullable();

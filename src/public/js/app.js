@@ -3983,7 +3983,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _ref2 = this.props.location.state || {
         from: {
-          pathname: '/account'
+          pathname: '/account/dashboard'
         }
       },
           from = _ref2.from;

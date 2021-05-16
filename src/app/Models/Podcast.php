@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $created_at
  * @property string $updated_at
  */
-class Podcasts extends Model
+class Podcast extends Model
 {
     protected $table = 'shows';
 
