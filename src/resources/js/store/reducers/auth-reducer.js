@@ -12,6 +12,7 @@ const user = {
 const initialState = {
     isAuthenticated: false,
     isVerified: false,
+    hasShow: false,
     user
 };
 
@@ -41,6 +42,7 @@ const authLogin = (state, response) => {
     state = Object.assign({}, state, {
         isAuthenticated: true,
         isVerified: getCookie('is_verified') === 'true',
+        hasShow: response.has_show,
         user
     });
 

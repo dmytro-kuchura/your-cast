@@ -9,6 +9,7 @@ const initialState = {
     language: 'en',
     explicit: false,
     category: null,
+    status: null,
     tags: null,
     author: null,
     podcast_owner: null,

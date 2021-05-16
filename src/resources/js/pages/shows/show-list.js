@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {getAllUserShows} from '../../services/show-service';
+import {Link} from 'react-router-dom';
 
 class ShowList extends React.Component {
     constructor(props) {
@@ -39,8 +40,8 @@ class ShowList extends React.Component {
                             <div className="card card-custom card-stretch gutter-b">
                                 <div className="card-header border-0 pt-5">
                                     <h3 className="card-title align-items-start flex-column">
-                                        <span className="card-label font-weight-bolder text-dark">New Arrivals</span>
-                                        <span className="text-muted mt-3 font-weight-bold font-size-sm">More than 400+ new members</span>
+                                        <span className="card-label font-weight-bolder text-dark">Shows</span>
+                                        <span className="text-muted mt-3 font-weight-bold font-size-sm">All your shows</span>
                                     </h3>
 
                                 </div>
@@ -107,7 +108,7 @@ const List = (props) => {
                             </span>
                         </div>
                     </td>
-                    <td className="text-right">
+                    <td className="text-left">
                         <div>
                             <span className="font-weight-bolder">Timezone: </span>
                             <span className="text-muted font-weight-bold text-hover-primary">
@@ -125,16 +126,16 @@ const List = (props) => {
                         <span className="text-muted font-weight-500">{item.category}</span>
                     </td>
                     <td className="text-right">
-                        <span className="label label-lg label-light-success label-inline">Success</span>
+                        <span className="label label-lg label-light-success label-inline">{item.status}</span>
                     </td>
                     <td className="text-right pr-0">
-                        <a href="#" className="btn btn-icon btn-light btn-hover-primary btn-sm">
+                        <Link to={'/account/show/' + item.id} className="btn btn-icon btn-light btn-hover-primary btn-sm">
+                            <span className="svg-icon svg-icon-md svg-icon-primary"></span>
+                        </Link>
+                        <a href="#" className="btn btn-icon btn-light btn-hover-warning btn-sm mx-3">
                             <span className="svg-icon svg-icon-md svg-icon-primary"></span>
                         </a>
-                        <a href="#" className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-                            <span className="svg-icon svg-icon-md svg-icon-primary"></span>
-                        </a>
-                        <a href="#" className="btn btn-icon btn-light btn-hover-primary btn-sm">
+                        <a href="#" className="btn btn-icon btn-light btn-hover-danger btn-sm">
                             <span className="svg-icon svg-icon-md svg-icon-primary"></span>
                         </a>
                     </td>

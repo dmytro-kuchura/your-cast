@@ -51,20 +51,20 @@ const routes = [
         auth: true,
         component: ConfirmEmail
     }, {
-        path: '/account/show/:id',
-        exact: true,
-        auth: true,
-        component: ShowDashboard
-    },  {
         path: '/account/show/create',
         exact: true,
         auth: true,
         component: ShowCreate
-    },  {
-        path: '/account/shows',
+    }, {
+        path: '/account/show/list',
         exact: true,
         auth: true,
         component: ShowList
+    }, {
+        path: '/account/show/:id',
+        exact: true,
+        auth: true,
+        component: ShowDashboard
     }, {
         path: '/account/settings',
         exact: true,

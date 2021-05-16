@@ -2,14 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Models\Shows;
+use App\Models\Show;
 use Illuminate\Database\Eloquent\Collection;
 
 class ShowsRepository implements Repository
 {
-    public function get(int $id): ?Shows
+    public function get(int $id): ?Show
     {
-        return Shows::find($id);
+        return Show::find($id);
     }
 
     public function all()
@@ -19,12 +19,12 @@ class ShowsRepository implements Repository
 
     public function getAllUserShow(int $userId): ?Collection
     {
-        return Shows::where('user_id', $userId)->get();
+        return Show::where('user_id', $userId)->get();
     }
 
-    public function store(array $data): Shows
+    public function store(array $data): Show
     {
-        $model = new Shows();
+        $model = new Show();
 
         $model->user_id = $data['user_id'];
         $model->title = $data['title'];
@@ -48,11 +48,11 @@ class ShowsRepository implements Repository
 
     public function update(array $data, int $id)
     {
-        Shows::where('id', $id)->update($data);
+        Show::where('id', $id)->update($data);
     }
 
     public function destroy(int $id)
     {
-        Shows::where('id', $id)->delete();
+        Show::where('id', $id)->delete();
     }
 }

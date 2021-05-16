@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property int $season
  * @property string $episode_type
  *
- * @property Shows $show
+ * @property Show $show
  *
  * @property string $created_at
  * @property string $updated_at
@@ -49,6 +49,6 @@ class Podcast extends Model
 
     public function show(): HasOne
     {
-        return $this->hasOne('App\Models\Shows', 'id', 'show_id');
+        return $this->hasOne('App\Models\Show', 'id', 'show_id');
     }
 }

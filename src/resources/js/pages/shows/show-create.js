@@ -98,7 +98,7 @@ class ShowCreate extends React.Component {
         this.props.dispatch(createShow(this.state.show))
             .then(success => {
                 notification('Good you show created!', 'success');
-                self.props.history.push('/show/' + success.id);
+                self.props.history.push('/account/show/list');
             })
             .catch(error => {
                 notification('Something went wrong!', 'error');

@@ -38,7 +38,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property Podcast $podcasts
  * @property User $user
  */
-class Shows extends Model
+class Show extends Model
 {
     protected $table = 'shows';
 

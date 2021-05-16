@@ -4651,6 +4651,12 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
         });
       }
 
+      if (!this.props.auth.hasShow) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
+          to: '/account/show/create'
+        });
+      }
+
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "container",
@@ -7383,7 +7389,7 @@ var ShowCreate = /*#__PURE__*/function (_React$Component) {
 
       this.props.dispatch((0,_services_show_service__WEBPACK_IMPORTED_MODULE_10__.createShow)(this.state.show)).then(function (success) {
         (0,_utils_noty__WEBPACK_IMPORTED_MODULE_13__.notification)('Good you show created!', 'success');
-        self.props.history.push('/show/' + success.id);
+        self.props.history.push('/account/show/list');
       })["catch"](function (error) {
         (0,_utils_noty__WEBPACK_IMPORTED_MODULE_13__.notification)('Something went wrong!', 'error');
         console.log(error);
@@ -7708,6 +7714,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _services_show_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/show-service */ "./resources/js/services/show-service.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -7730,6 +7737,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -7795,10 +7803,10 @@ var ShowList = /*#__PURE__*/function (_React$Component) {
                     className: "card-title align-items-start flex-column",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                       className: "card-label font-weight-bolder text-dark",
-                      children: "New Arrivals"
+                      children: "Shows"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                       className: "text-muted mt-3 font-weight-bold font-size-sm",
-                      children: "More than 400+ new members"
+                      children: "All your shows"
                     })]
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -7883,7 +7891,7 @@ var List = function List(props) {
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("td", {
-          className: "text-right",
+          className: "text-left",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               className: "font-weight-bolder",
@@ -7911,25 +7919,25 @@ var List = function List(props) {
           className: "text-right",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
             className: "label label-lg label-light-success label-inline",
-            children: "Success"
+            children: item.status
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("td", {
           className: "text-right pr-0",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-            href: "#",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: '/account/show/' + item.id,
             className: "btn btn-icon btn-light btn-hover-primary btn-sm",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               className: "svg-icon svg-icon-md svg-icon-primary"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
             href: "#",
-            className: "btn btn-icon btn-light btn-hover-primary btn-sm mx-3",
+            className: "btn btn-icon btn-light btn-hover-warning btn-sm mx-3",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               className: "svg-icon svg-icon-md svg-icon-primary"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
             href: "#",
-            className: "btn btn-icon btn-light btn-hover-primary btn-sm",
+            className: "btn btn-icon btn-light btn-hover-danger btn-sm",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               className: "svg-icon svg-icon-md svg-icon-primary"
             })
@@ -8190,20 +8198,20 @@ var routes = [{
   auth: true,
   component: _pages_auth_confirm_email__WEBPACK_IMPORTED_MODULE_5__.default
 }, {
-  path: '/account/show/:id',
-  exact: true,
-  auth: true,
-  component: _pages_shows_show_dashboard__WEBPACK_IMPORTED_MODULE_10__.default
-}, {
   path: '/account/show/create',
   exact: true,
   auth: true,
   component: _pages_shows_show_create__WEBPACK_IMPORTED_MODULE_9__.default
 }, {
-  path: '/account/shows',
+  path: '/account/show/list',
   exact: true,
   auth: true,
   component: _pages_shows_show_list__WEBPACK_IMPORTED_MODULE_11__.default
+}, {
+  path: '/account/show/:id',
+  exact: true,
+  auth: true,
+  component: _pages_shows_show_dashboard__WEBPACK_IMPORTED_MODULE_10__.default
 }, {
   path: '/account/settings',
   exact: true,
@@ -8689,6 +8697,7 @@ var user = {
 var initialState = {
   isAuthenticated: false,
   isVerified: false,
+  hasShow: false,
   user: user
 };
 
@@ -8725,6 +8734,7 @@ var authLogin = function authLogin(state, response) {
   state = Object.assign({}, state, {
     isAuthenticated: true,
     isVerified: (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.getCookie)('is_verified') === 'true',
+    hasShow: response.has_show,
     user: user
   });
   return state;
@@ -8846,6 +8856,7 @@ var initialState = {
   language: 'en',
   explicit: false,
   category: null,
+  status: null,
   tags: null,
   author: null,
   podcast_owner: null,

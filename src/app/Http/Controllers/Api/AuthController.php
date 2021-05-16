@@ -118,6 +118,7 @@ class AuthController extends Controller
             'user' => new UserResource(Auth::user()),
             'access_token' => $this->authService->findTokenByUser(Auth::id()),
             'token_type' => 'bearer',
+            'has_show' => false,
         ]);
     }
 }

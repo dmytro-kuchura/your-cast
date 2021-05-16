@@ -3,17 +3,17 @@
 
 namespace App\Helpers;
 
-use App\Models\Shows;
+use App\Models\Show;
 use DateTime;
 use DOMDocument;
 use Illuminate\Support\Carbon;
 
 class FeedGenerator
 {
-    /** @var Shows */
-    private Shows $shows;
+    /** @var Show */
+    private Show $shows;
 
-    public function __construct(Shows $shows)
+    public function __construct(Show $shows)
     {
         $this->shows = $shows;
     }

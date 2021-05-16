@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\NotCreateShowException;
-use App\Models\Shows;
+use App\Models\Show;
 use App\Repositories\ShowsRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +18,7 @@ class ShowService
         $this->repository = $showsRepository;
     }
 
-    public function createShow(array $data): Shows
+    public function createShow(array $data): Show
     {
         $data['user_id'] = Auth::user()->getAuthIdentifier();
 
@@ -31,7 +31,7 @@ class ShowService
         return $this->getShow($show->id);
     }
 
-    public function updateShow(int $id, array $data): Shows
+    public function updateShow(int $id, array $data): Show
     {
         try {
             $this->repository->update($data, $id);
@@ -42,7 +42,7 @@ class ShowService
         return $this->getShow($id);
     }
 
-    public function getShow(int $id): ?Shows
+    public function getShow(int $id): ?Show
     {
         return $this->repository->get($id);
     }
