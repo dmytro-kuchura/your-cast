@@ -24,6 +24,8 @@ class CreateLogsTable extends Migration
             $table->string('user_agent')->nullable();
             $table->text('request_header')->nullable();
             $table->text('request_body')->nullable();
+            $table->text('response_header')->nullable();
+            $table->text('response_body')->nullable();
 
             $table->timestamps();
         });

@@ -42,6 +42,7 @@ class CreateShowsTable extends Migration
             $table->string('email_owner');
             $table->string('copyright');
 
+            $table->string('token');
             $table->enum('status', ['enabled', 'disabled', 'drafted'])->default('drafted');
 
             $table->foreign('user_id')->references('id')->on('users');

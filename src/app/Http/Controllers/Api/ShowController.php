@@ -21,6 +21,7 @@ class ShowController extends Controller
 
     public function info(int $id): JsonResponse
     {
+        // TODO not completed
         return $this->returnResponse([]);
     }
 
@@ -44,7 +45,7 @@ class ShowController extends Controller
         ], Response::HTTP_OK);
     }
 
-    public function list(int $userId)
+    public function list(int $userId): JsonResponse
     {
         $result = $this->service->getAllUserShow($userId);
 
@@ -55,6 +56,7 @@ class ShowController extends Controller
 
     public function delete(int $id): JsonResponse
     {
+        // TODO not completed
         return $this->returnResponse([]);
     }
 }
