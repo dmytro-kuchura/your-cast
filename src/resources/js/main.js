@@ -14,18 +14,14 @@ class Main extends React.Component {
     render() {
         return (
             <>
-                <HeaderMobile/>
-                <div className="d-flex flex-column flex-root">
-                    <div className="d-flex flex-row flex-column-fluid page">
+                <div className="layout-wrapper">
+                    <Header/>
+                    <div className="content-wrapper">
                         <Aside/>
-                        <div className="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
-                            <Header/>
-                            <div className="content d-flex flex-column flex-column-fluid" id="kt_content">
-                                <SubHeader/>
-                                <div className="d-flex flex-column-fluid">
+                        <div className="content-body">
+                            <div className="content web-app">
                                     {this.props.children}
                                 </div>
-                            </div>
                             <Footer/>
                         </div>
                     </div>

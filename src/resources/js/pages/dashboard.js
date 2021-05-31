@@ -16,11 +16,11 @@ class Dashboard extends React.Component {
             )
         }
 
-        if (!this.props.auth.hasShow) {
-            return (
-                <Redirect to={'/account/show/create'}/>
-            )
-        }
+        // if (!this.props.auth.hasShow) {
+        //     return (
+        //         <Redirect to={'/account/show/create'}/>
+        //     )
+        // }
 
         return (
             <>

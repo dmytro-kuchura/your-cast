@@ -67,7 +67,6 @@ class Login extends React.Component {
                 <form onSubmit={this.handleSubmit} method="POST">
                     <div className="form-group">
                         <input className="form-control"
-                               required
                                placeholder="Email"
                                id="email"
                                type="email"
@@ -76,7 +75,6 @@ class Login extends React.Component {
                     </div>
                     <div className="form-group">
                         <input type="password"
-                               required
                                placeholder="Password"
                                className="form-control"
                                id="password"
@@ -86,7 +84,7 @@ class Login extends React.Component {
                     </div>
                     <div className="form-group d-flex justify-content-between">
                         <div className="custom-control custom-checkbox">
-                            <input type="checkbox" className="custom-control-input" checked="" id="customCheck1"/>
+                            <input type="checkbox" className="custom-control-input" id="customCheck1"/>
                             <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                         </div>
                         <Link to="/account/forgot-password">Reset password</Link>
