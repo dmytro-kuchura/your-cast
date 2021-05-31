@@ -3384,7 +3384,7 @@ function validate(name, value, params) {
         break;
 
       case STRING:
-        pattern = /^[a-zA-Zа-яА-Я]+$/;
+        pattern = /^[a-zA-Zа-яА-Я0-9 ]+$/;
         error = 'Помилка, повинно бути строкою.';
         break;
 

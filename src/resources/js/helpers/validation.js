@@ -22,7 +22,7 @@ export function validate(name, value, params) {
                 error = 'Помилка, мінімально 2 символів.';
                 break;
             case STRING:
-                pattern = /^[a-zA-Zа-яА-Я]+$/;
+                pattern = /^[a-zA-Zа-яА-Я0-9 ]+$/;
                 error = 'Помилка, повинно бути строкою.';
                 break;
             case CONTENT:

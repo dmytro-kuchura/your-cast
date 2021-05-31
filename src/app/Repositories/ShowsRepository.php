@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Show;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 class ShowsRepository implements Repository
 {
@@ -40,6 +41,7 @@ class ShowsRepository implements Repository
         $model->podcast_owner = $data['podcast_owner'];
         $model->email_owner = $data['email_owner'];
         $model->copyright = $data['copyright'];
+        $model->token = Str::random(10);;
 
         $model->save();
 
