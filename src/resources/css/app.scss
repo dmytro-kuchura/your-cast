@@ -1,90 +1,59 @@
-@import "~@fortawesome/fontawesome-free/css/fontawesome.css";
-@import "~@fortawesome/fontawesome-free/css/solid.css";
+@import "~bootstrap/scss/bootstrap";
 
-@import "~highlight.js/styles/googlecode.css";
-@import "~perfect-scrollbar/css/perfect-scrollbar.css";
-
-@import "style.react.scss";
-
-@import "themes/layout/header/base/light.scss";
-@import "themes/layout/header/menu/light.scss";
-@import "themes/layout/brand/dark.scss";
-@import "themes/layout/aside/dark.scss";
-
-.brand-dark {
-    @import "themes/layout/brand/dark.scss";
-}
-
-// Aside themes
-@import "themes/layout/aside/dark.scss";
-
-.example-highlight {
-    padding: 0rem 1.5rem 1.75rem !important;
-}
-
-.example-highlight > pre {
-    background: none transparent !important;
-    margin: 0 !important;
-    padding-top: 0.5rem;
-
-    code {
-        overflow-y: auto;
-        display: block;
-
-        span {
-            background: none transparent !important;
-        }
-    }
-}
-
-.json > pre {
-    background: none #fff !important;
-
-}
-
-.example-code > .json {
-    background: none #fff !important;
-}
-
-.symbol.symbol-45 > svg {
-    width: 100%;
-    max-width: 45px;
-    height: 45px;
-}
-
-.react-bootstrap-table {
-    overflow-x: auto;
-}
-
-.react-bootstrap-table {
-    th {
-        outline: none;
-
-        &.sortable {
-            .svg-icon-sort {
-                opacity: 0;
-            }
-
-            &:hover {
-                cursor: pointer;
-
-                .svg-icon-sort {
-                    opacity: 1;
-                }
-            }
-        }
-    }
-
-    .table.table-head-custom thead tr {
-        .sortable-active {
-            color: $primary !important;
-        }
-    }
-}
-
-.cursor-default {
-    cursor: default !important;
-}
-
-// Aside themes
-@import "pages/wizard/wizard-3";
+@import "core/vars";
+@import "core/mixins";
+@import "components/body";
+@import "components/preloader";
+@import "components/icon-block";
+@import "components/error";
+@import "components/form";
+@import "components/form-wizard";
+@import "components/page-header";
+@import "components/lightbox";
+@import "components/card";
+@import "components/color";
+@import "components/colorpicker";
+@import "components/typography";
+@import "components/button";
+@import "components/progress";
+@import "components/dropdown";
+@import "components/badge";
+@import "components/collapse";
+@import "components/media-object";
+@import "components/accordion";
+@import "components/scrollbar";
+@import "components/gallery";
+@import "components/datepicker";
+@import "components/alert";
+@import "components/breadcrumb";
+@import "components/notification";
+@import "components/pagination";
+@import "components/tour";
+@import "components/sweet-alert";
+@import "components/range-slider";
+@import "components/select2";
+@import "components/modal";
+@import "components/timepicker";
+@import "components/avatar";
+@import "components/file-upload";
+@import "components/authentication";
+@import "components/chat";
+@import "components/table";
+@import "components/pricing-table";
+@import "components/timeline";
+@import "components/calendar";
+@import "components/list-group";
+@import "components/toastr";
+@import "components/nestable";
+@import "components/slick";
+@import "components/webapp";
+@import "components/profile";
+@import "components/navigation";
+@import "components/demo";
+@import "layouts";
+@import "components/header";
+@import "components/aside";
+@import "dark";
+@import "components/footer";
+@import "other";
+@import "responsive";

@@ -55,31 +55,26 @@ class ForgotPassword extends React.Component {
         }
 
         return (
-            <div className="login-form login-forgot">
-                <form className="form" noValidate="novalidate" id="kt_login_forgot_form" onSubmit={this.handleSubmit}
-                      method="POST">
-                    <div className="pb-13 pt-lg-0 pt-5">
-                        <h3 className="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Forgotten Password ?</h3>
-                        <p className="text-muted font-weight-bold font-size-h4">Enter your email to reset your
-                            password</p>
-                    </div>
+            <div className="form-wrapper">
+                <div id="logo">
+                    <img src="/media/img/podcasts-logo.png" alt="image" width={250}/>
+                </div>
+
+                <h5>Reset password</h5>
+
+                <form onSubmit={this.handleSubmit} method="POST">
                     <div className="form-group">
-                        <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                        <input className="form-control"
+                               required
+                               placeholder="Email"
                                id="email"
                                type="email"
                                name="email"
-                               onChange={this.handleChange}
-                               placeholder="Email"
-                               autoComplete="off"/>
+                               onChange={this.handleChange}/>
                     </div>
-                    <div className="form-group d-flex flex-wrap pb-lg-0">
-                        <button type="submit" id="kt_login_forgot_submit"
-                                className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Submit
-                        </button>
-                        <Link to="/account/login"
-                              className="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3"
-                              id="kt_login_forgot">Cancel</Link>
-                    </div>
+                    <button className="btn btn-primary btn-block">Submit</button>
+                    <hr/>
+                    <Link to="/account/login">Cancel</Link>
                 </form>
             </div>
         );

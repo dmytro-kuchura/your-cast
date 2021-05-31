@@ -67,39 +67,34 @@ class Register extends React.Component {
         }
 
         return (
-            <div className="login-form login-signup">
-                <form className="form" noValidate="novalidate" id="kt_login_signup_form" onSubmit={this.handleSubmit}
-                      method="POST">
-                    <div className="pb-13 pt-lg-0 pt-5">
-                        <h3 className="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Sign Up</h3>
-                        <p className="text-muted font-weight-bold font-size-h4">Enter your details to create your
-                            account</p>
-                        <span className="text-muted font-weight-bold font-size-h4">Already have an account?
-                            <Link to="/account/login"
-                                  className="text-primary font-weight-bolder"
-                                  id="kt_login_signup"> Sign in</Link>
-                        </span>
-                    </div>
+            <div className="form-wrapper">
+                <div id="logo">
+                    <img src="/media/img/podcasts-logo.png" alt="image" width={250}/>
+                </div>
+
+                <h5>Create account</h5>
+
+                <form onSubmit={this.handleSubmit} method="POST">
                     <div className="form-group">
-                        <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                        <input className="form-control"
                                type="text"
                                id="name"
                                name="name"
                                onChange={this.handleChange}
-                               placeholder="Fullname"
+                               placeholder="Full name"
                                autoComplete="off"/>
                     </div>
                     <div className="form-group">
-                        <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                        <input className="form-control"
+                               required
+                               placeholder="Email"
                                id="email"
                                type="email"
                                name="email"
-                               onChange={this.handleChange}
-                               placeholder="Email"
-                               autoComplete="off"/>
+                               onChange={this.handleChange}/>
                     </div>
                     <div className="form-group">
-                        <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
+                        <input className="form-control"
                                id="password"
                                type="password"
                                name="password"
@@ -108,8 +103,7 @@ class Register extends React.Component {
                                autoComplete="off"/>
                     </div>
                     <div className="form-group">
-                        <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6"
-                            // className={validate("phone", patient.phone, rules['phone']) ? "form-control is-invalid" : "form-control"}
+                        <input className="form-control"
                                id="password_confirmation"
                                type="password"
                                name="password_confirmation"
@@ -117,22 +111,10 @@ class Register extends React.Component {
                                placeholder="Confirm password"
                                autoComplete="off"/>
                     </div>
-                    <div className="form-group">
-                        <label className="checkbox mb-0">
-                            <input type="checkbox"
-                                   className={validate("agree", null, rules['agree']) ? "form-control is-invalid" : "form-control"}
-                                   name="agree"/>
-                            <span></span>
-                            <div className="ml-2">I Agree the
-                                <a href="#"> terms and conditions</a>.
-                            </div>
-                        </label>
-                    </div>
-                    <div className="form-group d-flex flex-wrap pb-lg-0 pb-3">
-                        <button type="submit" id="kt_login_signup_submit"
-                                className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Submit
-                        </button>
-                    </div>
+                    <button className="btn btn-primary btn-block">Register</button>
+                    <hr/>
+                    <p className="text-muted">Already have an account?</p>
+                    <Link to="/account/login">Sign in!</Link>
                 </form>
             </div>
         );
