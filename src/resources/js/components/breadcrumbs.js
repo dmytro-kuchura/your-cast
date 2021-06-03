@@ -23,9 +23,11 @@ class Breadcrumbs extends React.Component {
 
         return (
             <>
-                <ul className="breadcrumb breadcrumb-transparent font-weight-bold p-0 my-2">
-                    <List list={this.state.breadcrumbs}/>
-                </ul>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <List list={this.state.breadcrumbs}/>
+                    </ol>
+                </nav>
             </>
         );
     }

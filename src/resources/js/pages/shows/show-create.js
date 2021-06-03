@@ -219,7 +219,6 @@ class ShowCreate extends React.Component {
                     <div className="col-md-12">
                         <div className="card">
                             <div className="card-body">
-                                <h6 className="card-title">Overview</h6>
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="multisteps-form">

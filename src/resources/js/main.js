@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import Footer from './components/footer'
 import Aside from './components/aside';
 import Header from './components/header';
+import SubHeader from './components/sub-header';
 
 class Main extends React.Component {
     constructor(props) {
@@ -18,24 +19,7 @@ class Main extends React.Component {
                         <Aside/>
                         <div className="content-body">
                             <div className="content">
-                                <div className="page-header">
-                                    <div>
-                                        <h3>Basic Forms</h3>
-                                        <nav aria-label="breadcrumb">
-                                            <ol className="breadcrumb">
-                                                <li className="breadcrumb-item">
-                                                    <a href="#">Home</a>
-                                                </li>
-                                                <li className="breadcrumb-item">
-                                                    <a href="#">Forms</a>
-                                                </li>
-                                                <li className="breadcrumb-item active" aria-current="page">Basic Forms
-                                                </li>
-                                            </ol>
-                                        </nav>
-                                    </div>
-                                </div>
-
+                                <SubHeader/>
                                 {this.props.children}
                             </div>
                             <Footer/>
