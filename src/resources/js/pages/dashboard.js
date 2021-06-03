@@ -6,17 +6,31 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            auth: null
+        };
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps !== this.props) {
+            this.setState({
+                auth: this.props.auth
+            })
+        }
     }
 
     render() {
-        if (!this.props.auth.isVerified) {
+        if (!this.state.auth) {
+            return null;
+        }
+
+        if (!this.state.auth.isVerified) {
             return (
                 <Redirect to={'/account/confirm-email'}/>
             )
         }
 
-        if (!this.props.auth.hasShow) {
+        if (!this.state.auth.hasShow) {
             return (
                 <Redirect to={'/account/show/create'}/>
             )
@@ -26,7 +40,6 @@ class Dashboard extends React.Component {
             <>
                 <div className="row no-gutters app-block">
                     <div className="col-md-12 app-content">
-                        <h3 className="mb-4">File Manager</h3>
                         <div className="app-action">
                             <div className="action-left">
                                 <ul className="list-inline">
@@ -367,10 +380,9 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-        return {
-            auth: state.Auth,
-        }
+    return {
+        auth: state.Auth,
     }
-;
+};
 
 export default connect(mapStateToProps)(Dashboard)

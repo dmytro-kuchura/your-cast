@@ -33,6 +33,7 @@ const authLogin = (state, response) => {
     const jwtToken = response.access_token;
     const user = response.user;
     const isVerified = response.user.email_confirmed;
+    const hasShow = response.has_show;
 
     setCookie('is_verified', isVerified);
     setCookie('jwt_token', jwtToken)
@@ -42,7 +43,7 @@ const authLogin = (state, response) => {
     state = Object.assign({}, state, {
         isAuthenticated: true,
         isVerified: getCookie('is_verified') === 'true',
-        hasShow: response.has_show,
+        hasShow: hasShow,
         user
     });
 
@@ -52,12 +53,14 @@ const authLogin = (state, response) => {
 const checkAuth = (state, response) => {
     const user = response.user;
     const isVerified = response.user.email_confirmed;
+    const hasShow = response.has_show;
 
     setCookie('is_verified', isVerified);
 
     state = Object.assign({}, state, {
         isAuthenticated: true,
         isVerified: getCookie('is_verified') === 'true',
+        hasShow: hasShow,
         user
     });
 
@@ -70,6 +73,7 @@ const logout = (state) => {
     state = Object.assign({}, state, {
         isAuthenticated: false,
         isVerified: false,
+        hasShow: false,
         user
     });
 

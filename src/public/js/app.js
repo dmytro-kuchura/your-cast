@@ -4270,20 +4270,35 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Dashboard);
 
     _this = _super.call(this, props);
-    _this.state = {};
+    _this.state = {
+      auth: null
+    };
     return _this;
   }
 
   _createClass(Dashboard, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps !== this.props) {
+        this.setState({
+          auth: this.props.auth
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      if (!this.props.auth.isVerified) {
+      if (!this.state.auth) {
+        return null;
+      }
+
+      if (!this.state.auth.isVerified) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
           to: '/account/confirm-email'
         });
       }
 
-      if (!this.props.auth.hasShow) {
+      if (!this.state.auth.hasShow) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
           to: '/account/show/create'
         });
@@ -4294,10 +4309,7 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
           className: "row no-gutters app-block",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "col-md-12 app-content",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
-              className: "mb-4",
-              children: "File Manager"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
               className: "app-action",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "action-left",
@@ -8559,13 +8571,14 @@ var authLogin = function authLogin(state, response) {
   var jwtToken = response.access_token;
   var user = response.user;
   var isVerified = response.user.email_confirmed;
+  var hasShow = response.has_show;
   (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.setCookie)('is_verified', isVerified);
   (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.setCookie)('jwt_token', jwtToken);
   _http__WEBPACK_IMPORTED_MODULE_1__.default.defaults.headers.common.Authorization = "Bearer ".concat(jwtToken);
   state = Object.assign({}, state, {
     isAuthenticated: true,
     isVerified: (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.getCookie)('is_verified') === 'true',
-    hasShow: response.has_show,
+    hasShow: hasShow,
     user: user
   });
   return state;
@@ -8574,10 +8587,12 @@ var authLogin = function authLogin(state, response) {
 var checkAuth = function checkAuth(state, response) {
   var user = response.user;
   var isVerified = response.user.email_confirmed;
+  var hasShow = response.has_show;
   (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.setCookie)('is_verified', isVerified);
   state = Object.assign({}, state, {
     isAuthenticated: true,
     isVerified: (0,_utils_cookie__WEBPACK_IMPORTED_MODULE_2__.getCookie)('is_verified') === 'true',
+    hasShow: hasShow,
     user: user
   });
   return state;
@@ -8588,6 +8603,7 @@ var logout = function logout(state) {
   state = Object.assign({}, state, {
     isAuthenticated: false,
     isVerified: false,
+    hasShow: false,
     user: user
   });
   return state;
