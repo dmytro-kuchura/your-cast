@@ -20,11 +20,11 @@ class Buttons extends React.Component {
     render() {
         return (
             <>
-                <div className="d-flex justify-content-between border-top mt-5 pt-10">
+                <div className="d-flex justify-content-between">
                     <div className="mr-2">
                         {this.state.step !== 1 ?
                             <button type="button"
-                                    className="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4"
+                                    className="btn btn-light-primary"
                                     onClick={this.props.handlePreviousStep}>Previous
                             </button>
                             : null}
@@ -32,14 +32,14 @@ class Buttons extends React.Component {
                     <div>
                         {this.state.step === 6 ?
                             <button type="submit"
-                                    className="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
+                                    className="btn btn-success"
                                     onClick={this.props.handleSubmitForm}>Submit
                             </button>
                             : null}
 
                         {this.state.step !== 6 ?
                             <button type="submit"
-                                    className="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
+                                    className="btn btn-primary"
                                     onClick={this.props.handleNextStep}>Next
                             </button>
                             : null}

@@ -1,5 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {createShow} from '../../services/show-service';
+import {uploadImage} from '../../services/upload-service';
+import {validate} from '../../helpers/validation';
+import {notification} from '../../utils/noty';
 import Navigation from './common/navigation';
 import Buttons from './common/buttons';
 import StepFirst from './create/step-first';
@@ -8,10 +12,6 @@ import StepThird from './create/step-third';
 import StepFourth from './create/step-fourth';
 import StepFifth from './create/step-fifth';
 import StepSixth from './create/step-sixth';
-import {createShow} from '../../services/show-service';
-import {uploadImage} from '../../services/upload-service';
-import {validate} from '../../helpers/validation';
-import {notification} from '../../utils/noty';
 
 class ShowCreate extends React.Component {
     constructor(props) {
@@ -215,53 +215,59 @@ class ShowCreate extends React.Component {
     render() {
         return (
             <>
-                <div className="container">
-                    <div className="card card-custom">
-                        <div className="card-body p-0">
-                            <div className="wizard wizard-3" id="kt_wizard_v3" data-wizard-state="step-first"
-                                 data-wizard-clickable="true">
-                                <Navigation step={this.state.step}/>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="card">
+                            <div className="card-body">
+                                <h6 className="card-title">Overview</h6>
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <div className="multisteps-form">
+                                            <Navigation step={this.state.step}/>
 
-                                <div className="row justify-content-center">
-                                    <div className="alert alert-primary">
-                                        Add information about your show.
-                                        Don't worry! You can always edit your show settings later.
-                                    </div>
-                                </div>
+                                            <div className="row justify-content-center">
+                                                <div className="alert alert-primary">
+                                                    Add information about your show.
+                                                    Don't worry! You can always edit your show settings later.
+                                                </div>
+                                            </div>
 
-                                <div className="row justify-content-center py-10 px-8 py-lg-12 px-lg-10">
-                                    <div className="col-xl-12 col-xxl-7">
-                                        <form className="form" id="kt_form">
-                                            {this.state.step === 1 ?
-                                                <StepFirst show={this.state.show}
-                                                           handleChangeInput={this.handleChangeInput}/> : null}
+                                            <div className="row justify-content-center py-10 px-8 py-lg-12 px-lg-10">
+                                                <div className="col-xl-12 col-xxl-7">
+                                                    <form className="form">
+                                                        {this.state.step === 1 ?
+                                                            <StepFirst show={this.state.show}
+                                                                       handleChangeInput={this.handleChangeInput}/> : null}
 
-                                            {this.state.step === 2 ?
-                                                <StepSecond show={this.state.show}
-                                                            addArtwork={this.addArtwork}/> : null}
+                                                        {this.state.step === 2 ?
+                                                            <StepSecond show={this.state.show}
+                                                                        addArtwork={this.addArtwork}/> : null}
 
-                                            {this.state.step === 3 ?
-                                                <StepThird show={this.state.show}
-                                                           handleChangeInput={this.handleChangeInput}/> : null}
+                                                        {this.state.step === 3 ?
+                                                            <StepThird show={this.state.show}
+                                                                       handleChangeInput={this.handleChangeInput}/> : null}
 
-                                            {this.state.step === 4 ?
-                                                <StepFourth show={this.state.show}
-                                                            handleChangeInput={this.handleChangeInput}/> : null}
+                                                        {this.state.step === 4 ?
+                                                            <StepFourth show={this.state.show}
+                                                                        handleChangeInput={this.handleChangeInput}/> : null}
 
-                                            {this.state.step === 5 ?
-                                                <StepFifth show={this.state.show}
-                                                           updateCategory={this.updateCategory}/> : null}
+                                                        {this.state.step === 5 ?
+                                                            <StepFifth show={this.state.show}
+                                                                       updateCategory={this.updateCategory}/> : null}
 
-                                            {this.state.step === 6 ?
-                                                <StepSixth show={this.state.show}
-                                                           handleChangeInput={this.handleChangeInput}/> : null}
+                                                        {this.state.step === 6 ?
+                                                            <StepSixth show={this.state.show}
+                                                                       handleChangeInput={this.handleChangeInput}/> : null}
 
-                                            <Buttons step={this.state.step}
-                                                     handlePreviousStep={this.handlePreviousStep}
-                                                     handleSubmitForm={this.handleSubmitForm}
-                                                     handleNextStep={this.handleNextStep}
-                                            />
-                                        </form>
+                                                        <Buttons step={this.state.step}
+                                                                 handlePreviousStep={this.handlePreviousStep}
+                                                                 handleSubmitForm={this.handleSubmitForm}
+                                                                 handleNextStep={this.handleNextStep}
+                                                        />
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

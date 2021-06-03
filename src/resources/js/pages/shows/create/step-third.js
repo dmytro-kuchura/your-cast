@@ -20,14 +20,13 @@ class StepThird extends React.Component {
     render() {
         return (
             <>
-                <div className="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-                    <h4 className="mb-10 font-weight-bold text-dark">Format</h4>
+                <h4 className="create-form-title">Format</h4>
 
-                    <div className="form-group">
-                        <label>Choose format:</label>
-                        <div className="row">
-                            <div className="col-lg-6">
-                                <label className="option">
+                <div className="form-group">
+                    <label>Choose format:</label>
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <label className="option">
                                     <span className="option-control">
                                         <span className="radio">
                                             <input type="radio"
@@ -38,20 +37,18 @@ class StepThird extends React.Component {
                                             <span></span>
                                         </span>
                                     </span>
-                                    <span className="option-label">
-                                        <span className="option-head">
-                                            <span className="option-title">Episodic</span>
-                                        </span>
+                                <span className="option-label">
+                                        <span className="option-title">Episodic</span>
                                         <span className="option-body">
                                             This is the default format with episodes presented and recommended
                                             from newest-to-oldest.
                                             This option is recommended for stand-alone episodes.
                                         </span>
                                     </span>
-                                </label>
-                            </div>
-                            <div className="col-lg-6">
-                                <label className="option">
+                            </label>
+                        </div>
+                        <div className="col-lg-6">
+                            <label className="option">
                                     <span className="option-control">
                                         <span className="radio">
                                             <input type="radio"
@@ -62,18 +59,15 @@ class StepThird extends React.Component {
                                             <span></span>
                                         </span>
                                     </span>
-                                    <span className="option-label">
-                                        <span className="option-head">
-                                            <span className="option-title">Serial</span>
-                                        </span>
+                                <span className="option-label">
+                                        <span className="option-title">Serial</span>
                                         <span className="option-body">
                                             For Shows with episodes presented and recommended oldest-to-newest
                                             and grouped by seasons.
                                             This option is recommended for narrative and storytelling formats.
                                         </span>
                                     </span>
-                                </label>
-                            </div>
+                            </label>
                         </div>
                     </div>
                 </div>

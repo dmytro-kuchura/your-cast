@@ -137,96 +137,94 @@ class StepFifth extends React.Component {
     render() {
         return (
             <>
-                <div className="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-                    <h4 className="mb-10 font-weight-bold text-dark">Categorization</h4>
+                <h4 className="create-form-title">Categorization</h4>
 
-                    <p className="text-muted">
-                        At least one category is required to create your show.
-                        These are used by podcast apps for example Google Podcasts to categorize shows.
-                    </p>
+                <p className="text-muted">
+                    At least one category is required to create your show.
+                    These are used by podcast apps for example Google Podcasts to categorize shows.
+                </p>
 
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label htmlFor="first-category">1st category</label>
-                                <select className="form-control"
-                                        id="first-category"
-                                        name="first-category"
-                                        value={this.state.first_category}
-                                        onChange={this.handleChangeCategory}>
-                                    <option>Select One</option>
-                                    <Categories categories={categories}/>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label htmlFor="first-sub-category">Sub category</label>
-                                <select className="form-control"
-                                        id="first-sub-category"
-                                        name="first-sub-category"
-                                        onChange={this.handleChangeSubCategory}
-                                        disabled={this.state.first_sub_category_disabled}>
-                                    <option>Select One</option>
-                                    <SubCategory selected={this.state.first_category} categories={categories}/>
-                                </select>
-                            </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="first-category">1st category</label>
+                            <select className="form-control"
+                                    id="first-category"
+                                    name="first-category"
+                                    value={this.state.first_category}
+                                    onChange={this.handleChangeCategory}>
+                                <option>Select One</option>
+                                <Categories categories={categories}/>
+                            </select>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label htmlFor="second-category">2nd category</label>
-                                <select className="form-control"
-                                        id="second-category"
-                                        name="second-category"
-                                        value={this.state.second_category}
-                                        onChange={this.handleChangeCategory}>
-                                    <option>Select One</option>
-                                    <Categories categories={categories}/>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label htmlFor="second-sub-category">Sub category</label>
-                                <select className="form-control"
-                                        id="second-sub-category"
-                                        name="second-sub-category"
-                                        onChange={this.handleChangeSubCategory}
-                                        disabled={this.state.second_sub_category_disabled}>
-                                    <option>Select One</option>
-                                    <SubCategory selected={this.state.second_category} categories={categories}/>
-                                </select>
-                            </div>
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="first-sub-category">Sub category</label>
+                            <select className="form-control"
+                                    id="first-sub-category"
+                                    name="first-sub-category"
+                                    onChange={this.handleChangeSubCategory}
+                                    disabled={this.state.first_sub_category_disabled}>
+                                <option>Select One</option>
+                                <SubCategory selected={this.state.first_category} categories={categories}/>
+                            </select>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label htmlFor="third-category">3rd category</label>
-                                <select className="form-control"
-                                        id="third-category"
-                                        name="third-category"
-                                        value={this.state.third_category}
-                                        onChange={this.handleChangeCategory}>
-                                    <option>Select One</option>
-                                    <Categories categories={categories}/>
-                                </select>
-                            </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="second-category">2nd category</label>
+                            <select className="form-control"
+                                    id="second-category"
+                                    name="second-category"
+                                    value={this.state.second_category}
+                                    onChange={this.handleChangeCategory}>
+                                <option>Select One</option>
+                                <Categories categories={categories}/>
+                            </select>
                         </div>
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label htmlFor="third-sub-category">Sub category</label>
-                                <select className="form-control"
-                                        id="third-sub-category"
-                                        name="third-sub-category"
-                                        onChange={this.handleChangeSubCategory}
-                                        disabled={this.state.third_sub_category_disabled}>
-                                    <option>Select One</option>
-                                    <SubCategory selected={this.state.third_category} categories={categories}/>
-                                </select>
-                            </div>
+                    </div>
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="second-sub-category">Sub category</label>
+                            <select className="form-control"
+                                    id="second-sub-category"
+                                    name="second-sub-category"
+                                    onChange={this.handleChangeSubCategory}
+                                    disabled={this.state.second_sub_category_disabled}>
+                                <option>Select One</option>
+                                <SubCategory selected={this.state.second_category} categories={categories}/>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="third-category">3rd category</label>
+                            <select className="form-control"
+                                    id="third-category"
+                                    name="third-category"
+                                    value={this.state.third_category}
+                                    onChange={this.handleChangeCategory}>
+                                <option>Select One</option>
+                                <Categories categories={categories}/>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="third-sub-category">Sub category</label>
+                            <select className="form-control"
+                                    id="third-sub-category"
+                                    name="third-sub-category"
+                                    onChange={this.handleChangeSubCategory}
+                                    disabled={this.state.third_sub_category_disabled}>
+                                <option>Select One</option>
+                                <SubCategory selected={this.state.third_category} categories={categories}/>
+                            </select>
                         </div>
                     </div>
                 </div>

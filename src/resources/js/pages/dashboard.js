@@ -16,567 +16,346 @@ class Dashboard extends React.Component {
             )
         }
 
-        // if (!this.props.auth.hasShow) {
-        //     return (
-        //         <Redirect to={'/account/show/create'}/>
-        //     )
-        // }
+        if (!this.props.auth.hasShow) {
+            return (
+                <Redirect to={'/account/show/create'}/>
+            )
+        }
 
         return (
             <>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-4">
-                            <div className="card card-custom card-stretch gutter-b">
-                                <div className="card-header border-0">
-                                    <h3 className="card-title font-weight-bolder text-dark">Authors</h3>
-                                    <div className="card-toolbar">
-                                        <div className="dropdown dropdown-inline">
-                                            <a href="#"
-                                               className="btn btn-light-primary btn-sm font-weight-bolder dropdown-toggle"
-                                               data-toggle="dropdown" aria-haspopup="true"
-                                               aria-expanded="false">August</a>
-                                            <div className="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                                <ul className="navi navi-hover">
-                                                    <li className="navi-header pb-1">
-                                                    <span
-                                                        className="text-primary text-uppercase font-weight-bold font-size-sm">Add new:</span>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-icon">
-																			<i className="flaticon2-shopping-cart-1"></i>
-																		</span>
-                                                            <span className="navi-text">Order</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-icon">
-																			<i className="flaticon2-calendar-8"></i>
-																		</span>
-                                                            <span className="navi-text">Event</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-icon">
-																			<i className="flaticon2-graph-1"></i>
-																		</span>
-                                                            <span className="navi-text">Report</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-icon">
-																			<i className="flaticon2-rocket-1"></i>
-																		</span>
-                                                            <span className="navi-text">Post</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-icon">
-																			<i className="flaticon2-writing"></i>
-																		</span>
-                                                            <span className="navi-text">File</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                <div className="row no-gutters app-block">
+                    <div className="col-md-12 app-content">
+                        <h3 className="mb-4">File Manager</h3>
+                        <div className="app-action">
+                            <div className="action-left">
+                                <ul className="list-inline">
+                                    <li className="list-inline-item mb-0">
+                                        <a href="#" className="btn btn-outline-light dropdown-toggle"
+                                           data-toggle="dropdown">
+                                            <i data-feather="plus" className="mr-1"></i>
+                                            Add
+                                        </a>
+                                        <div className="dropdown-menu">
+                                            <a className="dropdown-item" href="#">Folder</a>
+                                            <a className="dropdown-item" href="#">File</a>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="card-body pt-2">
-                                    <div className="d-flex align-items-center mb-10">
-                                        <div className="symbol symbol-40 symbol-light-success mr-5">
-														<span className="symbol-label">
-															<img
-                                                                src="/metronic/theme/html/demo1/dist/assets/media/svg/avatars/009-boy-4.svg"
-                                                                className="h-75 align-self-end" alt=""/>
-														</span>
+                                    </li>
+                                    <li className="list-inline-item mb-0">
+                                        <a href="#" className="btn btn-outline-light dropdown-toggle"
+                                           data-toggle="dropdown">
+                                            Order by
+                                        </a>
+                                        <div className="dropdown-menu">
+                                            <a className="dropdown-item" href="#">Date</a>
+                                            <a className="dropdown-item" href="#">Name</a>
+                                            <a className="dropdown-item" href="#">Size</a>
                                         </div>
-                                        <div className="d-flex flex-column flex-grow-1 font-weight-bold">
-                                            <a href="#" className="text-dark text-hover-primary mb-1 font-size-lg">Ricky
-                                                Hunt</a>
-                                            <span className="text-muted">PHP, SQLite, Artisan CLI</span>
-                                        </div>
-                                        <div className="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                             data-placement="left" data-original-title="Quick actions">
-                                            <a href="#" className="btn btn-hover-light-primary btn-sm btn-icon"
-                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i className="ki ki-bold-more-hor"></i>
-                                            </a>
-                                            <div className="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-                                                <ul className="navi navi-hover">
-                                                    <li className="navi-header font-weight-bold py-4">
-                                                        <span className="font-size-lg">Choose Label:</span>
-                                                        <i className="flaticon2-information icon-md text-muted"
-                                                           data-toggle="tooltip" data-placement="right" title=""
-                                                           data-original-title="Click to learn more..."></i>
-                                                    </li>
-                                                    <li className="navi-separator mb-3 opacity-70"></li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-text">
-																			<span
-                                                                                className="label label-xl label-inline label-light-success">Customer</span>
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-text">
-																			<span
-                                                                                className="label label-xl label-inline label-light-danger">Partner</span>
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-text">
-																			<span
-                                                                                className="label label-xl label-inline label-light-warning">Suplier</span>
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-text">
-																			<span
-                                                                                className="label label-xl label-inline label-light-primary">Member</span>
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-text">
-																			<span
-                                                                                className="label label-xl label-inline label-light-dark">Staff</span>
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-separator mt-3 opacity-70"></li>
-                                                    <li className="navi-footer py-4">
-                                                        <a className="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                            <i className="ki ki-plus icon-sm"></i>Add new</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-center mb-2">
-                                        <div className="symbol symbol-40 symbol-light-success mr-5">
-														<span className="symbol-label">
-															<img
-                                                                src="/metronic/theme/html/demo1/dist/assets/media/svg/avatars/016-boy-7.svg"
-                                                                className="h-75 align-self-end" alt=""/>
-														</span>
-                                        </div>
-                                        <div className="d-flex flex-column flex-grow-1 font-weight-bold">
-                                            <a href="#" className="text-dark text-hover-primary mb-1 font-size-lg">Carles
-                                                Puyol</a>
-                                            <span className="text-muted">PHP, SQLite, Artisan CLI</span>
-                                        </div>
-                                        <div className="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                             data-placement="left" data-original-title="Quick actions">
-                                            <a href="#" className="btn btn-hover-light-primary btn-sm btn-icon"
-                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i className="ki ki-bold-more-hor"></i>
-                                            </a>
-                                            <div className="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-                                                <ul className="navi navi-hover">
-                                                    <li className="navi-header font-weight-bold py-4">
-                                                        <span className="font-size-lg">Choose Label:</span>
-                                                        <i className="flaticon2-information icon-md text-muted"
-                                                           data-toggle="tooltip" data-placement="right" title=""
-                                                           data-original-title="Click to learn more..."></i>
-                                                    </li>
-                                                    <li className="navi-separator mb-3 opacity-70"></li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-text">
-																			<span
-                                                                                className="label label-xl label-inline label-light-success">Customer</span>
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-text">
-																			<span
-                                                                                className="label label-xl label-inline label-light-danger">Partner</span>
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-text">
-																			<span
-                                                                                className="label label-xl label-inline label-light-warning">Suplier</span>
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-text">
-																			<span
-                                                                                className="label label-xl label-inline label-light-primary">Member</span>
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-item">
-                                                        <a href="#" className="navi-link">
-																		<span className="navi-text">
-																			<span
-                                                                                className="label label-xl label-inline label-light-dark">Staff</span>
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li className="navi-separator mt-3 opacity-70"></li>
-                                                    <li className="navi-footer py-4">
-                                                        <a className="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                            <i className="ki ki-plus icon-sm"></i>Add new</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <div className="col-md-8">
-                            <div className="card card-custom card-stretch gutter-b">
-                                <div className="card-header border-0 pt-5">
-                                    <h3 className="card-title align-items-start flex-column">
-                                        <span className="card-label font-weight-bolder text-dark">New Arrivals</span>
-                                        <span className="text-muted mt-3 font-weight-bold font-size-sm">More than 400+ new members</span>
-                                    </h3>
-                                    <div className="card-toolbar">
-                                        <ul className="nav nav-pills nav-pills-sm nav-dark-75">
-                                            <li className="nav-item">
-                                                <a className="nav-link py-2 px-4" data-toggle="tab"
-                                                   href="#kt_tab_pane_11_1">Month</a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a className="nav-link py-2 px-4" data-toggle="tab"
-                                                   href="#kt_tab_pane_11_2">Week</a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a className="nav-link py-2 px-4 active" data-toggle="tab"
-                                                   href="#kt_tab_pane_11_3">Day</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="card-body pt-2 pb-0 mt-n3">
-                                    <div className="tab-content mt-5">
-                                        <div className="tab-pane fade show active">
-                                            <div className="table-responsive">
-                                                <table className="table table-borderless table-vertical-center">
-                                                    <thead>
-                                                    <tr>
-                                                        <th className="p-0 w-40px"></th>
-                                                        <th className="p-0 min-w-200px"></th>
-                                                        <th className="p-0 min-w-100px"></th>
-                                                        <th className="p-0 min-w-125px"></th>
-                                                        <th className="p-0 min-w-110px"></th>
-                                                        <th className="p-0 min-w-150px"></th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td className="pl-0 py-4">
-                                                            <div className="symbol symbol-50 symbol-light">
-																				<span className="symbol-label">
-																					<img
-                                                                                        src="/metronic/theme/html/demo1/dist/assets/media/svg/misc/003-puzzle.svg"
-                                                                                        className="h-50 align-self-center"
-                                                                                        alt=""/>
-																				</span>
-                                                            </div>
-                                                        </td>
-                                                        <td className="pl-0">
-                                                            <a href="#"
-                                                               className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Payrol
-                                                                Application</a>
-                                                            <div>
-                                                                <span className="font-weight-bolder">Email:</span>
-                                                                <a className="text-muted font-weight-bold text-hover-primary"
-                                                                   href="#">company@dev.com</a>
-                                                            </div>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="text-dark-75 font-weight-bolder d-block font-size-lg">$560,000</span>
-                                                            <span className="text-muted font-weight-bold">Paid</span>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span className="text-muted font-weight-500">Laravel, Metronic</span>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="label label-lg label-light-success label-inline">Success</span>
-                                                        </td>
-                                                        <td className="text-right pr-0">
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm">
-                                                            <span className="svg-icon svg-icon-md svg-icon-primary">
 
-                                                            </span>
-                                                            </a>
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-																				<span className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td className="pl-0 py-4">
-                                                            <div className="symbol symbol-50 symbol-light">
-																				<span className="symbol-label">
-																					<img
-                                                                                        src="/metronic/theme/html/demo1/dist/assets/media/svg/misc/005-bebo.svg"
-                                                                                        className="h-50 align-self-center"
-                                                                                        alt=""/>
-																				</span>
-                                                            </div>
-                                                        </td>
-                                                        <td className="pl-0">
-                                                            <a href="#"
-                                                               className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">HR
-                                                                Management System</a>
-                                                            <div>
-                                                                <span className="font-weight-bolder">Email:</span>
-                                                                <a className="text-muted font-weight-bold text-hover-primary"
-                                                                   href="#">hr@demo.com</a>
-                                                            </div>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="text-dark-75 font-weight-bolder d-block font-size-lg">$57,000</span>
-                                                            <span className="text-muted font-weight-bold">Paid</span>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="text-muted font-weight-bold">AngularJS, C#</span>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="label label-lg label-light-danger label-inline">Rejected</span>
-                                                        </td>
-                                                        <td className="text-right pr-0">
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td className="pl-0 py-4">
-                                                            <div className="symbol symbol-50 symbol-light">
-																				<span className="symbol-label">
-																					<img
-                                                                                        src="/metronic/theme/html/demo1/dist/assets/media/svg/misc/014-kickstarter.svg"
-                                                                                        className="h-50 align-self-center"
-                                                                                        alt=""/>
-																				</span>
-                                                            </div>
-                                                        </td>
-                                                        <td className="pl-0">
-                                                            <a href="#"
-                                                               className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">KTR
-                                                                Mobile Application</a>
-                                                            <div>
-                                                                <span className="font-weight-bolder">Email:</span>
-                                                                <a className="text-muted font-weight-bold text-hover-primary"
-                                                                   href="#">ktr@demo.com</a>
-                                                            </div>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="text-dark-75 font-weight-bolder d-block font-size-lg">$45,200,000</span>
-                                                            <span className="text-muted font-weight-bold">Paid</span>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="text-muted font-weight-500">ReactJS, Ruby</span>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="label label-lg label-light-warning label-inline">In Progress</span>
-                                                        </td>
-                                                        <td className="text-right pr-0">
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td className="pl-0 py-4">
-                                                            <div className="symbol symbol-50 symbol-light mr-1">
-																				<span className="symbol-label">
-																					<img
-                                                                                        src="/metronic/theme/html/demo1/dist/assets/media/svg/misc/006-plurk.svg"
-                                                                                        className="h-50 align-self-center"
-                                                                                        alt=""/>
-																				</span>
-                                                            </div>
-                                                        </td>
-                                                        <td className="pl-0">
-                                                            <a href="#"
-                                                               className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Sant
-                                                                Outstanding</a>
-                                                            <div>
-                                                                <span className="font-weight-bolder">Email:</span>
-                                                                <a className="text-muted font-weight-bold text-hover-primary"
-                                                                   href="#">bprow@bnc.cc</a>
-                                                            </div>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="text-dark-75 font-weight-bolder d-block font-size-lg">$2,000,000</span>
-                                                            <span className="text-muted font-weight-bold">Paid</span>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="text-muted font-weight-500">ReactJs, HTML</span>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="label label-lg label-light-primary label-inline">Approved</span>
-                                                        </td>
-                                                        <td className="text-right pr-0">
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td className="pl-0 py-4">
-                                                            <div className="symbol symbol-50 symbol-light">
-																				<span className="symbol-label">
-																					<img
-                                                                                        src="/metronic/theme/html/demo1/dist/assets/media/svg/misc/015-telegram.svg"
-                                                                                        className="h-50 align-self-center"
-                                                                                        alt=""/>
-																				</span>
-                                                            </div>
-                                                        </td>
-                                                        <td className="pl-0">
-                                                            <a href="#"
-                                                               className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Application
-                                                                Development</a>
-                                                            <div>
-                                                                <span className="font-weight-bolder">Email:</span>
-                                                                <a className="text-muted font-weight-bold text-hover-primary"
-                                                                   href="#">app@dev.com</a>
-                                                            </div>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="text-dark-75 font-weight-bolder d-block font-size-lg">$4,600,000</span>
-                                                            <span className="text-muted font-weight-bold">Paid</span>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="text-muted font-weight-500">Python, MySQL</span>
-                                                        </td>
-                                                        <td className="text-right">
-                                                            <span
-                                                                className="label label-lg label-light-warning label-inline">In Progress</span>
-                                                        </td>
-                                                        <td className="text-right pr-0">
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                            <a href="#"
-                                                               className="btn btn-icon btn-light btn-hover-primary btn-sm">
-																				<span
-                                                                                    className="svg-icon svg-icon-md svg-icon-primary">
-
-																				</span>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <h5 className="mb-4">Recent podcasts</h5>
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="table-responsive">
+                                    <table className="table table-borderless table-hover mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Size</th>
+                                            <th>Modified</th>
+                                            <th>Label</th>
+                                            <th>Members</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <figure className="avatar avatar-sm mr-2">
+                                            <span className="avatar-title bg-warning text-black-50 rounded-pill">
+                                                <i className="ti-folder"></i>
+                                            </span>
+                                                    </figure>
+                                                    User Research
+                                                </a>
+                                            </td>
+                                            <td>2MB</td>
+                                            <td>3/9/19, 2:40PM</td>
+                                            <td>
+                                                <div className="badge bg-warning-bright text-warning">Project</div>
+                                            </td>
+                                            <td>
+                                                <div className="avatar-group">
+                                                    <figure className="avatar avatar-sm" title="Lisle Essam"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/women_avatar2.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="Baxie Roseblade"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/man_avatar5.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                </div>
+                                            </td>
+                                            <td className="text-right">
+                                                <div className="dropdown">
+                                                    <a href="#" className="btn btn-floating btn-sm"
+                                                       data-toggle="dropdown">
+                                                        <i className="ti-more-alt"></i>
+                                                    </a>
+                                                    <div className="dropdown-menu dropdown-menu-right">
+                                                        <a href="#" className="dropdown-item"
+                                                           data-sidebar-target="#view-detail">View Details</a>
+                                                        <a href="#" className="dropdown-item">Share</a>
+                                                        <a href="#" className="dropdown-item">Download</a>
+                                                        <a href="#" className="dropdown-item">Copy to</a>
+                                                        <a href="#" className="dropdown-item">Move to</a>
+                                                        <a href="#" className="dropdown-item">Rename</a>
+                                                        <a href="#" className="dropdown-item">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <figure className="avatar avatar-sm mr-2">
+                                <span className="avatar-title bg-warning text-black-50 rounded-pill">
+                                    <i className="ti-folder"></i>
+                                </span>
+                                                    </figure>
+                                                    Design Thinking Project
+                                                </a>
+                                            </td>
+                                            <td>10MB</td>
+                                            <td>3/9/19, 2:40PM</td>
+                                            <td>
+                                                <div className="badge bg-secondary-bright text-secondary">Software</div>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td className="text-right">
+                                                <div className="dropdown">
+                                                    <a href="#" className="btn btn-floating btn-sm"
+                                                       data-toggle="dropdown">
+                                                        <i className="ti-more-alt"></i>
+                                                    </a>
+                                                    <div className="dropdown-menu dropdown-menu-right">
+                                                        <a href="#" className="dropdown-item"
+                                                           data-sidebar-target="#view-detail">View Details</a>
+                                                        <a href="#" className="dropdown-item">Share</a>
+                                                        <a href="#" className="dropdown-item">Download</a>
+                                                        <a href="#" className="dropdown-item">Copy to</a>
+                                                        <a href="#" className="dropdown-item">Move to</a>
+                                                        <a href="#" className="dropdown-item">Rename</a>
+                                                        <a href="#" className="dropdown-item">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <figure className="avatar avatar-sm mr-2">
+                                <span className="avatar-title rounded-pill">
+                                    <i className="ti-file"></i>
+                                </span>
+                                                    </figure>
+                                                    Meeting-notes.doc
+                                                </a>
+                                            </td>
+                                            <td>139KB</td>
+                                            <td>3/9/19, 2:40PM</td>
+                                            <td>
+                                                <div className="badge bg-primary-bright text-primary">Public</div>
+                                            </td>
+                                            <td>
+                                                <div className="avatar-group">
+                                                    <figure className="avatar avatar-sm" title="Lisle Essam"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/women_avatar2.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="Baxie Roseblade"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/man_avatar5.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="Mella Mixter"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/women_avatar1.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="Jo Hugill"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/man_avatar1.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="Cullie Philcott"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/women_avatar5.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="" data-toggle="tooltip"
+                                                            data-original-title="Cullie Philcott">
+                                                        <span
+                                                            className="avatar-title bg-primary rounded-circle">+ 5</span>
+                                                    </figure>
+                                                </div>
+                                            </td>
+                                            <td className="text-right">
+                                                <div className="dropdown">
+                                                    <a href="#" className="btn btn-floating btn-sm"
+                                                       data-toggle="dropdown">
+                                                        <i className="ti-more-alt"></i>
+                                                    </a>
+                                                    <div className="dropdown-menu dropdown-menu-right">
+                                                        <a href="#" className="dropdown-item"
+                                                           data-sidebar-target="#view-detail">View Details</a>
+                                                        <a href="#" className="dropdown-item">Share</a>
+                                                        <a href="#" className="dropdown-item">Download</a>
+                                                        <a href="#" className="dropdown-item">Copy to</a>
+                                                        <a href="#" className="dropdown-item">Move to</a>
+                                                        <a href="#" className="dropdown-item">Rename</a>
+                                                        <a href="#" className="dropdown-item">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <figure className="avatar avatar-sm mr-2">
+                                <span className="avatar-title rounded-pill">
+                                    <i className="ti-image"></i>
+                                </span>
+                                                    </figure>
+                                                    Sitemap.png
+                                                </a>
+                                            </td>
+                                            <td>810KB</td>
+                                            <td>3/9/19, 2:40PM</td>
+                                            <td>
+                                                <div className="badge bg-success-bright text-success">Social Media</div>
+                                            </td>
+                                            <td>
+                                                <div className="avatar-group">
+                                                    <figure className="avatar avatar-sm" title="Lisle Essam"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/women_avatar2.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="Baxie Roseblade"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/man_avatar5.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="Mella Mixter"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/women_avatar1.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                </div>
+                                            </td>
+                                            <td className="text-right">
+                                                <div className="dropdown">
+                                                    <a href="#" className="btn btn-floating btn-sm"
+                                                       data-toggle="dropdown">
+                                                        <i className="ti-more-alt"></i>
+                                                    </a>
+                                                    <div className="dropdown-menu dropdown-menu-right">
+                                                        <a href="#" className="dropdown-item"
+                                                           data-sidebar-target="#view-detail">View Details</a>
+                                                        <a href="#" className="dropdown-item">Share</a>
+                                                        <a href="#" className="dropdown-item">Download</a>
+                                                        <a href="#" className="dropdown-item">Copy to</a>
+                                                        <a href="#" className="dropdown-item">Move to</a>
+                                                        <a href="#" className="dropdown-item">Rename</a>
+                                                        <a href="#" className="dropdown-item">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <figure className="avatar avatar-sm mr-2">
+                                <span className="avatar-title rounded-pill">
+                                    <i className="ti-file"></i>
+                                </span>
+                                                    </figure>
+                                                    Analytics.pdf
+                                                </a>
+                                            </td>
+                                            <td>10KB</td>
+                                            <td>3/9/19, 2:40PM</td>
+                                            <td>
+                                                <div className="badge bg-info-bright text-info">Design</div>
+                                            </td>
+                                            <td>
+                                                <div className="avatar-group">
+                                                    <figure className="avatar avatar-sm" title="Lisle Essam"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/women_avatar2.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="Baxie Roseblade"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/man_avatar5.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="Mella Mixter"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/women_avatar1.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                    <figure className="avatar avatar-sm" title="Mella Mixter"
+                                                            data-toggle="tooltip">
+                                                        <img src="../../assets/media/image/user/women_avatar4.jpg"
+                                                             className="rounded-circle"
+                                                             alt="image"/>
+                                                    </figure>
+                                                </div>
+                                            </td>
+                                            <td className="text-right">
+                                                <div className="dropdown">
+                                                    <a href="#" className="btn btn-floating btn-sm"
+                                                       data-toggle="dropdown">
+                                                        <i className="ti-more-alt"></i>
+                                                    </a>
+                                                    <div className="dropdown-menu dropdown-menu-right">
+                                                        <a href="#" className="dropdown-item"
+                                                           data-sidebar-target="#view-detail">View Details</a>
+                                                        <a href="#" className="dropdown-item">Share</a>
+                                                        <a href="#" className="dropdown-item">Download</a>
+                                                        <a href="#" className="dropdown-item">Copy to</a>
+                                                        <a href="#" className="dropdown-item">Move to</a>
+                                                        <a href="#" className="dropdown-item">Rename</a>
+                                                        <a href="#" className="dropdown-item">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

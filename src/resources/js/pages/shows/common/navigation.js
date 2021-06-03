@@ -18,51 +18,20 @@ class Navigation extends React.Component {
     }
 
     render() {
+        const active = 'steps-form-btn js-active';
+        const disabled = 'steps-form-btn';
+
         return (
             <>
-                <div className="wizard-nav">
-                    <div className="wizard-steps px-8 py-8 px-lg-15 py-lg-3">
-                        <div className="wizard-step" data-wizard-type="step" data-wizard-state={this.state.step === 1 ? 'current': null}>
-                            <div className="wizard-label">
-                                <h3 className="wizard-title">
-                                    <span>1.</span>Show Info</h3>
-                                <div className="wizard-bar"></div>
-                            </div>
-                        </div>
-                        <div className="wizard-step" data-wizard-type="step" data-wizard-state={this.state.step === 2 ? 'current': null}>
-                            <div className="wizard-label">
-                                <h3 className="wizard-title">
-                                    <span>2.</span>Show Artwork</h3>
-                                <div className="wizard-bar"></div>
-                            </div>
-                        </div>
-                        <div className="wizard-step" data-wizard-type="step" data-wizard-state={this.state.step === 3 ? 'current': null}>
-                            <div className="wizard-label">
-                                <h3 className="wizard-title">
-                                    <span>3.</span>Format</h3>
-                                <div className="wizard-bar"></div>
-                            </div>
-                        </div>
-                        <div className="wizard-step" data-wizard-type="step" data-wizard-state={this.state.step === 4 ? 'current': null}>
-                            <div className="wizard-label">
-                                <h3 className="wizard-title">
-                                    <span>4.</span>Other Details</h3>
-                                <div className="wizard-bar"></div>
-                            </div>
-                        </div>
-                        <div className="wizard-step" data-wizard-type="step" data-wizard-state={this.state.step === 5 ? 'current': null}>
-                            <div className="wizard-label">
-                                <h3 className="wizard-title">
-                                    <span>5.</span>Categorization</h3>
-                                <div className="wizard-bar"></div>
-                            </div>
-                        </div>
-                        <div className="wizard-step" data-wizard-type="step" data-wizard-state={this.state.step === 6 ? 'current': null}>
-                            <div className="wizard-label">
-                                <h3 className="wizard-title">
-                                    <span>6.</span>Owner Details</h3>
-                                <div className="wizard-bar"></div>
-                            </div>
+                <div className="row">
+                    <div className="col-12 ml-auto mr-auto mb-4">
+                        <div className="steps-form">
+                            <span className={this.state.step === 1 ? active : disabled}>1. Show Info</span>
+                            <span className={this.state.step === 2 ? active : disabled}>2. Show Artwork</span>
+                            <span className={this.state.step === 3 ? active : disabled}>3. Format</span>
+                            <span className={this.state.step === 4 ? active : disabled}>4. Other Details</span>
+                            <span className={this.state.step === 5 ? active : disabled}>5. Categorization</span>
+                            <span className={this.state.step === 6 ? active : disabled}>6. Owner Details</span>
                         </div>
                     </div>
                 </div>
