@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 
 const opened = {display: 'none'};
 const closed = {display: 'block'};
@@ -49,16 +48,25 @@ class Aside extends React.Component {
                         <ul>
                             <li>
                                 <a href="index.html">
-                                    <span className="nav-link-icon">
-                                        <i data-feather="pie-chart"></i>
-                                    </span>
+                    <span className="nav-link-icon">
+                        <i data-feather="pie-chart"></i>
+                    </span>
                                     <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="todo-list.html">
+                    <span className="nav-link-icon">
+                        <i data-feather="check-square"></i>
+                    </span>
+                                    <span>Todo List</span>
+                                    <span className="badge badge-warning">2</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="mailing.html">
                                     <span className="nav-link-icon">
-                                        {/*<i data-feather="corner-up-right"></i>*/}
+                                        <i data-feather="corner-up-right"></i>
                                     </span>
                                     <span>Mailing</span>
                                 </a>
@@ -73,6 +81,32 @@ class Aside extends React.Component {
                                         <a target="_blank" href="email-template-billing.html">Billing</a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span className="nav-link-icon">
+                                        <i data-feather="menu"></i>
+                                    </span>
+                                    <span>Menu Level</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">Menu Level</a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Menu Level </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" className="disabled">
+                                    <span className="nav-link-icon">
+                                        <i data-feather="mouse-pointer"></i>
+                                    </span>
+                                    <span>Analytics</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
