@@ -41,7 +41,7 @@ class ShowsRepository implements Repository
         $model->podcast_owner = $data['podcast_owner'];
         $model->email_owner = $data['email_owner'];
         $model->copyright = $data['copyright'];
-        $model->token = Str::random(10);;
+        $model->token = Str::random(10);
 
         $model->save();
 
