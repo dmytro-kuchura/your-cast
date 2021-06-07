@@ -2127,7 +2127,6 @@ var Aside = /*#__PURE__*/function (_React$Component) {
     key: "handleDropdown",
     value: function handleDropdown(event) {
       event.preventDefault();
-      console.log(event.target.id);
 
       switch (event.target.id) {
         case 'shows':
@@ -2147,12 +2146,12 @@ var Aside = /*#__PURE__*/function (_React$Component) {
             className: "navigation-menu-body",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
-                  href: "index.html",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+                  to: "/account/dashboard",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     className: "nav-link-icon",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-                      "data-feather": "pie-chart"
+                      className: "fa fa-pie-chart"
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     children: "Dashboard"
@@ -2166,7 +2165,7 @@ var Aside = /*#__PURE__*/function (_React$Component) {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     className: "nav-link-icon",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-                      "data-feather": "corner-up-right"
+                      className: "fa fa-microphone"
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     children: "Shows"
@@ -2198,7 +2197,7 @@ var Aside = /*#__PURE__*/function (_React$Component) {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     className: "nav-link-icon",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-                      "data-feather": "check-square"
+                      className: "fa fa-bell"
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     children: "Notifications"
@@ -2214,7 +2213,7 @@ var Aside = /*#__PURE__*/function (_React$Component) {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     className: "nav-link-icon",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-                      "data-feather": "mouse-pointer"
+                      className: "fa fa-line-chart"
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     children: "Analytics"
@@ -2558,7 +2557,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
                       onClick: this.handleNotifications,
                       "data-toggle": "dropdown",
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-                        "data-feather": "bell"
+                        className: "fa fa-bell"
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                       className: 'dropdown-menu ' + (this.state.dropdownNotifications ? 'show' : '') + ' dropdown-menu-right dropdown-menu-big',

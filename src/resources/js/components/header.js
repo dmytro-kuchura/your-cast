@@ -70,7 +70,7 @@ class Header extends React.Component {
                                         <a href="#" className="nav-link nav-link-notify" title="Notifications"
                                            onClick={this.handleNotifications}
                                            data-toggle="dropdown">
-                                            <i data-feather="bell"></i>
+                                            <i className="fa fa-bell"/>
                                         </a>
                                         <div className={'dropdown-menu ' + (this.state.dropdownNotifications ? 'show' : '') + ' dropdown-menu-right dropdown-menu-big'}>
                                             <div

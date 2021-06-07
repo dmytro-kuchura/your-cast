@@ -26,8 +26,6 @@ class Aside extends React.Component {
     handleDropdown(event) {
         event.preventDefault();
 
-        console.log(event.target.id);
-
         switch (event.target.id) {
             case 'shows':
                 this.setState({dropdownShows: !this.state.dropdownShows});
@@ -42,20 +40,20 @@ class Aside extends React.Component {
                     <div className="navigation-menu-body">
                         <ul>
                             <li>
-                                <a href="index.html">
+                                <Link to="/account/dashboard">
                                     <span className="nav-link-icon">
-                                        <i data-feather="pie-chart"></i>
+                                        <i className="fa fa-pie-chart"/>
                                     </span>
                                     <span>Dashboard</span>
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <Link to="/account/dashboard" id="shows" onClick={this.handleDropdown}>
                                     <span className="nav-link-icon">
-                                        <i data-feather="corner-up-right"></i>
+                                        <i className="fa fa-microphone"/>
                                     </span>
                                     <span>Shows</span>
-                                    <i className={'sub-menu-arrow rotate-in ' + (this.state.dropdownShows ? 'ti-minus' : 'ti-plus')}></i>
+                                    <i className={'sub-menu-arrow rotate-in ' + (this.state.dropdownShows ? 'ti-minus' : 'ti-plus')}/>
                                 </Link>
                                 <ul style={this.state.dropdownShows ? opened : closed}>
                                     <li>
@@ -72,7 +70,7 @@ class Aside extends React.Component {
                             <li>
                                 <Link to="/account/notifications">
                                     <span className="nav-link-icon">
-                                        <i data-feather="check-square"></i>
+                                        <i className="fa fa-bell"/>
                                     </span>
                                     <span>Notifications</span>
                                     <span className="badge badge-warning">2</span>
@@ -81,7 +79,7 @@ class Aside extends React.Component {
                             <li>
                                 <a href="#" className="disabled">
                                     <span className="nav-link-icon">
-                                        <i data-feather="mouse-pointer"></i>
+                                        <i className="fa fa-line-chart"/>
                                     </span>
                                     <span>Analytics</span>
                                 </a>
