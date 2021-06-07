@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
-const opened = {display: 'none'};
-const closed = {display: 'block'};
+const closed = {display: 'none'};
+const opened = {display: 'block'};
 
 class Aside extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class Aside extends React.Component {
     handleDropdown(event) {
         event.preventDefault();
 
-        console.log(event.target.id)
+        console.log(event.target.id);
 
         switch (event.target.id) {
             case 'shows':
@@ -38,67 +39,44 @@ class Aside extends React.Component {
         return (
             <>
                 <div className="navigation">
-                    <div className="navigation-header">
-                        <span>Navigation</span>
-                        <a href="#">
-                            <i className="ti-close"></i>
-                        </a>
-                    </div>
                     <div className="navigation-menu-body">
                         <ul>
                             <li>
                                 <a href="index.html">
-                    <span className="nav-link-icon">
-                        <i data-feather="pie-chart"></i>
-                    </span>
+                                    <span className="nav-link-icon">
+                                        <i data-feather="pie-chart"></i>
+                                    </span>
                                     <span>Dashboard</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="todo-list.html">
-                    <span className="nav-link-icon">
-                        <i data-feather="check-square"></i>
-                    </span>
-                                    <span>Todo List</span>
-                                    <span className="badge badge-warning">2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mailing.html">
+                                <Link to="/account/dashboard" id="shows" onClick={this.handleDropdown}>
                                     <span className="nav-link-icon">
                                         <i data-feather="corner-up-right"></i>
                                     </span>
-                                    <span>Mailing</span>
-                                </a>
-                                <ul>
+                                    <span>Shows</span>
+                                    <i className={'sub-menu-arrow rotate-in ' + (this.state.dropdownShows ? 'ti-minus' : 'ti-plus')}></i>
+                                </Link>
+                                <ul style={this.state.dropdownShows ? opened : closed}>
                                     <li>
-                                        <a target="_blank" href="email-template-basic.html">Basic</a>
+                                        <Link to="/account/dashboard">Dashboard</Link>
                                     </li>
                                     <li>
-                                        <a target="_blank" href="email-template-alert.html">Alert</a>
+                                        <Link to="/account/dashboard">Podcasts</Link>
                                     </li>
                                     <li>
-                                        <a target="_blank" href="email-template-billing.html">Billing</a>
+                                        <Link to="/account/dashboard">Billing</Link>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">
+                                <Link to="/account/notifications">
                                     <span className="nav-link-icon">
-                                        <i data-feather="menu"></i>
+                                        <i data-feather="check-square"></i>
                                     </span>
-                                    <span>Menu Level</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="#">Menu Level</a>
-                                        <ul>
-                                            <li>
-                                                <a href="#">Menu Level </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                    <span>Notifications</span>
+                                    <span className="badge badge-warning">2</span>
+                                </Link>
                             </li>
                             <li>
                                 <a href="#" className="disabled">

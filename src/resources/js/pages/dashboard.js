@@ -79,8 +79,7 @@ class Dashboard extends React.Component {
                                             <th>Name</th>
                                             <th>Size</th>
                                             <th>Modified</th>
-                                            <th>Label</th>
-                                            <th>Members</th>
+                                            <th>Pages</th>
                                             <th></th>
                                         </tr>
                                         </thead>
@@ -89,11 +88,11 @@ class Dashboard extends React.Component {
                                             <td>
                                                 <a href="#">
                                                     <figure className="avatar avatar-sm mr-2">
-                                            <span className="avatar-title bg-warning text-black-50 rounded-pill">
-                                                <i className="ti-folder"></i>
-                                            </span>
+                                                        <span className="avatar-title rounded-pill">
+                                                            <i className="ti-microphone"></i>
+                                                        </span>
                                                     </figure>
-                                                    User Research
+                                                    Episode 05
                                                 </a>
                                             </td>
                                             <td>2MB</td>
@@ -101,22 +100,6 @@ class Dashboard extends React.Component {
                                             <td>
                                                 <div className="badge bg-warning-bright text-warning">Project</div>
                                             </td>
-                                            <td>
-                                                <div className="avatar-group">
-                                                    <figure className="avatar avatar-sm" title="Lisle Essam"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/women_avatar2.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="Baxie Roseblade"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/man_avatar5.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                </div>
-                                            </td>
                                             <td className="text-right">
                                                 <div className="dropdown">
                                                     <a href="#" className="btn btn-floating btn-sm"
@@ -140,11 +123,11 @@ class Dashboard extends React.Component {
                                             <td>
                                                 <a href="#">
                                                     <figure className="avatar avatar-sm mr-2">
-                                <span className="avatar-title bg-warning text-black-50 rounded-pill">
-                                    <i className="ti-folder"></i>
-                                </span>
+                                                        <span className="avatar-title rounded-pill">
+                                                            <i className="ti-microphone"></i>
+                                                        </span>
                                                     </figure>
-                                                    Design Thinking Project
+                                                    Episode 04
                                                 </a>
                                             </td>
                                             <td>10MB</td>
@@ -152,8 +135,6 @@ class Dashboard extends React.Component {
                                             <td>
                                                 <div className="badge bg-secondary-bright text-secondary">Software</div>
                                             </td>
-                                            <td>
-                                            </td>
                                             <td className="text-right">
                                                 <div className="dropdown">
                                                     <a href="#" className="btn btn-floating btn-sm"
@@ -177,11 +158,11 @@ class Dashboard extends React.Component {
                                             <td>
                                                 <a href="#">
                                                     <figure className="avatar avatar-sm mr-2">
-                                <span className="avatar-title rounded-pill">
-                                    <i className="ti-file"></i>
-                                </span>
+                                                        <span className="avatar-title rounded-pill">
+                                                            <i className="ti-microphone"></i>
+                                                        </span>
                                                     </figure>
-                                                    Meeting-notes.doc
+                                                    Episode 03
                                                 </a>
                                             </td>
                                             <td>139KB</td>
@@ -189,45 +170,6 @@ class Dashboard extends React.Component {
                                             <td>
                                                 <div className="badge bg-primary-bright text-primary">Public</div>
                                             </td>
-                                            <td>
-                                                <div className="avatar-group">
-                                                    <figure className="avatar avatar-sm" title="Lisle Essam"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/women_avatar2.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="Baxie Roseblade"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/man_avatar5.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="Mella Mixter"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/women_avatar1.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="Jo Hugill"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/man_avatar1.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="Cullie Philcott"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/women_avatar5.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="" data-toggle="tooltip"
-                                                            data-original-title="Cullie Philcott">
-                                                        <span
-                                                            className="avatar-title bg-primary rounded-circle">+ 5</span>
-                                                    </figure>
-                                                </div>
-                                            </td>
                                             <td className="text-right">
                                                 <div className="dropdown">
                                                     <a href="#" className="btn btn-floating btn-sm"
@@ -251,11 +193,11 @@ class Dashboard extends React.Component {
                                             <td>
                                                 <a href="#">
                                                     <figure className="avatar avatar-sm mr-2">
-                                <span className="avatar-title rounded-pill">
-                                    <i className="ti-image"></i>
-                                </span>
+                                                        <span className="avatar-title rounded-pill">
+                                                            <i className="ti-microphone"></i>
+                                                        </span>
                                                     </figure>
-                                                    Sitemap.png
+                                                    Episode 02
                                                 </a>
                                             </td>
                                             <td>810KB</td>
@@ -263,28 +205,6 @@ class Dashboard extends React.Component {
                                             <td>
                                                 <div className="badge bg-success-bright text-success">Social Media</div>
                                             </td>
-                                            <td>
-                                                <div className="avatar-group">
-                                                    <figure className="avatar avatar-sm" title="Lisle Essam"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/women_avatar2.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="Baxie Roseblade"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/man_avatar5.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="Mella Mixter"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/women_avatar1.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                </div>
-                                            </td>
                                             <td className="text-right">
                                                 <div className="dropdown">
                                                     <a href="#" className="btn btn-floating btn-sm"
@@ -308,45 +228,17 @@ class Dashboard extends React.Component {
                                             <td>
                                                 <a href="#">
                                                     <figure className="avatar avatar-sm mr-2">
-                                <span className="avatar-title rounded-pill">
-                                    <i className="ti-file"></i>
-                                </span>
+                                                        <span className="avatar-title rounded-pill">
+                                                            <i className="ti-microphone"></i>
+                                                        </span>
                                                     </figure>
-                                                    Analytics.pdf
+                                                    Episode 01
                                                 </a>
                                             </td>
                                             <td>10KB</td>
                                             <td>3/9/19, 2:40PM</td>
                                             <td>
                                                 <div className="badge bg-info-bright text-info">Design</div>
-                                            </td>
-                                            <td>
-                                                <div className="avatar-group">
-                                                    <figure className="avatar avatar-sm" title="Lisle Essam"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/women_avatar2.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="Baxie Roseblade"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/man_avatar5.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="Mella Mixter"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/women_avatar1.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                    <figure className="avatar avatar-sm" title="Mella Mixter"
-                                                            data-toggle="tooltip">
-                                                        <img src="../../assets/media/image/user/women_avatar4.jpg"
-                                                             className="rounded-circle"
-                                                             alt="image"/>
-                                                    </figure>
-                                                </div>
                                             </td>
                                             <td className="text-right">
                                                 <div className="dropdown">

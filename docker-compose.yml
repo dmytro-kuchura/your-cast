@@ -46,21 +46,32 @@ services:
       - 'POSTGRES_USER=${DB_USER}'
       - 'POSTGRES_PASSWORD=${DB_PASSWORD}'
     ports:
-      - 5432:5432
+      - '5432:5432'
     volumes:
       - postgres-database-podcasts:/var/lib/postgresql/data
+
+#  clickhouse:
+#    container_name: podcasts_clickhouse
+#    image: yandex/clickhouse-server:latest
+#    ports:
+#      - '8123:8123'
+#      - '9000:9000'
+#    volumes:
+#      - clickhouse-database-podcasts:/var/lib/clickhouse
 
 #  redis:
 #    container_name: podcasts_redis
 #    build: .docker/redis
 #    restart: always
 #    ports:
-#      - 6379:6379
+#      - '6379:6379'
 #    volumes:
 #      - redis-podcasts:/data:rw
 
 volumes:
   postgres-database-podcasts:
     driver: local
+#  clickhouse-database-podcasts:
+#    driver: local
 #  redis-podcasts:
 #    driver: local

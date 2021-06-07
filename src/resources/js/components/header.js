@@ -3,21 +3,22 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {profile} from '../services/auth-service';
 
-const opened = {display: 'none'};
-const closed = {display: 'block'};
-
 class Header extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             user: null,
-            dropdownMenu: false
+            dropdownMenu: false,
+            dropdownNotifications: false
         };
 
         this.handleDropdown = this.handleDropdown.bind(this);
+        this.handleNotifications = this.handleNotifications.bind(this);
+    }
 
-        props.dispatch(profile());
+    componentDidMount() {
+        this.props.dispatch(profile());
     }
 
     componentDidUpdate(prevProps) {
@@ -26,11 +27,16 @@ class Header extends React.Component {
         }
     }
 
-
     handleDropdown(event) {
         event.preventDefault();
 
         this.setState({dropdownMenu: !this.state.dropdownMenu})
+    }
+
+    handleNotifications(event) {
+        event.preventDefault();
+
+        this.setState({dropdownNotifications: !this.state.dropdownNotifications})
     }
 
     render() {
@@ -62,10 +68,11 @@ class Header extends React.Component {
                                 <ul className="navbar-nav">
                                     <li className="nav-item dropdown">
                                         <a href="#" className="nav-link nav-link-notify" title="Notifications"
+                                           onClick={this.handleNotifications}
                                            data-toggle="dropdown">
                                             <i data-feather="bell"></i>
                                         </a>
-                                        <div className="dropdown-menu dropdown-menu-right dropdown-menu-big">
+                                        <div className={'dropdown-menu ' + (this.state.dropdownNotifications ? 'show' : '') + ' dropdown-menu-right dropdown-menu-big'}>
                                             <div
                                                 className="border-bottom px-4 py-3 text-center d-flex justify-content-between align-items-center">
                                                 <h5 className="mb-0">Notifications</h5>
@@ -195,30 +202,32 @@ class Header extends React.Component {
                                     </li>
                                     <li className="nav-item dropdown">
                                         <a href="#" className="nav-link dropdown-toggle" title="User menu"
+                                           onClick={this.handleDropdown}
                                            data-toggle="dropdown">
                                             <figure className="avatar avatar-sm">
                                                 <img src="/media/img/placeholder-image.png"
                                                      className="rounded-circle"
                                                      alt="avatar"/>
                                             </figure>
-                                            <span className="ml-2 d-sm-inline d-none">Bony Gidden</span>
+                                            <span
+                                                className="ml-2 d-sm-inline d-none">{this.state.user ? this.state.user.name : ''}</span>
                                         </a>
-                                        <div className="dropdown-menu dropdown-menu-right dropdown-menu-big">
+                                        <div
+                                            className={'dropdown-menu ' + (this.state.dropdownMenu ? 'show' : '') + ' dropdown-menu-right dropdown-menu-big'}>
                                             <div className="text-center py-4">
                                                 <figure className="avatar avatar-lg mb-3 border-0">
                                                     <img src="/media/img/placeholder-image.png"
                                                          className="rounded-circle" alt="image"/>
                                                 </figure>
-                                                <h5 className="text-center">Bony Gidden</h5>
-                                                <div className="mb-3 small text-center text-muted">@bonygidden</div>
-                                                <a href="#" className="btn btn-outline-light btn-rounded">Manage Your
-                                                    Account</a>
+                                                <h5 className="text-center">{this.state.user ? this.state.user.name : ''}</h5>
+                                                {/*<div className="mb-3 small text-center text-muted">@bonygidden</div>*/}
                                             </div>
                                             <div className="list-group">
-                                                <a href="profile.html" className="list-group-item">View Profile</a>
-                                                <a href="http://bifor.laborasyon.com/login"
-                                                   className="list-group-item text-danger"
-                                                   data-sidebar-target="#settings">Sign Out!</a>
+                                                <Link to="/account/profile" className="list-group-item">Manage Your
+                                                    Account</Link>
+                                                <Link to="/account/logout"
+                                                      className="list-group-item text-danger"
+                                                      data-sidebar-target="#settings">Sign Out!</Link>
                                             </div>
                                             <div className="p-4">
                                                 <div className="mb-4">
@@ -234,9 +243,9 @@ class Header extends React.Component {
                                                     </div>
                                                 </div>
                                                 <hr className="mb-3"/>
-                                                    <p className="small mb-0">
-                                                        <a href="#">Privacy policy</a>
-                                                    </p>
+                                                <p className="small mb-0">
+                                                    <a href="#">Privacy policy</a>
+                                                </p>
                                             </div>
                                         </div>
                                     </li>

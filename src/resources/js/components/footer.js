@@ -1,14 +1,15 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Footer() {
     return (
         <>
             <footer className="content-footer">
-                <div>© 2020 Dmytro Kuchura - <a href="http://laborasyon.com" target="_blank">Laborasyon</a></div>
+                <div>© 2021 <a href="http://laborasyon.com" target="_blank">Dmytro Kuchura</a></div>
                 <div>
                     <nav className="nav">
-                        <a href="#" className="nav-link">Change Log</a>
-                        <a href="#" className="nav-link">Get Help</a>
+                        <Link to="/" className="nav-link">Change Log</Link>
+                        <Link to="/" className="nav-link">Get Help</Link>
                     </nav>
                 </div>
             </footer>
