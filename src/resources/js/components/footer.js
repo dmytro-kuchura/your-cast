@@ -8,8 +8,8 @@ function Footer() {
                 <div>© 2021 <a href="http://laborasyon.com" target="_blank">Dmytro Kuchura</a></div>
                 <div>
                     <nav className="nav">
-                        <Link to="/" className="nav-link">Change Log</Link>
-                        <Link to="/" className="nav-link">Get Help</Link>
+                        <Link to="/account/changelog" className="nav-link">Change Log</Link>
+                        <Link to="/account/help" className="nav-link">Get Help</Link>
                     </nav>
                 </div>
             </footer>

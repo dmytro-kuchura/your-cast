@@ -8,11 +8,14 @@ import ConfirmEmail from '../pages/auth/confirm-email';
 
 import Dashboard from '../pages/dashboard'
 import Settings from '../pages/settings';
+import Changelog from '../pages/changelog';
+import Help from '../pages/help';
 import NotFound from '../pages/not-found';
 
 import ShowCreate from '../pages/shows/show-create';
 import ShowDashboard from '../pages/shows/show-dashboard';
 import ShowList from '../pages/shows/show-list';
+import Profile from '../pages/profile';
 
 const routes = [
     {
@@ -66,10 +69,30 @@ const routes = [
         auth: true,
         component: ShowDashboard
     }, {
+        path: '/account/profile',
+        exact: true,
+        auth: true,
+        component: Profile
+    }, {
+        path: '/account/notifications',
+        exact: true,
+        auth: true,
+        component: Settings
+    }, {
+        path: '/account/changelog',
+        exact: true,
+        auth: true,
+        component: Changelog
+    }, {
         path: '/account/settings',
         exact: true,
         auth: true,
         component: Settings
+    },  {
+        path: '/account/help',
+        exact: true,
+        auth: true,
+        component: Help
     }, {
         path: '*',
         exact: true,

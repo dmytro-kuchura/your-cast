@@ -57,7 +57,7 @@ class Aside extends React.Component {
                                 </Link>
                                 <ul style={this.state.dropdownShows ? opened : closed}>
                                     <li>
-                                        <Link to="/account/dashboard">Dashboard</Link>
+                                        <Link to="/account/show/list">List</Link>
                                     </li>
                                     <li>
                                         <Link to="/account/dashboard">Podcasts</Link>

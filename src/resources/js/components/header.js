@@ -18,6 +18,10 @@ class Header extends React.Component {
     }
 
     componentDidMount() {
+        if (this.props.user) {
+            this.setState({user: this.props.user})
+        }
+
         this.props.dispatch(profile());
     }
 
