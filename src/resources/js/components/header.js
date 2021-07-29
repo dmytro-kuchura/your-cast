@@ -82,7 +82,7 @@ class Header extends React.Component {
                                                 <h5 className="mb-0">Notifications</h5>
                                                 <small className="opacity-7">2 unread notifications</small>
                                             </div>
-                                            <div className="dropdown-scroll">
+                                            <div className="dropdown-scroll" style={{overflow: 'hidden', outline: 'currentcolor none medium'}}>
                                                 <ul className="list-group list-group-flush">
                                                     <li className="px-4 py-2 text-center small text-muted bg-light">Today</li>
                                                     <li className="px-4 py-3 list-group-item">

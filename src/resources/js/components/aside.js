@@ -84,6 +84,14 @@ class Aside extends React.Component {
                                     <span>Analytics</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="#" className="disabled">
+                                    <span className="nav-link-icon">
+                                        <i className="fa fa-credit-card-alt"/>
+                                    </span>
+                                    <span>Payments</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
