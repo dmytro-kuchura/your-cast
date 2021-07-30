@@ -9,11 +9,13 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <main>>
-                <div className="container p-2 mx-auto flex flex-col">
-                    <h1>This is Profile page</h1>
+            <>
+                <div className="row no-gutters app-block">
+                    <div className="col-md-12 app-content">
+                        <h1>This is Profile page</h1>
+                    </div>
                 </div>
-            </main>
+            </>
         );
     }
 }

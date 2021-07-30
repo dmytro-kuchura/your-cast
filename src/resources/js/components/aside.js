@@ -26,7 +26,7 @@ class Aside extends React.Component {
     handleDropdown(event) {
         event.preventDefault();
 
-        switch (event.target.id) {
+        switch (event.currentTarget.id) {
             case 'shows':
                 this.setState({dropdownShows: !this.state.dropdownShows});
                 break;
@@ -68,6 +68,22 @@ class Aside extends React.Component {
                                 </ul>
                             </li>
                             <li>
+                                <a href="#">
+                                    <span className="nav-link-icon">
+                                        <i className="fa fa-chart-line"/>
+                                    </span>
+                                    <span>Statistic</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span className="nav-link-icon">
+                                        <i className="fa fa-money-bill"/>
+                                    </span>
+                                    <span>Billing</span>
+                                </a>
+                            </li>
+                            <li>
                                 <Link to="/account/notifications">
                                     <span className="nav-link-icon">
                                         <i className="fa fa-bell"/>
@@ -90,6 +106,14 @@ class Aside extends React.Component {
                                         <i className="fa fa-credit-card-alt"/>
                                     </span>
                                     <span>Payments</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span className="nav-link-icon">
+                                        <i className="fa fa-envelope-open"/>
+                                    </span>
+                                    <span>Help</span>
                                 </a>
                             </li>
                         </ul>

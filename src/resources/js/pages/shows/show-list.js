@@ -9,12 +9,15 @@ class ShowList extends React.Component {
 
         this.state = {
             list: [],
+            opened: null,
         };
 
         if (props.auth.isAuthenticated) {
             const userId = props.auth.user.id;
             props.dispatch(getAllUserShows(userId))
         }
+
+        this.handleOpenDetails = this.handleOpenDetails.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -31,44 +34,51 @@ class ShowList extends React.Component {
         })
     }
 
+    handleOpenDetails(event) {
+        let selected = event.currentTarget.id;
+
+        this.setState({
+            opened: selected ===  this.state.opened ? null : selected
+        })
+    }
+
     render() {
         return (
             <>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="card card-custom card-stretch gutter-b">
-                                <div className="card-header border-0 pt-5">
-                                    <h3 className="card-title align-items-start flex-column">
-                                        <span className="card-label font-weight-bolder text-dark">Shows</span>
-                                        <span className="text-muted mt-3 font-weight-bold font-size-sm">All your shows</span>
-                                    </h3>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="card">
+                            <div className="card-body">
+                                <h6 className="card-title">All Shows</h6>
+                                <div className="table-responsive">
+                                    <table id="orders" className="table">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                <div className="custom-control custom-checkbox">
+                                                    <input type="checkbox" className="custom-control-input"
+                                                           id="orders-select-all"/>
+                                                        <label className="custom-control-label"
+                                                               htmlFor="orders-select-all"></label>
+                                                </div>
+                                            </th>
+                                            <th>ID</th>
+                                            <th>Product Name</th>
+                                            <th>Customer</th>
+                                            <th>Total Price</th>
+                                            <th>Status</th>
+                                            <th>Date</th>
+                                            <th className="text-right">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
 
-                                </div>
-                                <div className="card-body pt-2 pb-0 mt-n3">
-                                    <div className="tab-content mt-5">
-                                        <div className="tab-pane fade show active">
-                                            <div className="table-responsive">
-                                                <table className="table table-borderless table-vertical-center">
-                                                    <thead>
-                                                    <tr>
-                                                        <th className="p-0 w-40px"></th>
-                                                        <th className="p-0 min-w-200px"></th>
-                                                        <th className="p-0 min-w-200px"></th>
-                                                        <th className="p-0 min-w-150px"></th>
-                                                        <th className="p-0 min-w-110px"></th>
-                                                        <th className="p-0 min-w-150px"></th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
+                                        <List list={this.state.list}
+                                              opened={this.state.opened}
+                                              handleOpenDetails={this.handleOpenDetails}/>
 
-                                                    <List state={this.state.list}/>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -80,64 +90,47 @@ class ShowList extends React.Component {
 }
 
 const List = (props) => {
-    let list = props.state;
+    let list = props.list;
+    let opened = parseInt(props.opened);
     let html;
 
     if (list.length > 0) {
         html = list.map(function (item) {
             return (
                 <tr key={item.id}>
-                    <td className="pl-0 py-4">
-                        <div className="symbol symbol-50 symbol-light">
-                            <span className="symbol-label">
-                                <img
-                                    src="/metronic/theme/html/demo1/dist/assets/media/svg/misc/003-puzzle.svg"
-                                    className="h-50 align-self-center"
-                                    alt=""/>
-                            </span>
-                        </div>
+                    <td>
+                        <input type="checkbox" className="custom-control-input"/>
                     </td>
-                    <td className="pl-0">
-                        <p className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
-                            {item.title}
-                        </p>
-                        <div>
-                            <span className="font-weight-bolder">Description: </span>
-                            <span className="text-muted font-weight-bold text-hover-primary">
-                                {item.description}
-                            </span>
-                        </div>
+                    <td>
+                        <a href="#">{item.id}</a>
                     </td>
-                    <td className="text-left">
-                        <div>
-                            <span className="font-weight-bolder">Timezone: </span>
-                            <span className="text-muted font-weight-bold text-hover-primary">
-                                {item.timezone}
-                            </span>
-                        </div>
-                        <div>
-                            <span className="font-weight-bolder">Language: </span>
-                            <span className="text-muted font-weight-bold text-hover-primary">
-                                {item.language}
-                            </span>
-                        </div>
-                    </td>
-                    <td className="text-right">
-                        <span className="text-muted font-weight-500">{item.category}</span>
-                    </td>
-                    <td className="text-right">
-                        <span className="label label-lg label-light-success label-inline">{item.status}</span>
-                    </td>
-                    <td className="text-right pr-0">
-                        <Link to={'/account/show/' + item.id} className="btn btn-icon btn-light btn-hover-primary btn-sm">
-                            <span className="svg-icon svg-icon-md svg-icon-primary"></span>
-                        </Link>
-                        <a href="#" className="btn btn-icon btn-light btn-hover-warning btn-sm mx-3">
-                            <span className="svg-icon svg-icon-md svg-icon-primary"></span>
+                    <td>
+                        <a href="product-detail.html" className="d-flex align-items-center">
+                            <img width="40"
+                                 src="/media/img/placeholder-image.png"
+                                 className="rounded mr-3" alt="Shoe"/>
+                            <span>{item.title}</span>
                         </a>
-                        <a href="#" className="btn btn-icon btn-light btn-hover-danger btn-sm">
-                            <span className="svg-icon svg-icon-md svg-icon-primary"></span>
-                        </a>
+                    </td>
+                    <td>{item.title}</td>
+                    <td>$700</td>
+                    <td>
+                        <span className="badge bg-secondary-bright text-secondary">{item.status}</span>
+                    </td>
+                    <td>2018/08/28 21:24:36</td>
+                    <td className="text-right">
+                        <div className="dropdown">
+                            <a href="#" data-toggle="dropdown" id={item.id}
+                               onClick={props.handleOpenDetails}
+                               className="btn btn-floating">
+                                <i className="ti-more-alt"></i>
+                            </a>
+                            <div className={item.id === opened ? 'dropdown-menu dropdown-menu-right show' : 'dropdown-menu dropdown-menu-right'}>
+                                <a href="#" className="dropdown-item">View Detail</a>
+                                <a href="#" className="dropdown-item">Add podcast</a>
+                                <a href="#" className="dropdown-item text-danger">Delete</a>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             )
