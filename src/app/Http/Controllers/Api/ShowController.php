@@ -25,6 +25,15 @@ class ShowController extends Controller
         return $this->returnResponse([]);
     }
 
+    public function list(int $userId): JsonResponse
+    {
+        $result = $this->service->getAllUserShow($userId);
+
+        return $this->returnResponse([
+            'result' => $result
+        ]);
+    }
+
     public function create(CreateShowRequest $request): JsonResponse
     {
         $show = $this->service->createShow($request->all());
@@ -43,15 +52,6 @@ class ShowController extends Controller
             'created' => true,
             'show' => new ShowResource($show),
         ], Response::HTTP_OK);
-    }
-
-    public function list(int $userId): JsonResponse
-    {
-        $result = $this->service->getAllUserShow($userId);
-
-        return $this->returnResponse([
-            'result' => $result
-        ]);
     }
 
     public function delete(int $id): JsonResponse

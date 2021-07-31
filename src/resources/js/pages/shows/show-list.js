@@ -62,10 +62,8 @@ class ShowList extends React.Component {
                                                                htmlFor="orders-select-all"></label>
                                                 </div>
                                             </th>
-                                            <th>ID</th>
-                                            <th>Product Name</th>
-                                            <th>Customer</th>
-                                            <th>Total Price</th>
+                                            <th>Show Name</th>
+                                            <th>Total Podcasts</th>
                                             <th>Status</th>
                                             <th>Date</th>
                                             <th className="text-right">Action</th>
@@ -102,9 +100,6 @@ const List = (props) => {
                         <input type="checkbox" className="custom-control-input"/>
                     </td>
                     <td>
-                        <a href="#">{item.id}</a>
-                    </td>
-                    <td>
                         <a href="product-detail.html" className="d-flex align-items-center">
                             <img width="40"
                                  src="/media/img/placeholder-image.png"
@@ -112,8 +107,7 @@ const List = (props) => {
                             <span>{item.title}</span>
                         </a>
                     </td>
-                    <td>{item.title}</td>
-                    <td>$700</td>
+                    <td>1</td>
                     <td>
                         <span className="badge bg-secondary-bright text-secondary">{item.status}</span>
                     </td>

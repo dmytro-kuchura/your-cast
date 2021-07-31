@@ -60,7 +60,7 @@ class Aside extends React.Component {
                                         <Link to="/account/show/list">List</Link>
                                     </li>
                                     <li>
-                                        <Link to="/account/dashboard">Podcasts</Link>
+                                        <Link to="/account/podcasts/list">Podcasts</Link>
                                     </li>
                                     <li>
                                         <Link to="/account/dashboard">Billing</Link>
@@ -68,20 +68,12 @@ class Aside extends React.Component {
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">
+                                <Link to="/account/statistic">
                                     <span className="nav-link-icon">
-                                        <i className="fa fa-chart-line"/>
+                                        <i className="fa fa-line-chart"/>
                                     </span>
                                     <span>Statistic</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span className="nav-link-icon">
-                                        <i className="fa fa-money-bill"/>
-                                    </span>
-                                    <span>Billing</span>
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <Link to="/account/notifications">
@@ -93,28 +85,36 @@ class Aside extends React.Component {
                                 </Link>
                             </li>
                             <li>
-                                <a href="#" className="disabled">
+                                <Link to="/account/analytics" className="disabled">
                                     <span className="nav-link-icon">
                                         <i className="fa fa-line-chart"/>
                                     </span>
                                     <span>Analytics</span>
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="disabled">
+                                <Link to="/account/payments" className="disabled">
                                     <span className="nav-link-icon">
                                         <i className="fa fa-credit-card-alt"/>
                                     </span>
                                     <span>Payments</span>
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#">
+                                <Link to="/account/billing">
+                                    <span className="nav-link-icon">
+                                        <i className="fa fa-bank"/>
+                                    </span>
+                                    <span>Billing</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/account/help">
                                     <span className="nav-link-icon">
                                         <i className="fa fa-envelope-open"/>
                                     </span>
                                     <span>Help</span>
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

@@ -15,6 +15,7 @@ import NotFound from '../pages/not-found';
 import ShowCreate from '../pages/shows/show-create';
 import ShowDashboard from '../pages/shows/show-dashboard';
 import ShowList from '../pages/shows/show-list';
+import PodcastsList from '../pages/pocasts/podcasts-list';
 import Profile from '../pages/profile';
 
 const routes = [
@@ -68,6 +69,11 @@ const routes = [
         exact: true,
         auth: true,
         component: ShowDashboard
+    },  {
+        path: '/account/podcasts/list',
+        exact: true,
+        auth: true,
+        component: PodcastsList
     }, {
         path: '/account/profile',
         exact: true,

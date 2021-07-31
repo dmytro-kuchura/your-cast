@@ -84,7 +84,6 @@ class Header extends React.Component {
                                             </div>
                                             <div className="dropdown-scroll" style={{overflow: 'hidden', outline: 'currentcolor none medium'}}>
                                                 <ul className="list-group list-group-flush">
-                                                    <li className="px-4 py-2 text-center small text-muted bg-light">Today</li>
                                                     <li className="px-4 py-3 list-group-item">
                                                         <a href="#"
                                                            className="d-flex align-items-center hide-show-toggler">
@@ -124,72 +123,6 @@ class Header extends React.Component {
                                                                        className="hide-show-toggler-item fa fa-circle-o font-size-11"></i>
                                                                 </p>
                                                                 <span className="text-muted small">45 sec ago</span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li className="px-4 py-2 text-center small text-muted bg-light">Old
-                                                        Notifications
-                                                    </li>
-                                                    <li className="px-4 py-3 list-group-item">
-                                                        <a href="#"
-                                                           className="d-flex align-items-center hide-show-toggler">
-                                                            <div className="flex-shrink-0">
-                                                                <figure className="avatar mr-3">
-                                                        <span
-                                                            className="avatar-title bg-secondary-bright text-secondary rounded-circle">
-                                                            <i className="ti-file"></i>
-                                                        </span>
-                                                                </figure>
-                                                            </div>
-                                                            <div className="flex-grow-1">
-                                                                <p className="mb-0 line-height-20 d-flex justify-content-between">
-                                                                    1 person sent a file
-                                                                    <i title="Mark as unread" data-toggle="tooltip"
-                                                                       className="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                                                </p>
-                                                                <span className="text-muted small">Yesterday</span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li className="px-4 py-3 list-group-item">
-                                                        <a href="#"
-                                                           className="d-flex align-items-center hide-show-toggler">
-                                                            <div className="flex-shrink-0">
-                                                                <figure className="avatar mr-3">
-                                                        <span
-                                                            className="avatar-title bg-success-bright text-success rounded-circle">
-                                                            <i className="ti-download"></i>
-                                                        </span>
-                                                                </figure>
-                                                            </div>
-                                                            <div className="flex-grow-1">
-                                                                <p className="mb-0 line-height-20 d-flex justify-content-between">
-                                                                    Reports ready to download
-                                                                    <i title="Mark as unread" data-toggle="tooltip"
-                                                                       className="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                                                </p>
-                                                                <span className="text-muted small">Yesterday</span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li className="px-4 py-3 list-group-item">
-                                                        <a href="#"
-                                                           className="d-flex align-items-center hide-show-toggler">
-                                                            <div className="flex-shrink-0">
-                                                                <figure className="avatar mr-3">
-                                                        <span
-                                                            className="avatar-title bg-primary-bright text-primary rounded-circle">
-                                                            <i className="ti-arrow-top-right"></i>
-                                                        </span>
-                                                                </figure>
-                                                            </div>
-                                                            <div className="flex-grow-1">
-                                                                <p className="mb-0 line-height-20 d-flex justify-content-between">
-                                                                    The invitation has been sent.
-                                                                    <i title="Mark as unread" data-toggle="tooltip"
-                                                                       className="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                                                </p>
-                                                                <span className="text-muted small">Last Week</span>
                                                             </div>
                                                         </a>
                                                     </li>
