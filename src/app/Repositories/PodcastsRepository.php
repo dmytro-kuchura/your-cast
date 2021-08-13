@@ -27,10 +27,17 @@ class PodcastsRepository implements Repository
         $model = new Podcast();
 
         $model->show_id = $data['show_id'];
+        $model->audio = $data['audio'];
         $model->title = $data['title'];
         $model->description = $data['description'];
-        $model->image = $data['image'];
+        $model->cover = $data['cover'];
+        $model->episode = $data['episode'];
+        $model->season = $data['season'];
+        $model->episode_type = $data['episode_type'];
+        $model->content = $data['content'];
+        $model->duration = $data['duration'];
         $model->explicit = $data['explicit'];
+        $model->status = $data['status'];
 
         $model->save();
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {getAllUserShows} from '../../services/show-service';
 import {connect} from 'react-redux';
 
-class PodcastsList extends React.Component {
+class EpisodesList extends React.Component {
     constructor(props) {
         super(props);
 
@@ -195,4 +195,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(PodcastsList)
+export default connect(mapStateToProps)(EpisodesList)

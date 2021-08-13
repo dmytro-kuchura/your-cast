@@ -40,34 +40,34 @@ class Dashboard extends React.Component {
             <>
                 <div className="row no-gutters app-block">
                     <div className="col-md-12 app-content">
-                        <div className="app-action">
-                            <div className="action-left">
-                                <ul className="list-inline">
-                                    <li className="list-inline-item mb-0">
-                                        <a href="#" className="btn btn-outline-light dropdown-toggle"
-                                           data-toggle="dropdown">
-                                            <i data-feather="plus" className="mr-1"></i>
-                                            Add
-                                        </a>
-                                        <div className="dropdown-menu">
-                                            <a className="dropdown-item" href="#">Folder</a>
-                                            <a className="dropdown-item" href="#">File</a>
-                                        </div>
-                                    </li>
-                                    <li className="list-inline-item mb-0">
-                                        <a href="#" className="btn btn-outline-light dropdown-toggle"
-                                           data-toggle="dropdown">
-                                            Order by
-                                        </a>
-                                        <div className="dropdown-menu">
-                                            <a className="dropdown-item" href="#">Date</a>
-                                            <a className="dropdown-item" href="#">Name</a>
-                                            <a className="dropdown-item" href="#">Size</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        {/*<div className="app-action">*/}
+                        {/*    <div className="action-left">*/}
+                        {/*        <ul className="list-inline">*/}
+                        {/*            <li className="list-inline-item mb-0">*/}
+                        {/*                <a href="#" className="btn btn-outline-light dropdown-toggle"*/}
+                        {/*                   data-toggle="dropdown">*/}
+                        {/*                    <i data-feather="plus" className="mr-1"></i>*/}
+                        {/*                    Add*/}
+                        {/*                </a>*/}
+                        {/*                <div className="dropdown-menu">*/}
+                        {/*                    <a className="dropdown-item" href="#">Folder</a>*/}
+                        {/*                    <a className="dropdown-item" href="#">File</a>*/}
+                        {/*                </div>*/}
+                        {/*            </li>*/}
+                        {/*            <li className="list-inline-item mb-0">*/}
+                        {/*                <a href="#" className="btn btn-outline-light dropdown-toggle"*/}
+                        {/*                   data-toggle="dropdown">*/}
+                        {/*                    Order by*/}
+                        {/*                </a>*/}
+                        {/*                <div className="dropdown-menu">*/}
+                        {/*                    <a className="dropdown-item" href="#">Date</a>*/}
+                        {/*                    <a className="dropdown-item" href="#">Name</a>*/}
+                        {/*                    <a className="dropdown-item" href="#">Size</a>*/}
+                        {/*                </div>*/}
+                        {/*            </li>*/}
+                        {/*        </ul>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
 
                         <h5 className="mb-4">Recent podcasts</h5>
                         <div className="card">

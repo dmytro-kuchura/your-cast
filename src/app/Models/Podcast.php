@@ -8,16 +8,23 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @property int $id
+ *
  * @property int $show_id
+ *
+ * @property string $audio
  * @property string $title
  * @property string $description
- * @property string $content
- * @property string $image
- * @property int $duration
- * @property string $explicit
+ *
+ * @property string $cover
  * @property int $episode
  * @property int $season
  * @property string $episode_type
+ *
+ * @property string $content
+ *
+ * @property int $duration
+ * @property string $explicit
+ * @property string $status
  *
  * @property Show $show
  *
@@ -26,7 +33,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Podcast extends Model
 {
-    protected $table = 'shows';
+    protected $table = 'podcasts';
 
     /**
      * @var array
@@ -34,15 +41,17 @@ class Podcast extends Model
     protected $fillable = [
         'id',
         'show_id',
+        'audio',
         'title',
         'description',
-        'content',
-        'image',
-        'duration',
-        'explicit',
+        'cover',
         'episode',
         'season',
         'episode_type',
+        'content',
+        'duration',
+        'explicit',
+        'status',
         'created_at',
         'updated_at',
     ];

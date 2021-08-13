@@ -120,7 +120,7 @@ const List = (props) => {
                                 <i className="ti-more-alt"></i>
                             </a>
                             <div className={item.id === opened ? 'dropdown-menu dropdown-menu-right show' : 'dropdown-menu dropdown-menu-right'}>
-                                <a href="#" className="dropdown-item">View Detail</a>
+                                <Link to={'/account/show/' + item.token} className="dropdown-item">View</Link>
                                 <a href="#" className="dropdown-item">Add podcast</a>
                                 <a href="#" className="dropdown-item text-danger">Delete</a>
                             </div>

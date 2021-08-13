@@ -57,18 +57,21 @@ class Aside extends React.Component {
                                 </Link>
                                 <ul style={this.state.dropdownShows ? opened : closed}>
                                     <li>
-                                        <Link to="/account/show/list">List</Link>
+                                        <Link to="/account/show/list">Shows</Link>
                                     </li>
                                     <li>
-                                        <Link to="/account/podcasts/list">Podcasts</Link>
+                                        <Link to="/account/podcasts/list">Episodes</Link>
                                     </li>
                                     <li>
-                                        <Link to="/account/dashboard">Billing</Link>
+                                        <Link className="disabled" to="/account/show/web">Website</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="disabled" to="/account/dashboard">Feed</Link>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <Link to="/account/statistic">
+                                <Link to="/account/statistic" className="disabled">
                                     <span className="nav-link-icon">
                                         <i className="fa fa-line-chart"/>
                                     </span>
@@ -101,7 +104,7 @@ class Aside extends React.Component {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/account/billing">
+                                <Link to="/account/billing" className="disabled">
                                     <span className="nav-link-icon">
                                         <i className="fa fa-bank"/>
                                     </span>
@@ -109,7 +112,7 @@ class Aside extends React.Component {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/account/help">
+                                <Link to="/account/help" className="disabled">
                                     <span className="nav-link-icon">
                                         <i className="fa fa-envelope-open"/>
                                     </span>

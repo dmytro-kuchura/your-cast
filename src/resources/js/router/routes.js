@@ -15,7 +15,8 @@ import NotFound from '../pages/not-found';
 import ShowCreate from '../pages/shows/show-create';
 import ShowDashboard from '../pages/shows/show-dashboard';
 import ShowList from '../pages/shows/show-list';
-import PodcastsList from '../pages/pocasts/podcasts-list';
+import EpisodesList from '../pages/pocasts/episodes-list';
+import EpisodesCreate from '../pages/pocasts/episodes-create';
 import Profile from '../pages/profile';
 
 const routes = [
@@ -65,15 +66,20 @@ const routes = [
         auth: true,
         component: ShowList
     }, {
-        path: '/account/show/:id',
+        path: '/account/show/:token',
         exact: true,
         auth: true,
         component: ShowDashboard
-    },  {
-        path: '/account/podcasts/list',
+    }, {
+        path: '/account/episodes/list',
         exact: true,
         auth: true,
-        component: PodcastsList
+        component: EpisodesList
+    }, {
+        path: '/account/episodes/create',
+        exact: true,
+        auth: true,
+        component: EpisodesCreate
     }, {
         path: '/account/profile',
         exact: true,
@@ -94,7 +100,7 @@ const routes = [
         exact: true,
         auth: true,
         component: Settings
-    },  {
+    }, {
         path: '/account/help',
         exact: true,
         auth: true,
