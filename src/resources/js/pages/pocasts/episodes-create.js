@@ -61,24 +61,71 @@ class EpisodesCreate extends React.Component {
                             <div className="card-body">
                                 <h6 className="card-title">General</h6>
                                 <div className="row">
+                                    <div className="col-md-4">
+                                        <div className="form-group">
+                                            <label>Cover</label>
+                                            <Dropzone/>
+                                        </div>
+                                    </div>
                                     <div className="col-md-8">
-                                        <form>
-                                            <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">Email address</label>
-                                                <input type="email" className="form-control" placeholder="Enter email"/>
+                                        <div className="form-group">
+                                            <label htmlFor="title">Title</label>
+                                            <input type="text" id="title" className="form-control" placeholder="Title"/>
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="subtitle">Subtitle</label>
+                                            <input type="text" className="form-control" id="subtitle"
+                                                   placeholder="Subtitle"/>
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="link">Link</label>
+                                            <input type="text" className="form-control" id="link"
+                                                   placeholder="Link"/>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="form-group">
+                                                    <label htmlFor="season">Season</label>
+                                                    <input type="number" className="form-control" id="season"
+                                                           placeholder="Episode Season"/>
+                                                </div>
                                             </div>
-                                            <div className="form-group">
-                                                <label htmlFor="exampleInputPassword1">Password</label>
-                                                <input type="password" className="form-control"
-                                                       id="exampleInputPassword1" placeholder="Password"/>
+                                            <div className="col-md-6">
+                                                <div className="form-group">
+                                                    <label htmlFor="number">Episode #</label>
+                                                    <input type="number" className="form-control" id="number"
+                                                           placeholder="Episode #"/>
+                                                </div>
                                             </div>
-                                            <div className="form-group form-check">
-                                                <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                                                    <label className="form-check-label" htmlFor="exampleCheck1">Check me
-                                                        out</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <label htmlFor="alias">Episode Alias</label>
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                    <span className="input-group-text" id="alias">
+                                                        https://shows.your-cast.com/
+                                                    </span>
                                             </div>
-                                            <button type="submit" className="btn btn-primary">Submit</button>
-                                        </form>
+                                            <input type="text" className="form-control"
+                                                   id="alias-value" placeholder="my-show" disabled=""/>
+
+                                        </div>
+                                    </div>
+                                    <span className="help-block ml-3" style={{color: '#a1a1b2'}}>
+                                            <small>
+                                                <span>Choose wisely, this will be the public URL of your episode and you won't be able to change it ! It can only contain alphanumeric characters and dashes.</span>
+                                            </small>
+                                        </span>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-8">
+                                        <div className="form-group">
+                                            <label htmlFor="summary">Summary</label>
+                                            <textarea rows="6" id="summary" className="form-control" placeholder="Summary"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

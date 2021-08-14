@@ -2521,7 +2521,7 @@ var HeaderButtons = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      route: null
+      buttons: null
     };
     return _this;
   }
@@ -2529,30 +2529,33 @@ var HeaderButtons = /*#__PURE__*/function (_React$Component) {
   _createClass(HeaderButtons, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (prevProps.auth !== this.props.auth) {
+      if (prevProps.buttons !== this.props.buttons) {
         this.setState({
-          route: this.props.route
+          buttons: this.props.buttons
         });
       }
     }
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state.route);
+      var buttons = this.state.buttons;
+
+      if (!buttons) {
+        return null;
+      }
+
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "mt-2 mt-md-0",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-            to: '/account/episodes/create',
-            className: "btn btn-success mr-1 ml-1",
-            title: "Filter",
-            children: "New Episode"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+          children: [buttons.createShow ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
             to: '/account/show/create',
             className: "btn btn-success mr-1 ml-1",
-            title: "Filter",
             children: "New Show"
-          })]
+          }) : '', buttons.createEpisode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: '/account/episodes/create',
+            className: "btn btn-success mr-1 ml-1",
+            children: "New Episode"
+          }) : '']
         })
       });
     }
@@ -2950,11 +2953,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _breadcrumbs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./breadcrumbs */ "./resources/js/components/breadcrumbs.js");
 /* harmony import */ var _header_buttons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header-buttons */ "./resources/js/components/header-buttons.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _helpers_getBreadcrumbs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helpers/getBreadcrumbs */ "./resources/js/helpers/getBreadcrumbs.js");
 /* harmony import */ var _helpers_getTitles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../helpers/getTitles */ "./resources/js/helpers/getTitles.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _helpers_getButtons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../helpers/getButtons */ "./resources/js/helpers/getButtons.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2988,6 +2992,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var SubHeader = /*#__PURE__*/function (_React$Component) {
   _inherits(SubHeader, _React$Component);
 
@@ -3002,7 +3007,7 @@ var SubHeader = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       auth: null,
       title: null,
-      route: null,
+      buttons: null,
       breadcrumbs: []
     };
     _this.detectBreadcrumbsAndTitle = _this.detectBreadcrumbsAndTitle.bind(_assertThisInitialized(_this));
@@ -3015,7 +3020,7 @@ var SubHeader = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       if (this.props.hasOwnProperty('location')) {
         this.detectBreadcrumbsAndTitle(this.props.location);
-        this.detectBreadcrumbsAndTitle(this.props.location);
+        this.detectHeaderButtons(this.props.location);
       }
     }
   }, {
@@ -3040,8 +3045,9 @@ var SubHeader = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "detectHeaderButtons",
     value: function detectHeaderButtons(props) {
+      var buttons = (0,_helpers_getButtons__WEBPACK_IMPORTED_MODULE_6__.getButtons)(props);
       this.setState({
-        route: props.pathname
+        buttons: buttons
       });
     }
   }, {
@@ -3051,17 +3057,17 @@ var SubHeader = /*#__PURE__*/function (_React$Component) {
         return null;
       }
 
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "page-header d-md-flex justify-content-between",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
               children: this.state.title
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_breadcrumbs__WEBPACK_IMPORTED_MODULE_1__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_breadcrumbs__WEBPACK_IMPORTED_MODULE_1__.default, {
               breadcrumbs: this.state.breadcrumbs
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_header_buttons__WEBPACK_IMPORTED_MODULE_2__.default, {
-            route: this.state.route
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_header_buttons__WEBPACK_IMPORTED_MODULE_2__.default, {
+            buttons: this.state.buttons
           })]
         })
       });
@@ -3077,7 +3083,7 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_5__.connect)(mapStateToProps)((0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(SubHeader)));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_5__.connect)(mapStateToProps)((0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(SubHeader)));
 
 /***/ }),
 
@@ -3114,24 +3120,72 @@ function getBreadcrumbs(props) {
     }];
   }
 
-  if (props.pathname === '/account/podcasts/list') {
+  if (props.pathname === '/account/episodes/list') {
     return [{
       name: 'Dashboard',
       link: '/account/dashboard'
     }];
   }
 
-  if (props.pathname === '/account/podcasts/create') {
+  if (props.pathname === '/account/episodes/create') {
     return [{
       name: 'Dashboard',
       link: '/account/dashboard'
     }, {
-      name: 'Podcasts',
-      link: '/account/podcasts/list'
+      name: 'Episodes',
+      link: '/account/episodes/list'
     }];
   }
 
   return [];
+}
+
+/***/ }),
+
+/***/ "./resources/js/helpers/getButtons.js":
+/*!********************************************!*\
+  !*** ./resources/js/helpers/getButtons.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getButtons": () => (/* binding */ getButtons)
+/* harmony export */ });
+function getButtons(props) {
+  if (props.pathname === '/account/dashboard') {
+    return {
+      createShow: true,
+      createEpisode: true
+    };
+  }
+
+  if (props.pathname === '/account/show/list') {
+    return {
+      createShow: true,
+      createEpisode: true
+    };
+  }
+
+  if (props.pathname === '/account/episodes/list') {
+    return {
+      createShow: true,
+      createEpisode: true
+    };
+  }
+
+  if (props.pathname === '/account/episodes/create') {
+    return {
+      createShow: true,
+      createEpisode: false
+    };
+  }
+
+  return {
+    createShow: false,
+    createEpisode: false
+  };
 }
 
 /***/ }),
@@ -3168,12 +3222,12 @@ function getTitles(props) {
     return 'Show create';
   }
 
-  if (props.pathname === '/account/podcasts/list') {
-    return 'Podcasts';
+  if (props.pathname === '/account/episodes/list') {
+    return 'Episodes';
   }
 
-  if (props.pathname === '/account/podcasts/create') {
-    return 'Podcast create';
+  if (props.pathname === '/account/episodes/create') {
+    return 'Episode create';
   }
 
   return 'Dashboard';
@@ -5297,47 +5351,133 @@ var EpisodesCreate = /*#__PURE__*/function (_React$Component) {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h6", {
                   className: "card-title",
                   children: "General"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                  className: "row",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                    className: "col-md-4",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "form-group",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                        children: "Cover"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_utils_dropzone__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                    className: "col-md-8",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "form-group",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                        htmlFor: "title",
+                        children: "Title"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                        type: "text",
+                        id: "title",
+                        className: "form-control",
+                        placeholder: "Title"
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "form-group",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                        htmlFor: "subtitle",
+                        children: "Subtitle"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "subtitle",
+                        placeholder: "Subtitle"
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "form-group",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                        htmlFor: "link",
+                        children: "Link"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "link",
+                        placeholder: "Link"
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "row",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                        className: "col-md-6",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                          className: "form-group",
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                            htmlFor: "season",
+                            children: "Season"
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                            type: "number",
+                            className: "form-control",
+                            id: "season",
+                            placeholder: "Episode Season"
+                          })]
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                        className: "col-md-6",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                          className: "form-group",
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                            htmlFor: "number",
+                            children: "Episode #"
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                            type: "number",
+                            className: "form-control",
+                            id: "number",
+                            placeholder: "Episode #"
+                          })]
+                        })
+                      })]
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                  className: "row",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                    className: "col-md-12",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                      htmlFor: "alias",
+                      children: "Episode Alias"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "input-group",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                        className: "input-group-prepend",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                          className: "input-group-text",
+                          id: "alias",
+                          children: "https://shows.your-cast.com/"
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "alias-value",
+                        placeholder: "my-show",
+                        disabled: ""
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: "help-block ml-3",
+                    style: {
+                      color: '#a1a1b2'
+                    },
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("small", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                        children: "Choose wisely, this will be the public URL of your episode and you won't be able to change it ! It can only contain alphanumeric characters and dashes."
+                      })
+                    })
+                  })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                   className: "row",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "col-md-8",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                        className: "form-group",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                          htmlFor: "exampleInputEmail1",
-                          children: "Email address"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                          type: "email",
-                          className: "form-control",
-                          placeholder: "Enter email"
-                        })]
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                        className: "form-group",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                          htmlFor: "exampleInputPassword1",
-                          children: "Password"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                          type: "password",
-                          className: "form-control",
-                          id: "exampleInputPassword1",
-                          placeholder: "Password"
-                        })]
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                        className: "form-group form-check",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                          type: "checkbox",
-                          className: "form-check-input",
-                          id: "exampleCheck1"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                          className: "form-check-label",
-                          htmlFor: "exampleCheck1",
-                          children: "Check me out"
-                        })]
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                        type: "submit",
-                        className: "btn btn-primary",
-                        children: "Submit"
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "form-group",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                        htmlFor: "summary",
+                        children: "Summary"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+                        rows: "6",
+                        id: "summary",
+                        className: "form-control",
+                        placeholder: "Summary"
                       })]
                     })
                   })

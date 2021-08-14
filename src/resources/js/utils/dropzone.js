@@ -34,7 +34,6 @@ class Dropzone extends React.Component {
         }
     }
 
-
     render() {
         return (
             <div id="dropzone">

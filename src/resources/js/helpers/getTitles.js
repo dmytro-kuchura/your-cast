@@ -19,12 +19,12 @@ export function getTitles(props) {
         return 'Show create';
     }
 
-    if (props.pathname === '/account/podcasts/list') {
-        return 'Podcasts';
+    if (props.pathname === '/account/episodes/list') {
+        return 'Episodes';
     }
 
-    if (props.pathname === '/account/podcasts/create') {
-        return 'Podcast create';
+    if (props.pathname === '/account/episodes/create') {
+        return 'Episode create';
     }
 
     return 'Dashboard';

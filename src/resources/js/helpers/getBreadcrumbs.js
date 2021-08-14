@@ -23,7 +23,7 @@ export function getBreadcrumbs(props) {
             }
         ];
     }
-    if (props.pathname === '/account/podcasts/list') {
+    if (props.pathname === '/account/episodes/list') {
         return [
             {
                 name: 'Dashboard',
@@ -31,14 +31,14 @@ export function getBreadcrumbs(props) {
             }
         ];
     }
-    if (props.pathname === '/account/podcasts/create') {
+    if (props.pathname === '/account/episodes/create') {
         return [
             {
                 name: 'Dashboard',
                 link: '/account/dashboard'
             }, {
-                name: 'Podcasts',
-                link: '/account/podcasts/list'
+                name: 'Episodes',
+                link: '/account/episodes/list'
             }
         ];
     }

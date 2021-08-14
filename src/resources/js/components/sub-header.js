@@ -5,6 +5,7 @@ import {withRouter} from 'react-router-dom';
 import {getBreadcrumbs} from '../helpers/getBreadcrumbs';
 import {getTitles} from '../helpers/getTitles';
 import {connect} from 'react-redux';
+import {getButtons} from '../helpers/getButtons';
 
 class SubHeader extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class SubHeader extends React.Component {
         this.state = {
             auth: null,
             title: null,
-            route: null,
+            buttons: null,
             breadcrumbs: []
         };
 
@@ -24,7 +25,7 @@ class SubHeader extends React.Component {
     componentDidMount() {
         if (this.props.hasOwnProperty('location')) {
             this.detectBreadcrumbsAndTitle(this.props.location)
-            this.detectBreadcrumbsAndTitle(this.props.location)
+            this.detectHeaderButtons(this.props.location)
         }
     }
 
@@ -45,8 +46,9 @@ class SubHeader extends React.Component {
     }
 
     detectHeaderButtons(props) {
+        let buttons = getButtons(props);
         this.setState({
-            route: props.pathname
+            buttons: buttons
         })
     }
 
@@ -62,7 +64,7 @@ class SubHeader extends React.Component {
                         <h3>{this.state.title}</h3>
                         <Breadcrumbs breadcrumbs={this.state.breadcrumbs}/>
                     </div>
-                    <HeaderButtons route={this.state.route}/>
+                    <HeaderButtons buttons={this.state.buttons}/>
                 </div>
             </>
         );

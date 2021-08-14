@@ -13896,9 +13896,64 @@ body.modal-open .modal.show .modal-dialog {
   z-index: 1;
 }
 
+#dropzone {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dropzone.dz-clickable {
+  cursor: pointer;
+}
+
 .dropzone {
-  border-width: 1px;
-  border-color: #5066e1;
+  border: 3px dashed #0087F7;
+  border-radius: 5px;
+  background: white;
+}
+
+.dropzone {
+  min-height: 150px;
+  background: white;
+  padding: 10px 40px;
+}
+
+.dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {
+  cursor: pointer;
+}
+
+.dropzone .dz-message {
+  font-weight: 400;
+}
+
+.dropzone .dz-message {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.dropzone.dz-clickable * {
+  cursor: default;
+}
+
+.dropzone, .dropzone * {
+  box-sizing: border-box;
+}
+
+.dropzone .dz-message .dz-button {
+  font-size: 1.5em;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.dropzone .dz-message .note {
+  font-size: 0.8em;
+  font-weight: 200;
+  display: block;
+  margin-top: 1.4rem;
 }
 
 .form-membership {
