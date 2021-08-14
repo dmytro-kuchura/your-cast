@@ -1,6 +1,7 @@
 import React from 'react';
 import {getAllUserShows} from '../../services/show-service';
 import {connect} from 'react-redux';
+import Dropzone from '../../utils/dropzone';
 
 class EpisodesCreate extends React.Component {
     constructor(props) {
@@ -50,24 +51,8 @@ class EpisodesCreate extends React.Component {
                             <div className="card-body">
                                 <h6 className="card-title">Audio</h6>
                                 <div className="row">
-                                    <div className="col-md-8">
-                                        <form>
-                                            <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">Email address</label>
-                                                <input type="email" className="form-control" placeholder="Enter email"/>
-                                            </div>
-                                            <div className="form-group">
-                                                <label htmlFor="exampleInputPassword1">Password</label>
-                                                <input type="password" className="form-control"
-                                                       id="exampleInputPassword1" placeholder="Password"/>
-                                            </div>
-                                            <div className="form-group form-check">
-                                                <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                                                    <label className="form-check-label" htmlFor="exampleCheck1">Check me
-                                                        out</label>
-                                            </div>
-                                            <button type="submit" className="btn btn-primary">Submit</button>
-                                        </form>
+                                    <div className="col-md-12">
+                                        <Dropzone/>
                                     </div>
                                 </div>
                             </div>
