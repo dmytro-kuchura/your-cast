@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property int $user_id
  * @property string $ip_address
  * @property string $country
+ * @property string $city
+ * @property string $browser
  *
  * @property User $user
  *
@@ -29,6 +31,8 @@ class UserIpHistory extends Model
         'user_id',
         'ip_address',
         'country',
+        'city',
+        'browser',
         'created_at',
         'updated_at',
     ];

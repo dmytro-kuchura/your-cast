@@ -15,8 +15,8 @@ import NotFound from '../pages/not-found';
 import ShowCreate from '../pages/shows/show-create';
 import ShowDashboard from '../pages/shows/show-dashboard';
 import ShowList from '../pages/shows/show-list';
-import EpisodesList from '../pages/pocasts/episodes-list';
-import EpisodesCreate from '../pages/pocasts/episodes-create';
+import EpisodesList from '../pages/podcasts/episodes-list';
+import EpisodesCreate from '../pages/podcasts/episodes-create';
 import Profile from '../pages/profile';
 
 const routes = [

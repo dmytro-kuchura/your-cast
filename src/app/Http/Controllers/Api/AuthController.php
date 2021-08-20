@@ -11,6 +11,7 @@ use App\Http\Resources\UserResource;
 use App\Mail\ResetPasswordMail;
 use App\Mail\UpdatePasswordMail;
 use App\Services\AuthService;
+use App\Services\IpHistoryService;
 use App\Services\LogService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
@@ -23,10 +24,17 @@ class AuthController extends Controller
 
     public LogService $logService;
 
-    public function __construct(AuthService $authService, LogService $logService)
+    public IpHistoryService $ipHistoryService;
+
+    public function __construct(
+        AuthService $authService,
+        LogService $logService,
+        IpHistoryService $ipHistoryService
+    )
     {
         $this->authService = $authService;
         $this->logService = $logService;
+        $this->ipHistoryService = $ipHistoryService;
     }
 
     public function login(LoginRequest $request): JsonResponse
@@ -38,6 +46,8 @@ class AuthController extends Controller
                 'error' => 'Sorry we couldn\'t sign you in with those details.'
             ], 422);
         }
+
+        $this->ipHistoryService->saveHistory($request->user());
 
         return $this->returnResponse([
             'user' => new UserResource($request->user()),

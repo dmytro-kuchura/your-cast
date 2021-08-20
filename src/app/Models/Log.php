@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $message
  * @property string $context
  * @property string $level
- * @property string $remote_addr
+ * @property string $remote_address
  * @property string $user_agent
  * @property string $request_header
  * @property string $request_body
@@ -30,7 +30,7 @@ class Log extends Model
         'message',
         'context',
         'level',
-        'remote_addr',
+        'remote_address',
         'user_agent',
         'request_header',
         'request_body',

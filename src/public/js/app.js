@@ -3968,12 +3968,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/auth-service */ "./resources/js/services/auth-service.js");
-/* harmony import */ var _helpers_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/validation */ "./resources/js/helpers/validation.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4002,14 +4001,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
-var rules = {
-  'name': ['required'],
-  'email': ['email', 'nullable'],
-  'password': ['required'],
-  'password_confirmation': ['required'],
-  'agree': ['required']
-};
 
 var Register = /*#__PURE__*/function (_React$Component) {
   _inherits(Register, _React$Component);
@@ -4051,7 +4042,9 @@ var Register = /*#__PURE__*/function (_React$Component) {
 
       event.preventDefault();
       var credentials = this.state.credentials;
-      this.props.dispatch((0,_services_auth_service__WEBPACK_IMPORTED_MODULE_2__.register)(credentials)).then({})["catch"](function (_ref) {
+      this.props.dispatch((0,_services_auth_service__WEBPACK_IMPORTED_MODULE_2__.register)(credentials)).then(function (response) {
+        _this2.props.history.push('/account/login');
+      })["catch"](function (_ref) {
         var error = _ref.error,
             statusCode = _ref.statusCode;
         var responseError = {
@@ -4082,28 +4075,28 @@ var Register = /*#__PURE__*/function (_React$Component) {
       var isAuthenticated = this.props.isAuthenticated;
 
       if (isAuthenticated) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Redirect, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
           to: from
         });
       }
 
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "form-wrapper",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           id: "logo",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
             src: "/media/img/podcasts-logo.png",
             alt: "image",
             width: 250
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h5", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
           children: "Create account"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
           onSubmit: this.handleSubmit,
           method: "POST",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               className: "form-control",
               type: "text",
               id: "name",
@@ -4112,9 +4105,9 @@ var Register = /*#__PURE__*/function (_React$Component) {
               placeholder: "Full name",
               autoComplete: "off"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               className: "form-control",
               required: true,
               placeholder: "Email",
@@ -4123,9 +4116,9 @@ var Register = /*#__PURE__*/function (_React$Component) {
               name: "email",
               onChange: this.handleChange
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               className: "form-control",
               id: "password",
               type: "password",
@@ -4134,9 +4127,9 @@ var Register = /*#__PURE__*/function (_React$Component) {
               placeholder: "Password",
               autoComplete: "off"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               className: "form-control",
               id: "password_confirmation",
               type: "password",
@@ -4145,13 +4138,13 @@ var Register = /*#__PURE__*/function (_React$Component) {
               placeholder: "Confirm password",
               autoComplete: "off"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "btn btn-primary btn-block",
             children: "Register"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
             className: "text-muted",
             children: "Already have an account?"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
             to: "/account/login",
             children: "Sign in!"
           })]
@@ -5112,15 +5105,9 @@ var Logout = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var isAuthenticated = this.props.isAuthenticated;
-
-      if (!isAuthenticated) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
-          to: '/admin/login'
-        });
-      }
-
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {});
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
+        to: '/admin/login'
+      });
     }
   }]);
 
@@ -5219,10 +5206,10 @@ var NotFound = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/pages/pocasts/episodes-create.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/pages/pocasts/episodes-create.js ***!
-  \*******************************************************/
+/***/ "./resources/js/pages/podcasts/episodes-create.js":
+/*!********************************************************!*\
+  !*** ./resources/js/pages/podcasts/episodes-create.js ***!
+  \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5499,10 +5486,10 @@ var mapStateToProps = function mapStateToProps(state) {
 
 /***/ }),
 
-/***/ "./resources/js/pages/pocasts/episodes-list.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/pages/pocasts/episodes-list.js ***!
-  \*****************************************************/
+/***/ "./resources/js/pages/podcasts/episodes-list.js":
+/*!******************************************************!*\
+  !*** ./resources/js/pages/podcasts/episodes-list.js ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8823,8 +8810,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_shows_show_create__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../pages/shows/show-create */ "./resources/js/pages/shows/show-create.js");
 /* harmony import */ var _pages_shows_show_dashboard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../pages/shows/show-dashboard */ "./resources/js/pages/shows/show-dashboard.js");
 /* harmony import */ var _pages_shows_show_list__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../pages/shows/show-list */ "./resources/js/pages/shows/show-list.js");
-/* harmony import */ var _pages_pocasts_episodes_list__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../pages/pocasts/episodes-list */ "./resources/js/pages/pocasts/episodes-list.js");
-/* harmony import */ var _pages_pocasts_episodes_create__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../pages/pocasts/episodes-create */ "./resources/js/pages/pocasts/episodes-create.js");
+/* harmony import */ var _pages_podcasts_episodes_list__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../pages/podcasts/episodes-list */ "./resources/js/pages/podcasts/episodes-list.js");
+/* harmony import */ var _pages_podcasts_episodes_create__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../pages/podcasts/episodes-create */ "./resources/js/pages/podcasts/episodes-create.js");
 /* harmony import */ var _pages_profile__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../pages/profile */ "./resources/js/pages/profile.js");
 
 
@@ -8897,12 +8884,12 @@ var routes = [{
   path: '/account/episodes/list',
   exact: true,
   auth: true,
-  component: _pages_pocasts_episodes_list__WEBPACK_IMPORTED_MODULE_14__.default
+  component: _pages_podcasts_episodes_list__WEBPACK_IMPORTED_MODULE_14__.default
 }, {
   path: '/account/episodes/create',
   exact: true,
   auth: true,
-  component: _pages_pocasts_episodes_create__WEBPACK_IMPORTED_MODULE_15__.default
+  component: _pages_podcasts_episodes_create__WEBPACK_IMPORTED_MODULE_15__.default
 }, {
   path: '/account/profile',
   exact: true,

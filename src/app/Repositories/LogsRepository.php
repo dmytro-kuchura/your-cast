@@ -23,7 +23,7 @@ class LogsRepository implements Repository
         $model->message = $data['message'];
         $model->context = $data['context'] ?? null;
         $model->level = $data['level'] ?? 'info';
-        $model->remote_addr = $data['remote_addr'] ?? null;
+        $model->remote_address = $data['remote_address'] ?? null;
         $model->user_agent = $data['user_agent'] ?? null;
         $model->request_header = $data['request_header'] ?? null;
         $model->request_body = $data['request_body'] ?? null;

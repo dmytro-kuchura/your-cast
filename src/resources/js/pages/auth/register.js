@@ -2,15 +2,6 @@ import React from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {register} from '../../services/auth-service';
-import {validate} from '../../helpers/validation';
-
-const rules = {
-    'name': ['required'],
-    'email': ['email', 'nullable'],
-    'password': ['required'],
-    'password_confirmation': ['required'],
-    'agree': ['required'],
-};
 
 class Register extends React.Component {
     constructor(props) {
@@ -42,7 +33,9 @@ class Register extends React.Component {
         const {credentials} = this.state;
 
         this.props.dispatch(register(credentials))
-            .then({})
+            .then(response => {
+                this.props.history.push('/account/login')
+            })
             .catch(({error, statusCode}) => {
                 const responseError = {
                     isError: true,

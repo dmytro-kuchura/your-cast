@@ -19,6 +19,8 @@ class CreateUsersIpHistoryTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->ipAddress('ip_address')->nullable();
             $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('browser')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
 
