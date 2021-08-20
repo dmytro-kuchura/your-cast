@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Services\PodcastService;
+use App\Services\EpisodesService;
 use Illuminate\Http\JsonResponse;
 
 class PodcastController extends Controller
 {
-    /** @var PodcastService */
-    private PodcastService $service;
+    /** @var EpisodesService */
+    private EpisodesService $service;
 
-    public function __construct(PodcastService $service)
+    public function __construct(EpisodesService $service)
     {
         $this->service = $service;
     }

@@ -2181,7 +2181,7 @@ var Aside = /*#__PURE__*/function (_React$Component) {
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-                      to: "/account/podcasts/list",
+                      to: "/account/episodes/list",
                       children: "Episodes"
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
@@ -3164,21 +3164,14 @@ function getButtons(props) {
   if (props.pathname === '/account/show/list') {
     return {
       createShow: true,
-      createEpisode: true
+      createEpisode: false
     };
   }
 
   if (props.pathname === '/account/episodes/list') {
     return {
-      createShow: true,
+      createShow: false,
       createEpisode: true
-    };
-  }
-
-  if (props.pathname === '/account/episodes/create') {
-    return {
-      createShow: true,
-      createEpisode: false
     };
   }
 
@@ -5443,12 +5436,14 @@ var EpisodesCreate = /*#__PURE__*/function (_React$Component) {
                         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
                           className: "input-group-text",
                           id: "alias",
+                          style: {
+                            fontSize: '0.7rem'
+                          },
                           children: "https://shows.your-cast.com/"
                         })
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
                         type: "text",
                         className: "form-control",
-                        id: "alias-value",
                         placeholder: "my-show",
                         disabled: ""
                       })]

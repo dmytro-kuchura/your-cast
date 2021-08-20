@@ -8,19 +8,13 @@ export function getButtons(props) {
     if (props.pathname === '/account/show/list') {
         return {
             createShow: true,
-            createEpisode: true
+            createEpisode: false
         };
     }
     if (props.pathname === '/account/episodes/list') {
         return {
-            createShow: true,
+            createShow: false,
             createEpisode: true
-        };
-    }
-    if (props.pathname === '/account/episodes/create') {
-        return {
-            createShow: true,
-            createEpisode: false
         };
     }
 

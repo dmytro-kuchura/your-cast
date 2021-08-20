@@ -27,13 +27,14 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $status
  *
  * @property Show $show
+ * @property AudioFile $audioFiles
  *
  * @property string $created_at
  * @property string $updated_at
  */
-class Podcast extends Model
+class Episode extends Model
 {
-    protected $table = 'podcasts';
+    protected $table = 'episodes';
 
     /**
      * @var array
@@ -59,5 +60,10 @@ class Podcast extends Model
     public function show(): HasOne
     {
         return $this->hasOne('App\Models\Show', 'id', 'show_id');
+    }
+
+    public function audioFiles(): HasOne
+    {
+        return $this->hasOne('App\Models\AudioFile', 'id', 'show_id');
     }
 }

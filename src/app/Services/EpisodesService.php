@@ -3,21 +3,21 @@
 namespace App\Services;
 
 use App\Exceptions\NotCreateShowException;
-use App\Models\Podcast;
-use App\Repositories\PodcastsRepository;
+use App\Models\Episode;
+use App\Repositories\EpisodesRepository;
 use Illuminate\Database\Eloquent\Collection;
 
-class PodcastService
+class EpisodesService
 {
-    /** @var PodcastsRepository */
-    private PodcastsRepository $repository;
+    /** @var EpisodesRepository */
+    private EpisodesRepository $repository;
 
-    public function __construct(PodcastsRepository $showsRepository)
+    public function __construct(EpisodesRepository $showsRepository)
     {
         $this->repository = $showsRepository;
     }
 
-    public function createPodcast(array $data): Podcast
+    public function createPodcast(array $data): Episode
     {
         try {
             $show = $this->repository->store($data);
@@ -28,7 +28,7 @@ class PodcastService
         return $this->getPodcast($show->id);
     }
 
-    public function getPodcast(int $id): ?Podcast
+    public function getPodcast(int $id): ?Episode
     {
         return $this->repository->get($id);
     }

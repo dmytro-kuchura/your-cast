@@ -20,7 +20,7 @@ class CreateLogsTable extends Migration
             $table->longText('context')->nullable();
             $table->enum('level', ['info', 'error', 'warning', 'debug'])->index()->default('info');
 
-            $table->string('remote_addr')->nullable();
+            $table->string('remote_address')->nullable();
             $table->string('user_agent')->nullable();
             $table->text('request_header')->nullable();
             $table->text('request_body')->nullable();

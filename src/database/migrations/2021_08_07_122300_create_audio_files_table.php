@@ -16,9 +16,9 @@ class CreateAudioFilesTable extends Migration
         Schema::create('audio_files', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title');
-            $table->longText('description');
-            $table->string('cover')->nullable();
+            $table->string('duration')->nullable();
+            $table->string('size')->nullable();
+            $table->string('link');
             $table->enum('status', ['enabled', 'disabled', 'drafted'])->default('drafted');
 
             $table->timestamps();

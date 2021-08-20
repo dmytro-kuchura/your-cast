@@ -2,14 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Models\Podcast;
+use App\Models\Episode;
 use Illuminate\Database\Eloquent\Collection;
 
-class PodcastsRepository implements Repository
+class EpisodesRepository implements Repository
 {
-    public function get(int $id): ?Podcast
+    public function get(int $id): ?Episode
     {
-        return Podcast::find($id);
+        return Episode::find($id);
     }
 
     public function all()
@@ -17,14 +17,14 @@ class PodcastsRepository implements Repository
         // TODO: Implement all() method.
     }
 
-    public function getAllUserPodcast(int $userId): ?Collection
+    public function getAllUserEpisodes(int $userId): ?Collection
     {
-        return Podcast::where('user_id', $userId)->get();
+        return Episode::where('user_id', $userId)->get();
     }
 
-    public function store(array $data): Podcast
+    public function store(array $data): Episode
     {
-        $model = new Podcast();
+        $model = new Episode();
 
         $model->show_id = $data['show_id'];
         $model->audio = $data['audio'];
@@ -46,11 +46,11 @@ class PodcastsRepository implements Repository
 
     public function update(array $data, int $id)
     {
-        Podcast::where('id', $id)->update($data);
+        Episode::where('id', $id)->update($data);
     }
 
     public function destroy(int $id)
     {
-        Podcast::where('id', $id)->delete();
+        Episode::where('id', $id)->delete();
     }
 }

@@ -60,7 +60,7 @@ class Aside extends React.Component {
                                         <Link to="/account/show/list">Shows</Link>
                                     </li>
                                     <li>
-                                        <Link to="/account/podcasts/list">Episodes</Link>
+                                        <Link to="/account/episodes/list">Episodes</Link>
                                     </li>
                                     <li>
                                         <Link className="disabled" to="/account/show/web">Website</Link>

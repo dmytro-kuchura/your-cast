@@ -105,12 +105,11 @@ class EpisodesCreate extends React.Component {
                                         <label htmlFor="alias">Episode Alias</label>
                                         <div className="input-group">
                                             <div className="input-group-prepend">
-                                                    <span className="input-group-text" id="alias">
+                                                    <span className="input-group-text" id="alias" style={{fontSize: '0.7rem'}}>
                                                         https://shows.your-cast.com/
                                                     </span>
                                             </div>
-                                            <input type="text" className="form-control"
-                                                   id="alias-value" placeholder="my-show" disabled=""/>
+                                            <input type="text" className="form-control" placeholder="my-show" disabled=""/>
 
                                         </div>
                                     </div>
