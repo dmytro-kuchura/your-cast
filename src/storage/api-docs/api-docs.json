@@ -1,0 +1,30 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "L5 OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/upload-image": {
+            "post": {
+                "tags": [
+                    "Upload"
+                ],
+                "summary": "Upload new image",
+                "operationId": "24eefca2fa48a118c40de5f3e7d3c600",
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

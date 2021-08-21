@@ -12,6 +12,14 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    /**
+     * @OA\Info(
+     *      version="1.0.0",
+     *      title="L5 OpenApi",
+     *      description="L5 Swagger OpenApi description"
+     * )
+     *
+     */
     public function returnResponse(array $response, $status_code = 200, array $headers = []): JsonResponse
     {
         $response['success'] = true;
