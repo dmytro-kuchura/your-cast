@@ -25,6 +25,31 @@ class ShowController extends Controller
         return $this->returnResponse([]);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/v1/list/{id}",
+     *     summary="User created shows",
+     *     tags={"Show"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="User ID",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user"
+     *     )
+     * )
+     */
     public function list(int $userId): JsonResponse
     {
         $result = $this->service->getAllUserShow($userId);

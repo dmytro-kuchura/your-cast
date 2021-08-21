@@ -17,7 +17,7 @@ class UploadController extends Controller
      *     tags={"Upload"},
      *     @OA\Response(
      *         response=201,
-     *         description="successful operation"
+     *         description="Successful operation"
      *     ),
      *     @OA\Response(
      *         response="401",

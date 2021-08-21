@@ -14,9 +14,9 @@ class Controller extends BaseController
 
     /**
      * @OA\Info(
-     *      version="1.0.0",
-     *      title="L5 OpenApi",
-     *      description="L5 Swagger OpenApi description"
+     *      version="0.1.5",
+     *      title="Your Cast API",
+     *      description="Your Cast Swagger OpenApi description"
      * )
      *
      */
