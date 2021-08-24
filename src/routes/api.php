@@ -36,6 +36,10 @@ Route::middleware(['logger'])->group(function () {
                 Route::get('/{id}', [ShowController::class, 'info'])->name('api.show.info');
                 Route::delete('/{id}', [ShowController::class, 'delete'])->name('api.show.delete');
             });
+
+            Route::prefix('episode')->group(function () {
+                Route::post('/create', [ShowController::class, 'create'])->name('api.episode.create');
+            });
         });
     });
 });

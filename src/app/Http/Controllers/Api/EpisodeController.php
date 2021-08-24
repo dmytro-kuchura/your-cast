@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\EpisodesService;
 use Illuminate\Http\JsonResponse;
 
-class PodcastController extends Controller
+class EpisodeController extends Controller
 {
     /** @var EpisodesService */
     private EpisodesService $service;

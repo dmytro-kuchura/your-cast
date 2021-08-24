@@ -32,10 +32,10 @@ class Dropzone extends React.Component {
     handleSelectFile(event) {
         if (event.target.files[0]) {
             let file = event.target.files[0];
-            if (file.type !== 'audio/mpeg' && this.state.type === 'audio') {
+            if (this.state.type === 'audio' && file.type !== 'audio/mpeg') {
                 notification('This is not valid audio file, only *.mp3!', 'error');
             }
-            if (file.type !== 'image/jpeg' && file.type !== 'image/png' && this.state.type === 'cover') {
+            if (this.state.type === 'cover' && file.type !== 'image/jpeg' && file.type !== 'image/png') {
                 notification('This is not valid image file, only *.jpeg or *.png!', 'error');
             }
         }
