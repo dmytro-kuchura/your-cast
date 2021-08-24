@@ -52,7 +52,10 @@ class EpisodesCreate extends React.Component {
                                 <h6 className="card-title">Audio</h6>
                                 <div className="row">
                                     <div className="col-md-12">
-                                        <Dropzone/>
+                                        <Dropzone title={'Episode audio file'}
+                                                  type={'audio'}
+                                                  description={'Click here to upload your audio file (max size 150 MB).'}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +67,10 @@ class EpisodesCreate extends React.Component {
                                     <div className="col-md-4">
                                         <div className="form-group">
                                             <label>Cover</label>
-                                            <Dropzone/>
+                                            <Dropzone title={'Episode cover'}
+                                                      type={'cover'}
+                                                      description={'Click here to upload your episode cover file (max size 15 MB).'}
+                                            />
                                         </div>
                                     </div>
                                     <div className="col-md-8">

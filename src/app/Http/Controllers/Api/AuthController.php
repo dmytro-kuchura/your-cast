@@ -134,10 +134,6 @@ class AuthController extends Controller
      *         description="Successful operation"
      *     ),
      *     @OA\Response(
-     *         response="401",
-     *         description="Unauthorized user"
-     *     ),
-     *     @OA\Response(
      *         response=422,
      *         description="Unprocessable entity"
      *     ),
@@ -162,6 +158,30 @@ class AuthController extends Controller
         ], Response::HTTP_CREATED);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/v1/reset-password",
+     *     summary="User reset password",
+     *     tags={"Auth"},
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="User email for reset password",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Unprocessable entity"
+     *     ),
+     * )
+     */
     public function reset(ResetPasswordRequest $request): JsonResponse
     {
         $email = $request->get('email');
@@ -181,6 +201,48 @@ class AuthController extends Controller
         ], 404);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/v1/update-password",
+     *     summary="User update password",
+     *     tags={"Auth"},
+     *     @OA\Parameter(
+     *         name="token",
+     *         in="query",
+     *         description="User token",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="User password",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="password_confirmation",
+     *         in="query",
+     *         description="User password confirmation",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Unprocessable entity"
+     *     ),
+     * )
+     */
     public function update(UpdatePasswordRequest $request): JsonResponse
     {
         $updatedUser = $this->authService->update($request->all());

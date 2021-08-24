@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\Enum\UserRole;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -13,11 +12,18 @@ use Illuminate\Notifications\Notifiable;
  *
  * @property string $name
  * @property string $email
+ * @property string $password
+ * @property string $currency
+ * @property string $tariff
+ * @property string $role
+ * @property string $remember_token
  *
+ * @property string $email_verified_at
  * @property string $created_at
  * @property string $updated_at
  *
  * @property bool $isAdmin
+ * @property bool $isPodcaster
  * @property UsersTokens $tokens
  */
 class User extends Authenticatable
@@ -57,5 +63,20 @@ class User extends Authenticatable
     public function isEmailVerified(): bool
     {
         return $this->email_verified_at !== null;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === UserRole::ADMIN;
+    }
+
+    public function isPodcaster(): bool
+    {
+        return $this->role === UserRole::PODCASTER;
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === UserRole::USER;
     }
 }

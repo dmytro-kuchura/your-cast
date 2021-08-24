@@ -18,7 +18,9 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'email' => $this->email,
             'name' => $this->name,
-            'email_confirmed' => $this->isEmailVerified()
+            'email_confirmed' => $this->isEmailVerified(),
+            'is_podcaster' => $this->isPodcaster(),
+            'is_admin' => $this->isAdmin(),
         ];
     }
 }

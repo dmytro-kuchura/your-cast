@@ -28,7 +28,7 @@ class ShowController extends Controller
     /**
      * @OA\Get(
      *     path="/api/v1/list/{id}",
-     *     summary="User created shows",
+     *     summary="Get user shows",
      *     tags={"Show"},
      *     @OA\Parameter(
      *         name="id",

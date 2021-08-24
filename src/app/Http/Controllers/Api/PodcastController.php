@@ -22,6 +22,21 @@ class PodcastController extends Controller
         return $this->returnResponse([]);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/v1/profile",
+     *     summary="User profile",
+     *     tags={"Auth"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user"
+     *     )
+     * )
+     */
     public function list(int $userId): JsonResponse
     {
         $result = $this->service->getAllUserPodcast($userId);

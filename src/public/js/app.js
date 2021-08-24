@@ -5320,7 +5320,11 @@ var EpisodesCreate = /*#__PURE__*/function (_React$Component) {
                   className: "row",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                     className: "col-md-12",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_utils_dropzone__WEBPACK_IMPORTED_MODULE_3__.default, {})
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_utils_dropzone__WEBPACK_IMPORTED_MODULE_3__.default, {
+                      title: 'Episode audio file',
+                      type: 'audio',
+                      description: 'Click here to upload your audio file (max size 150 MB).'
+                    })
                   })
                 })]
               })
@@ -5339,7 +5343,11 @@ var EpisodesCreate = /*#__PURE__*/function (_React$Component) {
                       className: "form-group",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
                         children: "Cover"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_utils_dropzone__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_utils_dropzone__WEBPACK_IMPORTED_MODULE_3__.default, {
+                        title: 'Episode cover',
+                        type: 'cover',
+                        description: 'Click here to upload your episode cover file (max size 15 MB).'
+                      })]
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                     className: "col-md-8",
@@ -9742,13 +9750,17 @@ var Dropzone = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Dropzone);
 
   function Dropzone(props) {
+    var _props$title, _props$description, _props$type;
+
     var _this;
 
     _classCallCheck(this, Dropzone);
 
     _this = _super.call(this, props);
     _this.state = {
-      content: ''
+      title: (_props$title = props.title) !== null && _props$title !== void 0 ? _props$title : null,
+      description: (_props$description = props.description) !== null && _props$description !== void 0 ? _props$description : null,
+      type: (_props$type = props.type) !== null && _props$type !== void 0 ? _props$type : null
     };
     _this.handleSelectFile = _this.handleSelectFile.bind(_assertThisInitialized(_this));
     _this.handleFileInput = _this.handleFileInput.bind(_assertThisInitialized(_this));
@@ -9760,14 +9772,16 @@ var Dropzone = /*#__PURE__*/function (_React$Component) {
     value: function componentDidUpdate(prevProps) {
       if (prevProps !== this.props) {
         this.setState({
-          content: this.props.content
+          content: this.props.content,
+          description: this.props.description,
+          type: this.props.type
         });
       }
     }
   }, {
     key: "handleFileInput",
     value: function handleFileInput() {
-      document.getElementById('audio-file').click();
+      document.getElementById('file').click();
     }
   }, {
     key: "handleSelectFile",
@@ -9775,14 +9789,22 @@ var Dropzone = /*#__PURE__*/function (_React$Component) {
       if (event.target.files[0]) {
         var file = event.target.files[0];
 
-        if (file.type !== 'audio/mpeg') {
+        if (file.type !== 'audio/mpeg' && this.state.type === 'audio') {
           (0,_noty__WEBPACK_IMPORTED_MODULE_1__.notification)('This is not valid audio file, only *.mp3!', 'error');
+        }
+
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png' && this.state.type === 'cover') {
+          (0,_noty__WEBPACK_IMPORTED_MODULE_1__.notification)('This is not valid image file, only *.jpeg or *.png!', 'error');
         }
       }
     }
   }, {
     key: "render",
     value: function render() {
+      if (this.state.title === null) {
+        return null;
+      }
+
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         id: "dropzone",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
@@ -9793,15 +9815,13 @@ var Dropzone = /*#__PURE__*/function (_React$Component) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
               type: "button",
               className: "dz-button",
-              children: "Episode audio file"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+              children: this.state.title
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               className: "note needs-click",
-              children: ["Click here to upload your audio file (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
-                children: "max size 150 MB"
-              }), ")."]
+              children: this.state.description
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-            id: "audio-file",
+            id: "file",
             hidden: true,
             type: "file",
             onChange: this.handleSelectFile
