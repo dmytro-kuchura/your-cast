@@ -1,6 +1,5 @@
 import * as action from '../store/actions/show-action'
 import Http from '../http'
-import {getShows} from '../store/actions/show-action';
 
 export function createShow(data) {
     let link = '/api/v1/show/create';

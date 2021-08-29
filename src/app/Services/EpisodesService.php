@@ -33,6 +33,11 @@ class EpisodesService
         return $this->repository->get($id);
     }
 
+    public function createEpisode(array $data): void
+    {
+        $this->repository->store($data);
+    }
+
     public function getAllUserPodcast(int $userId): ?Collection
     {
         return $this->repository->getAllUserShow($userId);

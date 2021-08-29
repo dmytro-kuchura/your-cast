@@ -2,6 +2,7 @@ import React from 'react';
 import {getAllUserShows} from '../../services/show-service';
 import {connect} from 'react-redux';
 import Dropzone from '../../utils/dropzone';
+import {createEpisode} from '../../services/episode-service';
 
 class EpisodesCreate extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class EpisodesCreate extends React.Component {
         this.state = {
             list: [],
             opened: null,
+            episode: {}
         };
 
         if (props.auth.isAuthenticated) {
@@ -17,7 +19,8 @@ class EpisodesCreate extends React.Component {
             props.dispatch(getAllUserShows(userId))
         }
 
-        this.handleOpenDetails = this.handleOpenDetails.bind(this);
+        this.handleEditInput = this.handleEditInput.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -34,15 +37,24 @@ class EpisodesCreate extends React.Component {
         })
     }
 
-    handleOpenDetails(event) {
-        let selected = event.currentTarget.id;
+    handleEditInput(event) {
+        let name = event.target.name;
+        let value = event.target.value;
+        let state = Object.assign({}, this.state);
 
-        this.setState({
-            opened: selected === this.state.opened ? null : selected
-        })
+        state.episode[name] = value;
+
+        this.setState(state);
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+
+        this.props.dispatch(createEpisode(this.state.episode))
     }
 
     render() {
+        console.log(this.state);
         return (
             <>
                 <div className="row">
@@ -76,30 +88,35 @@ class EpisodesCreate extends React.Component {
                                     <div className="col-md-8">
                                         <div className="form-group">
                                             <label htmlFor="title">Title</label>
-                                            <input type="text" id="title" className="form-control" placeholder="Title"/>
+                                            <input type="text" onChange={this.handleEditInput} name="title"
+                                                   className="form-control" placeholder="Title"/>
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="subtitle">Subtitle</label>
-                                            <input type="text" className="form-control" id="subtitle"
+                                            <input type="text" onChange={this.handleEditInput} className="form-control"
+                                                   name="subtitle"
                                                    placeholder="Subtitle"/>
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="link">Link</label>
-                                            <input type="text" className="form-control" id="link"
+                                            <input type="text" onChange={this.handleEditInput} className="form-control"
+                                                   name="link"
                                                    placeholder="Link"/>
                                         </div>
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <div className="form-group">
                                                     <label htmlFor="season">Season</label>
-                                                    <input type="number" className="form-control" id="season"
+                                                    <input type="number" onChange={this.handleEditInput}
+                                                           className="form-control" name="season"
                                                            placeholder="Episode Season"/>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
                                                 <div className="form-group">
-                                                    <label htmlFor="number">Episode #</label>
-                                                    <input type="number" className="form-control" id="number"
+                                                    <label htmlFor="episode">Episode #</label>
+                                                    <input type="number" onChange={this.handleEditInput}
+                                                           className="form-control" name="episode"
                                                            placeholder="Episode #"/>
                                                 </div>
                                             </div>
@@ -111,11 +128,14 @@ class EpisodesCreate extends React.Component {
                                         <label htmlFor="alias">Episode Alias</label>
                                         <div className="input-group">
                                             <div className="input-group-prepend">
-                                                    <span className="input-group-text" id="alias" style={{fontSize: '0.7rem'}}>
+                                                    <span className="input-group-text" id="alias"
+                                                          style={{fontSize: '0.7rem'}}>
                                                         https://shows.your-cast.com/
                                                     </span>
                                             </div>
-                                            <input type="text" className="form-control" placeholder="my-show" disabled=""/>
+                                            <input type="text" onChange={this.handleEditInput} className="form-control"
+                                                   name="alias" placeholder="my-show"
+                                                   disabled=""/>
 
                                         </div>
                                     </div>
@@ -129,7 +149,23 @@ class EpisodesCreate extends React.Component {
                                     <div className="col-md-8">
                                         <div className="form-group">
                                             <label htmlFor="summary">Summary</label>
-                                            <textarea rows="6" id="summary" className="form-control" placeholder="Summary"/>
+                                            <textarea rows="6" onChange={this.handleEditInput} name="summary"
+                                                      id="summary"
+                                                      className="form-control"
+                                                      placeholder="Summary"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <div className="d-flex justify-content-between">
+                                            <div>
+                                                <button type="submit"
+                                                        className="btn btn-success"
+                                                        onClick={this.handleSubmit}>Submit
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Episode\CreateEpisodeRequest;
 use App\Services\EpisodesService;
 use Illuminate\Http\JsonResponse;
 
@@ -43,6 +44,15 @@ class EpisodeController extends Controller
 
         return $this->returnResponse([
             'result' => $result
+        ]);
+    }
+
+    public function create(CreateEpisodeRequest $request): JsonResponse
+    {
+        $this->service->createEpisode($request->all());
+
+        return $this->returnResponse([
+            'success' => true
         ]);
     }
 }

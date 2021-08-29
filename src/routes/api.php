@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\EpisodeController;
 use App\Http\Controllers\Api\ShowController;
 use App\Http\Controllers\Api\UploadController;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,7 @@ Route::middleware(['logger'])->group(function () {
             });
 
             Route::prefix('episode')->group(function () {
-                Route::post('/create', [ShowController::class, 'create'])->name('api.episode.create');
+                Route::post('/create', [EpisodeController::class, 'create'])->name('api.episode.create');
             });
         });
     });

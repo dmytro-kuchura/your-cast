@@ -6,3 +6,5 @@ export const SHOW_CREATE = 'SHOW_CREATE';
 export const SHOW_UPDATE = 'SHOW_UPDATE';
 export const SHOW_INNER = 'SHOW_INNER';
 export const SHOW_LIST = 'SHOW_LIST';
+
+export const EPISODE_CREATE = 'EPISODE_CREATE';
