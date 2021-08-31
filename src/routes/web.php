@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::prefix('feed')->group(function () {
+    Route::post('/{user}}', [FeedController::class, 'feed'])->name('web.feed');
 });
 
 Route::prefix('account')->group(function () {
