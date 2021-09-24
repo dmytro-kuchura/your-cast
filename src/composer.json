@@ -18,6 +18,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "mateusjunges/laravel-kafka": "^1.0",
+        "monolog/monolog": "^2.3",
         "torann/geoip": "^3.0"
     },
     "require-dev": {

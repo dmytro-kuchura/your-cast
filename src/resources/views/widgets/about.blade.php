@@ -1,12 +1,13 @@
 <section id="about" class="services-area services-bg pt-25 pb-20"
-         style="background-image: url(img/shape/header-sape2.png); background-position: right top; background-size: auto;background-repeat: no-repeat;">
+         style="background-image: url('img/shape/header-sape2.png'); background-position: right top; background-size: auto;background-repeat: no-repeat;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-10">
                 <div class="section-title text-center pl-40 pr-40 mb-45">
-                    <h2>Our Features</h2>
-                    <p>Quisque posuere mollis ipsum et molestie. Fusce cursus, risus vel scelerisque porttitor, leo
-                        quam vulputate nibh, sit amet blandit erat magna.</p>
+                    <h2>All you need</h2>
+                    <p>
+                        Everything you need to create & share your podcast in any Podcast service (Apple Podcast, Google Podcast, Spotify).
+                    </p>
                 </div>
             </div>
         </div>

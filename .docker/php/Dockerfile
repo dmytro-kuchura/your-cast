@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.0-fpm
 
 # Arguments defined in docker-compose.yml
 ARG user
@@ -10,7 +10,11 @@ RUN apt-get update && apt-get install -y \
         libpq-dev \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
-        libpng-dev
+        libpng-dev \
+        librdkafka-dev
+
+# Install the PHP Kafka library
+RUN pecl install rdkafka
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -21,6 +25,8 @@ RUN docker-php-ext-install -j$(nproc) iconv
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 # Install the PHP GD library
 RUN docker-php-ext-install -j$(nproc) gd
+# Enable the PHP Kafka library
+RUN docker-php-ext-enable rdkafka
 
 # Install the PHP pdo_pgsql extention
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
