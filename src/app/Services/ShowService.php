@@ -28,7 +28,7 @@ class ShowService
             throw new NotCreateShowException($e->getMessage());
         }
 
-        return $this->getShow($show->id);
+        return $this->getShowInfo($show->id);
     }
 
     public function updateShow(int $id, array $data): Show
@@ -39,10 +39,10 @@ class ShowService
             throw new NotCreateShowException($e->getMessage());
         }
 
-        return $this->getShow($id);
+        return $this->getShowInfo($id);
     }
 
-    public function getShow(int $id): ?Show
+    public function getShowInfo(int $id): ?Show
     {
         return $this->repository->get($id);
     }

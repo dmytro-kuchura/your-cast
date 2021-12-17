@@ -8,6 +8,7 @@ use App\Http\Resources\ShowResource;
 use App\Services\ShowService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ShowController extends Controller
 {
@@ -21,13 +22,15 @@ class ShowController extends Controller
 
     public function info(int $id): JsonResponse
     {
-        // TODO not completed
-        return $this->returnResponse([]);
+        $result = $this->service->getShowInfo($id);
+        return $this->returnResponse([
+            'result' => $result
+        ]);
     }
 
     /**
      * @OA\Get(
-     *     path="/api/v1/list/{id}",
+     *     path="/api/v1/shows/list/{id}",
      *     summary="Get user shows",
      *     tags={"Show"},
      *     @OA\Parameter(
@@ -50,15 +53,39 @@ class ShowController extends Controller
      *     )
      * )
      */
-    public function list(int $userId): JsonResponse
+    public function list(): JsonResponse
     {
-        $result = $this->service->getAllUserShow($userId);
+        $userId = Auth::id();
 
+        $result = $this->service->getAllUserShow($userId);
         return $this->returnResponse([
             'result' => $result
         ]);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/v1/shows/create",
+     *     summary="Get user shows",
+     *     tags={"Show"},
+     *     @OA\Parameter(
+     *         in="body",
+     *         description="Show body",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="object"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user"
+     *     )
+     * )
+     */
     public function create(CreateShowRequest $request): JsonResponse
     {
         $show = $this->service->createShow($request->all());
