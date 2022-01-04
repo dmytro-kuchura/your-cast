@@ -27,6 +27,21 @@ class UploadHelper
         return null;
     }
 
+    public static function saveAudio(Request $request, int $userId): ?string
+    {
+        $audio = $request->file('audio');
+
+        $path = 'user-' . $userId . '/audio';
+
+        try {
+            $storage = Storage::disk('s3')->put($path, $audio);
+        } catch (\Throwable $e) {
+            throw new ImageUploadException($e->getMessage());
+        }
+
+        return 'https://your-cast.s3.eu-central-1.amazonaws.com/' . $storage;
+    }
+
     public static function getPathImage(string $param): string
     {
         switch ($param) {

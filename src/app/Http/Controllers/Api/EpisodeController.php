@@ -25,8 +25,8 @@ class EpisodeController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/v1/profile",
-     *     summary="User profile",
+     *     path="/api/v1/episodes",
+     *     summary="Get user episodes",
      *     tags={"Auth"},
      *     @OA\Response(
      *         response=200,

@@ -27,17 +27,16 @@ class EpisodesRepository implements Repository
         $model = new Episode();
 
         $model->show_id = $data['show_id'];
-        $model->audio = $data['audio'];
+        $model->audio_id = $data['audio'] ?? null;
         $model->title = $data['title'];
-        $model->description = $data['description'];
-        $model->cover = $data['cover'];
+        $model->description = $data['summary'];
+        $model->cover = $data['cover'] ?? null;
         $model->episode = $data['episode'];
         $model->season = $data['season'];
-        $model->episode_type = $data['episode_type'];
-        $model->content = $data['content'];
-        $model->duration = $data['duration'];
+        $model->episode_type = $data['type'];
+        $model->content = $data['summary'];
         $model->explicit = $data['explicit'];
-        $model->status = $data['status'];
+        $model->status = 'drafted';
 
         $model->save();
 

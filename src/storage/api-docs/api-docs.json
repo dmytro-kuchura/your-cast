@@ -205,7 +205,23 @@
                 }
             }
         },
-        "/api/v1/list/{id}": {
+        "/api/v1/episodes": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get user episodes",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
+        "/api/v1/shows/list/{id}": {
             "get": {
                 "tags": [
                     "Show"
@@ -233,6 +249,92 @@
                 }
             }
         },
+        "/api/v1/shows/create": {
+            "post": {
+                "tags": [
+                    "Show"
+                ],
+                "summary": "Get user shows",
+                "operationId": "d719aeac087d62b5763a0bbf86eb12d5",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "format",
+                                    "timezone",
+                                    "language",
+                                    "explicit",
+                                    "category"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Exapmle show name"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Exapmle show description"
+                                    },
+                                    "artwork": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "format": {
+                                        "type": "string",
+                                        "example": "episodic"
+                                    },
+                                    "timezone": {
+                                        "type": "string",
+                                        "example": "Etc/GMT"
+                                    },
+                                    "language": {
+                                        "type": "string",
+                                        "example": "en"
+                                    },
+                                    "explicit": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    },
+                                    "category": {
+                                        "type": "string",
+                                        "example": "sport"
+                                    },
+                                    "author": {
+                                        "type": "string",
+                                        "example": "Author name"
+                                    },
+                                    "podcast_owner": {
+                                        "type": "string",
+                                        "example": "example author"
+                                    },
+                                    "email_owner": {
+                                        "type": "string",
+                                        "example": "example@domain.com"
+                                    },
+                                    "copyright": {
+                                        "type": "string",
+                                        "example": "copyright"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
         "/api/v1/upload-image": {
             "post": {
                 "tags": [
@@ -240,6 +342,39 @@
                 ],
                 "summary": "Upload new image",
                 "operationId": "24eefca2fa48a118c40de5f3e7d3c600",
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
+        "/api/v1/upload-audio": {
+            "post": {
+                "tags": [
+                    "Upload"
+                ],
+                "summary": "Upload new audio file",
+                "operationId": "01f731f96143a1b6ce4adbcefbce5c95",
+                "requestBody": {
+                    "description": "Upload new audio file",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "audio": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Successful operation"

@@ -68,13 +68,24 @@ class ShowController extends Controller
      *     path="/api/v1/shows/create",
      *     summary="Get user shows",
      *     tags={"Show"},
-     *     @OA\Parameter(
-     *         in="body",
-     *         description="Show body",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="object"
-     *         )
+     *     @OA\RequestBody(
+     *        required=true,
+     *        description="Pass user credentials",
+     *        @OA\JsonContent(
+     *           required={"title","format","timezone","language","explicit","category"},
+     *           @OA\Property(property="title", type="string", example="Exapmle show name"),
+     *           @OA\Property(property="description", type="string", example="Exapmle show description"),
+     *           @OA\Property(property="artwork", type="string", example=""),
+     *           @OA\Property(property="format", type="string", example="episodic"),
+     *           @OA\Property(property="timezone", type="string", example="Etc/GMT"),
+     *           @OA\Property(property="language", type="string", example="en"),
+     *           @OA\Property(property="explicit", type="boolean", example="true"),
+     *           @OA\Property(property="category", type="string", example="sport"),
+     *           @OA\Property(property="author", type="string", example="Author name"),
+     *           @OA\Property(property="podcast_owner", type="string", example="example author"),
+     *           @OA\Property(property="email_owner", type="string", example="example@domain.com"),
+     *           @OA\Property(property="copyright", type="string", example="copyright"),
+     *        ),
      *     ),
      *     @OA\Response(
      *         response=200,

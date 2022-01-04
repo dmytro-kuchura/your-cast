@@ -29,7 +29,7 @@ class CreateEpisodesTable extends Migration
 
             $table->string('content');
 
-            $table->integer('duration');
+            $table->boolean('explicit')->default(false);
 
             $table->enum('status', ['enabled', 'disabled', 'drafted'])->default('drafted');
 

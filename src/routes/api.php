@@ -24,11 +24,12 @@ Route::middleware(['logger'])->group(function () {
         Route::post('/reset-password', [AuthController::class, 'reset'])->name('api.reset.password');
         Route::post('/update-password', [AuthController::class, 'update'])->name('api.password.update');
 
-        Route::post('/upload-image', [UploadController::class, 'uploadImage'])->name('api.upload.image');
-
         Route::middleware(['bearer'])->group(function () {
             Route::get('/logout', [AuthController::class, 'logout'])->name('api.logout');
             Route::get('/profile', [AuthController::class, 'profile'])->name('api.profile');
+
+            Route::post('/upload-image', [UploadController::class, 'uploadImage'])->name('api.upload.image');
+            Route::post('/upload-audio', [UploadController::class, 'uploadAudio'])->name('api.upload.audio');
 
             Route::prefix('show')->group(function () {
                 Route::get('/list', [ShowController::class, 'list'])->name('api.show.list');
@@ -38,7 +39,7 @@ Route::middleware(['logger'])->group(function () {
                 Route::delete('/{id}', [ShowController::class, 'delete'])->name('api.show.delete');
             });
 
-            Route::prefix('episode')->group(function () {
+            Route::prefix('episodes')->group(function () {
                 Route::post('/create', [EpisodeController::class, 'create'])->name('api.episode.create');
             });
         });

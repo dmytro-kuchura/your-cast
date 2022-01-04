@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property int $id
  *
  * @property int $show_id
+ * @property int $audio_id
  *
- * @property string $audio
  * @property string $title
  * @property string $description
  *
@@ -22,12 +22,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *
  * @property string $content
  *
- * @property int $duration
  * @property string $explicit
  * @property string $status
  *
  * @property Show $show
- * @property AudioFile $audioFiles
+ * @property AudioFile $audioFile
  *
  * @property string $created_at
  * @property string $updated_at
@@ -42,7 +41,7 @@ class Episode extends Model
     protected $fillable = [
         'id',
         'show_id',
-        'audio',
+        'audio_id',
         'title',
         'description',
         'cover',
@@ -50,7 +49,6 @@ class Episode extends Model
         'season',
         'episode_type',
         'content',
-        'duration',
         'explicit',
         'status',
         'created_at',
@@ -62,8 +60,8 @@ class Episode extends Model
         return $this->hasOne('App\Models\Show', 'id', 'show_id');
     }
 
-    public function audioFiles(): HasOne
+    public function audioFile(): HasOne
     {
-        return $this->hasOne('App\Models\AudioFile', 'id', 'show_id');
+        return $this->hasOne('App\Models\AudioFile', 'id', 'audio_id');
     }
 }
