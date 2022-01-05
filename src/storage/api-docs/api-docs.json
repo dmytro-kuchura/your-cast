@@ -234,6 +234,92 @@
                 }
             }
         },
+        "/api/v1/episodes/create": {
+            "post": {
+                "tags": [
+                    "Episodes"
+                ],
+                "summary": "Create new episode",
+                "operationId": "149b134497bde6e20c10a85fe79cea59",
+                "requestBody": {
+                    "description": "Create new episode",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "format",
+                                    "timezone",
+                                    "language",
+                                    "explicit",
+                                    "category"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Exapmle show name"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Exapmle show description"
+                                    },
+                                    "artwork": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "format": {
+                                        "type": "string",
+                                        "example": "episodic"
+                                    },
+                                    "timezone": {
+                                        "type": "string",
+                                        "example": "Etc/GMT"
+                                    },
+                                    "language": {
+                                        "type": "string",
+                                        "example": "en"
+                                    },
+                                    "explicit": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    },
+                                    "category": {
+                                        "type": "string",
+                                        "example": "sport"
+                                    },
+                                    "author": {
+                                        "type": "string",
+                                        "example": "Author name"
+                                    },
+                                    "podcast_owner": {
+                                        "type": "string",
+                                        "example": "example author"
+                                    },
+                                    "email_owner": {
+                                        "type": "string",
+                                        "example": "example@domain.com"
+                                    },
+                                    "copyright": {
+                                        "type": "string",
+                                        "example": "copyright"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
         "/api/v1/shows/{id}": {
             "get": {
                 "tags": [
