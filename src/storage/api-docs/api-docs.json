@@ -13,25 +13,31 @@
                 ],
                 "summary": "User login",
                 "operationId": "b9b760991d94b179960cd7ddc93eedf2",
-                "parameters": [
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "description": "The user email for login",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "email",
+                                        "example": "example@domain.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "qwerty123"
+                                    }
+                                },
+                                "type": "object"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -49,44 +55,41 @@
                 ],
                 "summary": "User register",
                 "operationId": "38e3071463848ba373dfeae5623cdfa4",
-                "parameters": [
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "User name for register",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "description": "User email for register",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "description": "User password",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password_confirmation",
-                        "in": "query",
-                        "description": "User password confirmation",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password",
+                                    "password_confirmation"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "email",
+                                        "example": "User"
+                                    },
+                                    "email": {
+                                        "type": "email",
+                                        "example": "example@domain.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "qwerty123"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "qwerty123"
+                                    }
+                                },
+                                "type": "object"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -104,17 +107,26 @@
                 ],
                 "summary": "User reset password",
                 "operationId": "18b07d111572a939099eafb5c42a1d50",
-                "parameters": [
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "description": "User email for reset password",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "email",
+                                        "example": "example@domain.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -132,35 +144,36 @@
                 ],
                 "summary": "User update password",
                 "operationId": "756639b6dc1d14324c569ba7a58a4d42",
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "query",
-                        "description": "User token",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "description": "User password",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password_confirmation",
-                        "in": "query",
-                        "description": "User password confirmation",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "token",
+                                    "password",
+                                    "password_confirmation"
+                                ],
+                                "properties": {
+                                    "token": {
+                                        "type": "string",
+                                        "example": "aasd77667asdhkjasda-sdaasd"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "qwerty123"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "qwerty123"
+                                    }
+                                },
+                                "type": "object"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -208,7 +221,7 @@
         "/api/v1/episodes": {
             "get": {
                 "tags": [
-                    "Auth"
+                    "Episodes"
                 ],
                 "summary": "Get user episodes",
                 "responses": {

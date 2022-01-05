@@ -27,7 +27,7 @@ class EpisodeController extends Controller
      * @OA\Get(
      *     path="/api/v1/episodes",
      *     summary="Get user episodes",
-     *     tags={"Auth"},
+     *     tags={"Episodes"},
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation"

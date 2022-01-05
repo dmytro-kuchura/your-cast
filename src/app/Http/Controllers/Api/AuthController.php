@@ -42,22 +42,14 @@ class AuthController extends Controller
      *     path="/api/v1/login",
      *     summary="User login",
      *     tags={"Auth"},
-     *     @OA\Parameter(
-     *         name="email",
-     *         in="query",
-     *         description="The user email for login",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string"
-     *         )
-     *     ),
-     *     @OA\Parameter(
-     *         name="password",
-     *         in="query",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string",
-     *         )
+     *     @OA\RequestBody(
+     *        required=true,
+     *        description="Pass user credentials",
+     *        @OA\JsonContent(
+     *           required={"email", "password"},
+     *           @OA\Property(property="email", type="email", example="example@domain.com"),
+     *           @OA\Property(property="password", type="string", example="qwerty123"),
+     *        ),
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -93,41 +85,16 @@ class AuthController extends Controller
      *     path="/api/v1/register",
      *     summary="User register",
      *     tags={"Auth"},
-     *     @OA\Parameter(
-     *         name="name",
-     *         in="query",
-     *         description="User name for register",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string"
-     *         )
-     *     ),
-     *     @OA\Parameter(
-     *         name="email",
-     *         in="query",
-     *         description="User email for register",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string"
-     *         )
-     *     ),
-     *     @OA\Parameter(
-     *         name="password",
-     *         in="query",
-     *         description="User password",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string",
-     *         )
-     *     ),
-     *     @OA\Parameter(
-     *         name="password_confirmation",
-     *         in="query",
-     *         description="User password confirmation",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string",
-     *         )
+     *     @OA\RequestBody(
+     *        required=true,
+     *        description="Pass user credentials",
+     *        @OA\JsonContent(
+     *           required={"name","email", "password", "password_confirmation"},
+     *           @OA\Property(property="name", type="email", example="User"),
+     *           @OA\Property(property="email", type="email", example="example@domain.com"),
+     *           @OA\Property(property="password", type="string", example="qwerty123"),
+     *           @OA\Property(property="password_confirmation", type="string", example="qwerty123"),
+     *        ),
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -163,14 +130,13 @@ class AuthController extends Controller
      *     path="/api/v1/reset-password",
      *     summary="User reset password",
      *     tags={"Auth"},
-     *     @OA\Parameter(
-     *         name="email",
-     *         in="query",
-     *         description="User email for reset password",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string"
-     *         )
+     *     @OA\RequestBody(
+     *        required=true,
+     *        description="Pass user credentials",
+     *        @OA\JsonContent(
+     *           required={"email"},
+     *           @OA\Property(property="email", type="email", example="example@domain.com"),
+     *        ),
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -206,32 +172,15 @@ class AuthController extends Controller
      *     path="/api/v1/update-password",
      *     summary="User update password",
      *     tags={"Auth"},
-     *     @OA\Parameter(
-     *         name="token",
-     *         in="query",
-     *         description="User token",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string"
-     *         )
-     *     ),
-     *     @OA\Parameter(
-     *         name="password",
-     *         in="query",
-     *         description="User password",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string",
-     *         )
-     *     ),
-     *     @OA\Parameter(
-     *         name="password_confirmation",
-     *         in="query",
-     *         description="User password confirmation",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string",
-     *         )
+     *     @OA\RequestBody(
+     *        required=true,
+     *        description="Pass user credentials",
+     *        @OA\JsonContent(
+     *           required={"token", "password", "password_confirmation"},
+     *           @OA\Property(property="token", type="string", example="aasd77667asdhkjasda-sdaasd"),
+     *           @OA\Property(property="password", type="string", example="qwerty123"),
+     *           @OA\Property(property="password_confirmation", type="string", example="qwerty123"),
+     *        ),
      *     ),
      *     @OA\Response(
      *         response=200,
