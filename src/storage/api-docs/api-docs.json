@@ -234,6 +234,35 @@
                 }
             }
         },
+        "/api/v1/shows/{id}": {
+            "get": {
+                "tags": [
+                    "Show"
+                ],
+                "summary": "Get show info",
+                "operationId": "f437ac01b7d054257854846d6068b180",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
         "/api/v1/shows/list/{id}": {
             "get": {
                 "tags": [
