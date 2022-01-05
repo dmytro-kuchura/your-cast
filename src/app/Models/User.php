@@ -17,6 +17,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $tariff
  * @property string $role
  * @property string $remember_token
+ * @property string $system_id
  *
  * @property string $email_verified_at
  * @property string $created_at
@@ -39,6 +40,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'system_id',
     ];
 
     /**

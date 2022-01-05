@@ -46,7 +46,6 @@ class AuthController extends Controller
      *        required=true,
      *        description="Pass user credentials",
      *        @OA\JsonContent(
-     *           required={"email", "password"},
      *           @OA\Property(property="email", type="email", example="example@domain.com"),
      *           @OA\Property(property="password", type="string", example="qwerty123"),
      *        ),
@@ -89,7 +88,6 @@ class AuthController extends Controller
      *        required=true,
      *        description="Pass user credentials",
      *        @OA\JsonContent(
-     *           required={"name","email", "password", "password_confirmation"},
      *           @OA\Property(property="name", type="email", example="User"),
      *           @OA\Property(property="email", type="email", example="example@domain.com"),
      *           @OA\Property(property="password", type="string", example="qwerty123"),
@@ -226,9 +224,9 @@ class AuthController extends Controller
      */
     public function logout(): JsonResponse
     {
-        Auth::logout();
-
         $this->authService->setExpired(Auth::id());
+
+        Auth::logout();
 
         return $this->returnResponse([
             'message' => 'Successfully logged out'

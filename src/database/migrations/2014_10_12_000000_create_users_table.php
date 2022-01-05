@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('system_id')->unique();
             $table->enum('currency', ['usd', 'eur', 'uah'])->default('usd');
             $table->enum('tariff', ['free', 'standard', 'premium'])->default('free');
             $table->enum('role', ['admin', 'podcaster', 'user'])->default('podcaster');

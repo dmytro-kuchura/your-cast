@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\UidHelper;
 use App\Models\User;
 use App\Repositories\PasswordResetsRepository;
 use App\Repositories\UsersRepository;
@@ -39,10 +40,14 @@ class AuthService
 
     public function registration(array $data): void
     {
+        $systemId = UidHelper::generateUid();
+
+
         $this->usersRepository->store([
             'email' => $data['email'],
             'name' => $data['name'],
-            'password' => bcrypt($data['password'])
+            'password' => bcrypt($data['password']),
+            'system_id' => $systemId
         ]);
     }
 
@@ -54,7 +59,7 @@ class AuthService
 
         $this->usersTokenRepository->store([
             'user_id' => $user_id,
-            'token' => $token
+            'token' => $token,
         ]);
 
         return $token;
