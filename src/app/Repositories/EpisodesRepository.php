@@ -27,7 +27,7 @@ class EpisodesRepository implements Repository
         $model = new Episode();
 
         $model->show_id = $data['show_id'];
-        $model->audio_id = $data['audio'] ?? null;
+        $model->audio_id = $data['audio_id'] ?? null;
         $model->title = $data['title'];
         $model->description = $data['summary'];
         $model->cover = $data['cover'] ?? null;

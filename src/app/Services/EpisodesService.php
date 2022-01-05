@@ -17,18 +17,7 @@ class EpisodesService
         $this->repository = $showsRepository;
     }
 
-    public function createPodcast(array $data): Episode
-    {
-        try {
-            $show = $this->repository->store($data);
-        } catch (\Throwable $e) {
-            throw new NotCreateShowException($e->getMessage());
-        }
-
-        return $this->getPodcast($show->id);
-    }
-
-    public function getPodcast(int $id): ?Episode
+    public function getEpisode(int $id): ?Episode
     {
         return $this->repository->get($id);
     }
@@ -36,10 +25,5 @@ class EpisodesService
     public function createEpisode(array $data): void
     {
         $this->repository->store($data);
-    }
-
-    public function getAllUserPodcast(int $userId): ?Collection
-    {
-        return $this->repository->getAllUserShow($userId);
     }
 }

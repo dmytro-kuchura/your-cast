@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Exceptions\ImageUploadException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UploadHelper
@@ -27,11 +28,13 @@ class UploadHelper
         return null;
     }
 
-    public static function saveAudio(Request $request, int $userId): ?string
+    public static function saveAudio(Request $request): ?string
     {
+        $systemId = Auth::user()->system_id;
+
         $audio = $request->file('audio');
 
-        $path = 'user-' . $userId . '/audio';
+        $path = 'YCID' . $systemId . '/audio';
 
         try {
             $storage = Storage::disk('s3')->put($path, $audio);

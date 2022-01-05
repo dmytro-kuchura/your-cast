@@ -66,7 +66,7 @@ class UploadController extends Controller
      */
     public function uploadAudio(Request $request): JsonResponse
     {
-        $path = UploadHelper::saveAudio($request, Auth::user()->id);
+        $path = UploadHelper::saveAudio($request);
 
         $file = $this->service->createAudioFile([
             'duration' => 3,
