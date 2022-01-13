@@ -22,7 +22,7 @@ class ShowController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/v1/shows/{id}",
+     *     path="/api/v1/show/{id}",
      *     summary="Get show info",
      *     tags={"Show"},
      *     @OA\Parameter(
@@ -55,19 +55,35 @@ class ShowController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/v1/shows/list/{id}",
+     *     path="/api/v1/show/short",
      *     summary="Get user shows",
      *     tags={"Show"},
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         description="User ID",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="integer",
-     *             format="int64"
-     *         )
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
      *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user"
+     *     )
+     * )
+     */
+    public function short(): JsonResponse
+    {
+        $userId = Auth::id();
+
+        $result = $this->service->getAllUserShowShort($userId);
+
+        return $this->returnResponse([
+            'result' => $result
+        ]);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/v1/show/list",
+     *     summary="Get user shows",
+     *     tags={"Show"},
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation"
@@ -90,7 +106,7 @@ class ShowController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/v1/shows/create",
+     *     path="/api/v1/show/create",
      *     summary="Get user shows",
      *     tags={"Show"},
      *     @OA\RequestBody(

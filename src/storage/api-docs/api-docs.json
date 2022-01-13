@@ -310,13 +310,13 @@
                 }
             }
         },
-        "/api/v1/shows/{id}": {
+        "/api/v1/show/{id}": {
             "get": {
                 "tags": [
                     "Show"
                 ],
                 "summary": "Get show info",
-                "operationId": "f437ac01b7d054257854846d6068b180",
+                "operationId": "ee8d60d21b7a920409c7fd8084bdfce8",
                 "parameters": [
                     {
                         "name": "id",
@@ -339,24 +339,13 @@
                 }
             }
         },
-        "/api/v1/shows/list/{id}": {
+        "/api/v1/show/short": {
             "get": {
                 "tags": [
                     "Show"
                 ],
                 "summary": "Get user shows",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "User ID",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
+                "operationId": "04d54ff4e9a8aa908791ade2977e2780",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -367,13 +356,29 @@
                 }
             }
         },
-        "/api/v1/shows/create": {
+        "/api/v1/show/list": {
+            "get": {
+                "tags": [
+                    "Show"
+                ],
+                "summary": "Get user shows",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
+        "/api/v1/show/create": {
             "post": {
                 "tags": [
                     "Show"
                 ],
                 "summary": "Get user shows",
-                "operationId": "d719aeac087d62b5763a0bbf86eb12d5",
+                "operationId": "af5c356e6f0d6aee9bd8fc7409a8ec44",
                 "requestBody": {
                     "description": "Pass user credentials",
                     "required": true,

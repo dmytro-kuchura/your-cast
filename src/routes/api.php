@@ -32,6 +32,7 @@ Route::middleware(['logger'])->group(function () {
             Route::post('/upload-audio', [UploadController::class, 'uploadAudio'])->name('api.upload.audio');
 
             Route::prefix('show')->group(function () {
+                Route::get('/short', [ShowController::class, 'short'])->name('api.show.short');
                 Route::get('/list', [ShowController::class, 'list'])->name('api.show.list');
                 Route::post('/create', [ShowController::class, 'create'])->name('api.show.create');
                 Route::put('/update/{id}', [ShowController::class, 'update'])->name('api.show.update');

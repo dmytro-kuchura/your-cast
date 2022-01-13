@@ -47,9 +47,9 @@ If you want to connect to the DB from another container (from the `php` one for 
 
 ### Using PHP
 
-You can execute any command on the `php` container as you would do on any docker-compose container:
+You can execute any command on the `podcasts_php` container as you would do on any docker-compose container:
 
-`docker-compose exec php php -v`
+`docker exec podcasts_php php -v`
 
 ## Configuring PHP
 
@@ -68,5 +68,5 @@ docker-compose up -d --force-recreate
 ## SWAGGER
 
 ```
-php artisan l5-swagger:generate
+docker exec podcasts_php php artisan l5-swagger:generate
  ```
