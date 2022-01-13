@@ -47,18 +47,20 @@ class UploadHelper
 
     public static function getPathImage(string $param): string
     {
+        $folder = 'YCID' . Auth::user()->system_id;
+
         switch ($param) {
             case 'show':
-                $path = 'images/show';
-                break;
-            case 'podcast':
-                $path = 'images/podcast';
+                $path = $folder . '/artwork';
                 break;
             case 'avatar':
-                $path = 'images/avatar';
+                $path = $folder . '/avatar';
+                break;
+            case 'cover':
+                $path = $folder . '/cover';
                 break;
             default:
-                $path = 'images/default';
+                $path = $folder . '/images';
                 break;
         }
 
