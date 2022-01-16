@@ -38,7 +38,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Episode $podcasts
+ * @property Episode $episodes
  * @property User $user
  */
 class Show extends Model
@@ -75,7 +75,7 @@ class Show extends Model
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
-    public function podcasts(): HasMany
+    public function episodes(): HasMany
     {
         return $this->hasMany('App\Models\Episode', 'show_id', 'id');
     }

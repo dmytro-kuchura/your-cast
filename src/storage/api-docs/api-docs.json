@@ -344,7 +344,7 @@
                 "tags": [
                     "Show"
                 ],
-                "summary": "Get user shows",
+                "summary": "Get user short shows list",
                 "operationId": "04d54ff4e9a8aa908791ade2977e2780",
                 "responses": {
                     "200": {
@@ -373,14 +373,103 @@
             }
         },
         "/api/v1/show/create": {
+            "put": {
+                "tags": [
+                    "Show"
+                ],
+                "summary": "Update show",
+                "operationId": "7a2e3f754bdab81470cb92483aa4b3c4",
+                "requestBody": {
+                    "description": "Update show",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "format",
+                                    "timezone",
+                                    "language",
+                                    "explicit",
+                                    "category",
+                                    "show_id"
+                                ],
+                                "properties": {
+                                    "show_id": {
+                                        "type": "string",
+                                        "example": "1"
+                                    },
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Exapmle show name"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Exapmle show description"
+                                    },
+                                    "artwork": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "format": {
+                                        "type": "string",
+                                        "example": "episodic"
+                                    },
+                                    "timezone": {
+                                        "type": "string",
+                                        "example": "Etc/GMT"
+                                    },
+                                    "language": {
+                                        "type": "string",
+                                        "example": "en"
+                                    },
+                                    "explicit": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    },
+                                    "category": {
+                                        "type": "string",
+                                        "example": "sport"
+                                    },
+                                    "author": {
+                                        "type": "string",
+                                        "example": "Author name"
+                                    },
+                                    "podcast_owner": {
+                                        "type": "string",
+                                        "example": "example author"
+                                    },
+                                    "email_owner": {
+                                        "type": "string",
+                                        "example": "example@domain.com"
+                                    },
+                                    "copyright": {
+                                        "type": "string",
+                                        "example": "copyright"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "Show"
                 ],
-                "summary": "Get user shows",
+                "summary": "Create new show",
                 "operationId": "af5c356e6f0d6aee9bd8fc7409a8ec44",
                 "requestBody": {
-                    "description": "Pass user credentials",
+                    "description": "Create show",
                     "required": true,
                     "content": {
                         "application/json": {

@@ -10,7 +10,7 @@ class ShowsRepository implements Repository
 {
     public function get(int $id): ?Show
     {
-        return Show::find($id);
+        return Show::with('episodes')->find($id);
     }
 
     public function all()
@@ -21,6 +21,11 @@ class ShowsRepository implements Repository
     public function getAllUserShow(int $userId): ?Collection
     {
         return Show::where('user_id', $userId)->get();
+    }
+
+    public function findByToken(string $token): ?Collection
+    {
+        return Show::where('token', $token)->with('episodes')->get();
     }
 
     public function getAllUserShowShort(int $userId): ?Collection

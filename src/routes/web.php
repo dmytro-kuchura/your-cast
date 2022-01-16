@@ -17,12 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'home'])->name('home');
 
-Route::prefix('feed')->group(function () {
-    Route::post('/{user}}', [FeedController::class, 'feed'])->name('web.feed');
-});
+Route::get('feed/{token}', [FeedController::class, 'feed'])->name('web.feed');
 
-Route::prefix('account')->group(function () {
-    Route::get('/{uri}', function () {
-        return view('react');
-    })->where('uri', '^((?!api).)*$'); // except 'api' word
-});
+//Route::prefix('account')->group(function () {
+//    Route::get('/{uri}', function () {
+//        return view('react');
+//    })->where('uri', '^((?!api).)*$'); // except 'api' word
+//});

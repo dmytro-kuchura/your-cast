@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.0",
         "ext-json": "*",
+        "ext-dom": "*",
         "arrilot/laravel-widgets": "^3.13",
         "darkaonline/l5-swagger": "^8.0",
         "fideloper/proxy": "^4.4",
@@ -20,7 +21,7 @@
         "league/flysystem-aws-s3-v3": "^1.0",
         "mateusjunges/laravel-kafka": "^1.0",
         "monolog/monolog": "^2.3",
-        "torann/geoip": "^3.0"
+        "torann/geoip": "^3.0",
     },
     "require-dev": {
         "facade/ignition": "^2.5",
