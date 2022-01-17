@@ -45,6 +45,9 @@ class FeedGenerator
         $itune_summary = $dom->createElement("itunes:summary", $this->show->description);
         $channel->appendChild($itune_summary);
 
+        $generator = $dom->createElement("generator", 'Your Cast');
+        $channel->appendChild($generator);
+
         $image = $dom->createElement("image");
         $image->appendChild($title->cloneNode(true));
         $image->appendChild($link->cloneNode(true));
