@@ -40,7 +40,7 @@ services:
 
   database:
     container_name: podcasts_database
-    image: postgres:latest
+    image: postgres:13
     environment:
       POSTGRES_DB: yourcast
       POSTGRES_USER: yourcast
