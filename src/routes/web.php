@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [SiteController::class, 'home'])->name('home');
-
+Route::get('/.well-known/pki-validation/4C6536265FE8056FD07E97F5BEEFE2A5.txt', [SiteController::class, 'test'])->name('ssl.test');
 Route::get('feed/{token}', [FeedController::class, 'feed'])->name('web.feed');
 
 //Route::prefix('account')->group(function () {
