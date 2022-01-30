@@ -9,6 +9,6 @@
     @widget('about')
     @widget('newslater')
     @widget('pricing')
-    @widget('blog')
+{{--    @widget('blog')--}}
     @widget('contact')
 @endsection

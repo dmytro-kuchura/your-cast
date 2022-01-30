@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
+
 class SiteController extends Controller
 {
-    public function home()
+    public function home(): View
     {
         return view('welcome');
+//        return view('home');
     }
 
-    public function test()
+    public function test(): View
     {
         return view('test');
     }

@@ -7,7 +7,7 @@
                 <div class="col-xl-3 col-lg-3 col-sm-6">
                     <div class="footer-widget mb-30">
                         <div class="logo mt-15 mb-15">
-                            <a href="#"><img src="img/logo/w_logo.png" alt="logo"></a>
+                            <a href="#"><img src="img/logo/podcast_logo.png" alt="logo" width="200px"></a>
                         </div>
                         <div class="footer-text mb-20">
                             <p>
@@ -15,8 +15,8 @@
                             </p>
                         </div>
                         <div class="footer-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+{{--                            <a href="#"><i class="fab fa-facebook-f"></i></a>--}}
+                            <a href="#"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
