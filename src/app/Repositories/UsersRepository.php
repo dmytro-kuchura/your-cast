@@ -23,7 +23,7 @@ class UsersRepository implements Repository
 
     public function all()
     {
-        // TODO: Implement all() method.
+        return User::all();
     }
 
     public function store(array $data): User
