@@ -24,11 +24,11 @@ class ShowController extends Controller
      * @OA\Get(
      *     path="/api/v1/show/{id}",
      *     summary="Get show info",
-     *     tags={"Show"},
+     *     tags={"Shows"},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="User ID",
+     *         description="Show ID",
      *         required=true,
      *         @OA\Schema(
      *             type="integer",
@@ -57,7 +57,7 @@ class ShowController extends Controller
      * @OA\Get(
      *     path="/api/v1/show/short",
      *     summary="Get user short shows list",
-     *     tags={"Show"},
+     *     tags={"Shows"},
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation"
@@ -83,7 +83,7 @@ class ShowController extends Controller
      * @OA\Get(
      *     path="/api/v1/show/list",
      *     summary="Get user shows",
-     *     tags={"Show"},
+     *     tags={"Shows"},
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation"
@@ -108,7 +108,7 @@ class ShowController extends Controller
      * @OA\Post(
      *     path="/api/v1/show/create",
      *     summary="Create new show",
-     *     tags={"Show"},
+     *     tags={"Shows"},
      *     @OA\RequestBody(
      *        required=true,
      *        description="Create show",
@@ -152,7 +152,7 @@ class ShowController extends Controller
      * @OA\Put(
      *     path="/api/v1/show/create",
      *     summary="Update show",
-     *     tags={"Show"},
+     *     tags={"Shows"},
      *     @OA\RequestBody(
      *        required=true,
      *        description="Update show",

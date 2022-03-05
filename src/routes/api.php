@@ -47,6 +47,7 @@ Route::middleware(['logger'])->group(function () {
 
             Route::prefix('user')->group(function () {
                 Route::get('/list', [UserController::class, 'list'])->name('api.user.list');
+                Route::get('/{id}', [UserController::class, 'detail'])->name('api.show.detail');
             });
         });
     });

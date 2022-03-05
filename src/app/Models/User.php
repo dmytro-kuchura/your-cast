@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Enum\UserRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -26,6 +27,7 @@ use Illuminate\Notifications\Notifiable;
  * @property bool $isAdmin
  * @property bool $isPodcaster
  * @property UsersTokens $tokens
+ * @property UserIpHistory $history
  */
 class User extends Authenticatable
 {
@@ -61,6 +63,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function history(): HasMany
+    {
+        return $this->hasMany('App\Models\UserIpHistory', 'user_id', 'id');
+    }
 
     public function isEmailVerified(): bool
     {

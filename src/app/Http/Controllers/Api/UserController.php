@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UserResource;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 
@@ -18,7 +17,7 @@ class UserController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/v1/users",
+     *     path="/api/v1/user",
      *     summary="Users list",
      *     tags={"Users"},
      *     @OA\Response(
@@ -36,7 +35,41 @@ class UserController extends Controller
         $users = $this->service->usersList();
 
         return $this->returnResponse([
-            'users' => $users,
+            'result' => $users,
+        ]);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/v1/user/{id}",
+     *     summary="User detail",
+     *     tags={"Users"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="User ID",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user"
+     *     )
+     * )
+     */
+    public function detail(int $id): JsonResponse
+    {
+        $user = $this->service->usersDetail($id);
+
+        return $this->returnResponse([
+            'result' => $user,
         ]);
     }
 }

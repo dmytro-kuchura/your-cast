@@ -313,7 +313,7 @@
         "/api/v1/show/{id}": {
             "get": {
                 "tags": [
-                    "Show"
+                    "Shows"
                 ],
                 "summary": "Get show info",
                 "operationId": "ee8d60d21b7a920409c7fd8084bdfce8",
@@ -321,7 +321,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "User ID",
+                        "description": "Show ID",
                         "required": true,
                         "schema": {
                             "type": "integer",
@@ -342,7 +342,7 @@
         "/api/v1/show/short": {
             "get": {
                 "tags": [
-                    "Show"
+                    "Shows"
                 ],
                 "summary": "Get user short shows list",
                 "operationId": "04d54ff4e9a8aa908791ade2977e2780",
@@ -359,7 +359,7 @@
         "/api/v1/show/list": {
             "get": {
                 "tags": [
-                    "Show"
+                    "Shows"
                 ],
                 "summary": "Get user shows",
                 "responses": {
@@ -375,7 +375,7 @@
         "/api/v1/show/create": {
             "put": {
                 "tags": [
-                    "Show"
+                    "Shows"
                 ],
                 "summary": "Update show",
                 "operationId": "7a2e3f754bdab81470cb92483aa4b3c4",
@@ -464,7 +464,7 @@
             },
             "post": {
                 "tags": [
-                    "Show"
+                    "Shows"
                 ],
                 "summary": "Create new show",
                 "operationId": "af5c356e6f0d6aee9bd8fc7409a8ec44",
@@ -589,6 +589,51 @@
                 },
                 "responses": {
                     "201": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
+        "/api/v1/user": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Users list",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "User detail",
+                "operationId": "93cf0b63e1b9467a1edca8a3cd5fcf52",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
                         "description": "Successful operation"
                     },
                     "401": {
