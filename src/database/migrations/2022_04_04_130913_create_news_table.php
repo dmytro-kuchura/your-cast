@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDictionaryLanguagesTable extends Migration
+class CreateNewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateDictionaryLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dictionary_languages', function (Blueprint $table) {
+        Schema::create('news', function (Blueprint $table) {
             $table->id();
 
-            $table->string('code');
-            $table->string('value');
+            $table->string('author');
+            $table->string('title');
+            $table->string('name');
+            $table->string('alias');
+            $table->text('short')->nullable();
+            $table->text('content')->nullable();
             $table->enum('status', ['enabled', 'disabled'])->default('disabled');
 
             $table->timestamps();
@@ -31,6 +35,6 @@ class CreateDictionaryLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dictionary_languages');
+        Schema::dropIfExists('news');
     }
 }

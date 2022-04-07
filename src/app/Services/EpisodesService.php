@@ -2,10 +2,11 @@
 
 namespace App\Services;
 
-use App\Exceptions\NotCreateShowException;
+use App\Exceptions\EpisodeCreatingException;
 use App\Models\Episode;
 use App\Repositories\EpisodesRepository;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class EpisodesService
 {
@@ -24,6 +25,15 @@ class EpisodesService
 
     public function createEpisode(array $data): void
     {
-        $this->repository->store($data);
+        DB::beginTransaction();
+
+        try {
+            $this->repository->store($data);
+        } catch (Throwable $exception) {
+            DB::rollBack();
+            throw new EpisodeCreatingException($exception->getMessage());
+        }
+
+        DB::commit();
     }
 }
