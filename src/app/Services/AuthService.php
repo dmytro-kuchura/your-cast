@@ -42,7 +42,6 @@ class AuthService
     {
         $systemId = UidHelper::generateUid();
 
-
         $this->usersRepository->store([
             'email' => $data['email'],
             'name' => $data['name'],

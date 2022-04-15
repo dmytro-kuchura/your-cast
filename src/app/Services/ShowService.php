@@ -7,6 +7,8 @@ use App\Models\Show;
 use App\Repositories\ShowsRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class ShowService
 {
@@ -22,22 +24,32 @@ class ShowService
     {
         $data['user_id'] = Auth::user()->getAuthIdentifier();
 
+        DB::beginTransaction();
+
         try {
-            $show = $this->repository->store($data);
-        } catch (\Throwable $e) {
-            throw new NotCreateShowException($e->getMessage());
+            $this->repository->store($data);
+        } catch (Throwable $exception) {
+            DB::rollBack();
+            throw new NotCreateShowException($exception->getMessage());
         }
+
+        DB::commit();
 
         return $this->getShowInfo($show->id);
     }
 
     public function updateShow(int $id, array $data): Show
     {
+        DB::beginTransaction();
+
         try {
             $this->repository->update($data, $id);
-        } catch (\Throwable $e) {
-            throw new NotCreateShowException($e->getMessage());
+        } catch (Throwable $exception) {
+            DB::rollBack();
+            throw new NotCreateShowException($exception->getMessage());
         }
+
+        DB::commit();
 
         return $this->getShowInfo($id);
     }
