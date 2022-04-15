@@ -8,7 +8,7 @@ class LogsRepository implements Repository
 {
     public function get(int $id)
     {
-        // TODO: Implement get() method.
+        return Log::find($id);
     }
 
     public function all()

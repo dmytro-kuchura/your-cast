@@ -8,8 +8,7 @@ class SiteController extends Controller
 {
     public function home(): View
     {
-        return view('welcome');
-//        return view('home');
+        return view('home');
     }
 
     public function test(): View

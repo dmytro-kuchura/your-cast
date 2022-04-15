@@ -3,7 +3,10 @@
 namespace App\Services;
 
 use App\Models\AudioFile;
+use App\Exceptions\AudioFileCreatingException;
 use App\Repositories\AudioFileRepository;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class AudioFileService
 {
@@ -22,6 +25,17 @@ class AudioFileService
 
     public function createAudioFile(array $data): AudioFile
     {
-        return $this->repository->store($data);
+        DB::beginTransaction();
+
+        try {
+            $audioFile = $this->repository->store($data);
+        } catch (Throwable $exception) {
+            DB::rollBack();
+            throw new AudioFileCreatingException($exception->getMessage());
+        }
+
+        DB::commit();
+
+        return $audioFile;
     }
 }
