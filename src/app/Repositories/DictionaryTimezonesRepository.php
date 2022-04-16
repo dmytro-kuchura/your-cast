@@ -2,6 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Models\DictionaryTimezones;
+use Illuminate\Database\Eloquent\Collection;
+
 class DictionaryTimezonesRepository implements Repository
 {
     public function get(int $id)
@@ -9,9 +12,9 @@ class DictionaryTimezonesRepository implements Repository
         // TODO: Implement get() method.
     }
 
-    public function all()
+    public function all(): Collection|array
     {
-        // TODO: Implement all() method.
+        return DictionaryTimezones::all();
     }
 
     public function store(array $data)

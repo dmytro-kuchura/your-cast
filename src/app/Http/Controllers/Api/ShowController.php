@@ -144,7 +144,6 @@ class ShowController extends Controller
 
         return $this->returnResponse([
             'created' => true,
-            'show' => new ShowResource($show),
         ], Response::HTTP_CREATED);
     }
 

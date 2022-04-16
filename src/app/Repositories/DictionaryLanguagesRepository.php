@@ -2,6 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Models\DictionaryLanguages;
+use Illuminate\Database\Eloquent\Collection;
+
 class DictionaryLanguagesRepository implements Repository
 {
     public function get(int $id)
@@ -9,9 +12,9 @@ class DictionaryLanguagesRepository implements Repository
         // TODO: Implement get() method.
     }
 
-    public function all()
+    public function all(): Collection|array
     {
-        // TODO: Implement all() method.
+        return DictionaryLanguages::all();
     }
 
     public function store(array $data)

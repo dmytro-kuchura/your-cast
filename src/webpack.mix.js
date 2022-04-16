@@ -14,5 +14,5 @@ require('laravel-mix-purgecss');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').react().sourceMaps(false, 'source-map').version();
+mix.js('resources/js/app.js', 'public/js').version();
 mix.sass('resources/css/app.scss', 'public/css').version();

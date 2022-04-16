@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DictionaryController;
 use App\Http\Controllers\Api\EpisodeController;
 use App\Http\Controllers\Api\ShowController;
 use App\Http\Controllers\Api\UploadController;
@@ -43,6 +44,12 @@ Route::middleware(['logger'])->group(function () {
 
             Route::prefix('episodes')->group(function () {
                 Route::post('/create', [EpisodeController::class, 'create'])->name('api.episode.create');
+            });
+
+            Route::prefix('dictionary')->group(function () {
+                Route::get('/timezones', [DictionaryController::class, 'timezones'])->name('api.dictionary.timezones');
+                Route::get('/languages', [DictionaryController::class, 'languages'])->name('api.dictionary.languages');
+                Route::get('/categories', [DictionaryController::class, 'categories'])->name('api.dictionary.categories');
             });
 
             Route::prefix('user')->group(function () {

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\NotCreateShowException;
+use App\Exceptions\NotUpdateShowException;
 use App\Models\Show;
 use App\Repositories\ShowsRepository;
 use Illuminate\Database\Eloquent\Collection;
@@ -20,7 +21,7 @@ class ShowService
         $this->repository = $showsRepository;
     }
 
-    public function createShow(array $data): Show
+    public function createShow(array $data): void
     {
         $data['user_id'] = Auth::user()->getAuthIdentifier();
 
@@ -34,8 +35,6 @@ class ShowService
         }
 
         DB::commit();
-
-        return $this->getShowInfo($show->id);
     }
 
     public function updateShow(int $id, array $data): Show
@@ -46,7 +45,7 @@ class ShowService
             $this->repository->update($data, $id);
         } catch (Throwable $exception) {
             DB::rollBack();
-            throw new NotCreateShowException($exception->getMessage());
+            throw new NotUpdateShowException($exception->getMessage());
         }
 
         DB::commit();

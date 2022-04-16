@@ -1,4 +1,4 @@
-version: '3.2'
+version: '3.8'
 
 services:
   web:
@@ -46,7 +46,7 @@ services:
       POSTGRES_USER: yourcast
       POSTGRES_PASSWORD: mysecretpassword123!#
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgres-database-podcasts:/var/lib/postgresql/data
 

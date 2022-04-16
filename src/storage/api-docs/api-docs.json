@@ -208,12 +208,47 @@
                 }
             }
         },
+        "/api/v1/dictionary/timezones": {
+            "get": {
+                "tags": [
+                    "Dictionary"
+                ],
+                "summary": "Get dictionary timezones list",
+                "operationId": "a25694597c9caa01bed873bb74d37bea",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
+        "/api/v1/dictionary/languages": {
+            "get": {
+                "tags": [
+                    "Dictionary"
+                ],
+                "summary": "Get dictionary languages list",
+                "operationId": "44847e0fc2e1b8a60e5793e650c71023",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
         "/api/v1/episodes": {
             "get": {
                 "tags": [
                     "Episodes"
                 ],
                 "summary": "Get user episodes",
+                "operationId": "9c66dde58be87f399ecfd33c26a216f6",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -362,6 +397,7 @@
                     "Shows"
                 ],
                 "summary": "Get user shows",
+                "operationId": "44062dd4c0e5c48066113519ecc46e23",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -603,6 +639,7 @@
                     "Users"
                 ],
                 "summary": "Users list",
+                "operationId": "703f8f4a96c6970997b1f19ad624bd81",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -642,8 +679,5 @@
                 }
             }
         }
-    },
-    "security": [
-        []
-    ]
+    }
 }
