@@ -242,6 +242,23 @@
                 }
             }
         },
+        "/api/v1/dictionary/categories": {
+            "get": {
+                "tags": [
+                    "Dictionary"
+                ],
+                "summary": "Get dictionary categories list",
+                "operationId": "0895e3676a759aa3fb8e40c8773d6a13",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
         "/api/v1/episodes": {
             "get": {
                 "tags": [

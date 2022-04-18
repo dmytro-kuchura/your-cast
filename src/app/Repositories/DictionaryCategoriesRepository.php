@@ -2,6 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Models\DictionaryCategories;
+use Illuminate\Database\Eloquent\Collection;
+
 class DictionaryCategoriesRepository implements Repository
 {
     public function get(int $id)
@@ -9,9 +12,9 @@ class DictionaryCategoriesRepository implements Repository
         // TODO: Implement get() method.
     }
 
-    public function all()
+    public function all(): Collection|array
     {
-        // TODO: Implement all() method.
+        return DictionaryCategories::all();
     }
 
     public function store(array $data)

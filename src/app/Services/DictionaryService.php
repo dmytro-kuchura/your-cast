@@ -38,4 +38,9 @@ class DictionaryService
     {
         return $this->languagesRepository->all();
     }
+
+    public function getCategories(): Collection|array
+    {
+        return $this->categoriesRepository->all();
+    }
 }
