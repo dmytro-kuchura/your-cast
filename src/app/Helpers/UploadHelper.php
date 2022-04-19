@@ -50,7 +50,7 @@ class UploadHelper
         $folder = 'YCID' . Auth::user()->system_id;
 
         switch ($param) {
-            case 'show':
+            case 'artwork':
                 $path = $folder . '/artwork';
                 break;
             case 'avatar':
