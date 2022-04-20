@@ -47,23 +47,13 @@ class UploadHelper
 
     public static function getPathImage(string $param): string
     {
-        $folder = 'YCID' . Auth::user()->system_id;
+        $folder = implode(['YCID', Auth::user()->system_id]);
 
-        switch ($param) {
-            case 'artwork':
-                $path = $folder . '/artwork';
-                break;
-            case 'avatar':
-                $path = $folder . '/avatar';
-                break;
-            case 'cover':
-                $path = $folder . '/cover';
-                break;
-            default:
-                $path = $folder . '/images';
-                break;
-        }
-
-        return $path;
+        return match ($param) {
+            'artwork' => $folder . '/artwork',
+            'avatar' => $folder . '/avatar',
+            'cover' => $folder . '/cover',
+            default => $folder . '/images',
+        };
     }
 }

@@ -362,6 +362,23 @@
                 }
             }
         },
+        "/api/v1/notifications/unread": {
+            "get": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Get unread notifications",
+                "operationId": "22cc6d096c61ed4ca041d76935f38ba1",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
         "/api/v1/show/{id}": {
             "get": {
                 "tags": [

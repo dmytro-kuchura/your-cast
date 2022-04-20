@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DictionaryController;
 use App\Http\Controllers\Api\EpisodeController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ShowController;
 use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\UserController;
@@ -50,6 +51,10 @@ Route::middleware(['logger'])->group(function () {
                 Route::get('/timezones', [DictionaryController::class, 'timezones'])->name('api.dictionary.timezones');
                 Route::get('/languages', [DictionaryController::class, 'languages'])->name('api.dictionary.languages');
                 Route::get('/categories', [DictionaryController::class, 'categories'])->name('api.dictionary.categories');
+            });
+
+            Route::prefix('notifications')->group(function () {
+                Route::get('/unread', [NotificationController::class, 'unread'])->name('api.notifications.unread');
             });
 
             Route::prefix('user')->group(function () {
