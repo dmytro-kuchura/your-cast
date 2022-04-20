@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\NotCreateShowException;
 use App\Exceptions\NotUpdateShowException;
+use App\Helpers\NotificationHelper;
 use App\Models\Show;
 use App\Repositories\ShowsRepository;
 use Illuminate\Database\Eloquent\Collection;
@@ -33,6 +34,8 @@ class ShowService
             DB::rollBack();
             throw new NotCreateShowException($exception->getMessage());
         }
+
+        NotificationHelper::info('Your new show created.', 'Now you have upload your first episode in show and publish to another platform.');
 
         DB::commit();
     }
