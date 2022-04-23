@@ -30,14 +30,12 @@ class UploadHelper
 
     public static function saveAudio(Request $request): ?string
     {
-        $systemId = Auth::user()->system_id;
-
         $audio = $request->file('audio');
 
-        $path = 'YCID' . $systemId . '/audio';
+        $folder = implode(['YCID', Auth::user()->system_id,  '/audio']);
 
         try {
-            $storage = Storage::disk('s3')->put($path, $audio);
+            $storage = Storage::disk('s3')->put($folder, $audio);
         } catch (\Throwable $e) {
             throw new ImageUploadException($e->getMessage());
         }

@@ -15,12 +15,13 @@
             <div class="col-lg-4 col-md-12 mb-30">
                 <div class="s-single-services active text-center">
                     <div class="services-icon">
-                        <img src="img/icon/f-icon1.png"/>
+                        <img src="img/pic-1.svg"/>
                     </div>
                     <div class="second-services-content">
-                        <h5>Perfect UI Design</h5>
-                        <p>Praesent ac vehicula sapien. Sed sollicitudin molestie consequat. Ut vitae ante ut mi
-                            vehicula vulputate.</p>
+                        <h5>Easy administrating</h5>
+                        <p>
+                            Easy administrating your show with YourCast platform
+                        </p>
                         <a href="#"><span>1</span></a>
                     </div>
                 </div>
@@ -28,12 +29,14 @@
             <div class="col-lg-4 col-md-12 mb-30">
                 <div class="s-single-services text-center">
                     <div class="services-icon">
-                        <img src="img/icon/f-icon3.png"/>
+                        <img src="img/pic-2.svg"/>
                     </div>
                     <div class="second-services-content">
-                        <h5>Great CSS Animation</h5>
-                        <p>Praesent ac vehicula sapien. Sed sollicitudin molestie consequat. Ut vitae ante ut mi
-                            vehicula vulputate.</p>
+                        <h5>Perfect analytics</h5>
+                        <p>
+                            Praesent ac vehicula sapien. Sed sollicitudin molestie consequat. Ut vitae ante ut mi
+                            vehicula vulputate.
+                        </p>
                         <a href="#"><span>2</span></a>
                     </div>
                 </div>
@@ -41,10 +44,10 @@
             <div class="col-lg-4 col-md-12 mb-30">
                 <div class="s-single-services text-center">
                     <div class="services-icon">
-                        <img src="img/icon/f-icon2.png"/>
+                        <img src="img/pic-3.svg"/>
                     </div>
                     <div class="second-services-content">
-                        <h5>Fully Secured</h5>
+                        <h5>Simple using</h5>
                         <p>Praesent ac vehicula sapien. Sed sollicitudin molestie consequat. Ut vitae ante ut mi
                             vehicula vulputate.</p>
                         <a href="#"><span>3</span></a>

@@ -22,6 +22,7 @@ class CreateEpisodesTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->string('cover')->nullable();
+            $table->string('alias');
 
             $table->integer('episode');
             $table->integer('season')->default(1);

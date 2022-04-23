@@ -14,15 +14,16 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *
  * @property string $title
  * @property string $description
- *
  * @property string $cover
+ * @property string $alias
+ *
  * @property int $episode
  * @property int $season
  * @property string $episode_type
  *
  * @property string $content
  *
- * @property string $explicit
+ * @property boolean $explicit
  * @property string $status
  *
  * @property Show $show
@@ -45,6 +46,7 @@ class Episode extends Model
         'title',
         'description',
         'cover',
+        'alias',
         'episode',
         'season',
         'episode_type',
