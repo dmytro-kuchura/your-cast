@@ -22,6 +22,13 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 # Install the PHP GD library
 RUN docker-php-ext-install -j$(nproc) gd
 
+# Install the PHP redis extention
+RUN pecl install redis -o -f redis \
+        && rm -rf /tmp/pear
+
+# Enable redis extention
+RUN docker-php-ext-enable redis
+
 # Install the PHP pdo_pgsql extention
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
         && docker-php-ext-install -j$(nproc) \
