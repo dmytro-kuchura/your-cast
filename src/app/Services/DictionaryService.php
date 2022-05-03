@@ -6,6 +6,7 @@ use App\Repositories\DictionaryCategoriesRepository;
 use App\Repositories\DictionaryLanguagesRepository;
 use App\Repositories\DictionaryTimezonesRepository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class DictionaryService
 {
@@ -31,16 +32,22 @@ class DictionaryService
 
     public function getTimezones(): Collection|array
     {
-        return $this->timezonesRepository->all();
+        return Cache::remember('timezones', now()->addMinutes(150), function () {
+            return $this->timezonesRepository->all();
+        });
     }
 
     public function getLanguages(): Collection|array
     {
-        return $this->languagesRepository->all();
+        return Cache::remember('languages', now()->addMinutes(150), function () {
+            return $this->languagesRepository->all();
+        });
     }
 
     public function getCategories(): Collection|array
     {
-        return $this->categoriesRepository->all();
+        return Cache::remember('categories', now()->addMinutes(150), function () {
+            return $this->categoriesRepository->all();
+        });
     }
 }

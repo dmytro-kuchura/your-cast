@@ -8,7 +8,7 @@
     @widget('slider')
     @widget('about')
     @widget('newslater')
-    @widget('pricing')
+{{--    @widget('pricing')--}}
 {{--    @widget('blog')--}}
     @widget('contact')
 @endsection
