@@ -1,17 +1,16 @@
 <footer class="footer-bg footer-p pt-60"
-        style="background-image: url('img/bg/f-bg.png'); background-position: center top; background-size: auto;background-repeat: no-repeat;">
-
+        style="background-image: url('/img/bg/f-bg.png'); background-position: center top; background-size: auto;background-repeat: no-repeat;">
     <div class="footer-top">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-xl-3 col-lg-3 col-sm-6">
                     <div class="footer-widget mb-30">
                         <div class="logo mt-15 mb-15">
-                            <a href="#"><img src="img/logo/podcast_logo.png" alt="logo" width="200px"></a>
+                            <a href="#"><img src="img/logo/your-cast-logo-white.png" alt="logo" width="200px"></a>
                         </div>
                         <div class="footer-text mb-20">
                             <p>
-                                With Your-Cast platform you receive, strong application for create and update your podcast ecosystem.
+                                Find and grow your show on every podcast listening app there is - including Apple Podcasts, Spotify, Google Podcasts, Amazon Music and others.
                             </p>
                         </div>
                         <div class="footer-social">
@@ -29,6 +28,7 @@
                             <ul>
                                 <li><a href="#">About Us</a></li>
                                 <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Privacy Policies</a></li>
                             </ul>
                         </div>
                     </div>
@@ -56,12 +56,12 @@
                                 <ul>
                                     <li>
                                         <i class="icon dripicons-mail"></i>
-                                        <span><a href="mailto:info@example.com">info@example.com</a>
+                                        <span><a href="mailto:dmytro@your-cast.com">dmytro@your-cast.com</a>
                                         </span>
                                     </li>
                                     <li>
                                         <i class="fal fa-map-marker-alt"></i>
-                                        <span>380 St Kilda Road, Melbourne<br>VIC 3004, Australia</span>
+                                        <span>01103 Druzby Narodiv 26/1,<br> Kyiv, Ukraine</span>
                                     </li>
                                 </ul>
                             </div>
@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="copyright-text">
-                        <p>&copy; 2021 Your-Cast platform.</p>
+                        <p>&copy; 2021 - 2022 Your-Cast platform</p>
                     </div>
                 </div>
             </div>

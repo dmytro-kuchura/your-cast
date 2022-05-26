@@ -8,7 +8,7 @@ use App\Services\ShowService;
 class FeedController
 {
     /** @var ShowService */
-    private $service;
+    private ShowService $service;
 
     public function __construct(ShowService $service)
     {
