@@ -4,9 +4,12 @@
         <div class="row justify-content-center">
             <div class="col-xl-8 col-lg-10">
                 <div class="section-title text-center pl-40 pr-40 mb-50">
-                    <h2>Subscreibe For New Features</h2>
-                    <p>Quisque posuere mollis ipsum et molestie. Fusce cursus, risus vel scelerisque porttitor, leo
-                        quam vulputate nibh, sit amet blandit erat magna.</p>
+                    <h2>Subscribe for newsletter</h2>
+                    <p>Subscribing up for our newsletter/s, you agree that you may occasionally receive additional
+                        communications from YourCast to inform you of news and updates that we think you might be
+                        interested in. You hereby consent processing of your personal data (e-mail address) for these
+                        purposes and as further described in our Privacy Policies. You may withdraw your consent at any
+                        time.</p>
                 </div>
             </div>
         </div>
@@ -18,10 +21,8 @@
                                placeholder="Email Address..." value="" required="">
                         <button type="submit" class="btn btn-custom" id="send2">Subscribe Now</button>
                     </div>
-                    <!-- /Form-email -->
                 </form>
             </div>
-
         </div>
     </div>
 </section>

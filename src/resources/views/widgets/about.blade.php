@@ -1,5 +1,4 @@
-<section id="about" class="services-area services-bg pt-25 pb-20"
-         style="background-image: url('img/shape/header-sape2.png'); background-position: right top; background-size: auto;background-repeat: no-repeat;">
+<section id="about" class="services-area services-bg pt-25 pb-20" style="background-image: url('img/shape/header-sape2.png'); background-position: right top; background-size: auto;background-repeat: no-repeat;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-10">
@@ -15,13 +14,11 @@
             <div class="col-lg-4 col-md-12 mb-30">
                 <div class="s-single-services active text-center">
                     <div class="services-icon">
-                        <img src="img/pic-1.svg"/>
+                        <img src="/img/pic-1.svg" alt="icon"/>
                     </div>
                     <div class="second-services-content">
-                        <h5>Easy administrating</h5>
-                        <p>
-                            Easy administrating your show with YourCast platform
-                        </p>
+                        <h5>Host and distribute easy</h5>
+                        <p>Distribute your podcast, on every platform.</p>
                         <a href="#"><span>1</span></a>
                     </div>
                 </div>
@@ -29,14 +26,11 @@
             <div class="col-lg-4 col-md-12 mb-30">
                 <div class="s-single-services text-center">
                     <div class="services-icon">
-                        <img src="img/pic-2.svg"/>
+                        <img src="/img/pic-2.svg" alt="icon"/>
                     </div>
                     <div class="second-services-content">
                         <h5>Perfect analytics</h5>
-                        <p>
-                            Praesent ac vehicula sapien. Sed sollicitudin molestie consequat. Ut vitae ante ut mi
-                            vehicula vulputate.
-                        </p>
+                        <p>Insights and data for faster, smarter decisions.</p>
                         <a href="#"><span>2</span></a>
                     </div>
                 </div>
@@ -44,18 +38,15 @@
             <div class="col-lg-4 col-md-12 mb-30">
                 <div class="s-single-services text-center">
                     <div class="services-icon">
-                        <img src="img/pic-3.svg"/>
+                        <img src="/img/pic-3.svg" alt="icon"/>
                     </div>
                     <div class="second-services-content">
-                        <h5>Simple using</h5>
-                        <p>Praesent ac vehicula sapien. Sed sollicitudin molestie consequat. Ut vitae ante ut mi
-                            vehicula vulputate.</p>
+                        <h5>Promote</h5>
+                        <p>Find and grow your audience.</p>
                         <a href="#"><span>3</span></a>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </section>
