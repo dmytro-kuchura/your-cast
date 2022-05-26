@@ -44,6 +44,7 @@ Route::middleware(['logger'])->group(function () {
             });
 
             Route::prefix('episodes')->group(function () {
+                Route::get('/show/{showId}/list', [EpisodeController::class, 'showEpisodes'])->name('api.episode.show.episodes');
                 Route::post('/create', [EpisodeController::class, 'create'])->name('api.episode.create');
             });
 

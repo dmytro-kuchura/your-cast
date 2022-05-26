@@ -276,6 +276,23 @@
                 }
             }
         },
+        "/api/v1/episodes/show/{showId}/list": {
+            "get": {
+                "tags": [
+                    "Episodes"
+                ],
+                "summary": "Get show episodes",
+                "operationId": "568a37dfa0c0a1ac7bbc41488dc4803f",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
         "/api/v1/episodes/create": {
             "post": {
                 "tags": [
