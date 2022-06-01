@@ -18,9 +18,9 @@ class AudioFileService
         $this->repository = $showsRepository;
     }
 
-    public function getAudioFile(int $id): ?AudioFile
+    public function getAudioFile(int $linkId): ?AudioFile
     {
-        return $this->repository->get($id);
+        return $this->repository->find($linkId);
     }
 
     public function createAudioFile(array $data): AudioFile

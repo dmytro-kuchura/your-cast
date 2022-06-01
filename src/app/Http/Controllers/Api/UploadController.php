@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
+use App\Services\AudioFileLinkService;
 use App\Services\AudioFileService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -12,11 +13,15 @@ use Illuminate\Http\Response;
 class UploadController extends Controller
 {
     /** @var AudioFileService */
-    private AudioFileService $service;
+    private AudioFileService $audioFileService;
 
-    public function __construct(AudioFileService $service)
+    /** @var AudioFileLinkService */
+    private AudioFileLinkService $audioFileLinkService;
+
+    public function __construct(AudioFileService $audioFileService, AudioFileLinkService $audioFileLinkService)
     {
-        $this->service = $service;
+        $this->audioFileService = $audioFileService;
+        $this->audioFileLinkService = $audioFileLinkService;
     }
 
     /**
@@ -67,7 +72,10 @@ class UploadController extends Controller
     {
         $path = UploadHelper::saveAudio($request);
 
-        $file = $this->service->createAudioFile([
+        $fileLink = $this->audioFileLinkService->createAudioFileLink();
+
+        $file = $this->audioFileService->createAudioFile([
+            'audio_file_link_id' => $fileLink->id,
             'duration' => 3,
             'link' => $path,
             'size' => $request->file('audio')->getSize() / 1000

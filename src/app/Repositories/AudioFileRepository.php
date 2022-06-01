@@ -11,6 +11,11 @@ class AudioFileRepository implements Repository
         return AudioFile::find($id);
     }
 
+    public function find(int $linkId): ?AudioFile
+    {
+        return AudioFile::where('audio_file_link_id', $linkId)->first();
+    }
+
     public function all()
     {
         // TODO: Implement all() method.
@@ -20,6 +25,7 @@ class AudioFileRepository implements Repository
     {
         $model = new AudioFile();
 
+        $model->audio_file_link_id = $data['audio_file_link_id'];
         $model->duration = $data['duration'];
         $model->size = number_format($data['size'], 1, '.', '');
         $model->link = $data['link'];

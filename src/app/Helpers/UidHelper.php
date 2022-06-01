@@ -6,7 +6,7 @@ class UidHelper
 {
     public static function generateUid(): string
     {
-        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
         $result = '';
         for ($i = 0; $i < 4; $i++) {
