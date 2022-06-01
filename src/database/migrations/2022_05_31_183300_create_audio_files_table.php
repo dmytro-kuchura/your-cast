@@ -16,10 +16,14 @@ class CreateAudioFilesTable extends Migration
         Schema::create('audio_files', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('audio_file_link_id');
+
             $table->string('duration')->nullable();
             $table->string('size')->nullable();
             $table->string('link');
             $table->enum('status', ['enabled', 'disabled', 'drafted'])->default('drafted');
+
+            $table->foreign('audio_file_link_id')->references('id')->on('audio_file_links');
 
             $table->timestamps();
         });

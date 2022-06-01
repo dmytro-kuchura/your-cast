@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Exceptions\EpisodeCreatingException;
 use App\Models\Episode;
 use App\Repositories\EpisodesRepository;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
@@ -21,6 +23,11 @@ class EpisodesService
     public function getEpisode(int $id): ?Episode
     {
         return $this->repository->get($id);
+    }
+
+    public function getShowEpisodes(int $showId): Collection|array
+    {
+        return $this->repository->getAllShowEpisodes($showId);
     }
 
     public function createEpisode(array $data): void

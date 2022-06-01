@@ -48,6 +48,30 @@ class EpisodeController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *     path="/api/v1/episodes/show/{showId}/list",
+     *     summary="Get show episodes",
+     *     tags={"Episodes"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user"
+     *     )
+     * )
+     */
+    public function showEpisodes(int $showId): JsonResponse
+    {
+        $result = $this->service->getShowEpisodes($showId);
+
+        return $this->returnResponse([
+            'result' => $result
+        ]);
+    }
+
+    /**
      * @OA\Post(
      *     path="/api/v1/episodes/create",
      *     summary="Create new episode",

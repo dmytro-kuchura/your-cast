@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\FeedGenerator;
 use App\Services\ShowService;
 
-class FeedController
+class FeedController extends Controller
 {
     /** @var ShowService */
     private ShowService $service;

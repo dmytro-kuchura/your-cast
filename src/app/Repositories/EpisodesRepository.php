@@ -17,6 +17,11 @@ class EpisodesRepository implements Repository
         // TODO: Implement all() method.
     }
 
+    public function getAllShowEpisodes(int $showId): ?Collection
+    {
+        return Episode::where('show_id', $showId)->get();
+    }
+
     public function getAllUserEpisodes(int $userId): ?Collection
     {
         return Episode::where('user_id', $userId)->get();
