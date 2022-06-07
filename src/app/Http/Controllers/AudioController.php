@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\AnalyticsService;
 use App\Services\AudioFileLinkService;
 use App\Services\AudioFileService;
 use Illuminate\Support\Facades\Redirect;
@@ -14,10 +15,18 @@ class AudioController extends Controller
     /** @var AudioFileService */
     private AudioFileService $audioFileService;
 
-    public function __construct(AudioFileLinkService $audioFileLinkService, AudioFileService $audioFileService)
+    /** @var AnalyticsService */
+    private AnalyticsService $analyticsService;
+
+    public function __construct(
+        AudioFileLinkService $audioFileLinkService,
+        AudioFileService $audioFileService,
+        AnalyticsService $analyticsService
+    )
     {
         $this->audioFileLinkService = $audioFileLinkService;
         $this->audioFileService = $audioFileService;
+        $this->analyticsService = $analyticsService;
     }
     public function audio(string $audioLinkToken)
     {
@@ -25,7 +34,7 @@ class AudioController extends Controller
 
         $audioFile = $this->audioFileService->getAudioFile($audioFileLinkId);
 
-        // TODO save log to analytics
+        $this->analyticsService->prepareAndSave($audioFile->id);
 
         return Redirect::to($audioFile->link);
     }

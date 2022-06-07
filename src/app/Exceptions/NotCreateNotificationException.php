@@ -6,5 +6,5 @@ use RuntimeException;
 
 class NotCreateNotificationException extends RuntimeException
 {
-    protected $message = 'NotificationController can\'t create!';
+    protected $message = 'Notification can\'t create!';
 }

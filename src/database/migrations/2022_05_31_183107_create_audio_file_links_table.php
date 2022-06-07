@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateAudioFileLinksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('audio_file_links', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('token');
+            $table->enum('status', ['enabled', 'disabled'])->default('enabled');
+
+            $table->timestamps();
+
+//            https://yourcast.com/audio/<audio_link_token>.mp3
+//            https://audio.yourcast.com/<audio_link_token>.mp3
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('audio_file_links');
+    }
+}
