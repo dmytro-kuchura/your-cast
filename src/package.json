@@ -10,15 +10,19 @@
         "production": "mix --production"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.13.0",
         "axios": "^0.21",
-        "bootstrap": "^4.5.0"
+        "bootstrap": "4.4.1",
+        "jquery": "1.12.4",
+        "modernizr": "3.5.0",
+        "popper.js": "1.16.1",
+        "sweetalert": "2.1.2"
     },
     "devDependencies": {
         "laravel-mix": "^6.0.6",
         "laravel-mix-purgecss": "^6.0.0",
         "laravel-mix-tailwind": "^0.1.1",
         "lodash": "^4.17.19",
+        "postcss": "8.1",
         "sass": "^1.32.5",
         "sass-loader": "8.*",
         "tailwindcss": "^2.0.2"
