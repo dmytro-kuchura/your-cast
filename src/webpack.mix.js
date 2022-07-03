@@ -11,16 +11,4 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js');
-
-
-// <link rel="stylesheet" href="/css/bootstrap.min.css">
-// <link rel="stylesheet" href="/css/animate.min.css">
-// <link rel="stylesheet" href="/css/magnific-popup.css">
-// <link rel="stylesheet" href="/fontawesome/css/all.min.css">
-// <link rel="stylesheet" href="/css/dripicons.css">
-// <link rel="stylesheet" href="/css/slick.css">
-// <link rel="stylesheet" href="/css/default.css">
-// <link rel="stylesheet" href="/css/swiper.css">
-// <link rel="stylesheet" href="/css/style.css">
-// <link rel="stylesheet" href="/css/responsive.css">
+mix.js('resources/js/app.js', 'public/js').sass('resources/sass/app.scss', 'public/css');
