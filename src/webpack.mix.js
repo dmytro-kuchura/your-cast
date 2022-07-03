@@ -1,8 +1,5 @@
 const mix = require('laravel-mix');
 
-require('laravel-mix-tailwind');
-require('laravel-mix-purgecss');
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -14,5 +11,16 @@ require('laravel-mix-purgecss');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').version();
-mix.sass('resources/css/app.scss', 'public/css').version();
+mix.js('resources/js/app.js', 'public/js');
+
+
+// <link rel="stylesheet" href="/css/bootstrap.min.css">
+// <link rel="stylesheet" href="/css/animate.min.css">
+// <link rel="stylesheet" href="/css/magnific-popup.css">
+// <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+// <link rel="stylesheet" href="/css/dripicons.css">
+// <link rel="stylesheet" href="/css/slick.css">
+// <link rel="stylesheet" href="/css/default.css">
+// <link rel="stylesheet" href="/css/swiper.css">
+// <link rel="stylesheet" href="/css/style.css">
+// <link rel="stylesheet" href="/css/responsive.css">
