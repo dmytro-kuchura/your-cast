@@ -8,12 +8,19 @@
     <meta name="keywords" content="@yield('keywords')">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shorBtcut icon" type="image/x-icon" href="img/favicon.ico">
-
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-
     <!-- csrf-token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-53TG1QMD6N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-53TG1QMD6N');
+    </script>
 </head>
 <body>
 @widget('header')
