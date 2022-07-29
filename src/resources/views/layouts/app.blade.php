@@ -13,13 +13,13 @@
     <!-- csrf-token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-53TG1QMD6N"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WSZSHH946B"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-53TG1QMD6N');
+        gtag('config', 'G-WSZSHH946B');
     </script>
 </head>
 <body>
