@@ -29,7 +29,6 @@ class CreateEpisodeRequest extends FormRequest
         return [
             'title' => 'string|min:2|required',
             'subtitle' => 'string|required',
-            'link' => 'string|required',
             'season' => 'string|required',
             'episode' => 'string|required',
             'alias' => 'string|required',
@@ -42,7 +41,6 @@ class CreateEpisodeRequest extends FormRequest
         return [
             'title' => 'Invalid title',
             'subtitle' => 'Invalid subtitle',
-            'link' => 'Invalid link',
             'season' => 'Invalid season',
             'episode' => 'Invalid episode',
             'alias' => 'Invalid alias',
