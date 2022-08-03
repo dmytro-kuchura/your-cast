@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Show\CreateShowRequest;
+use App\Http\Requests\Show\UpdateShowRequest;
 use App\Http\Resources\ShowResource;
 use App\Services\ShowService;
 use Illuminate\Http\JsonResponse;
@@ -182,7 +183,7 @@ class ShowController extends Controller
      *     )
      * )
      */
-    public function update(int $id, CreateShowRequest $request): JsonResponse
+    public function update(int $id, UpdateShowRequest $request): JsonResponse
     {
         $show = $this->service->updateShow($id, $request->all());
 

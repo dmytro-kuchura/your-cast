@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *
  * @property string $format
  *
+ * @property string $link
+ *
  * @property string $timezone
  * @property string $language
  * @property boolean $explicit
@@ -55,6 +57,7 @@ class Show extends Model
         'description',
         'artwork',
         'format',
+        'link',
         'timezone',
         'language',
         'explicit',

@@ -35,7 +35,7 @@ class FeedGenerator
         $title = $dom->createElement('title', $this->show->title);
         $channel->appendChild($title);
 
-        $link = $dom->createElement('link', '$this->show->link');
+        $link = $dom->createElement('link', $this->show->link);
         $channel->appendChild($link);
 
         $description = $dom->createElement('description');
@@ -106,7 +106,7 @@ class FeedGenerator
         $title = $dom->createElement('title', $episode->title);
         $item->appendChild($title);
 
-        $link = $dom->createElement('link', '$episode->link');
+        $link = $dom->createElement('link', $episode->link);
         $item->appendChild($link);
 
         $description = $dom->createElement('description');

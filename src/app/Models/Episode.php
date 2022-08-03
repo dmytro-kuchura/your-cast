@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -16,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $description
  * @property string $cover
  * @property string $alias
+ * @property string $link
  *
  * @property int $episode
  * @property int $season
@@ -47,6 +47,7 @@ class Episode extends Model
         'description',
         'cover',
         'alias',
+        'link',
         'episode',
         'season',
         'episode_type',

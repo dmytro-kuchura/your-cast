@@ -44,12 +44,16 @@ class ShowService
     {
         DB::beginTransaction();
 
+        $data['status'] = $data['status'] === true ? 'enabled' : 'disabled';
+
         try {
             $this->repository->update($data, $id);
         } catch (Throwable $exception) {
             DB::rollBack();
             throw new NotUpdateShowException($exception->getMessage());
         }
+
+        NotificationHelper::info('Your show updated.', 'Now show information is updated and publish to another platform.');
 
         DB::commit();
 
