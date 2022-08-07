@@ -77,8 +77,6 @@ class ShowService
 
     public function getShowForFeed(string $token): ?Show
     {
-        $collection = $this->repository->findByToken($token);
-
-        return $collection[0] ? $collection[0] : null;
+        return $this->repository->findByToken($token);
     }
 }

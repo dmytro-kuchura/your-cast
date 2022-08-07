@@ -28,6 +28,7 @@ use Illuminate\Notifications\Notifiable;
  * @property bool $isPodcaster
  * @property UsersTokens $tokens
  * @property UserIpHistory $history
+ * @property Notification $notification
  */
 class User extends Authenticatable
 {
@@ -67,6 +68,11 @@ class User extends Authenticatable
     public function history(): HasMany
     {
         return $this->hasMany('App\Models\UserIpHistory', 'user_id', 'id');
+    }
+
+    public function notifications(): HasMany
+    {
+        return $this->hasMany('App\Models\Notification', 'user_id', 'id');
     }
 
     public function isEmailVerified(): bool

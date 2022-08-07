@@ -19,6 +19,12 @@ class FeedController extends Controller
     {
         $show = $this->service->getShowForFeed($token);
 
+        if (!$show) {
+            return response(null, 404, [
+                'Content-Type' => 'application/xml'
+            ]);
+        }
+
         $feed = new FeedGenerator($show);
 
         return response($feed->generate()->saveXML(), 200, [

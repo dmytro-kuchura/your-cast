@@ -23,9 +23,9 @@ class ShowsRepository implements Repository
         return Show::where('user_id', $userId)->get();
     }
 
-    public function findByToken(string $token): ?Collection
+    public function findByToken(string $token): ?Show
     {
-        return Show::where('token', $token)->with('episodes')->get();
+        return Show::where('token', $token)->where('status', 'published')->with('episodes')->first();
     }
 
     public function getAllUserShowShort(int $userId): ?Collection
