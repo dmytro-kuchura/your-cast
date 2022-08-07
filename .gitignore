@@ -12,3 +12,6 @@ www/node_modules
 
 # DB
 .docker/postgres/data/*
+
+# composer.lock
+src/composer.lock
