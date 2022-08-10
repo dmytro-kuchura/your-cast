@@ -128,7 +128,7 @@ class FeedGenerator
         $item->appendChild($summary);
 
         $enclosure = $dom->createElement('enclosure');
-        $enclosure->setAttribute('url', 'https://yourcast.com/audio/' . $episode->audioFile->audioFileLink->token);
+        $enclosure->setAttribute('url', 'https://your-cast.com/audio/' . $episode->audioFile->audioFileLink->token);
         $enclosure->setAttribute('type', 'audio/mpeg');
         $item->appendChild($enclosure);
 

@@ -65,6 +65,6 @@ class Episode extends Model
 
     public function audioFile(): HasOne
     {
-        return $this->hasOne('App\Models\AudioFile', 'id', 'audio_id');
+        return $this->hasOne('App\Models\AudioFile', 'id', 'audio_id')->with('audioFileLink');
     }
 }

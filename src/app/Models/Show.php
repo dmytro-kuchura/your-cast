@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -80,6 +79,6 @@ class Show extends Model
 
     public function episodes(): HasMany
     {
-        return $this->hasMany('App\Models\Episode', 'show_id', 'id');
+        return $this->hasMany('App\Models\Episode', 'show_id', 'id')->with('audioFile');
     }
 }
