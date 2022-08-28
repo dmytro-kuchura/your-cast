@@ -51,7 +51,7 @@ $('.container').on('submit', '.contact-form', function (event) {
                     $('#message').val('');
                 }
                 if (result.form === 'subscribers') {
-                    $('#email').val('');
+                    $('#email2').val('');
                 }
             } else {
                 generate(response.data.message, 'warning', 5000);
