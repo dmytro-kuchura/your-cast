@@ -15,7 +15,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-10">
-                <form name="ajax-form" id="contact-form4" action="#" method="post" class="contact-form newslater">
+                <form name="ajax-form" action="api/v1/subscribers-form" class="contact-form newslater">
                     <div class="form-group">
                         <input class="form-control" id="email2" name="email" type="email"
                                placeholder="Email Address..." value="" required="">

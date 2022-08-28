@@ -20,6 +20,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+window.toastr = require('toastr');
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -27,8 +28,6 @@ axios.defaults.auth = {
     username: 'admin',
     password: 'secret'
 };
-
-window.swal = require('sweetalert');
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that

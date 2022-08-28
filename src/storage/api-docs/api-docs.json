@@ -208,6 +208,51 @@
                 }
             }
         },
+        "/api/v1/contacts-form": {
+            "post": {
+                "tags": [
+                    "Contacts Form"
+                ],
+                "summary": "Contacts Form",
+                "operationId": "b9ad75df77322264c61bed1753926219",
+                "requestBody": {
+                    "description": "Contacts Form data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "your name"
+                                    },
+                                    "email": {
+                                        "type": "email",
+                                        "example": "example@domain.com"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "your message"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Error"
+                    },
+                    "422": {
+                        "description": "Error validation"
+                    }
+                }
+            }
+        },
         "/api/v1/dictionary/timezones": {
             "get": {
                 "tags": [
@@ -630,6 +675,43 @@
                     },
                     "401": {
                         "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
+        "/api/v1/subscribers-form": {
+            "post": {
+                "tags": [
+                    "Subscribers Form"
+                ],
+                "summary": "Subscribers Form",
+                "operationId": "d4890383bce96de659ba2cf867d13639",
+                "requestBody": {
+                    "description": "Subscribers Form data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "email",
+                                        "example": "example@domain.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Error"
+                    },
+                    "422": {
+                        "description": "Error validation"
                     }
                 }
             }

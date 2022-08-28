@@ -15,7 +15,7 @@
         "jquery": "1.12.4",
         "modernizr": "3.5.0",
         "popper.js": "1.16.1",
-        "sweetalert": "2.1.2"
+        "toastr": "^2.1.4"
     },
     "devDependencies": {
         "laravel-mix": "^6.0.6",

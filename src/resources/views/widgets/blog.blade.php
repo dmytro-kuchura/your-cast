@@ -1,6 +1,6 @@
 <!-- blog-area -->
 <section id="blog" class="blog-area p-relative pt-70"
-         style="background-image: url(img/shape/header-sape8.png); background-position: right center; background-size: auto;background-repeat: no-repeat;">
+         style="background-image: url('/img/shape/header-sape8.png'); background-position: right center; background-size: auto;background-repeat: no-repeat;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-10">

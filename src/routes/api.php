@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ContactsController;
 use App\Http\Controllers\Api\DictionaryController;
 use App\Http\Controllers\Api\EpisodeController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ShowController;
+use App\Http\Controllers\Api\SubscribersController;
 use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +28,9 @@ Route::middleware(['logger'])->group(function () {
         Route::post('/login', [AuthController::class, 'login'])->name('api.login');
         Route::post('/reset-password', [AuthController::class, 'reset'])->name('api.reset.password');
         Route::post('/update-password', [AuthController::class, 'update'])->name('api.password.update');
+
+        Route::post('/contacts-form', [ContactsController::class, 'contactsForm'])->name('api.contacts.form');
+        Route::post('/subscribers-form', [SubscribersController::class, 'subscribersForm'])->name('api.subscribers.form');
 
         Route::middleware(['bearer'])->group(function () {
             Route::get('/logout', [AuthController::class, 'logout'])->name('api.logout');

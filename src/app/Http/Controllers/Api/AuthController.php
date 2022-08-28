@@ -106,6 +106,13 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request): JsonResponse
     {
+        if (config('registration.enabled')) {
+            return $this->returnResponse([
+                'success' => false,
+                'error' => 'Not supported.'
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
         $this->authService->registration($request->all());
 
         $token = Auth::attempt($request->only(['email', 'password']));

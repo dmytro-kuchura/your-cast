@@ -1,7 +1,4 @@
-console.log('not ready')
 $(document).on('ready', function () {
-    console.log('here')
-
     $(window).on('scroll', function () {
         var scroll = $(window).scrollTop();
         if (scroll < 200) {

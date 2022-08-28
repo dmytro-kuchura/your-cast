@@ -1,34 +1,65 @@
-$(function() {
-	var form = $('#contact-form');
-	var formMessages = $('.ajax-response');
+/**
+ * This function generated some messages with Toastr
+ *
+ * @link https://github.com/CodeSeven/toastr
+ * @param message
+ * @param type
+ * @param time
+ */
+function generate(message, type, time) {
+    toastr.options = {
+        'closeButton': false,
+        'debug': false,
+        'newestOnTop': false,
+        'progressBar': false,
+        'positionClass': 'toast-top-right',
+        'preventDuplicates': true,
+        'onclick': null,
+        'showDuration': '300',
+        'hideDuration': '1000',
+        'timeOut': time || '5000',
+        'extendedTimeOut': '1000',
+        'showEasing': 'swing',
+        'hideEasing': 'linear',
+        'showMethod': 'fadeIn',
+        'hideMethod': 'fadeOut'
+    };
 
-	$(form).submit(function(e) {
-		e.preventDefault();
+    toastr[type](message);
+}
 
-		var formData = $(form).serialize();
+/**
+ * Form submit function
+ * used module axios for send XMLHttpRequests
+ * @link https://github.com/axios/axios
+ */
+$('.container').on('submit', '.contact-form', function (event) {
+    event.preventDefault();
 
-		$.ajax({
-			type: 'POST',
-			url: $(form).attr('action'),
-			data: formData
-		})
-		.done(function(response) {
-			$(formMessages).removeClass('error');
-			$(formMessages).addClass('success');
+    let action = $(this).attr('action');
+    let data = new FormData($(this)[0]);
 
-			$(formMessages).text(response);
+    axios.post(action, data)
+        .then(function (response) {
+            let result = response.data;
 
-			$('#contact-form input,#contact-form textarea').val('');
-		})
-		.fail(function(data) {
-			$(formMessages).removeClass('success');
-			$(formMessages).addClass('error');
+            if (result.success === true) {
+                generate(result.message, 'success', 5000);
+                if (result.form === 'contacts') {
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#message').val('');
+                }
+                if (result.form === 'subscribers') {
+                    $('#email').val('');
+                }
+            } else {
+                generate(response.data.message, 'warning', 5000);
+            }
+        })
+        .catch(function (error) {
+            generate('Oops, something went wrong. Please, try again later!', 'error', 5000);
+        });
 
-			if (data.responseText !== '') {
-				$(formMessages).text(data.responseText);
-			} else {
-				$(formMessages).text('Oops! An error occured and your message could not be sent.');
-			}
-		});
-	});
+    return false;
 });
