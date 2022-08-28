@@ -23,10 +23,12 @@ class ContactService
     {
         $contact = $this->repository->findByIp($ip);
 
-        if (isset($contact->created_at)) {
-            if (Carbon::parse($contact->created_at)->diffInMinutes(Carbon::now()) > 5) {
-                return false;
-            }
+        if (!isset($contact->created_at)) {
+            return false;
+        }
+
+        if (Carbon::parse($contact->created_at)->diffInMinutes(Carbon::now()) > 5) {
+            return false;
         }
 
         return true;
