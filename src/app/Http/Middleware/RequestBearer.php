@@ -6,7 +6,7 @@ use App\Services\AuthService;
 use Closure;
 use Illuminate\Http\Response;
 
-class Bearer
+class RequestBearer
 {
     public AuthService $authService;
 

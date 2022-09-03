@@ -30,6 +30,7 @@ class ContactsRequest extends FormRequest
             'name' => 'string|required',
             'email' => 'string|email|required',
             'message' => 'string|required',
+            'token' => 'string|required',
         ];
     }
 

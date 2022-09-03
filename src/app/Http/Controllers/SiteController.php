@@ -9,7 +9,6 @@ class SiteController extends Controller
 {
     public function home(): View
     {
-        Log::info('this is a log', ['test context']);
         return view('home');
     }
 

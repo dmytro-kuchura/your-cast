@@ -41,7 +41,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            'throttle:api',
+            'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
@@ -63,7 +63,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'bearer' => \App\Http\Middleware\Bearer::class,
-        'logger' => \App\Http\Middleware\Logger::class,
+        'request.bearer' => \App\Http\Middleware\RequestBearer::class,
+        'request.logger' => \App\Http\Middleware\RequestLogger::class,
+        'request.auth' => \App\Http\Middleware\RequestAuth::class,
     ];
 }

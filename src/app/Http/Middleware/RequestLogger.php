@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Log;
 
-class Logger
+class RequestLogger
 {
     public function handle($request, Closure $next)
     {
@@ -22,6 +22,6 @@ class Logger
 
         Log::info('Income request', [json_encode($log)]);
 
-        return $next($request);
+        return $response;
     }
 }

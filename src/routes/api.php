@@ -22,19 +22,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['logger'])->group(function () {
+Route::middleware(['request.logger'])->group(function () {
     Route::prefix('v1')->group(function () {
         Route::post('/register', [AuthController::class, 'register'])->name('api.register');
         Route::post('/login', [AuthController::class, 'login'])->name('api.login');
         Route::post('/reset-password', [AuthController::class, 'reset'])->name('api.reset.password');
         Route::post('/update-password', [AuthController::class, 'update'])->name('api.password.update');
 
-        Route::group(['middleware' => ['web']], function () {
+        Route::middleware(['request.auth'])->group(function () {
             Route::post('/contacts-form', [ContactsController::class, 'contactsForm'])->name('api.contacts.form');
             Route::post('/subscribers-form', [SubscribersController::class, 'subscribersForm'])->name('api.subscribers.form');
         });
 
-        Route::middleware(['bearer'])->group(function () {
+        Route::middleware(['request.bearer'])->group(function () {
             Route::get('/logout', [AuthController::class, 'logout'])->name('api.logout');
             Route::get('/profile', [AuthController::class, 'profile'])->name('api.profile');
 

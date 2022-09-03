@@ -19,6 +19,7 @@
                     <div class="form-group">
                         <input class="form-control" id="email2" name="email" type="email"
                                placeholder="Email Address..." value="" required="">
+                        <input type="hidden" name="token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-custom" id="send2">Subscribe Now</button>
                     </div>
                 </form>
