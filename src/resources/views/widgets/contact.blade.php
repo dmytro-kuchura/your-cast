@@ -30,6 +30,7 @@
                                 <textarea name="message" id="message" cols="10" rows="10"
                                           placeholder="Write comments"></textarea>
                             </div>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button class="btn">Send Message</button>
                         </div>
                     </div>

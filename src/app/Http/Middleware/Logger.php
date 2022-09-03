@@ -2,22 +2,25 @@
 
 namespace App\Http\Middleware;
 
-use App\Services\LogService;
 use Closure;
+use Illuminate\Support\Facades\Log;
 
 class Logger
 {
-    /** @var LogService */
-    public LogService $logService;
-
-    public function __construct(LogService $logService)
-    {
-        $this->logService = $logService;
-    }
-
     public function handle($request, Closure $next)
     {
-        $this->logService->save('Income request', 'info', $request);
+        $response = $next($request);
+
+        $content = json_decode($response->getContent());
+
+        $log = [
+            'URI' => $request->getUri(),
+            'METHOD' => $request->getMethod(),
+            'REQUEST_BODY' => $request->all(),
+            'RESPONSE' => $content
+        ];
+
+        Log::info('Income request', [json_encode($log)]);
 
         return $next($request);
     }

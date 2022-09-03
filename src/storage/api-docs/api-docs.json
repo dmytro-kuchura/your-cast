@@ -5,6 +5,11 @@
         "description": "Your Cast Swagger OpenApi description",
         "version": "0.1.5"
     },
+    "servers": [
+        {
+            "url": "http://your-cast.com"
+        }
+    ],
     "paths": {
         "/api/v1/login": {
             "post": {

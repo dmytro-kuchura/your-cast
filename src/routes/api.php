@@ -29,8 +29,10 @@ Route::middleware(['logger'])->group(function () {
         Route::post('/reset-password', [AuthController::class, 'reset'])->name('api.reset.password');
         Route::post('/update-password', [AuthController::class, 'update'])->name('api.password.update');
 
-        Route::post('/contacts-form', [ContactsController::class, 'contactsForm'])->name('api.contacts.form');
-        Route::post('/subscribers-form', [SubscribersController::class, 'subscribersForm'])->name('api.subscribers.form');
+        Route::group(['middleware' => ['web']], function () {
+            Route::post('/contacts-form', [ContactsController::class, 'contactsForm'])->name('api.contacts.form');
+            Route::post('/subscribers-form', [SubscribersController::class, 'subscribersForm'])->name('api.subscribers.form');
+        });
 
         Route::middleware(['bearer'])->group(function () {
             Route::get('/logout', [AuthController::class, 'logout'])->name('api.logout');

@@ -12,7 +12,6 @@ use App\Mail\ResetPasswordMail;
 use App\Mail\UpdatePasswordMail;
 use App\Services\AuthService;
 use App\Services\IpHistoryService;
-use App\Services\LogService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -22,18 +21,14 @@ class AuthController extends Controller
 {
     public AuthService $authService;
 
-    public LogService $logService;
-
     public IpHistoryService $ipHistoryService;
 
     public function __construct(
         AuthService $authService,
-        LogService $logService,
         IpHistoryService $ipHistoryService
     )
     {
         $this->authService = $authService;
-        $this->logService = $logService;
         $this->ipHistoryService = $ipHistoryService;
     }
 

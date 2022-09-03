@@ -1,8 +1,11 @@
 <?php
 
+use Elasticsearch\ClientBuilder;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
+use Monolog\Handler\ElasticsearchHandler;
+use Monolog\Formatter\ElasticsearchFormatter;
 
 return [
 
@@ -28,16 +31,13 @@ return [
     | the box, Laravel uses the Monolog PHP logging library. This gives
     | you a variety of powerful log handlers / formatters to utilize.
     |
-    | Available Drivers: "single", "daily", "slack", "syslog",
-    |                    "errorlog", "monolog",
-    |                    "custom", "stack"
-    |
+    | Available Drivers: "single", "daily", "slack", "syslog", "errorlog", "monolog", "custom", "stack"
     */
 
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single', 'elastic'],
             'ignore_exceptions' => false,
         ],
 
@@ -99,6 +99,19 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
-    ],
 
+        'elastic' => [
+            'driver' => 'monolog',
+            'level' => 'debug',
+            'handler' => ElasticsearchHandler::class,
+            'formatter' => ElasticsearchFormatter::class,
+            'formatter_with' => [
+                'index' => env('ELASTIC_LOGS_INDEX'),
+                'type' => '_doc',
+            ],
+            'handler_with' => [
+                'client' => ClientBuilder::create()->setHosts([env('ELASTIC_HOST')])->build(),
+            ],
+        ],
+    ],
 ];

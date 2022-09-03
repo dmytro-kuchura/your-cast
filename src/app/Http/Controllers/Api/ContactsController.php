@@ -46,6 +46,11 @@ class ContactsController extends Controller
      */
     public function contactsForm(ContactsRequest $request): JsonResponse
     {
+        var_dump($request->session()->token());
+        die;
+
+//        dd(csrf_token());
+
         if ($this->contactService->validate($request->ip())) {
             return $this->returnResponse([
                 'error' => 'Sorry you send contact request so many times. Try again later!'

@@ -2,9 +2,7 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
 use Throwable;
 
@@ -36,20 +34,78 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
+        $this->reportable(function (Throwable $throwable) {
             //
         });
     }
 
     public function render($request, Throwable $e)
     {
-        if ($e instanceof ModelNotFoundException && $request->wantsJson()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Not Found!'
-            ], Response::HTTP_NOT_FOUND);
+        if ($request->wantsJson()) {
+            return $this->handleApiException($request, $e);
         }
 
         return parent::render($request, $e);
+    }
+
+    private function handleApiException($request, Throwable $exception)
+    {
+        $exception = $this->prepareException($exception);
+
+        if ($exception instanceof \Illuminate\Http\Exception\HttpResponseException) {
+            $exception = $exception->getResponse();
+        }
+
+        if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
+            $exception = $this->unauthenticated($request, $exception);
+        }
+
+        if ($exception instanceof \Illuminate\Validation\ValidationException) {
+            $exception = $this->convertValidationExceptionToResponse($exception, $request);
+        }
+
+        return $this->customApiResponse($exception);
+    }
+
+    private function customApiResponse($exception)
+    {
+        if (method_exists($exception, 'getStatusCode')) {
+            $statusCode = $exception->getStatusCode();
+        } else {
+            $statusCode = 500;
+        }
+
+        $response = [];
+
+        switch ($statusCode) {
+            case Response::HTTP_UNAUTHORIZED:
+                $response['message'] = 'Unauthorized';
+                break;
+            case Response::HTTP_FORBIDDEN:
+                $response['message'] = 'Forbidden';
+                break;
+            case Response::HTTP_NOT_FOUND:
+                $response['message'] = 'Not Found';
+                break;
+            case Response::HTTP_METHOD_NOT_ALLOWED:
+                $response['message'] = 'Method Not Allowed';
+                break;
+            case Response::HTTP_UNPROCESSABLE_ENTITY:
+                $response['message'] = $exception->original['message'];
+                $response['errors'] = $exception->original['errors'];
+                break;
+            default:
+                $response['message'] = ($statusCode == 500) ? 'Whoops, looks like something went wrong' : $exception->getMessage();
+                break;
+        }
+
+        if (config('app.debug')) {
+            $response['trace'] = $exception->getTrace();
+            $response['code'] = $exception->getCode();
+        }
+
+        $response['status'] = $statusCode;
+
+        return response()->json($response, $statusCode);
     }
 }
