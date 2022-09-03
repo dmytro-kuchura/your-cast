@@ -49,7 +49,7 @@ services:
     volumes:
       - redis-podcasts:/data
   elasticsearch:
-    container_name: elasticsearch
+    container_name: podcasts_elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:7.13.4
     deploy:
       resources:
@@ -65,7 +65,7 @@ services:
     depends_on:
       - php
   kibana:
-    container_name: kibana
+    container_name: podcasts_kibana
     image: docker.elastic.co/kibana/kibana:7.13.4
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
