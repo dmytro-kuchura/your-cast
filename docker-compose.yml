@@ -60,10 +60,7 @@ services:
       resources:
         limits:
           cpus: '0.50'
-          memory: 1000M
-        reservations:
-          cpus: '0.50'
-          memory: 1000M
+          memory: 512M
     volumes:
       - elastic-podcasts:/usr/share/elasticsearch/data
     ports:
