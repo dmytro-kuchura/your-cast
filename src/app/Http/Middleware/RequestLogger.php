@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Helpers\ElasticLoggerHelper;
 use Closure;
-use Illuminate\Support\Facades\Log;
 
 class RequestLogger
 {
@@ -13,14 +13,12 @@ class RequestLogger
 
         $content = json_decode($response->getContent());
 
-        $log = [
+        ElasticLoggerHelper::info('Income request', [
             'URI' => $request->getUri(),
             'METHOD' => $request->getMethod(),
             'REQUEST_BODY' => $request->all(),
             'RESPONSE' => $content
-        ];
-
-        Log::info('Income request', [json_encode($log)]);
+        ]);
 
         return $response;
     }

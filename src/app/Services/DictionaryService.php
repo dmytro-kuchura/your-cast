@@ -21,8 +21,8 @@ class DictionaryService
 
     public function __construct(
         DictionaryCategoriesRepository $categoriesRepository,
-        DictionaryLanguagesRepository $languagesRepository,
-        DictionaryTimezonesRepository $timezonesRepository
+        DictionaryLanguagesRepository  $languagesRepository,
+        DictionaryTimezonesRepository  $timezonesRepository
     )
     {
         $this->categoriesRepository = $categoriesRepository;

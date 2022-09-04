@@ -2,9 +2,11 @@
 
 namespace App\Exceptions;
 
+use App\Helpers\ElasticLoggerHelper;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -46,7 +48,7 @@ class Handler extends ExceptionHandler
             return $this->handleApiException($request, $e);
         }
 
-        Log::error('Handle Api exception', [json_encode($e->getMessage())]);
+        ElasticLoggerHelper::error('Handle render exception', [$e->getMessage()]);
         return parent::render($request, $e);
     }
 
@@ -54,15 +56,11 @@ class Handler extends ExceptionHandler
     {
         $exception = $this->prepareException($exception);
 
-        if ($exception instanceof \Illuminate\Http\Exception\HttpResponseException) {
-            $exception = $exception->getResponse();
-        }
-
-        if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
+        if ($exception instanceof AuthenticationException) {
             $exception = $this->unauthenticated($request, $exception);
         }
 
-        if ($exception instanceof \Illuminate\Validation\ValidationException) {
+        if ($exception instanceof ValidationException) {
             $exception = $this->convertValidationExceptionToResponse($exception, $request);
         }
 
@@ -108,7 +106,7 @@ class Handler extends ExceptionHandler
 
         $response['status'] = $statusCode;
 
-        Log::error('Handle Api exception', [json_encode($response)]);
+        ElasticLoggerHelper::error('Handle Api exception', $response);
         return response()->json($response, $statusCode);
     }
 }

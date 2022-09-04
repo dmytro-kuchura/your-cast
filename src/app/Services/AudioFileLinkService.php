@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\AudioFileCreatingException;
+use App\Helpers\ElasticLoggerHelper;
 use App\Models\AudioFileLink;
 use App\Repositories\AudioFileLinkRepository;
 use Illuminate\Support\Facades\DB;
@@ -36,9 +37,14 @@ class AudioFileLinkService
             $audioFile = $this->repository->store($data);
         } catch (Throwable $exception) {
             DB::rollBack();
+            ElasticLoggerHelper::afterCreating(false, [
+                'exception' => $exception->getMessage(),
+                'data' => $data,
+            ]);
             throw new AudioFileCreatingException($exception->getMessage());
         }
 
+        ElasticLoggerHelper::afterCreating(true, $data);
         DB::commit();
 
         return $audioFile;

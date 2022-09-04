@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Helpers\ElasticLoggerHelper;
 use Illuminate\Console\Command;
-
-use Illuminate\Support\Facades\Log;
 
 class ScheduledTask extends Command
 {
@@ -39,7 +38,7 @@ class ScheduledTask extends Command
      */
     public function handle()
     {
-        Log::info('This is a brand new Scheduled Task');
+        ElasticLoggerHelper::error('This is a brand new Scheduled Task', []);
 
         return true;
     }

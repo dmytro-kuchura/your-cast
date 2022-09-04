@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\AudioFileCreatingException;
+use App\Helpers\ElasticLoggerHelper;
 use App\Models\Subscribe;
 use App\Repositories\SubscribeRepository;
 use Illuminate\Support\Facades\DB;
@@ -33,8 +34,14 @@ class SubscribeService
             $subscribe = $this->repository->store($data);
         } catch (Throwable $exception) {
             DB::rollBack();
+            ElasticLoggerHelper::afterCreating(false, [
+                'exception' => $exception->getMessage(),
+                'data' => $data,
+            ]);
             throw new AudioFileCreatingException($exception->getMessage());
         }
+
+        ElasticLoggerHelper::afterCreating(true, $data);
 
         DB::commit();
 
