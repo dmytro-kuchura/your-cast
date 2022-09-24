@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UserPermissionsRequest;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -70,6 +72,15 @@ class UserController extends Controller
 
         return $this->returnResponse([
             'result' => $user,
+        ]);
+    }
+
+    public function permissions(UserPermissionsRequest $request): JsonResponse
+    {
+        $result = $this->service->updatePermissions($request->get('user_id'), $request->get('permissions'));
+
+        return $this->returnResponse([
+            'result' => $result,
         ]);
     }
 }

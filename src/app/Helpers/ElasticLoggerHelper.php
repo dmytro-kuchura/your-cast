@@ -8,17 +8,17 @@ class ElasticLoggerHelper
 {
     public static function info($message = null, array $context = []): void
     {
-        Log::info($message, [json_encode($context)]);
+        Log::info($message, $context);
     }
 
     public static function error($message = null, array $context = []): void
     {
-        Log::error($message, [json_encode($context)]);
+        Log::error($message, $context);
     }
 
     public static function warning($message = null, array $context = []): void
     {
-        Log::warning($message, [json_encode($context)]);
+        Log::warning($message, $context);
     }
 
     public static function afterCreating(bool $success = true, array $context = []): void

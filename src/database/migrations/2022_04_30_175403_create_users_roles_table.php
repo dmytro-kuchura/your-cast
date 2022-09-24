@@ -16,11 +16,10 @@ class CreateUsersRolesTable extends Migration
         Schema::create('users_roles', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-            $table->string('key');
+            $table->string('role');
+            $table->integer('user_id');
 
-
-            $table->enum('status', ['enabled', 'disabled'])->default('enabled');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });

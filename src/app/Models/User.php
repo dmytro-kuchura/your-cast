@@ -26,8 +26,9 @@ use Illuminate\Notifications\Notifiable;
  *
  * @property bool $isAdmin
  * @property bool $isPodcaster
- * @property UsersTokens $tokens
+ * @property UserTokens $tokens
  * @property UserIpHistory $history
+ * @property UserIpHistory $roles
  * @property Notification $notification
  */
 class User extends Authenticatable
@@ -68,6 +69,11 @@ class User extends Authenticatable
     public function history(): HasMany
     {
         return $this->hasMany('App\Models\UserIpHistory', 'user_id', 'id');
+    }
+
+    public function roles(): HasMany
+    {
+        return $this->hasMany('App\Models\UserRoles', 'user_id', 'id');
     }
 
     public function notifications(): HasMany
