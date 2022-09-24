@@ -3,22 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @property int $id
  *
  * @property int $user_id
- * @property string $token
- * @property string $expired_at
+ * @property string $role
+ *
+ * @property User $user
  *
  * @property string $created_at
  * @property string $updated_at
- *
- * @property User $user
  */
-class UsersTokens extends Model
+class UserRoles extends Model
 {
-    protected $table = 'users_tokens';
+    protected $table = 'users_roles';
 
     /**
      * @var array
@@ -26,19 +26,13 @@ class UsersTokens extends Model
     protected $fillable = [
         'id',
         'user_id',
-        'token',
-        'expired_at',
+        'role',
         'created_at',
         'updated_at',
     ];
 
-    public function user()
+    public function user(): HasOne
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
-    }
-
-    public function tokens()
-    {
-        return $this->hasMany('App\Models\UsersTokens', 'id', 'user_id');
     }
 }

@@ -13,7 +13,7 @@ class UsersRepository implements Repository
 
     public function findByID(string $id): ?User
     {
-        return User::with('history', 'history')->find($id);
+        return User::with('history', 'roles')->find($id);
     }
 
     public function get(int $id)

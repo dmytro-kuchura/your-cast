@@ -2,19 +2,19 @@
 
 namespace App\Repositories;
 
-use App\Models\UsersTokens;
+use App\Models\UserTokens;
 use Illuminate\Support\Carbon;
 
 class UsersTokenRepository implements Repository
 {
-    public function find(string $token): ?UsersTokens
+    public function find(string $token): ?UserTokens
     {
-        return UsersTokens::where('token', $token)->first();
+        return UserTokens::where('token', $token)->first();
     }
 
-    public function get(int $id): ?UsersTokens
+    public function get(int $id): ?UserTokens
     {
-        return UsersTokens::where('user_id', $id)->first();
+        return UserTokens::where('user_id', $id)->first();
     }
 
     public function all()
@@ -22,9 +22,9 @@ class UsersTokenRepository implements Repository
         // TODO: Implement all() method.
     }
 
-    public function store(array $data): UsersTokens
+    public function store(array $data): UserTokens
     {
-        $usersTokens = new UsersTokens;
+        $usersTokens = new UserTokens;
 
         $usersTokens->user_id = $data['user_id'];
         $usersTokens->token = $data['token'];
@@ -47,7 +47,7 @@ class UsersTokenRepository implements Repository
 
     public function expired(int $id): void
     {
-        $usersTokens = UsersTokens::where('user_id', $id)->get();
+        $usersTokens = UserTokens::where('user_id', $id)->get();
 
         foreach ($usersTokens as $usersToken) {
             if (!Carbon::parse($usersToken->expired_at)->isPast()) {

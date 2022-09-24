@@ -1,11 +1,11 @@
 <?php
 
+use App\Elastic\CustomElasticsearchFormatter;
 use Elasticsearch\ClientBuilder;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 use Monolog\Handler\ElasticsearchHandler;
-use Monolog\Formatter\ElasticsearchFormatter;
 
 return [
 
@@ -99,12 +99,11 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
-
         'elastic' => [
             'driver' => 'monolog',
             'level' => 'debug',
             'handler' => ElasticsearchHandler::class,
-            'formatter' => ElasticsearchFormatter::class,
+            'formatter' => CustomElasticsearchFormatter::class,
             'formatter_with' => [
                 'index' => env('ELASTIC_LOGS_INDEX'),
                 'type' => '_doc',

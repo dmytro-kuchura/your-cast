@@ -11,13 +11,11 @@ class RequestLogger
     {
         $response = $next($request);
 
-        $content = json_decode($response->getContent());
-
         ElasticLoggerHelper::info('Income request', [
             'URI' => $request->getUri(),
             'METHOD' => $request->getMethod(),
             'REQUEST_BODY' => $request->all(),
-            'RESPONSE' => $content
+            'RESPONSE' => $response->getContent()
         ]);
 
         return $response;
