@@ -6,6 +6,7 @@ use App\Helpers\UidHelper;
 use App\Models\User;
 use App\Repositories\PasswordResetsRepository;
 use App\Repositories\UsersRepository;
+use App\Repositories\UsersRolesRepository;
 use App\Repositories\UsersTokenRepository;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -13,23 +14,28 @@ use Illuminate\Support\Str;
 
 class AuthService
 {
-    /** @var UsersTokenRepository  */
+    /** @var UsersTokenRepository */
     private UsersTokenRepository $usersTokenRepository;
 
-    /** @var UsersRepository  */
+    /** @var UsersRepository */
     private UsersRepository $usersRepository;
 
-    /** @var PasswordResetsRepository  */
+    /** @var UsersRolesRepository */
+    private UsersRolesRepository $usersRolesRepository;
+
+    /** @var PasswordResetsRepository */
     private PasswordResetsRepository $passwordResetsRepository;
 
     public function __construct(
-        UsersTokenRepository $usersTokenRepository,
-        UsersRepository $usersRepository,
+        UsersTokenRepository     $usersTokenRepository,
+        UsersRepository          $usersRepository,
+        UsersRolesRepository     $usersRolesRepository,
         PasswordResetsRepository $passwordResetsRepository
     )
     {
         $this->usersTokenRepository = $usersTokenRepository;
         $this->usersRepository = $usersRepository;
+        $this->usersRolesRepository = $usersRolesRepository;
         $this->passwordResetsRepository = $passwordResetsRepository;
     }
 
@@ -113,16 +119,29 @@ class AuthService
         return Carbon::parse($usersToken->expired_at)->isPast();
     }
 
-    public function setExpired(int $user_id): void
+    public function setExpired(int $userId): void
     {
-        $this->usersTokenRepository->expired($user_id);
+        $this->usersTokenRepository->expired($userId);
     }
 
-    public function findTokenByUser(int $user_id): string
+    public function findTokenByUser(int $userId): string
     {
-        $usersToken = $this->usersTokenRepository->get($user_id);
+        $userToken = $this->usersTokenRepository->get($userId);
 
-        return $usersToken->token;
+        return $userToken->token;
+    }
+
+    public function findRolesByUser(int $userId): array
+    {
+        $roles = [];
+
+        $userRoles = $this->usersRolesRepository->getRolesByUserId($userId);
+
+        foreach ($userRoles as $role) {
+            $roles[] = $role->role;
+        }
+
+        return $roles;
     }
 
     public function findUserByToken(string $token): ?User

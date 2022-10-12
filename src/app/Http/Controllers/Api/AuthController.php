@@ -69,6 +69,7 @@ class AuthController extends Controller
 
         return $this->returnResponse([
             'user' => new UserResource($request->user()),
+            'roles' => $this->authService->findRolesByUser(Auth::id()),
             'access_token' => $this->authService->generate(Auth::id()),
             'token_type' => 'bearer',
         ]);
@@ -254,6 +255,7 @@ class AuthController extends Controller
     {
         return $this->returnResponse([
             'user' => new UserResource(Auth::user()),
+            'roles' => $this->authService->findRolesByUser(Auth::id()),
             'access_token' => $this->authService->findTokenByUser(Auth::id()),
             'token_type' => 'bearer',
             'has_show' => true,
