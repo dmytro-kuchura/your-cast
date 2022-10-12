@@ -3,12 +3,18 @@
 namespace App\Repositories;
 
 use App\Models\UserRoles;
+use Illuminate\Database\Eloquent\Collection;
 
 class UsersRolesRepository implements Repository
 {
     public function get(int $id)
     {
         // TODO: Implement get() method.
+    }
+
+    public function getRolesByUserId(int $userId): ?Collection
+    {
+        return UserRoles::where('user_id', $userId)->get();
     }
 
     public function all()
