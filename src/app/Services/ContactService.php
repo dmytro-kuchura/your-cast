@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\AudioFileCreatingException;
-use App\Helpers\ElasticLoggerHelper;
+use App\Helpers\LoggerHelper;
 use App\Models\Contact;
 use App\Repositories\ContactRepository;
 use Illuminate\Support\Carbon;
@@ -43,14 +43,14 @@ class ContactService
             $contact = $this->repository->store($data);
         } catch (Throwable $exception) {
             DB::rollBack();
-            ElasticLoggerHelper::afterCreating(false, [
+            LoggerHelper::afterCreating(false, [
                 'exception' => $exception->getMessage(),
                 'data' => $data,
             ]);
             throw new AudioFileCreatingException($exception->getMessage());
         }
 
-        ElasticLoggerHelper::afterCreating(true, $data);
+        LoggerHelper::afterCreating(true, $data);
         DB::commit();
 
         return $contact;

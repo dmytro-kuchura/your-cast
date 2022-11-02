@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\NotCreateShowException;
 use App\Exceptions\NotUpdateShowException;
-use App\Helpers\ElasticLoggerHelper;
+use App\Helpers\LoggerHelper;
 use App\Helpers\NotificationHelper;
 use App\Models\Show;
 use App\Repositories\ShowsRepository;
@@ -33,14 +33,14 @@ class ShowService
             $this->repository->store($data);
         } catch (Throwable $exception) {
             DB::rollBack();
-            ElasticLoggerHelper::afterCreating(false, [
+            LoggerHelper::afterCreating(false, [
                 'exception' => $exception->getMessage(),
                 'data' => $data,
             ]);
             throw new NotCreateShowException($exception->getMessage());
         }
 
-        ElasticLoggerHelper::afterCreating(true, $data);
+        LoggerHelper::afterCreating(true, $data);
         NotificationHelper::info('Your new show created.', 'Now you have upload your first episode in show and publish to another platform.');
 
         DB::commit();
@@ -56,14 +56,14 @@ class ShowService
             $this->repository->update($data, $id);
         } catch (Throwable $exception) {
             DB::rollBack();
-            ElasticLoggerHelper::afterCreating(false, [
+            LoggerHelper::afterCreating(false, [
                 'exception' => $exception->getMessage(),
                 'data' => $data,
             ]);
             throw new NotUpdateShowException($exception->getMessage());
         }
 
-        ElasticLoggerHelper::afterUpdating(true, $data);
+        LoggerHelper::afterUpdating(true, $data);
         NotificationHelper::info('Your show updated.', 'Now show information is updated and publish to another platform.');
 
         DB::commit();

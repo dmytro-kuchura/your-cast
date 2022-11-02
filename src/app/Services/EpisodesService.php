@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\EpisodeCreatingException;
-use App\Helpers\ElasticLoggerHelper;
+use App\Helpers\LoggerHelper;
 use App\Models\Episode;
 use App\Repositories\EpisodesRepository;
 use Illuminate\Database\Eloquent\Collection;
@@ -38,14 +38,14 @@ class EpisodesService
             $this->repository->store($data);
         } catch (Throwable $exception) {
             DB::rollBack();
-            ElasticLoggerHelper::afterCreating(false, [
+            LoggerHelper::afterCreating(false, [
                 'exception' => $exception->getMessage(),
                 'data' => $data,
             ]);
             throw new EpisodeCreatingException($exception->getMessage());
         }
 
-        ElasticLoggerHelper::afterCreating(true, $data);
+        LoggerHelper::afterCreating(true, $data);
         DB::commit();
     }
 }

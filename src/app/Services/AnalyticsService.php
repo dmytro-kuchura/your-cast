@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\NotCreateAnalyticException;
-use App\Helpers\ElasticLoggerHelper;
+use App\Helpers\LoggerHelper;
 use App\Repositories\AnalyticsAudioRepository;
 use Illuminate\Support\Facades\DB;
 use Throwable;
@@ -46,13 +46,13 @@ class AnalyticsService
             $this->repository->store($data);
         } catch (Throwable $exception) {
             DB::rollBack();
-            ElasticLoggerHelper::afterCreating(false, [
+            LoggerHelper::afterCreating(false, [
                 'exception' => $exception->getMessage(),
                 'data' => $data,
             ]);
             throw new NotCreateAnalyticException($exception->getMessage());
         }
-        ElasticLoggerHelper::afterCreating(true, $data);
+        LoggerHelper::afterCreating(true, $data);
 
         DB::commit();
     }

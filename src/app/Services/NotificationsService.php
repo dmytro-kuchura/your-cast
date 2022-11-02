@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\NotCreateNotificationException;
-use App\Helpers\ElasticLoggerHelper;
+use App\Helpers\LoggerHelper;
 use App\Repositories\NotificationRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -30,14 +30,14 @@ class NotificationsService
             $this->repository->store($data);
         } catch (Throwable $exception) {
             DB::rollBack();
-            ElasticLoggerHelper::afterCreating(false, [
+            LoggerHelper::afterCreating(false, [
                 'exception' => $exception->getMessage(),
                 'data' => $data,
             ]);
             throw new NotCreateNotificationException($exception->getMessage());
         }
 
-        ElasticLoggerHelper::afterCreating(true, $data);
+        LoggerHelper::afterCreating(true, $data);
 
         DB::commit();
     }
