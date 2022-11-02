@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\Log;
 
-class ElasticLoggerHelper
+class LoggerHelper
 {
     public static function info($message = null, array $context = []): void
     {

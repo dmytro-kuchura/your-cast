@@ -48,39 +48,9 @@ services:
       - '6379:6379'
     volumes:
       - redis-podcasts:/data
-  elasticsearch:
-    container_name: podcasts_elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.4
-    environment:
-      - discovery.type=single-node
-      - cluster.name=docker-cluster
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: 1000M
-    volumes:
-      - elastic-podcasts:/usr/share/elasticsearch/data
-    ports:
-      - '9200:9200'
-    depends_on:
-      - php
-  kibana:
-    container_name: podcasts_kibana
-    image: docker.elastic.co/kibana/kibana:7.13.4
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-    ports:
-      - '5601:5601'
-    depends_on:
-      - elasticsearch
 
 volumes:
   postgres-database-podcasts:
     driver: local
   redis-podcasts:
-    driver: local
-  elastic-podcasts:
     driver: local

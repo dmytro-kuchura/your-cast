@@ -1,11 +1,9 @@
 <?php
 
-use App\Elastic\CustomElasticsearchFormatter;
-use Elasticsearch\ClientBuilder;
+use App\Logger\DatabaseLogger;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
-use Monolog\Handler\ElasticsearchHandler;
 
 return [
 
@@ -37,7 +35,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single', 'elastic'],
+            'channels' => ['single', 'db'],
             'ignore_exceptions' => false,
         ],
 
@@ -99,18 +97,10 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
-        'elastic' => [
-            'driver' => 'monolog',
-            'level' => 'debug',
-            'handler' => ElasticsearchHandler::class,
-            'formatter' => CustomElasticsearchFormatter::class,
-            'formatter_with' => [
-                'index' => env('ELASTIC_LOGS_INDEX'),
-                'type' => '_doc',
-            ],
-            'handler_with' => [
-                'client' => ClientBuilder::create()->setHosts([env('ELASTIC_HOST')])->build(),
-            ],
+
+        'db' => [
+            'driver' => 'custom',
+            'via' => DatabaseLogger::class,
         ],
     ],
 ];

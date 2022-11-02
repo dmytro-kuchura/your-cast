@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Helpers\ElasticLoggerHelper;
+use App\Helpers\LoggerHelper;
 use Closure;
 
 class RequestLogger
@@ -11,7 +11,7 @@ class RequestLogger
     {
         $response = $next($request);
 
-        ElasticLoggerHelper::info('Income request', [
+        LoggerHelper::info('Income request', [
             'URI' => $request->getUri(),
             'METHOD' => $request->getMethod(),
             'REQUEST_BODY' => $request->all(),

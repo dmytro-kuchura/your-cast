@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Helpers\ElasticLoggerHelper;
+use App\Helpers\LoggerHelper;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -18,7 +18,7 @@ class RequestAuth
         $value = trim($request->get(self::REQUEST_CSRF_TOKEN));
 
         if (strcmp($header, $value) !== 0) {
-            ElasticLoggerHelper::error('Not valid request', [
+            LoggerHelper::error('Not valid request', [
                 'HEADERS' => $request->headers->all(),
                 'REQUEST' => $request->all(),
             ]);
