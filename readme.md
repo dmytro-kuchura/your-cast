@@ -29,7 +29,7 @@ Nginx will be available on `localhost:80` and PostgreSQL on `localhost:5432`.
 
 ### Using Composer
 
-`docker-compose run composer <cmd>`
+`docker-compose exec php composer <COMMAND>`
 
 Where `cmd` is any of the available composer command.
 
@@ -37,11 +37,11 @@ Where `cmd` is any of the available composer command.
 
 Default connection:
 
-`docker-compose exec db psql -U postgres`
+`docker-compose exec database psql -U postgres`
 
 Using .env file default parameters:
 
-`docker-compose exec db psql -U dbuser dbname`
+`docker-compose exec database psql -U dbuser dbname`
 
 If you want to connect to the DB from another container (from the `php` one for instance), the host will be the service name: `db`.
 
@@ -49,7 +49,7 @@ If you want to connect to the DB from another container (from the `php` one for 
 
 You can execute any command on the `podcasts_php` container as you would do on any docker-compose container:
 
-`docker exec podcasts_php php -v`
+`docker exec php php -v`
 
 ## Configuring PHP
 
