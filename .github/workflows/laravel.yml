@@ -20,6 +20,10 @@ jobs:
           php-version: 8.0
           tools: composer:v2
 
+      - name: Change working directory
+        run: echo "Moved to directory"
+        working-directory: ./subdirectory
+
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
