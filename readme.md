@@ -56,6 +56,12 @@ You can execute any command on the `podcasts_php` container as you would do on a
 To change PHP's configuration edit `.docker/php/php.ini`.
 Same goes for `.docker/php/xdebug.ini`.
 
+## SWAGGER
+
+```
+docker exec podcasts_php php artisan l5-swagger:generate
+ ```
+
 ## Clear cache
 
 ```
@@ -63,10 +69,4 @@ docker-compose rm --all
 docker-compose pull
 docker-compose build --no-cache
 docker-compose up -d --force-recreate
- ```
-
-## SWAGGER
-
-```
-docker exec podcasts_php php artisan l5-swagger:generate
  ```
