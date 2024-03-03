@@ -160,10 +160,6 @@ class FeedGenerator
         $itunesEpisodeType = $dom->createElement('itunes:episodeType', $episode->episode_type);
         $item->appendChild($itunesEpisodeType);
 
-        $contentEncoded = $dom->createElement('content:encoded');
-        $contentEncoded->appendChild($dom->createCDATASection($episode->content));
-        $item->appendChild($contentEncoded);
-
         $itunesTitle = $dom->createElement('itunes:title', $episode->title);
         $item->appendChild($itunesTitle);
 
