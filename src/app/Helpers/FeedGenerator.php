@@ -26,6 +26,10 @@ class FeedGenerator
 
         $rss = $dom->createElement('rss');
         $rss->setAttribute('xmlns:itunes', 'http://www.itunes.com/dtds/podcast-1.0.dtd');
+        $rss->setAttribute('xmlns:media', 'http://search.yahoo.com/mrss/');
+        $rss->setAttribute('xmlns:dcterms', 'http://purl.org/dc/terms/');
+        $rss->setAttribute('xmlns:spotify', 'http://www.spotify.com/ns/rss');
+        $rss->setAttribute('xmlns:psc', 'http://podlove.org/simple-chapters/');
         $rss->setAttribute('version', '2.0');
         $dom->appendChild($rss);
 
@@ -52,6 +56,7 @@ class FeedGenerator
         $image->appendChild($title->cloneNode(true));
         $image->appendChild($link->cloneNode(true));
         $channel->appendChild($image);
+
         $image_url = $dom->createElement('url', $this->show->artwork);
         $image->appendChild($image_url);
 
@@ -61,6 +66,9 @@ class FeedGenerator
 
         $author = $dom->createElement('itunes:author', $this->show->author);
         $channel->appendChild($author);
+
+        $explicit = $dom->createElement('itunes:explicit', $this->show->explicit ? 'yes' : 'no');
+        $channel->appendChild($explicit);
 
         $owner = $dom->createElement('itunes:owner');
         $owner_name = $dom->createElement('itunes:name', $this->show->author);
@@ -72,7 +80,11 @@ class FeedGenerator
         $channel->appendChild($owner);
 
         if ($this->show->category !== null) {
-            $category = $dom->createElement('itunes:category', $this->show->category);
+            $category = $dom->createElement('itunes:category');
+            $category->setAttribute('text', 'Sport');
+            $subCategory = $dom->createElement('itunes:category');
+            $subCategory->setAttribute('text', 'Football');
+            $category->appendChild($subCategory);
             $channel->appendChild($category);
         }
 
@@ -96,6 +108,9 @@ class FeedGenerator
         }
         $channel->appendChild($pubDate);
 
+        $countryOfOrigin= $dom->createElement('spotify:countryOfOrigin', 'ua');
+        $channel->appendChild($countryOfOrigin);
+
         return $dom;
     }
 
@@ -103,8 +118,24 @@ class FeedGenerator
     {
         $item = $dom->createElement('item');
 
+        $guid = $dom->createElement('guid');
+        $guid->setAttribute('isPermaLink', $episode->show->token . '-' . $episode->show->id . '-' . $episode->id);
+        $item->appendChild($guid);
+
+        $enclosure = $dom->createElement('enclosure');
+        $enclosure->setAttribute('url', 'https://your-cast.com/audio/' . $episode->audioFile->audioFileLink->token);
+        $enclosure->setAttribute('type', 'audio/mpeg');
+        $enclosure->setAttribute('length', $episode->audioFile->size * 1000);
+        $item->appendChild($enclosure);
+
+        $pubDate = $dom->createElement('pubDate', Carbon::parse($episode->created_at)->format(DateTime::RFC822));
+        $item->appendChild($pubDate);
+
         $title = $dom->createElement('title', $episode->title);
         $item->appendChild($title);
+
+        $mediaTitle = $dom->createElement('media:title', $episode->title);
+        $item->appendChild($mediaTitle);
 
         $link = $dom->createElement('link', $episode->link);
         $item->appendChild($link);
@@ -113,12 +144,25 @@ class FeedGenerator
         $description->appendChild($dom->createCDATASection($episode->content));
         $item->appendChild($description);
 
-        $guid = $dom->createElement('guid', 'asdasd');
-        $item->appendChild($guid);
+        $mediaDescription = $dom->createElement('media:description', $episode->content);
+        $item->appendChild($mediaDescription);
+
+        $itunesOrder = $dom->createElement('itunes:order', $episode->episode);
+        $item->appendChild($itunesOrder);
+
+        $itunesExplicit = $dom->createElement('itunes:explicit', $this->show->explicit ? 'yes' : 'no');
+        $item->appendChild($itunesExplicit);
 
         $itunesImage = $dom->createElement('itunes:image');
         $itunesImage->setAttribute('href', $episode->cover);
         $item->appendChild($itunesImage);
+
+        $itunesEpisodeType = $dom->createElement('itunes:episodeType', $episode->episode_type);
+        $item->appendChild($itunesEpisodeType);
+
+        $contentEncoded = $dom->createElement('content:encoded');
+        $contentEncoded->appendChild($dom->createCDATASection($episode->content));
+        $item->appendChild($contentEncoded);
 
         $itunesTitle = $dom->createElement('itunes:title', $episode->title);
         $item->appendChild($itunesTitle);
@@ -127,25 +171,11 @@ class FeedGenerator
         $summary->appendChild($dom->createCDATASection($episode->content));
         $item->appendChild($summary);
 
-        $enclosure = $dom->createElement('enclosure');
-        $enclosure->setAttribute('url', 'https://your-cast.com/audio/' . $episode->audioFile->audioFileLink->token);
-        $enclosure->setAttribute('type', 'audio/mpeg');
-        $item->appendChild($enclosure);
-
-        $itunesExplicit = $dom->createElement('itunes:explicit', $episode->explicit);
-        $item->appendChild($itunesExplicit);
-
         $itunesEpisode = $dom->createElement('itunes:episode', $episode->episode);
         $item->appendChild($itunesEpisode);
 
         $itunesSeason = $dom->createElement('itunes:season', $episode->season);
         $item->appendChild($itunesSeason);
-
-        $itunesEpisodeType = $dom->createElement('itunes:episodeType', $episode->episode_type);
-        $item->appendChild($itunesEpisodeType);
-
-        $pubDate = $dom->createElement('pubDate', Carbon::parse($episode->created_at)->format(DateTime::RFC822));
-        $item->appendChild($pubDate);
 
         return $item;
     }
