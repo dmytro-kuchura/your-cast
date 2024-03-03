@@ -20,8 +20,6 @@ class FeedGenerator
 
     public function generate(): DOMDocument
     {
-        $pubDate = null;
-
         $dom = new DOMDocument('1.0', 'utf-8');
 
         $rss = $dom->createElement('rss');
@@ -102,11 +100,6 @@ class FeedGenerator
             $item = $this->addEpisode($episode, $dom);
             $channel->appendChild($item);
         }
-
-        if ($pubDate == null) {
-            $pubDate = $dom->createElement('pubDate', Carbon::parse($this->show->created_at)->format(DateTime::RFC822));
-        }
-        $channel->appendChild($pubDate);
 
         $countryOfOrigin= $dom->createElement('spotify:countryOfOrigin', 'ua');
         $channel->appendChild($countryOfOrigin);
