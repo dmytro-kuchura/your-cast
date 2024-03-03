@@ -101,7 +101,7 @@ class FeedGenerator
             $channel->appendChild($item);
         }
 
-        $countryOfOrigin= $dom->createElement('spotify:countryOfOrigin', 'ua');
+        $countryOfOrigin = $dom->createElement('spotify:countryOfOrigin', 'ua');
         $channel->appendChild($countryOfOrigin);
 
         return $dom;
@@ -111,8 +111,8 @@ class FeedGenerator
     {
         $item = $dom->createElement('item');
 
-        $guid = $dom->createElement('guid');
-        $guid->setAttribute('isPermaLink', $episode->show->token . '-' . $episode->show->id . '-' . $episode->id);
+        $guid = $dom->createElement('guid', $this->generateUniqueId($episode));
+        $guid->setAttribute('isPermaLink', 'false');
         $item->appendChild($guid);
 
         $enclosure = $dom->createElement('enclosure');
@@ -167,5 +167,10 @@ class FeedGenerator
         $item->appendChild($itunesSeason);
 
         return $item;
+    }
+
+    private function generateUniqueId($episode): string
+    {
+        return implode('-', [$episode->show->token, $episode->show->id, $episode->id, $episode->show->token]);
     }
 }
