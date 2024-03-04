@@ -101,9 +101,6 @@ class FeedGenerator
             $channel->appendChild($item);
         }
 
-        $countryOfOrigin = $dom->createElement('spotify:countryOfOrigin', 'ua');
-        $channel->appendChild($countryOfOrigin);
-
         return $dom;
     }
 
