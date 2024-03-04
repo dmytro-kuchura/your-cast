@@ -79,7 +79,7 @@ class FeedGenerator
 
         if ($this->show->category !== null) {
             $category = $dom->createElement('itunes:category');
-            $category->setAttribute('text', 'Sport');
+            $category->setAttribute('text', 'Sports');
             $subCategory = $dom->createElement('itunes:category');
             $subCategory->setAttribute('text', 'Football');
             $category->appendChild($subCategory);
