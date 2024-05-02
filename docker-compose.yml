@@ -1,14 +1,16 @@
-version: '3.8'
+version: "3.7"
+
+name: your-cast
 
 services:
   nginx:
     container_name: podcasts_nginx
     image: nginx:1.24
     volumes:
-      - './.docker/nginx:/etc/nginx/conf.d/'
-      - './src/:/var/www/html'
+      - ./.docker/nginx:/etc/nginx/conf.d/
+      - ./src/:/var/www/html
     ports:
-      - '80:80'
+      - "80:80"
     depends_on:
       - php
       - database
@@ -22,9 +24,9 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     restart: always
     ports:
-      - '5432:5432'
+      - "5432:5432"
     volumes:
-      - 'local-database:/var/lib/postgresql/data'
+      - local-database:/var/lib/postgresql/data
 
   php: &app-podcasts-service
     container_name: podcasts_php
@@ -34,9 +36,9 @@ services:
         uid: 1000
       context: .docker/php
     volumes:
-      - './.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini'
-      - './.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini'
-      - './src/:/var/www/html'
+      - ./.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./src/:/var/www/html
 
   scheduler:
     <<: *app-podcasts-service
@@ -48,14 +50,24 @@ services:
     container_name: podcasts_redis
     build:
       context: .docker/redis
+    command: >
+      --requirepass ${REDIS_PASSWORD}
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 150M
+        reservations:
+          cpus: '0.25'
+          memory: 120M
     restart: always
     ports:
-      - '6379:6379'
+      - "6379:6379"
     volumes:
-      - redis-podcasts:/data
+      - local-redis:/data
 
 volumes:
   local-database:
     driver: local
-  redis-podcasts:
+  local-redis:
     driver: local
