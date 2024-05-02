@@ -25,30 +25,6 @@ class EpisodeController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/v1/episodes",
-     *     summary="Get user episodes",
-     *     tags={"Episodes"},
-     *     @OA\Response(
-     *         response=200,
-     *         description="Successful operation"
-     *     ),
-     *     @OA\Response(
-     *         response="401",
-     *         description="Unauthorized user"
-     *     )
-     * )
-     */
-    public function list(int $userId): JsonResponse
-    {
-        $result = $this->service->getAllUserPodcast($userId);
-
-        return $this->returnResponse([
-            'result' => $result
-        ]);
-    }
-
-    /**
-     * @OA\Get(
      *     path="/api/v1/episodes/show/{showId}/list",
      *     summary="Get show episodes",
      *     tags={"Episodes"},

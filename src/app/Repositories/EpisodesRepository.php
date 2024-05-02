@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Episode;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class EpisodesRepository implements Repository
 {
@@ -17,9 +18,9 @@ class EpisodesRepository implements Repository
         // TODO: Implement all() method.
     }
 
-    public function getAllShowEpisodes(int $showId): ?Collection
+    public function getAllShowEpisodes(int $showId): ?LengthAwarePaginator
     {
-        return Episode::where('show_id', $showId)->get();
+        return Episode::where('show_id', $showId)->orderBy('id', 'desc')->paginate(10);
     }
 
     public function getAllUserEpisodes(int $userId): ?Collection

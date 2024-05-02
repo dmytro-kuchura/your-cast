@@ -6,7 +6,7 @@ use App\Exceptions\EpisodeCreatingException;
 use App\Helpers\LoggerHelper;
 use App\Models\Episode;
 use App\Repositories\EpisodesRepository;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
@@ -25,7 +25,7 @@ class EpisodesService
         return $this->repository->get($id);
     }
 
-    public function getShowEpisodes(int $showId): Collection|array
+    public function getShowEpisodes(int $showId): ?LengthAwarePaginator
     {
         return $this->repository->getAllShowEpisodes($showId);
     }
