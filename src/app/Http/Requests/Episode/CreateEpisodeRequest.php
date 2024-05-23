@@ -28,7 +28,6 @@ class CreateEpisodeRequest extends FormRequest
     {
         return [
             'title' => 'string|min:2|required',
-            'subtitle' => 'string|required',
             'link' => 'string|required',
             'season' => 'string|required',
             'episode' => 'string|required',
