@@ -19,10 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Change to directory and execute command
-        run: ls
-        working-directory: ./src
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -42,15 +38,19 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
+        working-directory: ./src
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Prepare the application
+        working-directory: ./src
         run: |
           php -r "file_exists('.env') || copy('.env.example', '.env');"
           php artisan key:generate
 
       - name: Clear Config
+        working-directory: ./src
         run: php artisan config:clear
 
       - name: Test with phpunit
+        working-directory: ./src
         run: vendor/bin/phpunit --coverage-text
