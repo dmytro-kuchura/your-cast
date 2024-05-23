@@ -19,6 +19,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Change to directory and execute command
+        run: ls
+        working-directory: ./src
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
