@@ -7,7 +7,7 @@ use Monolog\Handler\AbstractProcessingHandler;
 
 class DatabaseHandler extends AbstractProcessingHandler
 {
-    protected function write(array $record): void
+    protected function write(\Monolog\LogRecord $record): void
     {
         LogMessage::create([
             'level' => $record['level'],
