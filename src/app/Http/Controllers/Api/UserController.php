@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserPermissionsRequest;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -35,7 +34,6 @@ class UserController extends Controller
     public function list(): JsonResponse
     {
         $users = $this->service->usersList();
-
         return $this->returnResponse([
             'result' => $users,
         ]);
@@ -69,7 +67,6 @@ class UserController extends Controller
     public function detail(int $id): JsonResponse
     {
         $user = $this->service->usersDetail($id);
-
         return $this->returnResponse([
             'result' => $user,
         ]);
@@ -78,7 +75,6 @@ class UserController extends Controller
     public function permissions(UserPermissionsRequest $request): JsonResponse
     {
         $result = $this->service->updatePermissions($request->get('user_id'), $request->get('permissions'));
-
         return $this->returnResponse([
             'result' => $result,
         ]);

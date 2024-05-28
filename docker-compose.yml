@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.9"
 
 name: your-cast
 
@@ -55,10 +55,10 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.50'
+          cpus: 0.50
           memory: 150M
         reservations:
-          cpus: '0.25'
+          cpus: 0.25
           memory: 120M
     restart: always
     ports:

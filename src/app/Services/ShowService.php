@@ -76,6 +76,11 @@ class ShowService
         return $this->repository->get($id);
     }
 
+    public function getShortShowInfo(int $id): ?Show
+    {
+        return $this->repository->getShortShowInfo($id);
+    }
+
     public function getAllUserShow(int $userId): ?Collection
     {
         return $this->repository->getAllUserShow($userId);

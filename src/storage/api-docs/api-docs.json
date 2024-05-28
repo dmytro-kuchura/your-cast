@@ -2,14 +2,8 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Your Cast API",
-        "description": "Your Cast Swagger OpenApi description",
-        "version": "0.1.5"
+        "version": "1.0"
     },
-    "servers": [
-        {
-            "url": "http://your-cast.com"
-        }
-    ],
     "paths": {
         "/api/v1/login": {
             "post": {
@@ -309,13 +303,13 @@
                 }
             }
         },
-        "/api/v1/episodes": {
+        "/api/v1/episodes/{episodeId}": {
             "get": {
                 "tags": [
                     "Episodes"
                 ],
-                "summary": "Get user episodes",
-                "operationId": "9c66dde58be87f399ecfd33c26a216f6",
+                "summary": "Get episode detail",
+                "operationId": "91272e4508a317a00eb87f3e87bc11db",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -324,15 +318,42 @@
                         "description": "Unauthorized user"
                     }
                 }
-            }
-        },
-        "/api/v1/episodes/show/{showId}/list": {
-            "get": {
+            },
+            "patch": {
                 "tags": [
                     "Episodes"
                 ],
-                "summary": "Get show episodes",
-                "operationId": "568a37dfa0c0a1ac7bbc41488dc4803f",
+                "summary": "Update episode",
+                "operationId": "4cdf0d788663f3c8c143ead69856a0f9",
+                "requestBody": {
+                    "description": "Update episode",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "format",
+                                    "timezone",
+                                    "language",
+                                    "explicit",
+                                    "category"
+                                ],
+                                "properties": {
+                                    "artwork": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "explicit": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -419,6 +440,23 @@
                         }
                     }
                 },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
+        "/api/v1/episodes/show/{showId}/list": {
+            "get": {
+                "tags": [
+                    "Episodes"
+                ],
+                "summary": "Get show episodes",
+                "operationId": "568a37dfa0c0a1ac7bbc41488dc4803f",
                 "responses": {
                     "200": {
                         "description": "Successful operation"

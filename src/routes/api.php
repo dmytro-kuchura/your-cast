@@ -42,7 +42,7 @@ Route::middleware(['request.logger'])->group(function () {
             Route::post('/upload-audio', [UploadController::class, 'uploadAudio'])->name('api.upload.audio');
 
             Route::prefix('show')->group(function () {
-                Route::get('/short', [ShowController::class, 'short'])->name('api.show.short');
+                Route::get('/{id}/short', [ShowController::class, 'shortInfo'])->name('api.show.short.info');
                 Route::get('/list', [ShowController::class, 'list'])->name('api.show.list');
                 Route::post('/create', [ShowController::class, 'create'])->name('api.show.create');
                 Route::put('/update/{id}', [ShowController::class, 'update'])->name('api.show.update');
@@ -53,6 +53,8 @@ Route::middleware(['request.logger'])->group(function () {
             Route::prefix('episodes')->group(function () {
                 Route::get('/show/{showId}/list', [EpisodeController::class, 'showEpisodes'])->name('api.episode.show.episodes');
                 Route::post('/create', [EpisodeController::class, 'create'])->name('api.episode.create');
+                Route::get('/{episodeId}', [EpisodeController::class, 'info'])->name('api.episode.info');
+                Route::patch('/{episodeId}', [EpisodeController::class, 'update'])->name('api.episode.update');
             });
 
             Route::prefix('dictionary')->group(function () {

@@ -14,11 +14,9 @@ class Controller extends BaseController
 
     /**
      * @OA\Info(
-     *      version="0.1.0",
-     *      title="Your Cast API",
-     *      description="Your Cast Swagger OpenApi description"
+     *     version="1.0",
+     *     title="Your Cast API"
      * )
-     *
      */
     public function returnResponse(array $response, $status_code = 200, array $headers = []): JsonResponse
     {
@@ -26,14 +24,6 @@ class Controller extends BaseController
         return response()->json($response, $status_code, $headers, JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * @OA\Info(
-     *      version="1.0.0",
-     *      title="Your Cast API",
-     *      description="Your Cast Swagger OpenApi description"
-     * )
-     *
-     */
     public function apiResponse(array $response, $status_code = 200, array $headers = []): JsonResponse
     {
         return response()->json(['content' => $response], $status_code, $headers, JSON_UNESCAPED_UNICODE);

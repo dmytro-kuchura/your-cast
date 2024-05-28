@@ -10,7 +10,7 @@ class EpisodesRepository implements Repository
 {
     public function get(int $id): ?Episode
     {
-        return Episode::find($id);
+        return Episode::where('id', $id)->with('audioFile')->first();
     }
 
     public function all()
@@ -51,9 +51,22 @@ class EpisodesRepository implements Repository
         return $model;
     }
 
-    public function update(array $data, int $id)
+    public function update(array $data, int $id): void
     {
-        Episode::where('id', $id)->update($data);
+        $model = [];
+
+        $model['audio_id'] = $data['audio_id'];
+        $model['cover'] = $data['cover'] ?? null;
+        $model['title'] = $data['title'];
+        $model['alias'] = $data['alias'];
+        $model['link'] = $data['link'];
+        $model['episode'] = $data['episode'];
+        $model['season'] = $data['season'];
+        $model['episode_type'] = $data['type'];
+        $model['content'] = $data['summary'];
+        $model['explicit'] = $data['explicit'];
+
+        Episode::where('id', $id)->update($model);
     }
 
     public function destroy(int $id)

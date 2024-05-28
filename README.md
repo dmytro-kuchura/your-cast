@@ -1,3 +1,4 @@
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -32,6 +33,20 @@ Using .env file default parameters:
 `docker-compose exec database psql -U dbuser dbname`
 
 If you want to connect to the DB from another container (from the `php` one for instance), the host will be the service name: `db`.
+
+### Backup your databases
+
+``docker exec -t your-db-container pg_dumpall -c -U postgres > dump_`date +%Y-%m-%d"_"%H_%M_%S`.sql``
+
+OR
+
+``docker exec -t your-db-container pg_dumpall -c -U postgres | gzip > dump_`date +%Y-%m-%d"_"%H_%M_%S`.sql.gz``
+
+Creates filename like dump_2023-12-25_09_15_26.sql
+
+###Restore your databases
+
+``cat your_dump.sql | docker exec -i your-db-container psql -U postgres``
 
 ### Using PHP
 

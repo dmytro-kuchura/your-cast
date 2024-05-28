@@ -48,4 +48,23 @@ class EpisodesService
         LoggerHelper::afterCreating(true, $data);
         DB::commit();
     }
+
+    public function updateEpisode(array $data, int $id): void
+    {
+        DB::beginTransaction();
+
+        try {
+            $this->repository->update($data, $id);
+        } catch (Throwable $exception) {
+            DB::rollBack();
+            LoggerHelper::afterCreating(false, [
+                'exception' => $exception->getMessage(),
+                'data' => $data,
+            ]);
+            throw new EpisodeCreatingException($exception->getMessage());
+        }
+
+        LoggerHelper::afterCreating(true, $data);
+        DB::commit();
+    }
 }

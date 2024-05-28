@@ -8,7 +8,6 @@ use Illuminate\Http\JsonResponse;
 
 class NotificationController extends Controller
 {
-    /** @var NotificationsService */
     private NotificationsService $service;
 
     public function __construct(NotificationsService $service)
@@ -34,7 +33,6 @@ class NotificationController extends Controller
     public function unread(): JsonResponse
     {
         $result = $this->service->getUnread();
-
         return $this->returnResponse([
             'result' => $result
         ]);

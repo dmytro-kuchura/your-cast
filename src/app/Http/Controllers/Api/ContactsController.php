@@ -51,11 +51,8 @@ class ContactsController extends Controller
                 'error' => 'Sorry you send contact request so many times. Try again later!'
             ], 422);
         }
-
         $request['ip'] = $request->ip();
-
         $this->contactService->createContact($request->all());
-
         return $this->returnResponse([
             'message' => 'Your message successfully sent!',
             'form' => 'contacts',

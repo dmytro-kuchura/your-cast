@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ShowController extends Controller
 {
-    /** @var ShowService */
     private ShowService $service;
 
     public function __construct(ShowService $service)
@@ -56,6 +55,39 @@ class ShowController extends Controller
 
     /**
      * @OA\Get(
+     *     path="/api/v1/show/{id}/short",
+     *     summary="Get show info",
+     *     tags={"Shows"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Show ID",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user"
+     *     )
+     * )
+     */
+    public function shortInfo(int $id): JsonResponse
+    {
+        $result = $this->service->getShortShowInfo($id);
+        return $this->returnResponse([
+            'result' => $result
+        ]);
+    }
+
+    /**
+     * @OA\Get(
      *     path="/api/v1/show/short",
      *     summary="Get user short shows list",
      *     tags={"Shows"},
@@ -72,9 +104,7 @@ class ShowController extends Controller
     public function short(): JsonResponse
     {
         $userId = Auth::id();
-
         $result = $this->service->getAllUserShowShort($userId);
-
         return $this->returnResponse([
             'result' => $result
         ]);
@@ -98,7 +128,6 @@ class ShowController extends Controller
     public function list(): JsonResponse
     {
         $userId = Auth::id();
-
         $result = $this->service->getAllUserShow($userId);
         return $this->returnResponse([
             'result' => $result
@@ -141,8 +170,7 @@ class ShowController extends Controller
      */
     public function create(CreateShowRequest $request): JsonResponse
     {
-        $show = $this->service->createShow($request->all());
-
+        $this->service->createShow($request->all());
         return $this->returnResponse([
             'created' => true,
         ], Response::HTTP_CREATED);
@@ -186,7 +214,6 @@ class ShowController extends Controller
     public function update(int $id, UpdateShowRequest $request): JsonResponse
     {
         $show = $this->service->updateShow($id, $request->all());
-
         return $this->returnResponse([
             'created' => true,
             'show' => new ShowResource($show),
