@@ -58,15 +58,12 @@ class AuthController extends Controller
     public function login(LoginRequest $request): JsonResponse
     {
         $user = Auth::attempt($request->all(), $request->get('remember'));
-
         if (!$user) {
             return $this->returnResponse([
                 'error' => 'Sorry we couldn\'t sign you in with those details.'
             ], 422);
         }
-
         $this->ipHistoryService->saveHistory($request->user());
-
         return $this->returnResponse([
             'user' => new UserResource($request->user()),
             'roles' => $this->authService->findRolesByUser(Auth::id()),
@@ -108,18 +105,14 @@ class AuthController extends Controller
                 'error' => 'Not supported.'
             ], Response::HTTP_BAD_REQUEST);
         }
-
         $this->authService->registration($request->all());
-
         $token = Auth::attempt($request->only(['email', 'password']));
-
         if (!$token) {
             return $this->returnResponse([
                 'success' => false,
                 'error' => 'Not found.'
             ], Response::HTTP_NOT_FOUND);
         }
-
         return $this->returnResponse([
             'user' => new UserResource(Auth::user()),
             'access_token' => $this->authService->generate(Auth::id())
@@ -152,9 +145,7 @@ class AuthController extends Controller
     public function reset(ResetPasswordRequest $request): JsonResponse
     {
         $email = $request->get('email');
-
         $token = $this->authService->reset($email);
-
         if ($token) {
             Mail::to($email)->send(new ResetPasswordMail($token));
 
@@ -162,7 +153,6 @@ class AuthController extends Controller
                 'message' => 'Successfully sent email.'
             ]);
         }
-
         return $this->returnResponse([
             'message' => 'user with this email not found.'
         ], 404);
@@ -196,7 +186,6 @@ class AuthController extends Controller
     public function update(UpdatePasswordRequest $request): JsonResponse
     {
         $updatedUser = $this->authService->update($request->all());
-
         if ($updatedUser) {
             Mail::to($updatedUser->email)->send(new UpdatePasswordMail($updatedUser));
 
@@ -204,7 +193,6 @@ class AuthController extends Controller
                 'message' => 'Successfully update password.'
             ]);
         }
-
         return $this->returnResponse([
             'message' => 'Update password not completed.'
         ], 404);
@@ -228,9 +216,7 @@ class AuthController extends Controller
     public function logout(): JsonResponse
     {
         $this->authService->setExpired(Auth::id());
-
         Auth::logout();
-
         return $this->returnResponse([
             'message' => 'Successfully logged out'
         ]);

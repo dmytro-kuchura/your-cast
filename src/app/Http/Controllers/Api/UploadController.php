@@ -12,13 +12,13 @@ use Illuminate\Http\Response;
 
 class UploadController extends Controller
 {
-    /** @var AudioFileService */
     private AudioFileService $audioFileService;
-
-    /** @var AudioFileLinkService */
     private AudioFileLinkService $audioFileLinkService;
 
-    public function __construct(AudioFileService $audioFileService, AudioFileLinkService $audioFileLinkService)
+    public function __construct(
+        AudioFileService $audioFileService,
+        AudioFileLinkService $audioFileLinkService
+    )
     {
         $this->audioFileService = $audioFileService;
         $this->audioFileLinkService = $audioFileLinkService;
@@ -42,7 +42,6 @@ class UploadController extends Controller
     public function uploadImage(Request $request): JsonResponse
     {
         $path = UploadHelper::save($request, $request->get('param'));
-
         return $this->returnResponse(['path' => $path], Response::HTTP_CREATED);
     }
 
@@ -71,16 +70,13 @@ class UploadController extends Controller
     public function uploadAudio(Request $request): JsonResponse
     {
         $path = UploadHelper::saveAudio($request);
-
         $fileLink = $this->audioFileLinkService->createAudioFileLink();
-
         $file = $this->audioFileService->createAudioFile([
             'audio_file_link_id' => $fileLink->id,
             'duration' => 3,
             'link' => $path,
             'size' => $request->file('audio')->getSize() / 1000
         ]);
-
         return $this->returnResponse([
             'path' => $path,
             'file_id' => $file->id,

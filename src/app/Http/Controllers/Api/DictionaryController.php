@@ -10,7 +10,6 @@ use Illuminate\Http\JsonResponse;
 
 class DictionaryController extends Controller
 {
-    /** @var DictionaryService */
     private DictionaryService $service;
 
     public function __construct(DictionaryService $service)
@@ -36,13 +35,10 @@ class DictionaryController extends Controller
     public function timezones(): JsonResponse
     {
         $result = [];
-
         $timezones = $this->service->getTimezones();
-
         foreach ($timezones as $timezone) {
             $result[] = new TimezonesResource($timezone);
         }
-
         return $this->returnResponse([
             'result' => $result
         ]);
@@ -66,13 +62,10 @@ class DictionaryController extends Controller
     public function languages(): JsonResponse
     {
         $result = [];
-
         $languages = $this->service->getLanguages();
-
         foreach ($languages as $language) {
             $result[] = new TimezonesResource($language);
         }
-
         return $this->returnResponse([
             'result' => $result
         ]);
@@ -96,15 +89,11 @@ class DictionaryController extends Controller
     public function categories(): JsonResponse
     {
         $tree = [];
-
         $categories = $this->service->getCategories();
-
         foreach ($categories as $category) {
             $tree[] = $category;
         }
-
         $result = CategoriesHelper::buildTree($tree, 0);
-
         return $this->returnResponse([
             'result' => $result
         ]);

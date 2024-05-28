@@ -15,6 +15,7 @@ class SubscribersController extends Controller
     {
         $this->subscribeService = $subscribeService;
     }
+
     /**
      * @OA\Post(
      *     path="/api/v1/subscribers-form",
@@ -48,9 +49,7 @@ class SubscribersController extends Controller
                 'error' => 'This email already exist.'
             ], 422);
         }
-
         $this->subscribeService->createSubscribe($request->all());
-
         return $this->returnResponse([
             'message' => 'You successfully subscribe to updates!',
             'form' => 'subscribers',

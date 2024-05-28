@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Episode\CreateEpisodeRequest;
+use App\Http\Requests\Episode\UpdateEpisodeRequest;
 use App\Services\EpisodesService;
 use Illuminate\Http\JsonResponse;
 
 class EpisodeController extends Controller
 {
-    /** @var EpisodesService */
     private EpisodesService $service;
 
     public function __construct(EpisodesService $service)
@@ -17,16 +17,10 @@ class EpisodeController extends Controller
         $this->service = $service;
     }
 
-    public function info(int $id): JsonResponse
-    {
-        // TODO not completed
-        return $this->returnResponse([]);
-    }
-
     /**
      * @OA\Get(
-     *     path="/api/v1/episodes/show/{showId}/list",
-     *     summary="Get show episodes",
+     *     path="/api/v1/episodes/{episodeId}",
+     *     summary="Get episode detail",
      *     tags={"Episodes"},
      *     @OA\Response(
      *         response=200,
@@ -38,10 +32,9 @@ class EpisodeController extends Controller
      *     )
      * )
      */
-    public function showEpisodes(int $showId): JsonResponse
+    public function info(int $id): JsonResponse
     {
-        $result = $this->service->getShowEpisodes($showId);
-
+        $result = $this->service->getEpisode($id);
         return $this->returnResponse([
             'result' => $result
         ]);
@@ -84,9 +77,63 @@ class EpisodeController extends Controller
     public function create(CreateEpisodeRequest $request): JsonResponse
     {
         $this->service->createEpisode($request->all());
-
         return $this->returnResponse([
             'success' => true
+        ]);
+    }
+
+    /**
+     * @OA\Patch(
+     *     path="/api/v1/episodes/{episodeId}",
+     *     summary="Update episode",
+     *     tags={"Episodes"},
+     *     @OA\RequestBody(
+     *        required=true,
+     *        description="Update episode",
+     *        @OA\JsonContent(
+     *           required={"title","format","timezone","language","explicit","category"},
+     *           @OA\Property(property="artwork", type="string", example=""),
+     *           @OA\Property(property="explicit", type="boolean", example="true")
+     *        ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user"
+     *     )
+     * )
+     */
+    public function update(int $id, UpdateEpisodeRequest $request): JsonResponse
+    {
+        $this->service->updateEpisode($request->all(), $id);
+        return $this->returnResponse([
+            'success' => true
+        ]);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/v1/episodes/show/{showId}/list",
+     *     summary="Get show episodes",
+     *     tags={"Episodes"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user"
+     *     )
+     * )
+     */
+    public function showEpisodes(int $showId): JsonResponse
+    {
+        $result = $this->service->getShowEpisodes($showId);
+        return $this->returnResponse([
+            'result' => $result
         ]);
     }
 }

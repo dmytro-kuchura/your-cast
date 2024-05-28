@@ -33,6 +33,11 @@ class ShowsRepository implements Repository
         return Show::select('id', 'title', 'description', 'artwork')->where('user_id', $userId)->get();
     }
 
+    public function getShortShowInfo(int $id): ?Show
+    {
+        return Show::select('id', 'title', 'description', 'artwork')->where('id', $id)->first();
+    }
+
     public function store(array $data): Show
     {
         $model = new Show();
