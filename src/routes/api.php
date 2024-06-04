@@ -55,6 +55,7 @@ Route::middleware(['request.logger'])->group(function () {
                 Route::post('/create', [EpisodeController::class, 'create'])->name('api.episode.create');
                 Route::get('/{episodeId}', [EpisodeController::class, 'info'])->name('api.episode.info');
                 Route::patch('/{episodeId}', [EpisodeController::class, 'update'])->name('api.episode.update');
+                Route::patch('/status/{episodeId}', [EpisodeController::class, 'status'])->name('api.episode.update.status');
             });
 
             Route::prefix('dictionary')->group(function () {
