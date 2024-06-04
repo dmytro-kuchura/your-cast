@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Episode\CreateEpisodeRequest;
 use App\Http\Requests\Episode\UpdateEpisodeRequest;
+use App\Http\Requests\Episode\UpdateEpisodeStatusRequest;
 use App\Services\EpisodesService;
 use Illuminate\Http\JsonResponse;
 
@@ -109,6 +110,37 @@ class EpisodeController extends Controller
     public function update(int $id, UpdateEpisodeRequest $request): JsonResponse
     {
         $this->service->updateEpisode($request->all(), $id);
+        return $this->returnResponse([
+            'success' => true
+        ]);
+    }
+
+    /**
+     * @OA\Patch(
+     *     path="/api/v1/episodes/{episodeId}",
+     *     summary="Update episode status",
+     *     tags={"Episodes"},
+     *     @OA\RequestBody(
+     *        required=true,
+     *        description="Update episode status",
+     *        @OA\JsonContent(
+     *           required={"status"},
+     *           @OA\Property(property="status", type="string", example="draft"),
+     *        ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user"
+     *     )
+     * )
+     */
+    public function status(int $id, UpdateEpisodeStatusRequest $request): JsonResponse
+    {
+        $this->service->updateEpisodeStatus($request->get('status'), $id);
         return $this->returnResponse([
             'success' => true
         ]);

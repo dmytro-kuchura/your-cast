@@ -69,6 +69,13 @@ class EpisodesRepository implements Repository
         Episode::where('id', $id)->update($model);
     }
 
+    public function updateEpisodeStatus(string $status, int $id): void
+    {
+        $model = [];
+        $model['status'] = $status;
+        Episode::where('id', $id)->update($model);
+    }
+
     public function destroy(int $id)
     {
         Episode::where('id', $id)->delete();
