@@ -3,6 +3,12 @@ version: "3.9"
 name: your-cast
 
 services:
+  web:
+    container_name: podcasts_web
+    image: your-cast/account:1.0.0
+    ports:
+      - "8001:80"
+
   nginx:
     container_name: podcasts_nginx
     image: nginx:1.24
@@ -13,6 +19,7 @@ services:
       - "80:80"
     depends_on:
       - php
+      - web
       - database
 
   database:
