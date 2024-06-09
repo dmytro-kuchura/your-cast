@@ -26,9 +26,7 @@ class ShowService
     public function createShow(array $data): void
     {
         $data['user_id'] = Auth::user()->getAuthIdentifier();
-
         DB::beginTransaction();
-
         try {
             $this->repository->store($data);
         } catch (Throwable $exception) {
@@ -39,19 +37,18 @@ class ShowService
             ]);
             throw new NotCreateShowException($exception->getMessage());
         }
-
         LoggerHelper::afterCreating(true, $data);
-        NotificationHelper::info('Your new show created.', 'Now you have upload your first episode in show and publish to another platform.');
-
+        NotificationHelper::info(
+            'Your new show created.',
+            'Now you have upload your first episode in show and publish to another platform.'
+        );
         DB::commit();
     }
 
     public function updateShow(int $id, array $data): Show
     {
         DB::beginTransaction();
-
         $data['status'] = $data['status'] === true ? 'enabled' : 'disabled';
-
         try {
             $this->repository->update($data, $id);
         } catch (Throwable $exception) {
@@ -64,10 +61,11 @@ class ShowService
         }
 
         LoggerHelper::afterUpdating(true, $data);
-        NotificationHelper::info('Your show updated.', 'Now show information is updated and publish to another platform.');
-
+        NotificationHelper::info(
+            'Your show updated.',
+            'Now show information is updated and publish to another platform.'
+        );
         DB::commit();
-
         return $this->getShowInfo($id);
     }
 
