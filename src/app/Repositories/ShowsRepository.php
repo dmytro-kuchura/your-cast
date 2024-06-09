@@ -25,7 +25,7 @@ class ShowsRepository implements Repository
 
     public function findByToken(string $token): ?Show
     {
-        return Show::where('token', $token)->where('status', 'enabled')->with('episodes')->first();
+        return Show::where('token', $token)->where('status', 'enabled')->with('episodes')->orderBy('id', 'asc')->first();
     }
 
     public function getAllUserShowShort(int $userId): ?Collection
@@ -44,7 +44,7 @@ class ShowsRepository implements Repository
 
         $model->user_id = $data['user_id'];
         $model->title = $data['title'];
-        $model->description = $data['description'];
+        $model->description = str_replace('&nbsp;', '', $data['description']);
         $model->artwork = $data['artwork'];
         $model->format = $data['format'];
         $model->timezone = $data['timezone'];
@@ -65,6 +65,7 @@ class ShowsRepository implements Repository
 
     public function update(array $data, int $id)
     {
+        $data['description'] = str_replace('&nbsp;', '', $data['description']);
         Show::where('id', $id)->update($data);
     }
 

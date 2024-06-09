@@ -42,7 +42,7 @@ class EpisodesRepository implements Repository
         $model->episode = $data['episode'];
         $model->season = $data['season'];
         $model->episode_type = $data['type'];
-        $model->content = $data['summary'];
+        $model->content = str_replace('&nbsp;', '', $data['summary']);
         $model->explicit = $data['explicit'];
         $model->status = 'drafted';
 
@@ -63,7 +63,7 @@ class EpisodesRepository implements Repository
         $model['episode'] = $data['episode'];
         $model['season'] = $data['season'];
         $model['episode_type'] = $data['type'];
-        $model['content'] = $data['summary'];
+        $model['content'] = str_replace('&nbsp;', '', $data['summary']);
         $model['explicit'] = $data['explicit'];
 
         Episode::where('id', $id)->update($model);
