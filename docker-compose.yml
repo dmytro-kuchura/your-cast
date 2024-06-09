@@ -35,7 +35,7 @@ services:
     volumes:
       - local-database:/var/lib/postgresql/data
 
-  php: &app-podcasts-service
+  php:
     container_name: podcasts_php
     build:
       args:
@@ -44,14 +44,7 @@ services:
       context: .docker/php
     volumes:
       - ./.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
-      - ./.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       - ./src/:/var/www/html
-
-  scheduler:
-    <<: *app-podcasts-service
-    container_name: podcasts_scheduler
-    restart: always
-    command: /scheduler/scheduler.sh
 
   redis:
     container_name: podcasts_redis
