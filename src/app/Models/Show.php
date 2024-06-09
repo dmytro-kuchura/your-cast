@@ -79,6 +79,8 @@ class Show extends Model
 
     public function episodes(): HasMany
     {
-        return $this->hasMany('App\Models\Episode', 'show_id', 'id')->with('audioFile');
+        return $this->hasMany('App\Models\Episode', 'show_id', 'id')
+            ->orderBy('id', 'asc')
+            ->with('audioFile');
     }
 }

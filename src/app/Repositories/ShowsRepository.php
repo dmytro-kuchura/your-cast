@@ -44,7 +44,7 @@ class ShowsRepository implements Repository
 
         $model->user_id = $data['user_id'];
         $model->title = $data['title'];
-        $model->description = $data['description'];
+        $model->description = str_replace('&nbsp;', '', $data['description']);
         $model->artwork = $data['artwork'];
         $model->format = $data['format'];
         $model->timezone = $data['timezone'];
@@ -65,6 +65,7 @@ class ShowsRepository implements Repository
 
     public function update(array $data, int $id)
     {
+        $data['description'] = str_replace('&nbsp;', '', $data['description']);
         Show::where('id', $id)->update($data);
     }
 
