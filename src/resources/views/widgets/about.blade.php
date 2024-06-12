@@ -5,7 +5,7 @@
                 <div class="section-title text-center pl-40 pr-40 mb-45">
                     <h2>All you need</h2>
                     <p>
-                        Everything you need to create & share your podcast in any Podcast service (Apple Podcast, Google Podcast, Spotify).
+                        Everything you need to create & share your podcast in any Podcast service (Apple Podcast, YouTube, Spotify).
                     </p>
                 </div>
             </div>

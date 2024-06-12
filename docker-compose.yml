@@ -5,7 +5,7 @@ name: your-cast
 services:
   web:
     container_name: podcasts_web
-    image: your-cast/account:1.0.0
+    image: kuchura/your-cast-frontend:1.0.1-8df2a01
     ports:
       - "8001:80"
 

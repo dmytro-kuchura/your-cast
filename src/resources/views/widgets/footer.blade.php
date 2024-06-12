@@ -10,7 +10,7 @@
                         </div>
                         <div class="footer-text mb-20">
                             <p>
-                                Find and grow your show on every podcast listening app there is - including Apple Podcasts, Spotify, Google Podcasts, Amazon Music and others.
+                                Find and grow your show on every podcast listening app there is - including Apple Podcasts, Spotify, YouTube, Amazon Music and others.
                             </p>
                         </div>
                         <div class="footer-social">
@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="copyright-text">
-                        <p>&copy; 2021 - 2022 Your-Cast platform</p>
+                        <p>&copy; 2021 - 2024 Your-Cast platform</p>
                     </div>
                 </div>
             </div>
