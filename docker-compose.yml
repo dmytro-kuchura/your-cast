@@ -1,5 +1,7 @@
 version: "3.9"
 
+name: your-cast
+
 services:
   web:
     container_name: podcasts_web
