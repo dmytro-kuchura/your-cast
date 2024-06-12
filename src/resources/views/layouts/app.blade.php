@@ -7,7 +7,7 @@
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shorBtcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="shorBtcut icon" type="image/x-icon" href="{{ asset('/img/favicon.ico') }}">
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <!-- csrf-token -->
@@ -18,7 +18,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-WSZSHH946B');
     </script>
 </head>
@@ -31,5 +30,3 @@
 <script src="{{ asset('/js/app.js') }}"></script>
 </body>
 </html>
-
-

@@ -14,7 +14,7 @@
                     <h2 data-animation="fadeInUp" data-delay=".4s">Home for your <span>Podcast</span></h2>
                     <p data-animation="fadeInUp" data-delay=".6s">
                         With Your-Cast platform you receive, strong application for create and update your podcast ecosystem.
-                        Import from another services, and work with Google Podcast, Apple Podcast, Spotify.
+                        Import from another services, and work with YouTube, Apple Podcast, Spotify.
                     </p>
 {{--                    <div class="slider-btn mt-30 mb-30">--}}
 {{--                        <a href="#" class="btn ss-btn" data-animation="fadeInUp" data-delay=".8s">Read More</a>--}}
