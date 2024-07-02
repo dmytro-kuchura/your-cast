@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class UserService
 {
-    /** @var UsersRepository */
     private UsersRepository $repository;
 
-    /** @var UsersRolesRepository */
     private UsersRolesRepository $rolesRepository;
 
     public function __construct(

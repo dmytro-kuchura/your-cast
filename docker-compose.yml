@@ -1,15 +1,10 @@
-version: "3.9"
+name: "your-cast"
 
 services:
-  web:
-    container_name: podcasts_web
-    image: kuchura/your-cast-frontend:1.0.1-8df2a01
-    ports:
-      - "8001:80"
-
   nginx:
     container_name: podcasts_nginx
-    image: nginx:1.24
+    build:
+      context: .docker/nginx
     volumes:
       - ./.docker/nginx:/etc/nginx/conf.d/
       - ./src/:/var/www/html
@@ -17,12 +12,11 @@ services:
       - "80:80"
     depends_on:
       - php
-      - web
-      - database
 
   database:
     container_name: podcasts_database
-    image: postgres:13.10
+    build:
+      context: .docker/postgres
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
@@ -50,14 +44,6 @@ services:
       context: .docker/redis
     command: >
       --requirepass ${REDIS_PASSWORD}
-    deploy:
-      resources:
-        limits:
-          cpus: 0.50
-          memory: 150M
-        reservations:
-          cpus: 0.25
-          memory: 120M
     restart: always
     ports:
       - "6379:6379"

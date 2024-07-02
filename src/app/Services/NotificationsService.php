@@ -12,7 +12,6 @@ use Throwable;
 
 class NotificationsService
 {
-    /** @var NotificationRepository */
     private NotificationRepository $repository;
 
     public function __construct(NotificationRepository $repository)
@@ -23,9 +22,7 @@ class NotificationsService
     public function create(array $data): void
     {
         $data['user_id'] = Auth::user()->getAuthIdentifier();
-
         DB::beginTransaction();
-
         try {
             $this->repository->store($data);
         } catch (Throwable $exception) {
@@ -36,9 +33,7 @@ class NotificationsService
             ]);
             throw new NotCreateNotificationException($exception->getMessage());
         }
-
         LoggerHelper::afterCreating(true, $data);
-
         DB::commit();
     }
 

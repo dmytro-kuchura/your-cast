@@ -11,7 +11,6 @@ use Throwable;
 
 class SubscribeService
 {
-    /** @var SubscribeRepository */
     private SubscribeRepository $repository;
 
     public function __construct(SubscribeRepository $subscribeRepository)
@@ -22,14 +21,12 @@ class SubscribeService
     public function validate(string $email): bool
     {
         $subscribe = $this->repository->findByEmail($email);
-
         return isset($subscribe->id);
     }
 
     public function createSubscribe(array $data): Subscribe
     {
         DB::beginTransaction();
-
         try {
             $subscribe = $this->repository->store($data);
         } catch (Throwable $exception) {
@@ -40,11 +37,8 @@ class SubscribeService
             ]);
             throw new AudioFileCreatingException($exception->getMessage());
         }
-
         LoggerHelper::afterCreating(true, $data);
-
         DB::commit();
-
         return $subscribe;
     }
 }

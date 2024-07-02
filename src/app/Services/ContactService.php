@@ -12,7 +12,6 @@ use Throwable;
 
 class ContactService
 {
-    /** @var ContactRepository */
     private ContactRepository $repository;
 
     public function __construct(ContactRepository $contactRepository)
@@ -23,22 +22,18 @@ class ContactService
     public function validate(string $ip): bool
     {
         $contact = $this->repository->findByIp($ip);
-
         if (!isset($contact->created_at)) {
             return false;
         }
-
         if (Carbon::parse($contact->created_at)->diffInMinutes(Carbon::now()) > 5) {
             return false;
         }
-
         return true;
     }
 
     public function createContact(array $data): Contact
     {
         DB::beginTransaction();
-
         try {
             $contact = $this->repository->store($data);
         } catch (Throwable $exception) {
@@ -49,10 +44,8 @@ class ContactService
             ]);
             throw new AudioFileCreatingException($exception->getMessage());
         }
-
         LoggerHelper::afterCreating(true, $data);
         DB::commit();
-
         return $contact;
     }
 }

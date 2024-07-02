@@ -15,7 +15,6 @@ use Throwable;
 
 class ShowService
 {
-    /** @var ShowsRepository */
     private ShowsRepository $repository;
 
     public function __construct(ShowsRepository $showsRepository)

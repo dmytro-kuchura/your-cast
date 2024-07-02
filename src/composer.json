@@ -13,10 +13,11 @@
         "darkaonline/l5-swagger": "^8.3",
         "doctrine/dbal": "^3.3",
         "guzzlehttp/guzzle": "^7.4.0",
+        "hisorange/browser-detect": "^5.0",
         "laravel/framework": "^10.10",
+        "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "laravel/sanctum": "^3.3",
         "monolog/monolog": "^3.0",
         "predis/predis": "^1.1",
         "torann/geoip": "^3.0"

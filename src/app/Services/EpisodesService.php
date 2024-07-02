@@ -52,7 +52,6 @@ class EpisodesService
     public function updateEpisode(array $data, int $id): void
     {
         DB::beginTransaction();
-
         try {
             $this->repository->update($data, $id);
         } catch (Throwable $exception) {
@@ -63,7 +62,6 @@ class EpisodesService
             ]);
             throw new EpisodeCreatingException($exception->getMessage());
         }
-
         LoggerHelper::afterCreating(true, $data);
         DB::commit();
     }
@@ -71,7 +69,6 @@ class EpisodesService
     public function updateEpisodeStatus(string $status, int $id): void
     {
         DB::beginTransaction();
-
         try {
             $this->repository->updateEpisodeStatus($status, $id);
         } catch (Throwable $exception) {
@@ -82,7 +79,6 @@ class EpisodesService
             ]);
             throw new EpisodeCreatingException($exception->getMessage());
         }
-
         LoggerHelper::afterCreating(true, ['status' => $status]);
         DB::commit();
     }

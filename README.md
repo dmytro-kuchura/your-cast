@@ -73,3 +73,10 @@ docker-compose up -d --force-recreate
 ```
 docker exec podcasts_php php artisan l5-swagger:generate
  ```
+
+username = doadmin
+password = AVNS_IPrxvgOjFCLophjvrZq
+host = db-postgresql-fra1-do-user-4280286-0.c.db.ondigitalocean.com
+port = 25060
+database = defaultdb
+sslmode = require

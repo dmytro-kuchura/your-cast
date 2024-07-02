@@ -12,7 +12,6 @@ use Throwable;
 
 class AudioFileLinkService
 {
-    /** @var AudioFileLinkRepository */
     private AudioFileLinkRepository $repository;
 
     public function __construct(AudioFileLinkRepository $showsRepository)
@@ -28,12 +27,9 @@ class AudioFileLinkService
     public function createAudioFileLink(): AudioFileLink
     {
         DB::beginTransaction();
-
         try {
             $data = [];
-
             $data['token'] = Str::random(55) . '.mp3';
-
             $audioFile = $this->repository->store($data);
         } catch (Throwable $exception) {
             DB::rollBack();
@@ -43,10 +39,8 @@ class AudioFileLinkService
             ]);
             throw new AudioFileCreatingException($exception->getMessage());
         }
-
         LoggerHelper::afterCreating(true, $data);
         DB::commit();
-
         return $audioFile;
     }
 }

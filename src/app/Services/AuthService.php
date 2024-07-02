@@ -14,16 +14,12 @@ use Illuminate\Support\Str;
 
 class AuthService
 {
-    /** @var UsersTokenRepository */
     private UsersTokenRepository $usersTokenRepository;
 
-    /** @var UsersRepository */
     private UsersRepository $usersRepository;
 
-    /** @var UsersRolesRepository */
     private UsersRolesRepository $usersRolesRepository;
 
-    /** @var PasswordResetsRepository */
     private PasswordResetsRepository $passwordResetsRepository;
 
     public function __construct(
@@ -47,7 +43,6 @@ class AuthService
     public function registration(array $data): void
     {
         $systemId = UidHelper::generateUid();
-
         $this->usersRepository->store([
             'email' => $data['email'],
             'name' => $data['name'],
@@ -59,63 +54,49 @@ class AuthService
     public function generate(int $user_id): string
     {
         $token = Str::random(235);
-
         $this->setExpired($user_id);
-
         $this->usersTokenRepository->store([
             'user_id' => $user_id,
             'token' => $token,
         ]);
-
         return $token;
     }
 
     public function reset(string $email): ?string
     {
         $user = $this->findUserByEmail($email);
-
         if ($user) {
             $token = Str::random(40);
-
             $this->passwordResetsRepository->store([
                 'token' => $token,
                 'email' => $email,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
-
             return $token;
         }
-
         return null;
     }
 
     public function update(array $data): ?User
     {
         $passwordResets = $this->passwordResetsRepository->find($data['token']);
-
         if ($passwordResets) {
             $user = $this->findUserByEmail($passwordResets->email);
-
             $this->usersRepository->update([
                 'password' => bcrypt($data['password']),
             ], $user->id);
-
             $this->passwordResetsRepository->delete($passwordResets->email);
-
             return $user;
         }
-
         return null;
     }
 
     public function isExpired(string $token): bool
     {
         $usersToken = $this->usersTokenRepository->find($token);
-
         if (!$usersToken) {
             return true;
         }
-
         return Carbon::parse($usersToken->expired_at)->isPast();
     }
 
@@ -127,27 +108,22 @@ class AuthService
     public function findTokenByUser(int $userId): string
     {
         $userToken = $this->usersTokenRepository->get($userId);
-
         return $userToken->token;
     }
 
     public function findRolesByUser(int $userId): array
     {
         $roles = [];
-
         $userRoles = $this->usersRolesRepository->getRolesByUserId($userId);
-
         foreach ($userRoles as $role) {
             $roles[] = $role->role;
         }
-
         return $roles;
     }
 
     public function findUserByToken(string $token): ?User
     {
         $usersToken = $this->usersTokenRepository->find($token);
-
         return $usersToken->user;
     }
 

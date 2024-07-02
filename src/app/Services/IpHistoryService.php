@@ -17,7 +17,6 @@ class IpHistoryService
     public function saveHistory(User $user): void
     {
         $ip = geoip()->getLocation(geoip()->getClientIP());
-
         $this->ipHistoryRepository->store([
             'user_id' => $user->id,
             'ip_address' => geoip()->getClientIP(),

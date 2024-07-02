@@ -10,13 +10,10 @@ use Illuminate\Support\Facades\Cache;
 
 class DictionaryService
 {
-    /** @var DictionaryCategoriesRepository */
     private DictionaryCategoriesRepository $categoriesRepository;
 
-    /** @var DictionaryLanguagesRepository */
     private DictionaryLanguagesRepository $languagesRepository;
 
-    /** @var DictionaryTimezonesRepository */
     private DictionaryTimezonesRepository $timezonesRepository;
 
     public function __construct(

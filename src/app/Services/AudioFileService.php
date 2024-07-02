@@ -11,7 +11,6 @@ use Throwable;
 
 class AudioFileService
 {
-    /** @var AudioFileRepository */
     private AudioFileRepository $repository;
 
     public function __construct(AudioFileRepository $showsRepository)
@@ -27,7 +26,6 @@ class AudioFileService
     public function createAudioFile(array $data): AudioFile
     {
         DB::beginTransaction();
-
         try {
             $audioFile = $this->repository->store($data);
         } catch (Throwable $exception) {
@@ -38,10 +36,8 @@ class AudioFileService
             ]);
             throw new AudioFileCreatingException($exception->getMessage());
         }
-
         LoggerHelper::afterCreating(true, $data);
         DB::commit();
-
         return $audioFile;
     }
 }
