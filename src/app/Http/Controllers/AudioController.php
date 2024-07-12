@@ -28,7 +28,7 @@ class AudioController extends Controller
     {
         $audioFileLinkId = $this->audioFileLinkService->getAudioFileId($audioLinkToken);
         $audioFile = $this->audioFileService->getAudioFile($audioFileLinkId);
-        $this->analyticsService->prepareAndSave($audioFile->id);
+        $this->analyticsService->audioFile($audioFile->id);
         return Redirect::to($audioFile->link);
     }
 }
