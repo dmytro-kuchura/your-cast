@@ -4,14 +4,14 @@
 .idea/*
 .idea/php.xml
 
+#  Temp files
+__html
+
 # ENVIRONMENT
 .env
 
 # OTHER
 www/node_modules
-
-# DB
-.docker/postgres/data/*
 
 # composer.lock
 src/composer.lock

@@ -1,44 +1,74 @@
-<section id="contact" class="contact-area contact-bg  pt-50 pb-100 p-relative fix"
-         style="background-image: url('/img/shape/header-sape8.png'); background-position: right center; background-size: auto;background-repeat: no-repeat;">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="contact-img2">
-                    <img src="/img/bg/illustration.png" alt="test">
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="section-title mb-40">
-                    <h2>Contacts to us</h2>
-                    <p>Ask everything about this podcast platform what you need!</p>
-                </div>
-                <form action="api/v1/contacts-form" class="contact-form">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="contact-field p-relative c-name mb-20">
-                                <input name="name" id="name" type="text" placeholder="Name">
+<div id="contact" class="bg-green">
+    <div class="row no-margin no-padding">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 center-col text-center no-padding uk-flex uk-flex-middle">
+            <img src="images/backgrounds/bg-01.jpg" alt="" data-uk-scrollspy="cls:uk-animation-slide-bottom-medium"/>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 uk-flex uk-flex-middle">
+            <div class="container-small sm-container-spread md-padding-top-bottom-100px">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 center-col text-left no-padding">
+                        <div data-uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-medium; delay: 200">
+                            <div class="text-left">
+                                <h5 class="text-weight-800 text-white margin-bottom-20px sm-margin-bottom-5px">Drop a
+                                    line!</h5>
+                                <img class="margin-bottom-20px" src="images/separator-light.png" alt=""/>
+                                <p class="text-gray-light margin-bottom-20px"><span
+                                        class="text-gray-light margin-right-10px"
+                                        data-uk-icon="icon: info; ratio: 1"></span>Accommodate several guests or hosts,
+                                    and a mixing board is used to balance the levels of each speaker's voice.</p>
                             </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="contact-field p-relative c-email mb-20">
-                                <input name="email" id="email" type="text" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="contact-field p-relative c-message mb-45">
-                                <textarea name="message" id="message" cols="10" rows="10"
-                                          placeholder="Write comments"></textarea>
-                            </div>
-                            <input type="hidden" name="token" value="{{ csrf_token() }}">
-                            <button class="btn">Send Message</button>
                         </div>
                     </div>
-
-                </form>
+                </div>
+                <div class="row">
+                    <form class="contact-form" method="post" action="contact.php">
+                        <div class="messages"></div>
+                        <div class="controls"
+                             data-uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-medium; delay: 200">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <input
+                                            class="form-control form_name bg-white no-border no-margin-top bordar-radius-5 ext-gray-extra-dark text-weight-400"
+                                            type="text" name="name" placeholder="Your Name *" required="required"
+                                            data-error="Your Name Required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input
+                                            class="form-control form_email bg-white no-margin-top text-gray-extra-dark text-weight-400"
+                                            type="text" name="name" placeholder="Email *" required="required"
+                                            data-error="Email is required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group no-margin-bottom">
+                                        <textarea
+                                            class="form-control height-100px form_message bg-white no-margin-top text-gray-extra-dark text-weight-400"
+                                            name="message" placeholder="Tell me about your project *" rows="4"
+                                            required="required" data-error="Please,leave us a message."></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="hidden" name="token" value="{{ csrf_token() }}">
+                                    <input type="submit" class="btn-send btn btn-large btn-white no-margin-bottom"
+                                           value="Send">
+                                    <p class="no-margin-bottom margin-top-20px no-margin-bottom text-gray-light text-small">
+                                        * By using this form you are accepting our <a href="#"
+                                                                                      class="text-white text-underline">privacy
+                                            policy.</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-
     </div>
-
-</section>
+</div>
