@@ -1,8 +1,3 @@
-<div id="loader-wrapper">
-    <div class="loader-img"><img src="/logo/your-cast-logo-white.png" alt=""/></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-</div>
 <div class="z-index-999">
     <div class="navbar-dark" data-uk-sticky>
         <nav class="uk-navbar-container" data-uk-navbar="boundary-align: true; align: center;">
@@ -17,18 +12,12 @@
                         <a class="uk-visible@m" href="#" data-uk-scroll>Home</a>
                     </li>
                     <li>
-                        <a class="uk-visible@m" href="#shows" data-uk-scroll>Shows</a>
-                    </li>
-                    <li>
-                        <a class="uk-visible@m" href="#episodes" data-uk-scroll>Episodes</a>
-                    </li>
-                    <li>
                         <a class="uk-visible@m" href="#contact" data-uk-scroll>Contact</a>
                     </li>
-                    <li></li>
                 </ul>
-                <a class="btn btn-small btn-green sm-display-table sm-margin-left-right-auto" href="account">Member
-                    Portal</a>
+                <a class="btn btn-small btn-green sm-display-table sm-margin-left-right-auto" target="_blank" href="http://localhost:4200">
+                    Account Portal
+                </a>
             </div>
         </nav>
     </div>

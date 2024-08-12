@@ -63,6 +63,11 @@ class ShowsRepository implements Repository
         return $model;
     }
 
+    public function getPopular(): ?Collection
+    {
+        return Show::where('status', 'enabled')->limit(5)->get();
+    }
+
     public function update(array $data, int $id)
     {
         $data['description'] = str_replace('&nbsp;', '', $data['description']);
