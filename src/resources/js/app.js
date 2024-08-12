@@ -12,14 +12,14 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./paroller.js');
-require('./wow.min.js');
-require('./parallax.min.js');
-require('./jquery.waypoints.min.js');
-require('./jquery.counterup.min.js');
-require('./jquery.scrollUp.min.js');
-require('./swiper.min.js');
-
-require('./ajax-form.js');
+// require('./other/modernizr.js');
+require('./other/uikit.min.js');
+require('./other/uikit-icons.min.js');
+require('./other/jquery.easing.1.3.js');
+require('./other/font-awesome.min.js');
+require('./other/contact.js');
+require('./other/jquery.countTo.js');
+require('./other/jquery.appear.js');
+require('./other/audioplayer.min.js');
 
 require('./main.js');

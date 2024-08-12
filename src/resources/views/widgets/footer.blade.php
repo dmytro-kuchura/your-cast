@@ -1,85 +1,55 @@
-<footer class="footer-bg footer-p pt-60"
-        style="background-image: url('/img/bg/f-bg.png'); background-position: center top; background-size: auto;background-repeat: no-repeat;">
-    <div class="footer-top">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-xl-3 col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-30">
-                        <div class="logo mt-15 mb-15">
-                            <a href="#"><img src="img/logo/your-cast-logo-white.png" alt="logo" width="200px"></a>
-                        </div>
-                        <div class="footer-text mb-20">
-                            <p>
-                                Find and grow your show on every podcast listening app there is - including Apple Podcasts, Spotify, YouTube, Amazon Music and others.
-                            </p>
-                        </div>
-                        <div class="footer-social">
-{{--                            <a href="#"><i class="fab fa-facebook-f"></i></a>--}}
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-30">
-                        <div class="f-widget-title">
-                            <h5>Company Info</h5>
-                        </div>
-                        <div class="footer-link">
-                            <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Privacy Policies</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-30">
-                        <div class="f-widget-title">
-                            <h5>Useful Links</h5>
-                        </div>
-                        <div class="footer-link">
-                            <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Services</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-30">
-                        <div class="f-widget-title">
-                            <h5>Contact Us</h5>
-                        </div>
-                        <div class="footer-link">
-                            <div class="f-contact">
-                                <ul>
-                                    <li>
-                                        <i class="icon dripicons-mail"></i>
-                                        <span><a href="mailto:dmytro@your-cast.com">dmytro@your-cast.com</a>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <i class="fal fa-map-marker-alt"></i>
-                                        <span>01103 Druzby Narodiv 26/1,<br> Kyiv, Ukraine</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<footer class="bg-gray-extra-dark padding-top-bottom-100px">
+    <div class="row padding-left-right-twelve-percent"
+         data-uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-medium; delay: 200">
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 center-col md-margin-bottom-50px sm-text-center">
+            <h5 class="text-weight-800 text-white margin-bottom-20px">You-Cast</h5>
+            <p class="text-weight-500 text-extra-large text-gray-light margin-bottom-10px">
+                Home for your Podcast
+            </p>
+            <div class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
+            <p class="no-margin">
+                <span class="text-green margin-right-10px uk-icon" data-uk-icon="icon: info; ratio: 1">
+                    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="info"><path
+                            d="M12.13,11.59 C11.97,12.84 10.35,14.12 9.1,14.16 C6.17,14.2 9.89,9.46 8.74,8.37 C9.3,8.16 10.62,7.83 10.62,8.81 C10.62,9.63 10.12,10.55 9.88,11.32 C8.66,15.16 12.13,11.15 12.14,11.18 C12.16,11.21 12.16,11.35 12.13,11.59 C12.08,11.95 12.16,11.35 12.13,11.59 L12.13,11.59 Z M11.56,5.67 C11.56,6.67 9.36,7.15 9.36,6.03 C9.36,5 11.56,4.54 11.56,5.67 L11.56,5.67 Z"></path><circle
+                            fill="none" stroke="#000" stroke-width="1.1" cx="10" cy="10" r="9"></circle></svg>
+                </span>
+                Find and grow your show on every podcast listening app there is - including Apple Podcasts, Spotify,
+                YouTube, Amazon Music and others.
+            </p>
         </div>
-    </div>
-    <div class="copyright-wrap text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="copyright-text">
-                        <p>&copy; 2021 - 2024 Your-Cast platform</p>
-                    </div>
-                </div>
-            </div>
+
+        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 center-col md-margin-bottom-50px sm-text-center">
+            <p class="text-weight-500 text-extra-large text-gray-light no-margin">Pages</p>
+            <div
+                class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
+            <ul class="list-unstyled no-margin">
+                <li class="no-margin"><p><a class="text-gray-light" href="#">Home</a></p></li>
+                <li class="no-margin"><p><a class="text-gray-light" href="#">About</a></p></li>
+                <li class="no-margin"><p><a class="text-gray-light" href="#">Clients</a></p></li>
+            </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-sm-12 center-col col-xs-12 md-margin-bottom-50px sm-text-center">
+            <p class="text-weight-500 text-extra-large text-gray-light no-margin">Social</p>
+            <div
+                class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
+            <ul class="list-unstyled no-margin">
+                <li class="no-margin"><p><a class="text-gray-light" href="#">Facebook</a></p></li>
+                <li class="no-margin"><p><a class="text-gray-light" href="#">Twitter</a></p></li>
+                <li class="no-margin"><p><a class="text-gray-light" href="#">Pinterest</a></p></li>
+                <li class="no-margin"><p><a class="text-gray-light" href="#">Google</a></p></li>
+                <li class="no-margin"><p class="no-margin"><a class="text-gray-light" href="#">YouTube</a></p></li>
+            </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 center-col sm-text-center">
+            <p class="text-weight-500 text-extra-large text-gray-light no-margin">Contact</p>
+            <div
+                class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
+            <p class="margin-bottom-25px text-gray-light">5266 Beverly Ln Cape Charles, Virginia(VA), 23310</p>
+            <ul class="list-unstyled no-margin">
+                <li class="no-margin"><p><a class="text-gray-light" href="#">brand@domain.com</a></p></li>
+            </ul>
         </div>
     </div>
 </footer>

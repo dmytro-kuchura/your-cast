@@ -2,24 +2,27 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
 use App\Services\AudioFileLinkService;
 use App\Services\AudioFileService;
+use App\Services\UploadService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UploadController extends Controller
 {
+    private UploadService $uploadService;
     private AudioFileService $audioFileService;
     private AudioFileLinkService $audioFileLinkService;
 
     public function __construct(
+        UploadService $uploadService,
         AudioFileService $audioFileService,
         AudioFileLinkService $audioFileLinkService
     )
     {
+        $this->uploadService = $uploadService;
         $this->audioFileService = $audioFileService;
         $this->audioFileLinkService = $audioFileLinkService;
     }
@@ -29,6 +32,13 @@ class UploadController extends Controller
      *     path="/api/v1/upload-image",
      *     summary="Upload new image",
      *     tags={"Upload"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Upload new image file",
+     *         @OA\JsonContent(
+     *            @OA\Property(property="file", type="file"),
+     *         ),
+     *      ),
      *     @OA\Response(
      *         response=201,
      *         description="Successful operation"
@@ -41,8 +51,10 @@ class UploadController extends Controller
      */
     public function uploadImage(Request $request): JsonResponse
     {
-        $path = UploadHelper::save($request, $request->get('param'));
-        return $this->returnResponse(['path' => $path], Response::HTTP_CREATED);
+        $path = $this->uploadService->saveImage($request, $request->get('param'));
+        return $this->returnResponse([
+            'path' => $path
+        ], Response::HTTP_CREATED);
     }
 
     /**
@@ -69,7 +81,7 @@ class UploadController extends Controller
      */
     public function uploadAudio(Request $request): JsonResponse
     {
-        $path = UploadHelper::saveAudio($request);
+        $path = $this->uploadService->saveAudio($request);
         $fileLink = $this->audioFileLinkService->createAudioFileLink();
         $file = $this->audioFileService->createAudioFile([
             'audio_file_link_id' => $fileLink->id,

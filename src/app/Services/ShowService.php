@@ -92,4 +92,9 @@ class ShowService
     {
         return $this->repository->findByToken($token);
     }
+
+    public function getPopularShows(): ?Collection
+    {
+        return $this->repository->getPopular();
+    }
 }
