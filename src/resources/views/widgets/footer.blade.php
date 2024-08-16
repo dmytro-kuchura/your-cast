@@ -24,31 +24,26 @@
                 class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
             <ul class="list-unstyled no-margin">
                 <li class="no-margin"><p><a class="text-gray-light" href="#">Home</a></p></li>
-                <li class="no-margin"><p><a class="text-gray-light" href="#">About</a></p></li>
-                <li class="no-margin"><p><a class="text-gray-light" href="#">Clients</a></p></li>
+            </ul>
+            <ul class="list-unstyled no-margin">
+                <li class="no-margin"><p><a class="text-gray-light" href="#contact">Contacts</a></p></li>
             </ul>
         </div>
 
-        <div class="col-lg-2 col-md-6 col-sm-12 center-col col-xs-12 md-margin-bottom-50px sm-text-center">
-            <p class="text-weight-500 text-extra-large text-gray-light no-margin">Social</p>
-            <div
-                class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
-            <ul class="list-unstyled no-margin">
-                <li class="no-margin"><p><a class="text-gray-light" href="#">Facebook</a></p></li>
-                <li class="no-margin"><p><a class="text-gray-light" href="#">Twitter</a></p></li>
-                <li class="no-margin"><p><a class="text-gray-light" href="#">Pinterest</a></p></li>
-                <li class="no-margin"><p><a class="text-gray-light" href="#">Google</a></p></li>
-                <li class="no-margin"><p class="no-margin"><a class="text-gray-light" href="#">YouTube</a></p></li>
-            </ul>
-        </div>
+{{--        <div class="col-lg-2 col-md-6 col-sm-12 center-col col-xs-12 md-margin-bottom-50px sm-text-center">--}}
+{{--            <p class="text-weight-500 text-extra-large text-gray-light no-margin">Social</p>--}}
+{{--            <div--}}
+{{--                class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>--}}
+{{--            <ul class="list-unstyled no-margin">--}}
+{{--                <li class="no-margin"><p><a class="text-gray-light" href="#">Twitter</a></p></li>--}}
+{{--            </ul>--}}
+{{--        </div>--}}
 
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 center-col sm-text-center">
             <p class="text-weight-500 text-extra-large text-gray-light no-margin">Contact</p>
-            <div
-                class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
-            <p class="margin-bottom-25px text-gray-light">5266 Beverly Ln Cape Charles, Virginia(VA), 23310</p>
+            <div class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
             <ul class="list-unstyled no-margin">
-                <li class="no-margin"><p><a class="text-gray-light" href="#">brand@domain.com</a></p></li>
+                <li class="no-margin"><p><a class="text-gray-light" href="#">info@your-cast.com</a></p></li>
             </ul>
         </div>
     </div>

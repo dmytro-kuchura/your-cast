@@ -12,12 +12,12 @@
                         <a class="uk-visible@m" href="#" data-uk-scroll>Home</a>
                     </li>
                     <li>
-                        <a class="uk-visible@m" href="#contact" data-uk-scroll>Contact</a>
+                        <a class="uk-visible@m" href="#contact" data-uk-scroll>Contacts</a>
                     </li>
                 </ul>
-                <a class="btn btn-small btn-green sm-display-table sm-margin-left-right-auto" target="_blank" href="http://localhost:4200">
-                    Account Portal
-                </a>
+{{--                <a class="btn btn-small btn-green sm-display-table sm-margin-left-right-auto" target="_blank" href="https://account.your-cast.com">--}}
+{{--                    Account Portal--}}
+{{--                </a>--}}
             </div>
         </nav>
     </div>
