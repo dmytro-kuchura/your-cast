@@ -1,0 +1,37 @@
+{
+  "resources/js/app.js": {
+    "file": "assets/app-U8s1oWoe.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-9Z8C40Rp.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  },
+  "resources/sass/images/overlay-1.png": {
+    "file": "assets/overlay-1-BIxvJ6_8.png",
+    "src": "resources/sass/images/overlay-1.png"
+  },
+  "resources/sass/images/overlay-2.png": {
+    "file": "assets/overlay-2-CQDLYiqN.png",
+    "src": "resources/sass/images/overlay-2.png"
+  },
+  "resources/sass/images/swipe-black-inverse.png": {
+    "file": "assets/swipe-black-inverse-BAvwS5cK.png",
+    "src": "resources/sass/images/swipe-black-inverse.png"
+  },
+  "resources/sass/images/swipe-black.png": {
+    "file": "assets/swipe-black-d-monRLR.png",
+    "src": "resources/sass/images/swipe-black.png"
+  },
+  "resources/sass/images/swipe-white-inverse.png": {
+    "file": "assets/swipe-white-inverse-CF3k4aUA.png",
+    "src": "resources/sass/images/swipe-white-inverse.png"
+  },
+  "resources/sass/images/swipe-white.png": {
+    "file": "assets/swipe-white-BRXBslxX.png",
+    "src": "resources/sass/images/swipe-white.png"
+  }
+}

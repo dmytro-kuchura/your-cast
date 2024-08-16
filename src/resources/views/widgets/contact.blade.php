@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form class="contact-form" method="post" action="contact.php">
+                    <form class="contact-form" action="api/v1/contacts-form" >
                         <div class="messages"></div>
                         <div class="controls"
                              data-uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-medium; delay: 200">
@@ -40,7 +40,7 @@
                                     <div class="form-group">
                                         <input
                                             class="form-control form_email bg-white no-margin-top text-gray-extra-dark text-weight-400"
-                                            type="text" name="name" placeholder="Email *" required="required"
+                                            type="text" name="email" placeholder="Email *" required="required"
                                             data-error="Email is required.">
                                         <div class="help-block with-errors"></div>
                                     </div>
