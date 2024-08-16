@@ -9,7 +9,7 @@
         "@fortawesome/fontawesome-free": "^5.15.4",
         "axios": "^1.6.4",
         "bootstrap": "4.4.1",
-        "jquery": "1.12.4",
+        "jquery": "3.7.1",
         "modernizr": "3.13.1",
         "toastr": "^2.1.4"
     },
