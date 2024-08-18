@@ -9,6 +9,7 @@
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
+    <meta name="google-adsense-account" content="ca-pub-5814626884787416">
 
     @vite('resources/js/app.js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
