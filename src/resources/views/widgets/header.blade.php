@@ -2,17 +2,17 @@
     <div class="navbar-dark" data-uk-sticky>
         <nav class="uk-navbar-container" data-uk-navbar="boundary-align: true; align: center;">
             <div class="uk-navbar-left padding-left-two-percent">
-                <a class="uk-navbar-item uk-logo" href="#" data-uk-scroll>
+                <a class="uk-navbar-item uk-logo" href="{{ route('home') }}" data-uk-scroll>
                     <img src="/logo/your-cast-logo-white.png" alt=""/>
                 </a>
             </div>
             <div class="uk-navbar-right uk-light padding-right-two-percent">
                 <ul class="uk-navbar-nav text-weight-300">
                     <li>
-                        <a class="uk-visible@m" href="#" data-uk-scroll>Home</a>
+                        <a class="uk-visible@m" href="{{ route('home') }}" data-uk-scroll>Home</a>
                     </li>
                     <li>
-                        <a class="uk-visible@m" href="#contact" data-uk-scroll>Contacts</a>
+                        <a class="uk-visible@m" href="{{ route('home') }}" data-uk-scroll>Contacts</a>
                     </li>
                 </ul>
 {{--                <a class="btn btn-small btn-green sm-display-table sm-margin-left-right-auto" target="_blank" href="https://account.your-cast.com">--}}

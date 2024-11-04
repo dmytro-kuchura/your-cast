@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AudioController;
-use App\Http\Controllers\FeedController;
+use App\Http\Controllers\ShowController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [SiteController::class, 'home'])->name('home');
-Route::get('feed/{token}', [FeedController::class, 'feed'])->name('web.feed');
+Route::get('show/{token}', [ShowController::class, 'detail'])->name('web.detail');
+Route::get('feed/{token}', [ShowController::class, 'feed'])->name('web.feed');
 Route::get('audio/{audio_link_token}', [AudioController::class, 'audio'])->name('web.audio');
