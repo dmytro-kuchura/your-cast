@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class ShowsRepository implements Repository
 {
-    public function get(int $id): ?Show
+    public function get(int $id): Collection
     {
         return Show::with('episodes')->find($id);
     }
@@ -16,26 +16,6 @@ class ShowsRepository implements Repository
     public function all()
     {
         // TODO: Implement all() method.
-    }
-
-    public function getAllUserShow(int $userId): ?Collection
-    {
-        return Show::where('user_id', $userId)->get();
-    }
-
-    public function findByToken(string $token): ?Show
-    {
-        return Show::where('token', $token)->where('status', 'enabled')->with('episodes')->first();
-    }
-
-    public function getAllUserShowShort(int $userId): ?Collection
-    {
-        return Show::select('id', 'title', 'description', 'artwork')->where('user_id', $userId)->get();
-    }
-
-    public function getShortShowInfo(int $id): ?Show
-    {
-        return Show::select('id', 'title', 'description', 'artwork')->where('id', $id)->first();
     }
 
     public function store(array $data): Show
@@ -63,19 +43,44 @@ class ShowsRepository implements Repository
         return $model;
     }
 
-    public function getPopular(): ?Collection
-    {
-        return Show::where('status', 'enabled')->limit(5)->get();
-    }
-
-    public function update(array $data, int $id)
+    public function update(array $data, int $id): void
     {
         $data['description'] = str_replace('&nbsp;', '', $data['description']);
         Show::where('id', $id)->update($data);
     }
 
-    public function destroy(int $id)
+    public function destroy(int $id): void
     {
         Show::where('id', $id)->delete();
+    }
+
+    public function getAllUserShow(int $userId): ?Collection
+    {
+        return Show::where('user_id', $userId)->get();
+    }
+
+    public function findByToken(string $token): ?Show
+    {
+        return Show::where('token', $token)->where('status', 'enabled')->first();
+    }
+
+    public function getAllUserShowShort(int $userId): ?Collection
+    {
+        return Show::select('id', 'title', 'description', 'artwork')->where('user_id', $userId)->get();
+    }
+
+    public function getShortShowInfo(int $id): ?Show
+    {
+        return Show::select('id', 'title', 'description', 'artwork')->where('id', $id)->first();
+    }
+
+    public function getPopular(): ?Collection
+    {
+        return Show::where('status', 'enabled')->limit(5)->get();
+    }
+
+    public function getByToken(string $token): ?Show
+    {
+        return Show::where('token', $token)->where('status', 'enabled')->first();
     }
 }

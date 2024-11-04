@@ -31,7 +31,9 @@
                         <div class="row text-center margin-auto">
                             @foreach($popular as $item)
                                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                    <img class="opacity-7" alt="" src="{{ $item->artwork }}"/>
+                                    <a href="{{ route('web.detail', ['token' => $item->token]) }}">
+                                        <img class="opacity-7" alt="" src="{{ $item->artwork }}"/>
+                                    </a>
                                 </div>
                             @endforeach
                         </div>

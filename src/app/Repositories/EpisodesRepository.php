@@ -20,7 +20,7 @@ class EpisodesRepository implements Repository
 
     public function getAllShowEpisodes(int $showId): ?LengthAwarePaginator
     {
-        return Episode::where('show_id', $showId)->orderBy('id', 'desc')->paginate(10);
+        return Episode::where('show_id', $showId)->orderBy('id', 'desc')->paginate(6);
     }
 
     public function getAllUserEpisodes(int $userId): ?Collection

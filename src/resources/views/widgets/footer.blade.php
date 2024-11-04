@@ -23,10 +23,10 @@
             <div
                 class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
             <ul class="list-unstyled no-margin">
-                <li class="no-margin"><p><a class="text-gray-light" href="#">Home</a></p></li>
+                <li class="no-margin"><p><a class="text-gray-light" href="{{ route('home') }}">Home</a></p></li>
             </ul>
             <ul class="list-unstyled no-margin">
-                <li class="no-margin"><p><a class="text-gray-light" href="#contact">Contacts</a></p></li>
+                <li class="no-margin"><p><a class="text-gray-light" href="{{ route('home') }}">Contacts</a></p></li>
             </ul>
         </div>
 
