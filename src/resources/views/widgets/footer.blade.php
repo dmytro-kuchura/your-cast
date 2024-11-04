@@ -26,7 +26,7 @@
                 <li class="no-margin"><p><a class="text-gray-light" href="{{ route('home') }}">Home</a></p></li>
             </ul>
             <ul class="list-unstyled no-margin">
-                <li class="no-margin"><p><a class="text-gray-light" href="{{ route('home') }}">Contacts</a></p></li>
+                <li class="no-margin"><p><a class="text-gray-light" href="{{ route('contacts') }}">Contacts</a></p></li>
             </ul>
         </div>
 

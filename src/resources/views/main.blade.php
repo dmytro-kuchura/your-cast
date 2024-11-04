@@ -47,7 +47,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 {{--    @widget('newslater')--}}
 {{--    @widget('pricing')--}}
