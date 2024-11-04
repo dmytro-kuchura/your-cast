@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class ShowsRepository implements Repository
 {
-    public function get(int $id): Collection
+    public function get(int $id): ?Show
     {
         return Show::with('episodes')->find($id);
     }
