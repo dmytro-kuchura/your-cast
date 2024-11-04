@@ -20,13 +20,20 @@
 
         <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 center-col md-margin-bottom-50px sm-text-center">
             <p class="text-weight-500 text-extra-large text-gray-light no-margin">Pages</p>
-            <div
-                class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
+            <div class="separator width-50 bottom-border border-1px border-color-gray-extra-dark margin-top-20px margin-bottom-20px sm-width-100"></div>
             <ul class="list-unstyled no-margin">
-                <li class="no-margin"><p><a class="text-gray-light" href="{{ route('home') }}">Home</a></p></li>
+                <li class="no-margin">
+                    <p>
+                        <a class="text-gray-light" href="{{ route('home') }}">Home</a>
+                    </p>
+                </li>
             </ul>
             <ul class="list-unstyled no-margin">
-                <li class="no-margin"><p><a class="text-gray-light" href="{{ route('contacts') }}">Contacts</a></p></li>
+                <li class="no-margin">
+                    <p>
+                        <a class="text-gray-light" href="{{ route('contacts') }}">Contacts</a>
+                    </p>
+                </li>
             </ul>
         </div>
 
