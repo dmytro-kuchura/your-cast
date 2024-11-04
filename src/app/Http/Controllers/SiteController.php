@@ -10,4 +10,9 @@ class SiteController extends Controller
     {
         return view('main');
     }
+
+    public function contact(): View
+    {
+        return view('contact');
+    }
 }

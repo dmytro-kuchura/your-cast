@@ -12,7 +12,7 @@
                         <a class="uk-visible@m" href="{{ route('home') }}" data-uk-scroll>Home</a>
                     </li>
                     <li>
-                        <a class="uk-visible@m" href="{{ route('home') }}" data-uk-scroll>Contacts</a>
+                        <a class="uk-visible@m" href="{{ route('contacts') }}" data-uk-scroll>Contacts</a>
                     </li>
                 </ul>
 {{--                <a class="btn btn-small btn-green sm-display-table sm-margin-left-right-auto" target="_blank" href="https://account.your-cast.com">--}}
