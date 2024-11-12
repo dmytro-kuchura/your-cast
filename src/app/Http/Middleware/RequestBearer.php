@@ -20,16 +20,13 @@ class RequestBearer
         if (!$request->header('authorization')) {
             return response()->json(['message' => 'Unauthorised'], Response::HTTP_UNAUTHORIZED);
         }
-
         $header = explode('Bearer', $request->header('authorization'));
         $token = trim($header[1]);
-
         if ($this->authService->isExpired($token)) {
             return response()->json(['message' => 'Unauthorised'], Response::HTTP_UNAUTHORIZED);
         } else {
             $this->authService->authorization($token);
         }
-
         return $next($request);
     }
 }

@@ -16,16 +16,13 @@ class RequestAuth
     {
         $header = trim($request->headers->get(self::HEADER_CSRF_TOKEN));
         $value = trim($request->get(self::REQUEST_CSRF_TOKEN));
-
         if (strcmp($header, $value) !== 0) {
             LoggerHelper::error('Not valid request', [
                 'HEADERS' => $request->headers->all(),
                 'REQUEST' => $request->all(),
             ]);
-
             return response()->json(['message' => 'Not valid request!'], Response::HTTP_BAD_REQUEST);
         }
-
         return $next($request);
     }
 }

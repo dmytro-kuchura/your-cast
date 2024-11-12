@@ -6,6 +6,10 @@
     <meta name="text" content="">
     <meta name="author" content="">
 
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png">
+
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">

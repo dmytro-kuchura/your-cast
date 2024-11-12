@@ -47,7 +47,6 @@ class Handler extends ExceptionHandler
         if ($request->wantsJson()) {
             return $this->handleApiException($request, $e);
         }
-
         LoggerHelper::error('Handle render exception', [$e->getMessage()]);
         return parent::render($request, $e);
     }
@@ -55,15 +54,12 @@ class Handler extends ExceptionHandler
     private function handleApiException($request, Throwable $exception)
     {
         $exception = $this->prepareException($exception);
-
         if ($exception instanceof AuthenticationException) {
             $exception = $this->unauthenticated($request, $exception);
         }
-
         if ($exception instanceof ValidationException) {
             $exception = $this->convertValidationExceptionToResponse($exception, $request);
         }
-
         return $this->customApiResponse($exception);
     }
 
@@ -74,9 +70,7 @@ class Handler extends ExceptionHandler
         } else {
             $statusCode = 500;
         }
-
         $response = [];
-
         switch ($statusCode) {
             case Response::HTTP_UNAUTHORIZED:
                 $response['message'] = 'Unauthorized';
@@ -98,14 +92,11 @@ class Handler extends ExceptionHandler
                 $response['message'] = ($statusCode == 500) ? 'Whoops, looks like something went wrong' : $exception->getMessage();
                 break;
         }
-
         if (config('app.debug')) {
             $response['trace'] = $exception->getTrace();
             $response['code'] = $exception->getCode();
         }
-
         $response['status'] = $statusCode;
-
         LoggerHelper::error('Handle Api exception', $response);
         return response()->json($response, $statusCode);
     }
