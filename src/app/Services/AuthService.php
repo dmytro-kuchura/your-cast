@@ -2,37 +2,39 @@
 
 namespace App\Services;
 
+use App\Exceptions\NotCreateNewUserException;
 use App\Helpers\UidHelper;
+use App\Models\Enum\UserRole;
 use App\Models\User;
 use App\Repositories\PasswordResetsRepository;
 use App\Repositories\UsersRepository;
-use App\Repositories\UsersRolesRepository;
-use App\Repositories\UsersTokenRepository;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\Contract\Auth as FirebaseAuth;
+use Throwable;
 
 class AuthService
 {
-    private UsersTokenRepository $usersTokenRepository;
 
     private UsersRepository $usersRepository;
-
-    private UsersRolesRepository $usersRolesRepository;
-
     private PasswordResetsRepository $passwordResetsRepository;
+    private FirebaseAuth $firebaseAuth;
 
     public function __construct(
-        UsersTokenRepository     $usersTokenRepository,
         UsersRepository          $usersRepository,
-        UsersRolesRepository     $usersRolesRepository,
         PasswordResetsRepository $passwordResetsRepository
     )
     {
-        $this->usersTokenRepository = $usersTokenRepository;
         $this->usersRepository = $usersRepository;
-        $this->usersRolesRepository = $usersRolesRepository;
         $this->passwordResetsRepository = $passwordResetsRepository;
+
+        $factory = (new Factory)->withServiceAccount(Storage::path('firebase-auth.json'));
+        $this->firebaseAuth = $factory->createAuth();
     }
 
     public function authorization(string $token): void
@@ -40,26 +42,40 @@ class AuthService
         Auth::login($this->findUserByToken($token));
     }
 
-    public function registration(array $data): void
+    public function login(array $data): User
+    {
+        try {
+            $signInResult = $this->firebaseAuth->signInWithEmailAndPassword($data['email'], $data['password']);
+        } catch (Throwable $exception) {
+            Log::info($exception->getMessage());
+            throw new NotCreateNewUserException();
+        }
+        return $this->usersRepository->findByToken($signInResult->data()['localId']);
+    }
+
+    public function register(array $data): User
     {
         $systemId = UidHelper::generateUid();
-        $this->usersRepository->store([
-            'email' => $data['email'],
+        try {
+            $firebaseUser = $this->firebaseAuth->createUserWithEmailAndPassword($data['email'], $data['password']);
+        } catch (Throwable $exception) {
+            Log::info($exception->getMessage());
+            throw new NotCreateNewUserException();
+        }
+        return $this->usersRepository->store([
+            'email' => $firebaseUser->email,
             'name' => $data['name'],
-            'password' => bcrypt($data['password']),
-            'system_id' => $systemId
+            'password' => bcrypt(''),
+            'system_id' => $systemId,
+            'remember_token' => $firebaseUser->uid,
+            'role' => UserRole::PODCASTER
         ]);
     }
 
-    public function generate(int $user_id): string
+    public function generate(string $rememberToken): string
     {
-        $token = Str::random(235);
-        $this->setExpired($user_id);
-        $this->usersTokenRepository->store([
-            'user_id' => $user_id,
-            'token' => $token,
-        ]);
-        return $token;
+        $token = $this->firebaseAuth->createCustomToken($rememberToken);
+        return $token->toString();
     }
 
     public function reset(string $email): ?string
@@ -93,38 +109,15 @@ class AuthService
 
     public function isExpired(string $token): bool
     {
-        $usersToken = $this->usersTokenRepository->find($token);
-        if (!$usersToken) {
-            return true;
-        }
-        return Carbon::parse($usersToken->expired_at)->isPast();
-    }
-
-    public function setExpired(int $userId): void
-    {
-        $this->usersTokenRepository->expired($userId);
-    }
-
-    public function findTokenByUser(int $userId): string
-    {
-        $userToken = $this->usersTokenRepository->get($userId);
-        return $userToken->token;
-    }
-
-    public function findRolesByUser(int $userId): array
-    {
-        $roles = [];
-        $userRoles = $this->usersRolesRepository->getRolesByUserId($userId);
-        foreach ($userRoles as $role) {
-            $roles[] = $role->role;
-        }
-        return $roles;
+        $token = $this->firebaseAuth->parseToken($token);
+        return $token->isExpired(Carbon::now());
     }
 
     public function findUserByToken(string $token): ?User
     {
-        $usersToken = $this->usersTokenRepository->find($token);
-        return $usersToken->user;
+        $token = $this->firebaseAuth->parseToken($token);
+        $uid = $token->claims()->get('uid');
+        return $this->usersRepository->findByToken($uid);
     }
 
     public function findUserByEmail(string $email): ?User

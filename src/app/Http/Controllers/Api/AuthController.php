@@ -24,7 +24,7 @@ class AuthController extends Controller
     public IpHistoryService $ipHistoryService;
 
     public function __construct(
-        AuthService $authService,
+        AuthService      $authService,
         IpHistoryService $ipHistoryService
     )
     {
@@ -57,8 +57,9 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request): JsonResponse
     {
-        $user = Auth::attempt($request->all(), $request->get('remember'));
-        if (!$user) {
+        $user = $this->authService->login($request->all());
+        Auth::setUser($user);
+        if (!Auth::hasUser()) {
             return $this->returnResponse([
                 'error' => 'Sorry we couldn\'t sign you in with those details.'
             ], 422);
@@ -66,9 +67,8 @@ class AuthController extends Controller
         $this->ipHistoryService->saveHistory($request->user());
         return $this->returnResponse([
             'user' => new UserResource($request->user()),
-            'roles' => $this->authService->findRolesByUser(Auth::id()),
-            'access_token' => $this->authService->generate(Auth::id()),
-            'token_type' => 'bearer',
+            'authToken' => $this->authService->generate(Auth::user()->getRememberToken()),
+            'tokenType' => 'bearer',
         ]);
     }
 
@@ -105,9 +105,9 @@ class AuthController extends Controller
                 'error' => 'Not supported.'
             ], Response::HTTP_BAD_REQUEST);
         }
-        $this->authService->registration($request->all());
-        $token = Auth::attempt($request->only(['email', 'password']));
-        if (!$token) {
+        $user = $this->authService->register($request->all());
+        Auth::setUser($user);
+        if (!Auth::hasUser()) {
             return $this->returnResponse([
                 'success' => false,
                 'error' => 'Not found.'
@@ -115,7 +115,8 @@ class AuthController extends Controller
         }
         return $this->returnResponse([
             'user' => new UserResource(Auth::user()),
-            'access_token' => $this->authService->generate(Auth::id())
+            'authToken' => $this->authService->generate(Auth::user()->getRememberToken()),
+            'tokenType' => 'bearer',
         ], Response::HTTP_CREATED);
     }
 
@@ -200,30 +201,6 @@ class AuthController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/v1/logout",
-     *     summary="User logout",
-     *     tags={"Auth"},
-     *     @OA\Response(
-     *         response=200,
-     *         description="Successful operation"
-     *     ),
-     *     @OA\Response(
-     *         response="401",
-     *         description="Unauthorized user"
-     *     )
-     * )
-     */
-    public function logout(): JsonResponse
-    {
-        $this->authService->setExpired(Auth::id());
-        Auth::logout();
-        return $this->returnResponse([
-            'message' => 'Successfully logged out'
-        ]);
-    }
-
-    /**
-     * @OA\Get(
      *     path="/api/v1/profile",
      *     summary="User profile",
      *     tags={"Auth"},
@@ -241,8 +218,7 @@ class AuthController extends Controller
     {
         return $this->returnResponse([
             'user' => new UserResource(Auth::user()),
-            'roles' => $this->authService->findRolesByUser(Auth::id()),
-            'access_token' => $this->authService->findTokenByUser(Auth::id()),
+            'access_token' => $this->authService->generate(Auth::user()->getRememberToken()),
             'token_type' => 'bearer',
             'has_show' => true,
         ]);

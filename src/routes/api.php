@@ -22,57 +22,54 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['request.logger'])->group(function () {
-    Route::prefix('v1')->group(function () {
-        Route::post('/register', [AuthController::class, 'register'])->name('api.register');
-        Route::post('/login', [AuthController::class, 'login'])->name('api.login');
-        Route::post('/reset-password', [AuthController::class, 'reset'])->name('api.reset.password');
-        Route::post('/update-password', [AuthController::class, 'update'])->name('api.password.update');
+Route::prefix('v1')->group(function () {
+    Route::post('/register', [AuthController::class, 'register'])->name('api.register');
+    Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+    Route::post('/reset-password', [AuthController::class, 'reset'])->name('api.reset.password');
+    Route::post('/update-password', [AuthController::class, 'update'])->name('api.password.update');
 
-        Route::middleware(['request.auth'])->group(function () {
-            Route::post('/contacts-form', [ContactsController::class, 'contactsForm'])->name('api.contacts.form');
-            Route::post('/subscribers-form', [SubscribersController::class, 'subscribersForm'])->name('api.subscribers.form');
+    Route::middleware(['auth.request'])->group(function () {
+        Route::post('/contacts-form', [ContactsController::class, 'contactsForm'])->name('api.contacts.form');
+        Route::post('/subscribers-form', [SubscribersController::class, 'subscribersForm'])->name('api.subscribers.form');
+    });
+
+    Route::middleware(['auth.bearer'])->group(function () {
+        Route::get('/profile', [AuthController::class, 'profile'])->name('api.profile');
+
+        Route::post('/upload-image', [UploadController::class, 'uploadImage'])->name('api.upload.image');
+        Route::post('/upload-audio', [UploadController::class, 'uploadAudio'])->name('api.upload.audio');
+
+        Route::prefix('show')->group(function () {
+            Route::get('/{id}/short', [ShowController::class, 'shortInfo'])->name('api.show.short.info');
+            Route::get('/list', [ShowController::class, 'list'])->name('api.show.list');
+            Route::post('/create', [ShowController::class, 'create'])->name('api.show.create');
+            Route::put('/update/{id}', [ShowController::class, 'update'])->name('api.show.update');
+            Route::get('/{id}', [ShowController::class, 'info'])->name('api.show.info');
+            Route::delete('/{id}', [ShowController::class, 'delete'])->name('api.show.delete');
         });
 
-        Route::middleware(['request.bearer'])->group(function () {
-            Route::get('/logout', [AuthController::class, 'logout'])->name('api.logout');
-            Route::get('/profile', [AuthController::class, 'profile'])->name('api.profile');
+        Route::prefix('episodes')->group(function () {
+            Route::get('/show/{showId}/list', [EpisodeController::class, 'showEpisodes'])->name('api.episode.show.episodes');
+            Route::post('/create', [EpisodeController::class, 'create'])->name('api.episode.create');
+            Route::get('/{episodeId}', [EpisodeController::class, 'info'])->name('api.episode.info');
+            Route::patch('/{episodeId}', [EpisodeController::class, 'update'])->name('api.episode.update');
+            Route::patch('/status/{episodeId}', [EpisodeController::class, 'status'])->name('api.episode.update.status');
+        });
 
-            Route::post('/upload-image', [UploadController::class, 'uploadImage'])->name('api.upload.image');
-            Route::post('/upload-audio', [UploadController::class, 'uploadAudio'])->name('api.upload.audio');
+        Route::prefix('dictionary')->group(function () {
+            Route::get('/timezones', [DictionaryController::class, 'timezones'])->name('api.dictionary.timezones');
+            Route::get('/languages', [DictionaryController::class, 'languages'])->name('api.dictionary.languages');
+            Route::get('/categories', [DictionaryController::class, 'categories'])->name('api.dictionary.categories');
+        });
 
-            Route::prefix('show')->group(function () {
-                Route::get('/{id}/short', [ShowController::class, 'shortInfo'])->name('api.show.short.info');
-                Route::get('/list', [ShowController::class, 'list'])->name('api.show.list');
-                Route::post('/create', [ShowController::class, 'create'])->name('api.show.create');
-                Route::put('/update/{id}', [ShowController::class, 'update'])->name('api.show.update');
-                Route::get('/{id}', [ShowController::class, 'info'])->name('api.show.info');
-                Route::delete('/{id}', [ShowController::class, 'delete'])->name('api.show.delete');
-            });
+        Route::prefix('notifications')->group(function () {
+            Route::get('/unread', [NotificationController::class, 'unread'])->name('api.notifications.unread');
+        });
 
-            Route::prefix('episodes')->group(function () {
-                Route::get('/show/{showId}/list', [EpisodeController::class, 'showEpisodes'])->name('api.episode.show.episodes');
-                Route::post('/create', [EpisodeController::class, 'create'])->name('api.episode.create');
-                Route::get('/{episodeId}', [EpisodeController::class, 'info'])->name('api.episode.info');
-                Route::patch('/{episodeId}', [EpisodeController::class, 'update'])->name('api.episode.update');
-                Route::patch('/status/{episodeId}', [EpisodeController::class, 'status'])->name('api.episode.update.status');
-            });
-
-            Route::prefix('dictionary')->group(function () {
-                Route::get('/timezones', [DictionaryController::class, 'timezones'])->name('api.dictionary.timezones');
-                Route::get('/languages', [DictionaryController::class, 'languages'])->name('api.dictionary.languages');
-                Route::get('/categories', [DictionaryController::class, 'categories'])->name('api.dictionary.categories');
-            });
-
-            Route::prefix('notifications')->group(function () {
-                Route::get('/unread', [NotificationController::class, 'unread'])->name('api.notifications.unread');
-            });
-
-            Route::prefix('user')->group(function () {
-                Route::get('/list', [UserController::class, 'list'])->name('api.user.list');
-                Route::get('/{id}', [UserController::class, 'detail'])->name('api.user.detail');
-                Route::put('/permissions', [UserController::class, 'permissions'])->name('api.user.permissions');
-            });
+        Route::prefix('user')->group(function () {
+            Route::get('/list', [UserController::class, 'list'])->name('api.user.list');
+            Route::get('/{id}', [UserController::class, 'detail'])->name('api.user.detail');
+            Route::put('/permissions', [UserController::class, 'permissions'])->name('api.user.permissions');
         });
     });
 });

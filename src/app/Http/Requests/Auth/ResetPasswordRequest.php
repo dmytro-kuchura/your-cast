@@ -34,7 +34,7 @@ class ResetPasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            'email' => 'Введите email',
+            'email' => 'Need enter a valid email',
         ];
     }
 

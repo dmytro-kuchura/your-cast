@@ -36,9 +36,9 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'name' => 'Введите имя',
-            'email' => 'Введите email',
-            'password' => 'Введите пароль',
+            'name' => 'Need enter a valid name',
+            'email' => 'Need enter a valid email',
+            'password' => 'Need enter a valid password',
         ];
     }
 

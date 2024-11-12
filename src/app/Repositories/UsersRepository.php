@@ -6,6 +6,12 @@ use App\Models\User;
 
 class UsersRepository implements Repository
 {
+
+    public function findByToken(string $token): ?User
+    {
+        return User::where('remember_token', $token)->first();
+    }
+
     public function findByEmail(string $email): ?User
     {
         return User::where('email', $email)->first();
