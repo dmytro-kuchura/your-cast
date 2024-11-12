@@ -7,6 +7,12 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->initDatabase();
+    }
+
     /**
      * A basic test example.
      *
@@ -15,7 +21,6 @@ class ExampleTest extends TestCase
     public function testBasicTest()
     {
         $response = $this->get('/');
-
         $response->assertStatus(200);
     }
 }
