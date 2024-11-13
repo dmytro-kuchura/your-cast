@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ShowResource extends JsonResource
@@ -9,14 +10,14 @@ class ShowResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
+            'userId' => $this->user_id,
             'title' => $this->title,
             'description' => $this->description,
             'artwork' => $this->artwork,
@@ -27,11 +28,11 @@ class ShowResource extends JsonResource
             'category' => $this->category,
             'tags' => $this->tags,
             'author' => $this->author,
-            'podcast_owner' => $this->podcast_owner,
-            'email_owner' => $this->email_owner,
+            'podcastOwner' => $this->podcast_owner,
+            'emailOwner' => $this->email_owner,
             'step' => $this->step,
             'copyright' => $this->copyright,
-            'created_at' => $this->created_at,
+            'created' => $this->created_at,
         ];
     }
 }
