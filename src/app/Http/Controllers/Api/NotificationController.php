@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\NotificationResource;
 use App\Services\NotificationsService;
 use Illuminate\Http\JsonResponse;
 
@@ -33,8 +34,9 @@ class NotificationController extends Controller
     public function unread(): JsonResponse
     {
         $result = $this->service->getUnread();
+
         return $this->returnResponse([
-            'result' => $result
+            'result' => NotificationResource::collection($result),
         ]);
     }
 }

@@ -130,7 +130,7 @@ class ShowController extends Controller
         $userId = Auth::id();
         $result = $this->service->getAllUserShow($userId);
         return $this->returnResponse([
-            'result' => $result
+            'result' => ShowResource::collection($result)
         ]);
     }
 
@@ -178,7 +178,7 @@ class ShowController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/v1/show/create",
+     *     path="/api/v1/show/update",
      *     summary="Update show",
      *     tags={"Shows"},
      *     @OA\RequestBody(

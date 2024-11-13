@@ -4,8 +4,9 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Carbon;
 
-class UserResource extends JsonResource
+class NotificationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,11 +18,11 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'email' => $this->email,
-            'name' => $this->name,
-            'emailConfirmed' => $this->isEmailVerified(),
-            'isPodcaster' => $this->isPodcaster(),
-            'isAdmin' => $this->isAdmin(),
+            'userId' => $this->user_id,
+            'title' => $this->title,
+            'content' => $this->content,
+            'isRead' => $this->is_read,
+            'time' => Carbon::parse($this->created_at)->format('d.m.Y H:i:s'),
         ];
     }
 }
