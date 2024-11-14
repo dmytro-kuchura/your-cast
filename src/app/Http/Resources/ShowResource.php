@@ -31,6 +31,7 @@ class ShowResource extends JsonResource
             'podcastOwner' => $this->podcast_owner,
             'emailOwner' => $this->email_owner,
             'step' => $this->step,
+            'status' => $this->status,
             'copyright' => $this->copyright,
             'created' => $this->created_at,
         ];
