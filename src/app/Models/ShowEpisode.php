@@ -32,9 +32,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $created_at
  * @property string $updated_at
  */
-class Episode extends Model
+class ShowEpisode extends Model
 {
-    protected $table = 'episodes';
+    protected $table = 'shows_episode';
 
     /**
      * @var array

@@ -5,24 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property string $email
+ * @property int $id
+ *
  * @property string $token
+ * @property string $status
+ *
  * @property string $created_at
+ * @property string $updated_at
  */
-class PasswordResets extends Model
+class ShowAudioFileLink extends Model
 {
-    public $incrementing = false;
-
-    protected $table = 'password_resets';
-
-    public $timestamps = false;
+    protected $table = 'shows_audio_file_links';
 
     /**
      * @var array
      */
     protected $fillable = [
-        'email',
+        'id',
         'token',
+        'status',
         'created_at',
+        'updated_at',
     ];
 }

@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\AnalyticsAudio;
+use App\Models\ShowAnalyticsAudio;
 
-class AnalyticsAudioRepository implements Repository
+class ShowAnalyticsAudioRepository implements Repository
 {
-    public function get(int $id): ?AnalyticsAudio
+    public function get(int $id): ?ShowAnalyticsAudio
     {
-        return AnalyticsAudio::find($id);
+        return ShowAnalyticsAudio::find($id);
     }
 
     public function all()
@@ -16,9 +16,9 @@ class AnalyticsAudioRepository implements Repository
         // TODO: Implement all() method.
     }
 
-    public function store(array $data): AnalyticsAudio
+    public function store(array $data): ShowAnalyticsAudio
     {
-        $model = new AnalyticsAudio();
+        $model = new ShowAnalyticsAudio();
 
         $model->audio_file_id = $data['audio_file_id'];
         $model->url = $data['url'];
@@ -33,11 +33,11 @@ class AnalyticsAudioRepository implements Repository
 
     public function update(array $data, int $id)
     {
-        AnalyticsAudio::where('id', $id)->update($data);
+        ShowAnalyticsAudio::where('id', $id)->update($data);
     }
 
     public function destroy(int $id)
     {
-        AnalyticsAudio::where('id', $id)->delete();
+        ShowAnalyticsAudio::where('id', $id)->delete();
     }
 }

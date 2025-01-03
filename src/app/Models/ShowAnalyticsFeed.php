@@ -7,25 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  *
- * @property int $audio_file_id
+ * @property int $show_id
  * @property string $country
  * @property string $city
  * @property string $url
  * @property string $os
+ * @property string $agent
  *
  * @property string $created_at
  * @property string $updated_at
  */
-class AnalyticsAudio extends Model
+class ShowAnalyticsFeed extends Model
 {
-    protected $table = 'analytics_audio';
+    protected $table = 'shows_analytics_feed';
 
     /**
      * @var array
      */
     protected $fillable = [
         'id',
-        'audio_file_id',
+        'show_id',
         'country',
         'city',
         'url',

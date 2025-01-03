@@ -20,9 +20,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $created_at
  * @property string $updated_at
  */
-class AudioFile extends Model
+class ShowAudioFile extends Model
 {
-    protected $table = 'audio_files';
+    protected $table = 'shows_audio_files';
 
     /**
      * @var array

@@ -4,13 +4,15 @@ namespace App\Services;
 
 use App\Exceptions\NotCreateNewUserException;
 use App\Helpers\UidHelper;
+use App\Mail\RegistrationEmail;
 use App\Models\Enum\UserRole;
 use App\Models\User;
-use App\Repositories\PasswordResetsRepository;
+use App\Repositories\UsersIpHistoryRepository;
 use App\Repositories\UsersRepository;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -22,16 +24,16 @@ class AuthService
 {
 
     private UsersRepository $usersRepository;
-    private PasswordResetsRepository $passwordResetsRepository;
+    private UsersIpHistoryRepository $usersIpHistoryRepository;
     private FirebaseAuth $firebaseAuth;
 
     public function __construct(
         UsersRepository          $usersRepository,
-        PasswordResetsRepository $passwordResetsRepository
+        UsersIpHistoryRepository $usersIpHistoryRepository
     )
     {
         $this->usersRepository = $usersRepository;
-        $this->passwordResetsRepository = $passwordResetsRepository;
+        $this->usersIpHistoryRepository = $usersIpHistoryRepository;
 
         $factory = (new Factory)->withServiceAccount(Storage::path('firebase-auth.json'));
         $this->firebaseAuth = $factory->createAuth();
@@ -50,7 +52,9 @@ class AuthService
             Log::info($exception->getMessage());
             throw new NotCreateNewUserException();
         }
-        return $this->usersRepository->findByToken($signInResult->data()['localId']);
+        $user = $this->usersRepository->findByToken($signInResult->data()['localId']);
+        $this->saveHistory($user);
+        return $user;
     }
 
     public function register(array $data): User
@@ -62,7 +66,7 @@ class AuthService
             Log::info($exception->getMessage());
             throw new NotCreateNewUserException();
         }
-        return $this->usersRepository->store([
+        $user = $this->usersRepository->store([
             'email' => $firebaseUser->email,
             'name' => $data['name'],
             'password' => bcrypt(''),
@@ -70,6 +74,8 @@ class AuthService
             'remember_token' => $firebaseUser->uid,
             'role' => UserRole::PODCASTER
         ]);
+        Mail::to($user->email)->send(new RegistrationEmail($user));
+        return $user;
     }
 
     public function generate(string $rememberToken): string
@@ -123,5 +129,17 @@ class AuthService
     public function findUserByEmail(string $email): ?User
     {
         return $this->usersRepository->findByEmail($email);
+    }
+
+    public function saveHistory(User $user): void
+    {
+        $ip = geoip()->getLocation(geoip()->getClientIP());
+        $this->usersIpHistoryRepository->store([
+            'user_id' => $user->id,
+            'ip_address' => geoip()->getClientIP(),
+            'country' => $ip->country,
+            'city' => $ip->city,
+            'browser' => request()->userAgent(),
+        ]);
     }
 }
